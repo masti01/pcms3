@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 """
 This bot creates a pages with links to tennis players.
 
@@ -11,49 +10,37 @@ Use global -simulate option for test purposes. No changes to live wiki
 will be done.
 
 The following parameters are supported:
-
 &params;
-
 -always           If used, the bot won't ask if it should file the message
                   onto user talk page.   
-
 -outpage          Results page; otherwise "Wikipedysta:mastiBot/test" is used
-
 -maxlines         Max number of entries before new subpage is created; default 1000
-
 -text:            Use this text to be added; otherwise 'Test' is used
-
 -replace:         Dont add text but replace it
-
 -top              Place additional text on top of the page
-
 -summary:         Set the action summary message for the edit.
-
 -negative:        mark if text not in page
 """
 #
-# (C) Pywikibot team, 2006-2016
+# (C) Pywikibot team, 2006-2021
 #
 # Distributed under the terms of the MIT license.
 #
-from __future__ import absolute_import, unicode_literals
-
-__version__ = '$Id: c1795dd2fb2de670c0b4bddb289ea9d13b1e9b3f $'
-#
-
-import pywikibot
-from pywikibot import pagegenerators
 import re
 
+import pywikibot
+
+from pywikibot.backports import Tuple
+from pywikibot import pagegenerators
+
 from pywikibot.bot import (
-    SingleSiteBot, ExistingPageBot, NoRedirectPageBot, AutomaticTWSummaryBot)
-from pywikibot.tools import issue_deprecation_warning
+    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    AutomaticTWSummaryBot)
+
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
-docuReplacements = {
-    '&params;': pagegenerators.parameterHelp
-}
+docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
 class BasicBot(
@@ -78,9 +65,9 @@ class BasicBot(
 
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs):
+    def __init__(self, generator, **kwargs) -> None:
         """
-        Constructor.
+        Initializer.
 
         @param generator: the page generator that determines on which pages
             to work
@@ -88,51 +75,24 @@ class BasicBot(
         """
         # Add your own options to the bot and set their defaults
         # -always option is predefined by BaseBot class
-        self.availableOptions.update({
+        self.available_options.update({
             'replace': False,  # delete old text and write the new text
             'summary': None,  # your own bot summary
             'text': 'Test',  # add this text from option. 'Test' is default
             'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test', #default output page
-            'maxlines': 1000, #default number of entries per page
-            'testprint': False, # print testoutput
-            'negative': False, #if True negate behavior i.e. mark pages that DO NOT contain search string
-            'test': False, #test options
-            'progress': False # test option showing bot progress
+            'outpage': u'User:mastiBot/test',  # default output page
+            'maxlines': 1000,  # default number of entries per page
+            'testprint': False,  # print testoutput
+            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+            'test': False,  # test options
+            'progress': False  # test option showing bot progress
         })
 
-        # call constructor of the super class
-        super(BasicBot, self).__init__(site=True, **kwargs)
 
-        # handle old -dry paramter
-        self._handle_dry_param(**kwargs)
-
+        # call initializer of the super class
+        super().__init__(site=True, **kwargs)
         # assign the generator to the bot
         self.generator = generator
-
-    def _handle_dry_param(self, **kwargs):
-        """
-        Read the dry parameter and set the simulate variable instead.
-
-        This is a private method. It prints a deprecation warning for old
-        -dry paramter and sets the global simulate variable and informs
-        the user about this setting.
-
-        The constuctor of the super class ignores it because it is not
-        part of self.availableOptions.
-
-        @note: You should ommit this method in your own application.
-
-        @keyword dry: deprecated option to prevent changes on live wiki.
-            Use -simulate instead.
-        @type dry: bool
-        """
-        if 'dry' in kwargs:
-            issue_deprecation_warning('dry argument',
-                                      'pywikibot.config.simulate', 1)
-            # use simulate variable instead
-            pywikibot.config.simulate = True
-            pywikibot.output('config.simulate was set to True')
 
     def run(self):
 
@@ -262,14 +222,13 @@ class BasicBot(
         #   success = False
         return(success)
 
-def main(*args):
+def main(*args: Tuple[str, ...]) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
     @param args: command line arguments
-    @type args: list of unicode
     """
     options = {}
     # Process global arguments to determine desired site
@@ -278,16 +237,13 @@ def main(*args):
     # This factory is responsible for processing command line arguments
     # that are also used by other scripts and that determine on which pages
     # to work on.
-    genFactory = pagegenerators.GeneratorFactory()
+    gen_factory = pagegenerators.GeneratorFactory()
 
-    # Parse command line arguments
+    # Process pagegenerators arguments
+    local_args = gen_factory.handle_args(local_args)
+
+    # Parse your own command line arguments
     for arg in local_args:
-
-        # Catch the pagegenerators options
-        if genFactory.handleArg(arg):
-            continue  # nothing to do here
-
-        # Now pick up your own options
         arg, sep, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text', 'outpage', 'maxlines'):
@@ -295,22 +251,20 @@ def main(*args):
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
         # take the remaining options as booleans.
-        # You will get a hint if they aren't pre-definded in your bot class
+        # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-    gen = genFactory.getCombinedGenerator()
+    # The preloading option is responsible for downloading multiple
+    # pages from the wiki simultaneously.
+    gen = gen_factory.getCombinedGenerator(preload=True)
     if gen:
-        # The preloading generator is responsible for downloading multiple
-        # pages from the wiki simultaneously.
-        gen = pagegenerators.PreloadingGenerator(gen)
         # pass generator and private options to the bot
         bot = BasicBot(gen, **options)
         bot.run()  # guess what it does
-        return True
     else:
         pywikibot.bot.suggest_help(missing_generator=True)
-        return False
+
 
 if __name__ == '__main__':
     main()
