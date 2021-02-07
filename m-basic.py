@@ -100,6 +100,12 @@ class BasicBot(
             'summary': None,  # your own bot summary
             'text': 'Test',  # add this text from option. 'Test' is default
             'top': False,  # append text on top of the page
+            'outpage': u'User:mastiBot/test',  # default output page
+            'maxlines': 1000,  # default number of entries per page
+            'testprint': False,  # print testoutput
+            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+            'test': False,  # test options
+            'progress': False  # test option showing bot progress
         })
 
         # call initializer of the super class
@@ -163,7 +169,7 @@ def main(*args: Tuple[str, ...]) -> None:
     for arg in local_args:
         arg, sep, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text'):
+        if option in ('summary', 'text', 'outpage', 'maxlines'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
