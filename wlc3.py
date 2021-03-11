@@ -2263,6 +2263,9 @@ class LinkCheckThread(threading.Thread):
         ok = False
         exception = False
         ignore = False
+        pywikibot.output('[{0}] :Processing URL {0} in page {1}'
+                         .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
+                                 self.page.title()))
         try:
             header = self.header
             r = comms.http.fetch(
