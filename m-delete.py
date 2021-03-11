@@ -196,7 +196,7 @@ class DeletionRobot(MultipleSitesBot, CurrentPageBot):
 
     def treat_page(self):
         """Process one page from the generator."""
-        if len(self.current_page.text) < 4 :
+        if len(self.current_page.text) < 4 or 'ek' in self.current_page.text.lower() :
             if self.site.user() is None:
                 self.site.login()
             self.current_page.delete(self.summary,

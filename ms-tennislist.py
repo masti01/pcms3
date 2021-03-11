@@ -121,7 +121,7 @@ class BasicBot(
 
         for t in page.templatesWithParams():
             (tTitle,paramList) = t
-            #if self.getOption('test'):
+
             if self.opt.test or self.opt.progress:
                 pywikibot.output(u'Template:%s' % tTitle.title(withNamespace=False))
             if tTitle.title(withNamespace=False) in (u'Tenisista infobox',u'Sportowiec infobox'):
