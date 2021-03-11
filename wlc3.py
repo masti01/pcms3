@@ -2263,7 +2263,7 @@ class LinkCheckThread(threading.Thread):
         ok = False
         exception = False
         ignore = False
-        pywikibot.output('[{}] :Processing URL {} in page {}'
+        pywikibot.output('[{}] :Processing URL {} in page [[{}]]'
                          .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
                                  self.page.title()))
         try:
@@ -2279,7 +2279,7 @@ class LinkCheckThread(threading.Thread):
         except (pywikibot.exceptions.FatalServerError, requests.ConnectionError, Exception):
             exception = True
             message = 'Exception while connecting.'
-            pywikibot.output('[{}] Exception while processing URL {} in page {}'
+            pywikibot.output('[{}] Exception while processing URL {} in page [[{}]]'
                              .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
                                      self.page.title()))
             raise
