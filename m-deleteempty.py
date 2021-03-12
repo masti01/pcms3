@@ -113,7 +113,7 @@ class BasicBot(
         if len(self.current_page.text) < 4 :
             if self.site.user() is None:
                 self.site.login()
-            self.current_page.delete(self.summary,
+            self.current_page.delete(self.opt.summary,
                                      not self.opt.always,
                                      self.opt.always,
                                      quit=True)
