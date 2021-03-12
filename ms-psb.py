@@ -244,6 +244,7 @@ class Person(object):
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
+    ConfigParserBot,  # A bot which reads options from scripts.ini setting file
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
@@ -254,18 +255,19 @@ class BasicBot(
     """
     An incomplete sample bot.
 
-    @ivar summary_key: Edit summary message key. The message that should be used
-        is placed on /i18n subdirectory. The file containing these messages
-        should have the same name as the caller script (i.e. basic.py in this
-        case). Use summary_key to set a default edit summary message.
+    @ivar summary_key: Edit summary message key. The message that should be
+        used is placed on /i18n subdirectory. The file containing these
+        messages should have the same name as the caller script (i.e. basic.py
+        in this case). Use summary_key to set a default edit summary message.
+
     @type summary_key: str
     """
 
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs):
+    def __init__(self, generator, **kwargs) -> None:
         """
-        Constructor.
+        Initializer.
 
         @param generator: the page generator that determines on which pages
             to work
@@ -273,7 +275,7 @@ class BasicBot(
         """
         # Add your own options to the bot and set their defaults
         # -always option is predefined by BaseBot class
-        self.availableOptions.update({
+        self.available_options.update({
             'replace': False,  # delete old text and write the new text
             'summary': None,  # your own bot summary
             'text': 'Test',  # add this text from option. 'Test' is default
@@ -289,13 +291,8 @@ class BasicBot(
             'skip': 0, #skip that many first pages
         })
 
-        # call constructor of the super class
-        super(BasicBot, self).__init__(site=True, **kwargs)
-        #super(SingleSiteBot, self).__init__(site=True, **kwargs)
-
-        # handle old -dry paramter
-        self._handle_dry_param(**kwargs)
-
+        # call initializer of the super class
+        super().__init__(site=True, **kwargs)
         # assign the generator to the bot
         self.generator = generator
 
