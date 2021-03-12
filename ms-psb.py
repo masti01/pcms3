@@ -369,7 +369,7 @@ class BasicBot(
 
             if count <= int(self.opt.skip): 
                 continue
-            if count > int(self.opt.listcount):
+            if count > int(self.opt.listscount):
                 break
             if self.opt.test:
                 pywikibot.output(u'[%s][%i]L:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, tpage.title() ))
@@ -391,7 +391,7 @@ class BasicBot(
                 count += 1
                 if count <= int(self.opt.skip): 
                     continue
-                if count > int(self.opt.listcount):
+                if count > int(self.opt.listscount):
                     break
                 if self.opt.test:
                     pywikibot.output(u'[%s][%i]L:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, p.title() ))
