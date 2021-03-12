@@ -299,29 +299,6 @@ class BasicBot(
         # assign the generator to the bot
         self.generator = generator
 
-    def _handle_dry_param(self, **kwargs):
-        """
-        Read the dry parameter and set the simulate variable instead.
-
-        This is a private method. It prints a deprecation warning for old
-        -dry paramter and sets the global simulate variable and informs
-        the user about this setting.
-
-        The constuctor of the super class ignores it because it is not
-        part of self.availableOptions.
-
-        @note: You should ommit this method in your own application.
-
-        @keyword dry: deprecated option to prevent changes on live wiki.
-            Use -simulate instead.
-        @type dry: bool
-        """
-        if 'dry' in kwargs:
-            issue_deprecation_warning('dry argument',
-                                      'pywikibot.config.simulate', 1)
-            # use simulate variable instead
-            pywikibot.config.simulate = True
-            pywikibot.output('config.simulate was set to True')
 
     def getLabel(self,ent,lang):
         #get entity label in lang language with fallback
@@ -448,7 +425,7 @@ class BasicBot(
             wdcontent = wd.get()
             obj.wditem = '[[:d:%s]]' % wd.title()
             obj.wdexists = True
-            if self.opt.labels
+            if self.opt.labels:
                 pywikibot.output(wdcontent['claims'].keys())
         except:
             pywikibot.output('WikiData page do not exists for: [[%s]]' % page.title())
