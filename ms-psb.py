@@ -337,7 +337,7 @@ class BasicBot(
     def extractsection(self,page,section,level):
         # extract section of page returning it's content
         sectionR = re.compile(r'(?s)={'+str(level)+'}\s*?'+section+'\s*?={'+str(level)+'}(?P<text>.*?)\n={'+str(level)+'} ')
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'(?s)={'+str(level)+'}\s*?'+section+'\s*?={'+str(level)+'}(?P<text>.*?)\n={'+str(level)+'} ')
         return(sectionR.search(page.text).group('text'))
 
@@ -388,16 +388,16 @@ class BasicBot(
         count = 0
         for tpage in self.generator:
             count += 1
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'[%s]Treating #%i: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, tpage.title()))
 
             text = tpage.text
 
-            if count <= int(self.getOption('skip')): 
+            if count <= int(self.opt.skip): 
                 continue
-            if count > int(self.getOption('listscount')):
+            if count > int(self.opt.listcount):
                 break
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'[%s][%i]L:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, tpage.title() ))
             try:
                 refs = self.treat(tpage) 
@@ -405,7 +405,7 @@ class BasicBot(
                 refs = None
                 pywikibot.output('[%s] MaxlagTimeoutError in [[%s]]' % \
                     (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), tpage.title()))
-            #if self.getOption('test'):
+            #if self.opt.test:
             #    pywikibot.output(refs)
             if refs:
                 reflinks.append(refs)
@@ -415,14 +415,14 @@ class BasicBot(
             count = 0
             for p,t in self.genpages(text,ns=2):
                 count += 1
-                if count <= int(self.getOption('skip')): 
+                if count <= int(self.opt.skip): 
                     continue
-                if count > int(self.getOption('listscount')):
+                if count > int(self.opt.listcount):
                     break
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output(u'[%s][%i]L:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, p.title() ))
                 refs = self.treat(p) 
-                #if self.getOption('test'):
+                #if self.opt.test:
                 #    pywikibot.output(refs)
                 reflinks.append(refs)
                 self.resetCounters()
@@ -431,7 +431,7 @@ class BasicBot(
 
         #footer += u'\n\nPrzetworzono ' + str(counter) + u' stron'
 
-        outputpage = self.getOption('outpage')
+        outputpage = self.opt.outpage
 
         #result = self.generateresultspage(reflinks,outputpage,header,footer)
 
@@ -448,7 +448,7 @@ class BasicBot(
             wdcontent = wd.get()
             obj.wditem = '[[:d:%s]]' % wd.title()
             obj.wdexists = True
-            if self.getOption('labels'):
+            if self.opt.labels
                 pywikibot.output(wdcontent['claims'].keys())
         except:
             pywikibot.output('WikiData page do not exists for: [[%s]]' % page.title())
@@ -466,7 +466,7 @@ class BasicBot(
                 #pywikibot.output('Property content:%s' % self.getLabel(prp,['xhs','pl','sco','en']))
                 #pywikibot.output('Property:%s Value:%s' % (pid,trg))
                 if pid in ['P21','P569','P570','P106']:
-                    if self.getOption('labels'):
+                    if self.opt.labels:
                         pywikibot.output('P:%s, V:%s' % (self.getLabel(prp,['pl','en']),trg))
                 if pid == 'P21':
                      try:
@@ -488,7 +488,7 @@ class BasicBot(
 
     def treat(self, page):
         #treat all links on page
-        if self.getOption('renew'):
+        if self.opt.renew:
             linkR = r'\|[ \d]*?\|\| *?\[\[(?P<title>[^\]]*)\]\]( *?\|\|.*?)*\|\| *(?P<description>.*)\|\|[ \t]*(?P<comment>.*)'
         else:
             linkR = r'# \[\[(?P<title>[^|\]]*?)(\|.*?)?\]\]\s*?(?P<description>.*)'
@@ -499,12 +499,12 @@ class BasicBot(
         count = 0
         for p,t in self.genpages(text,rgx=linkR):
             count += 1
-            if count > int(self.getOption('testcount')):
+            if count > int(self.opt.testcount):
                 break
             actionCounters['total'] += 1
             obj = Person()
             
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'Treat:[%s][%i][%i]:%s' % \
                     (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), actionCounters['total'], count, p.title() ))
             if not p.exists():
@@ -515,7 +515,7 @@ class BasicBot(
             while pp.isRedirectPage():
                 actionCounters['redirs'] += 1
                 pp = pp.getRedirectTarget()
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output(u'Redirect:[%s]:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pp.title() ))
 
             if pp.isDisambig():
@@ -524,7 +524,7 @@ class BasicBot(
                 obj.instanceof = '<strona ujednoznaczniająca>'
                 obj.disambig = True
                 obj.title = pp.title()
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output(u'Disambig:[%s][#%i]:%s' % \
                         (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),actionCounters['disambigs'], pp.title() ))
             else:
@@ -533,14 +533,14 @@ class BasicBot(
 
             obj.link = p.title()
             obj.description = t.group('description').strip()
-            if self.getOption('renew'):
+            if self.opt.renew:
                 obj.comment = t.group('comment').strip()
 
-            if self.getOption('object'):
+            if self.opt.object:
                 obj.personPrint()
             result.append(obj)
 
-        if self.getOption('renew'):
+        if self.opt.renew:
             self.generateresultspage(result,page.title(),self.header(),self.footer())
         else:
             self.generateresultspage(result,page.title()+'/Tabela',self.header(),self.footer())
@@ -551,17 +551,17 @@ class BasicBot(
         Starting with header, ending with footer
         Output page is pagename
         """
-        maxlines = int(self.getOption('maxlines'))
+        maxlines = int(self.opt.maxlines)
         finalpage = header
         #res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
         #res = sorted(redirlist)
         res = redirlist
         itemcount = 0
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'GENERATING RESULTS')
         for i in res:
 
-            if self.getOption('test'):
+            if self.opt.test:
                 #pywikibot.output(i)
                 i.personPrint()
             itemcount += 1
@@ -584,16 +584,16 @@ class BasicBot(
         finalpage += '\n* Przekierowania: %i' % actionCounters['redirs']
         finalpage += '\n* Ujednoznacznienia: %i' % actionCounters['disambigs']
         
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(finalpage)
         success = True
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(outpage.title())
         
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         #if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
