@@ -419,7 +419,7 @@ class BasicBot(
 
         try:
             wd = pywikibot.ItemPage.fromPage(page)
-            while wd.ItemPage.isRedirectPage()
+            while wd.ItemPage.isRedirectPage():
                 wd = wd.ItemPage.getRedirectTarget()
             wdcontent = wd.get()
             obj.wditem = '[[:d:%s]]' % wd.title()
