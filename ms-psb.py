@@ -299,7 +299,7 @@ class BasicBot(
 
     def getLabel(self,ent,lang):
         #get entity label in lang language with fallback
-        if ent.isRedirectPage():
+        while ent.isRedirectPage():
             ent = ent.getRedirectTarget()
         entcontent = ent.get()
         for l in lang:
