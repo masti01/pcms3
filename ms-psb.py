@@ -420,20 +420,18 @@ class BasicBot(
         try:
             wd = pywikibot.ItemPage.fromPage(page)
             while wd.ItemPage.isRedirectPage():
+                pywikibot.output(('Processing WD redirect'))
                 wd = wd.ItemPage.getRedirectTarget()
             wdcontent = wd.get()
             obj.wditem = '[[:d:%s]]' % wd.title()
             obj.wdexists = True
             if self.opt.labels:
                 pywikibot.output(wdcontent['claims'].keys())
-        except pywikibot.exceptions.NoPage:
+        except:
             pywikibot.output('WikiData page do not exists for: [[%s]]' % page.title())
             obj.wdexists = False
             return(obj)
-        except:
-            pywikibot.output('WikiData exception for: [[%s]]' % page.title())
-            obj.wdexists = False
-            return (obj)
+
 
         wbs = pywikibot.Site('wikidata','wikidata')
 
