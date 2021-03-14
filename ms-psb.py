@@ -419,9 +419,9 @@ class BasicBot(
 
         try:
             wd = pywikibot.ItemPage.fromPage(page)
-            while wd.ItemPage.isRedirectPage():
-                pywikibot.output(('Processing WD redirect'))
-                wd = wd.ItemPage.getRedirectTarget()
+            # while wd.ItemPage.isRedirectPage():
+            #    pywikibot.output(('Processing WD redirect'))
+            #    wd = wd.ItemPage.getRedirectTarget()
             wdcontent = wd.get()
             obj.wditem = '[[:d:%s]]' % wd.title()
             obj.wdexists = True
