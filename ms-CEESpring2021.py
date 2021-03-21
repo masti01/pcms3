@@ -739,7 +739,7 @@ class BasicBot(
         # special needs
         if 'de' in self.springList.keys():
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
-            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'user:mastiBot/Authors DE', '', '')
+            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2021/Punktestand', '', '')
 
 
         return
@@ -2001,6 +2001,7 @@ class BasicBot(
 
         finalpage += u'\n|}'
 
+        finalpage += '\n\nNotiz: veränderte Artikel sind im Moment nicht berücksichtigt.'
         finalpage += footer
 
         # pywikibot.output(finalpage)
