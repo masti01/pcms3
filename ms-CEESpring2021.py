@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Call:
-	python pwb.py masti/ms-CEESpring2021.py -page:"Szablon:CEE Spring 2020" -outpage:"meta:Wikimedia CEE Spring 2020/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
-    python pwb.py masti/ms-CEESpring2021.py -page:"Szablon:CEE Spring 2020" -outpage:"Wikipedysta:Masti/CEE Spring 2020" -summary:"Bot updates statistics" -reset -progress -pt:0
+	python pwb.py masti/ms-CEESpring2021.py -page:"Szablon:CEE Spring 2021" -outpage:"meta:Wikimedia CEE Spring 2021/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2021.py -page:"Szablon:CEE Spring 2021" -outpage:"Wikipedysta:Masti/CEE Spring 2021" -summary:"Bot updates statistics" -reset -progress -pt:0
 
 
 Use global -simulate option for test purposes. No changes to live wiki
@@ -65,9 +65,9 @@ docuReplacements = {
     '&params;': pagegenerators.parameterHelp
 }
 
-SpringStart = datetime.strptime("2020-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+SpringStart = datetime.strptime("2021-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2020-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-newbieLimit = datetime.strptime("2019-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+newbieLimit = datetime.strptime("2020-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 
 CEEtemplates = {'pl': 'Szablon:CEE Spring 2020', 'az': 'Şablon:Vikibahar 2020', 'ba': 'Ҡалып:Вики-яҙ 2020',
                 'be': 'Шаблон:CEE Spring 2020', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2020',
@@ -89,7 +89,7 @@ languageCountry = {'el': 'Greece', 'eo': 'Esperanto', 'myv': 'Erzia', 'bg': 'Bul
                    'ro': 'Romania and Moldova', 'pl': 'Poland', 'hy': 'Armenia', 'ba': 'Bashkortostan', 'hr': 'Croatia',
                    'de': 'Germany', 'hu': 'Hungary', 'kk': 'Kazakhstan', 'sr': 'Serbia', 'sq': 'Albania',
                    'mk': 'North Macedonia', 'sk': 'Slovakia', 'mt': 'Malta', 'be-tarask': 'Belarus', 'uk': 'Ukraine',
-                   'sl': 'Slovenia'}
+                   'sl': 'Slovenia', 'bs':'Bosnia and Herzegovina'}
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
@@ -99,7 +99,7 @@ countryNames = {
            'Chorwacja': 'Croatia', 'Kosowo': 'Kosovo', 'Tatarzy krymscy': 'Crimean Tatars', 'Litwa': 'Lithuania',
            'Łotwa': 'Latvia', 'Łużyce': 'Sorbia', 'Malta': 'Malta', 'Węgry': 'Hungary',
            'Macedonia Północna': 'North Macedonia', 'Macedonia': 'North Macedonia', 'Mołdawia': 'Romania and Moldova',
-           'Polska': 'Poland', 'Region doński': 'Don', 'Rosja': 'Russia', 'Rumunia': 'Romania and Moldova',
+           'Polska': 'Poland', 'Region doński': 'Don', 'Rosja': 'Russia', 'Rumunia': 'Romania and Moldova', 'Rumunia i Mołdawia': 'Romania and Moldova',
            'Republika Serbska': 'Republic of Srpska', 'Serbia': 'Serbia', 'Serbołużyczanie': 'Sorbia',
            'Słowacja': 'Slovakia', 'Słowenia': 'Slovenia', 'Turcja': 'Turkey', 'Ukraina': 'Ukraine', 'Grecja': 'Greece',
            'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan'},
@@ -155,7 +155,7 @@ countryNames = {
                   'Вугоршчына': 'Hungary', 'Паўночная Македонія': 'North Macedonia', 'Македонія': 'North Macedonia',
                   'Северна Македония': 'North Macedonia', 'Малдова': 'Romania and Moldova', 'Чарнагорыя': 'Montenegro',
                   'Польшча': 'Poland', 'Расея': 'Russia', 'Румынія': 'Romania and Moldova',
-                  'Малодва': 'Romania and Moldova', 'Рэспубліка Сэрбская': 'Republic of Srpska', 'Сэрбія': 'Serbia',
+                  'Малодва': 'Romania and Moldova', 'Рэспубліка Сэрбская': 'Republic of Srpska', 'Сэрбія': 'Serbia', 'Славакія': 'Slovakia',
                   'Славаччына': 'Slovakia', 'Славенія': 'Slovenia', 'Нямеччына (лужычане)': 'Sorbia',
                   'Лужычане': 'Sorbia', 'Расея (Татарстан)': 'Tatarstan', 'Татарстан': 'Tatarstan',
                   'Турэччына': 'Turkey', 'Украіна': 'Ukraine', 'Грэцыя': 'Greece', 'Казахстан': 'Kazakhstan',
@@ -713,7 +713,6 @@ class BasicBot(
         self.createWomenAuthorsTable(self.springList)  # generate results for pages about women
         self.createLengthTable(self.springList)  # generate results for pages length
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
-        self.createStatsDe(self.springList['de']) # generate list for stats on de.wiki
 
         header = u'{{TNT|Wikimedia CEE Spring 2020 navbar}}\n\n'
         header += u'{{Wikimedia CEE Spring 2020/Statistics/Header}}\n\n'
@@ -735,7 +734,13 @@ class BasicBot(
         self.generateResultLengthPage(self.lengthTable, self.getOption('outpage') + u'/Article length', header, footer)
         self.generateResultLengthAuthorsPage(self.lengthTable, self.getOption('outpage') + u'/Authors list over 2kB',
                                              header, footer)
-        self.generateResultAuthorsPageDE(self.authorsArticlesDE,self.getOption('outpage') + u'/Authors DE', '', '')
+
+
+        # special needs
+        if 'de' in self.springList.keys():
+            self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
+            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'user:mastiBot/Authors DE', '', '')
+
 
         return
 
@@ -966,7 +971,9 @@ class BasicBot(
             pywikibot.output(u'createStatDE')
 
         for a in aList:
-            author = a['creator']
+            author = a['template']['user']
+            if not a['newarticle']:
+                continue
             if author not in self.authorsArticlesDE.keys():
                 self.authorsArticlesDE[author] = {'total':self.dePoints(a['charcount']),
                                         'articles' : []}
@@ -1139,9 +1146,11 @@ class BasicBot(
                 artParams['template']['nocountry'] = True
             # if artParams['template']['user']:
             #    creator = artParams['template']['user']
+            if artParams['creator'] == "'''UNKNOWN USER'''":
+                artParams['creator'] = artParams['template']['user']
 
-            if u'template' not in artParams.keys():
-                artParams['template'] = {u'country': [], 'user': creator, 'woman': woman, 'nocountry': True}
+            # if u'template' not in artParams.keys():
+            #    artParams['template'] = {u'country': [], 'user': creator, 'woman': woman, 'nocountry': True}
             # if not artParams['newarticle'] :
             # if artParams['newarticle'] :
             #    artParams['template']['user'] = creator
@@ -1816,7 +1825,11 @@ class BasicBot(
 
         # ath = sorted(self.authors, reverse=True)
         ath = sorted(res, key=res.__getitem__, reverse=True)
+        if self.getOption('test3'):
+            pywikibot.output('generateResultAuthorsPage:%s' % ath)
         for a in ath:
+            if not a:
+                break
             itemcount += 1
             if 'UNKNOWN USER' in a or a == '':
                 finalpage += u'\n|-\n| %i. || %s || %i || ' % (itemcount, a, res[a])
@@ -1961,9 +1974,9 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = header + 'Aktualisiert: ~~~~~\n\n'
         itemcount = 0
-        finalpage += u'\n\nListe der Authoren mit Artikel länger als 2kB (2000B).'
+        finalpage += u'\n\nListe der Teilnehmer mit Artikel länger als 2kB (2000B).'
 
         # ath = sorted(self.authors, reverse=True)
         # ath = sorted(pagecounter, key=pagecounter.__getitem__, reverse=True)
@@ -1975,7 +1988,8 @@ class BasicBot(
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
         finalpage += '\n!Teilnehmer(in)'
-        finalpage += '\n!Neue bzw. veränderte Artikel'
+        # finalpage += '\n!Neue bzw. veränderte Artikel'
+        finalpage += '\n!Neue Artikel'
         finalpage += '\n!Anzahl Punkte'
 
         for a in ath:
@@ -1991,7 +2005,8 @@ class BasicBot(
 
         # pywikibot.output(finalpage)
 
-        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        desite = pywikibot.Site('de')
+        outpage = pywikibot.Page(desite, pagename)
         if self.getOption('testde'):
             pywikibot.output(u'AuthorsLengthPage:%s' % outpage.title())
             pywikibot.output(finalpage)
