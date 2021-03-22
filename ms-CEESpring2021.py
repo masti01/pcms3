@@ -1460,7 +1460,7 @@ class BasicBot(
                         if self.getOption('test5'):
                             pywikibot.output('c:%s, wiki:%s, res[wiki][c]:%s' % (c, wiki, res[wiki][c]))
                         if res[wiki][c]:
-                            if languageCountry[wiki] == c:
+                            if wiki in languageCountry.keys() and languageCountry[wiki] == c:
                                 newline += ' || style="background-color:LightSlateGray" | ' + str(res[wiki][c])
                             else:
                                 newline += ' || ' + str(res[wiki][c])
@@ -1472,7 +1472,7 @@ class BasicBot(
                             countryTotals[c] += res[wiki][c]
 
                     elif wiki in languageCountry.keys():
-                        if languageCountry[wiki] == c:
+                        if wiki in languageCountry.keys() and languageCountry[wiki] == c:
                             if self.getOption('test5'):
                                 pywikibot.output(u'languageCountry[wiki]:%s = %s' % (languageCountry[wiki], c))
                             newline += '|| style="background-color:LightSlateGray" | — '
