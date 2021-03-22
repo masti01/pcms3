@@ -66,18 +66,18 @@ docuReplacements = {
 }
 
 SpringStart = datetime.strptime("2021-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
-SpringEnd = datetime.strptime("2020-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-newbieLimit = datetime.strptime("2020-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+SpringEnd = datetime.strptime("2021-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+newbieLimit = datetime.strptime("2021-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 
-CEEtemplates = {'pl': 'Szablon:CEE Spring 2020', 'az': 'Şablon:Vikibahar 2020', 'ba': 'Ҡалып:Вики-яҙ 2020',
-                'be': 'Шаблон:CEE Spring 2020', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2020',
-                'bg': 'Шаблон:CEE Spring 2020', 'de': 'Vorlage:CEE Spring 2020', 'eo': 'Ŝablono:VikiPrintempo COE 2020',
-                'el': 'Πρότυπο:CEE Spring 2020', 'et': 'Mall:CEE Spring 2020', 'hr': 'Predložak:CEE proljeće 2020.',
-                'hu': 'Sablon:CEE Tavasz 2020', 'hy': 'Կաղապար:CEE Spring 2020', 'ka': 'თარგი:ვიკიგაზაფხული 2020',
-                'lv': 'Veidne:CEE Spring 2020', 'lt': 'Šablonas:VRE 2020', 'mk': 'Шаблон:СИЕ Пролет 2020',
-                'myk': 'Шаблон:СИЕ Пролет 2020', 'ro': 'Format:Wikimedia CEE Spring 2020',
-                'ru': 'Шаблон:Вики-весна 2020', 'sr': 'Шаблон:ЦЕЕ пролеће 2020', 'tr': 'Şablon:Vikibahar 2020',
-                'uk': 'Шаблон:CEE Spring 2020'}
+CEEtemplates = {'pl': 'Szablon:CEE Spring 2021', 'az': 'Şablon:Vikibahar 2021', 'ba': 'Ҡалып:Вики-яҙ 2021',
+                'be': 'Шаблон:CEE Spring 2021', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2021',
+                'bg': 'Шаблон:CEE Spring 2021', 'de': 'Vorlage:CEE Spring 2021', 'eo': 'Ŝablono:VikiPrintempo COE 2021',
+                'el': 'Πρότυπο:CEE Spring 2021', 'et': 'Mall:CEE Spring 2021', 'hr': 'Predložak:CEE proljeće 2021.',
+                'hu': 'Sablon:CEE Tavasz 2021', 'hy': 'Կաղապար:CEE Spring 2021', 'ka': 'თარგი:ვიკიგაზაფხული 2021',
+                'lv': 'Veidne:CEE Spring 2021', 'lt': 'Šablonas:VRE 2021', 'mk': 'Шаблон:СИЕ Пролет 2021',
+                'myk': 'Шаблон:СИЕ Пролет 2021', 'ro': 'Format:Wikimedia CEE Spring 2021',
+                'ru': 'Шаблон:Вики-весна 2021', 'sr': 'Шаблон:ЦЕЕ пролеће 2021', 'tr': 'Şablon:Vikibahar 2021',
+                'uk': 'Шаблон:CEE Spring 2021'}
 countryList = [u'Albania', u'Armenia', u'Austria', u'Azerbaijan', u'Bashkortostan', u'Belarus',
                u'Bosnia and Herzegovina', u'Bulgaria', u'Crimean Tatars', u'Don', u'Croatia', u'Czechia', u'Erzia',
                u'Esperanto', u'Estonia', u'Georgia', u'Greece', u'Hungary', u'Kazakhstan', u'Kosovo', u'Latvia',
@@ -716,8 +716,8 @@ class BasicBot(
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
 
-        header = u'{{TNT|Wikimedia CEE Spring 2020 navbar}}\n\n'
-        header += u'{{Wikimedia CEE Spring 2020/Statistics/Header}}\n\n'
+        header = u'{{TNT|Wikimedia CEE Spring 2021 navbar}}\n\n'
+        header += u'{{Wikimedia CEE Spring 2021/Statistics/Header}}\n\n'
         # header += u"Last update: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}} UTC</onlyinclude>'''.\n\n"
         header += u"Last update: '''%s CEST'''.\n\n" % datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         footer = u''
@@ -1030,7 +1030,7 @@ class BasicBot(
             if self.opt.testpickle:
                 pywikibot.output('PICKLING LOAD at %s' % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             try:
-                with open('masti/CEESpring2020.dat', 'rb') as datfile:
+                with open('masti/CEESpring2021.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
@@ -1047,7 +1047,7 @@ class BasicBot(
         if self.opt.testpickle:
             pywikibot.output(
                 'PICKLING SAVE at %s ARTICLE count %i' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), len(artList)))
-        with open('masti/CEESpring2020.dat', 'wb') as f:
+        with open('masti/CEESpring2021.dat', 'wb') as f:
             pickle.dump(artList, f, protocol=config.pickle_protocol)
 
     def getArticleList(self):
@@ -1056,7 +1056,7 @@ class BasicBot(
         pywikibot.output(u'GETARTICLELIST artList:%s' % artList)
         # use pagegenerator to get articles linking to CEE templates
         # plwiki = pywikibot.Site('pl',fam='wikipedia')
-        # p = pywikibot.Page( plwiki, "Szablon:CEE Spring 2020" )
+        # p = pywikibot.Page( plwiki, "Szablon:CEE Spring 2021" )
         # while True:
         for p in self.generator:
             # p = t.toggleTalkPage()
@@ -1234,7 +1234,7 @@ class BasicBot(
         except:
             pywikibot.output(u'EXCEPTION: oldest_revision')
             return ("'''UNKNOWN USER'''", "'''UNKNOWN DATE'''")
-        # SpringStart = datetime.strptime("2020-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+        # SpringStart = datetime.strptime("2021-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         if self.newArticle(art):
             if self.opt.test3:
                 pywikibot.output(u'New art creator %s:%s (T:%s)' % (
@@ -1272,8 +1272,8 @@ class BasicBot(
         except:
             pywikibot.output('EXCEPTION: newArticle: {}'.format(art.title()))
             return (False)
-        # SpringStart = datetime.strptime("2020-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-        # SpringEnd = datetime.strptime("2020-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+        # SpringStart = datetime.strptime("2021-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+        # SpringEnd = datetime.strptime("2021-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         # return (datetime.strptime(creationDate, "%Y-%m-%dT%H:%M:%SZ") > SpringStart)
         return (creationDate > SpringStart)
 
