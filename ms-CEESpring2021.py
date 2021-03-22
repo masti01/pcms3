@@ -946,7 +946,7 @@ class BasicBot(
                 if a['lang'] == 'pl':
                     if a['newarticle']:
                         lang = a['lang']  # source language
-                        title = a['title']  # art title
+                        title = lang + ':' + a['title']  # art title
                         artCount += 1
                         if self.opt.testlength:
                             pywikibot.output('Title:%s' % title)
