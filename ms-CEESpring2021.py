@@ -650,11 +650,11 @@ class BasicBot(
         result = False
         lang = art.site.code
         title = art.title()
-        if self.getOption('testpickle'):
+        if self.opt.testpickle:
             pywikibot.output('testing existence: [%s:%s]' % (lang, title))
         if lang in self.springList.keys():
             for a in self.springList[lang]:
-                if self.getOption('testpickle'):
+                if self.opt.testpickle:
                     pywikibot.output('checking existence: [%s:%s]==%s' % (lang, title, a['title']))
                 if a['title'] == title:
                     result = True
@@ -679,14 +679,14 @@ class BasicBot(
         for a in ceeArticles:
             count += 1
             if self.articleExists(a):
-                if self.getOption('testpickle'):
+                if self.opt.testpickle:
                     pywikibot.output('[%s][%i] SKIPPING: [%s:%s]' % (
                         datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, a.site.code, a.title()))
             else:
                 aInfo = self.getArtInfo(a)
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output(aInfo)
-                if self.getOption('progress') and not count % 50:
+                if self.opt.progress and not count % 50:
                     pywikibot.output('[%s][%i] Lang:%s Article:%s' % \
                                      (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, aInfo['lang'],
                                       aInfo['title']))
@@ -696,7 +696,7 @@ class BasicBot(
                 self.springList[aInfo['lang']].append(aInfo)
                 # populate authors list
                 user = aInfo['creator']
-                if self.getOption('testnewbie'):
+                if self.opt.testnewbie:
                     pywikibot.output('NEWBIE CREATOR:%s' % user)
                 if aInfo['creator'] not in self.authors.keys():
                     self.authors[aInfo['creator']] = 1
@@ -722,21 +722,21 @@ class BasicBot(
         header += u"Last update: '''%s CEST'''.\n\n" % datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         footer = u''
 
-        self.generateOtherCountriesTable(self.otherCountriesList, self.getOption('outpage') + u'/Other countries',
+        self.generateOtherCountriesTable(self.otherCountriesList, self.opt.outpage + u'/Other countries',
                                          header, footer)
-        self.generateResultCountryTable(self.countryTable, self.getOption('outpage'), header, footer)
-        self.generateResultArticleList(self.springList, self.getOption('outpage') + u'/Article list', header, footer)
-        self.generateResultAuthorsPage(self.authors, self.getOption('outpage') + u'/Authors list', header, footer)
-        self.generateAuthorsCountryTable(self.authorsArticles, self.getOption('outpage') + u'/Authors list/per wiki',
+        self.generateResultCountryTable(self.countryTable, self.opt.outpage, header, footer)
+        self.generateResultArticleList(self.springList, self.opt.outpage + u'/Article list', header, footer)
+        self.generateResultAuthorsPage(self.authors, self.opt.outpage + u'/Authors list', header, footer)
+        self.generateAuthorsCountryTable(self.authorsArticles, self.opt.outpage + u'/Authors list/per wiki',
                                          header, footer)
-        self.generateResultWomenPage(self.women, self.getOption('outpage') + u'/Articles about women', header, footer)
+        self.generateResultWomenPage(self.women, self.opt.outpage + u'/Articles about women', header, footer)
         self.generateResultWomenAuthorsTable(self.womenAuthors,
-                                             self.getOption('outpage') + u'/Articles about women/Authors', header,
+                                             self.opt.outpage + u'/Articles about women/Authors', header,
                                              footer)  # generate results for pages about women
-        self.generateResultLengthPage(self.lengthTable, self.getOption('outpage') + u'/Article length', header, footer)
-        self.generateResultLengthAuthorsPage(self.lengthTable, self.getOption('outpage') + u'/Authors list over 2kB',
+        self.generateResultLengthPage(self.lengthTable, self.opt.outpage + u'/Article length', header, footer)
+        self.generateResultLengthAuthorsPage(self.lengthTable, self.opt.outpage + u'/Authors list over 2kB',
                                              header, footer)
-        self.generateResultLengthAuthorsPage(self.lengthTablePL, self.getOption('outpage') + u'/Authors list over 2kB/Poland',
+        self.generateResultLengthAuthorsPage(self.lengthTablePL, self.opt.outpage + u'/Authors list over 2kB/Poland',
                                              header, footer)
 
 
@@ -753,7 +753,7 @@ class BasicBot(
         if not user:
             return (False)
         # newbieLimit = datetime.strptime("2019-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-        if self.getOption('testnewbie'):
+        if self.opt.testnewbie:
             pywikibot.output('NEWBIE:%s' % self.authorsData)
         if user in self.authorsData.keys():
             if lang not in self.authorsData[user]['wikis']:
@@ -767,7 +767,7 @@ class BasicBot(
         userpage = u'user:' + user
         site = pywikibot.Site(lang, fam='wikipedia')
         # page = pywikibot.Page(site,userpage)
-        if self.getOption('testnewbie'):
+        if self.opt.testnewbie:
             pywikibot.output('GETTING USER DATA:[[:%s:%s]]' % (lang, userpage))
         try:
             userdata = pywikibot.User(site, userpage)
@@ -788,7 +788,7 @@ class BasicBot(
                     self.authorsData[user]['newbie'] = False
             else:
                 self.authorsData[user]['newbie'] = False
-            if self.getOption('testnewbie'):
+            if self.opt.testnewbie:
                 pywikibot.output('NEWBIE [%s]:%s' % (user, self.authorsData[user]))
                 pywikibot.output('registration:%s' % reg)
 
@@ -796,7 +796,7 @@ class BasicBot(
 
     def createCountryTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.getOption('test2'):
+        if self.opt.test2:
             pywikibot.output(u'createCountryTable')
         artCount = 0
         countryCount = 0
@@ -806,7 +806,7 @@ class BasicBot(
                 artCount += 1
                 lang = a['lang']  # source language
                 tmpl = a['template']  # template data {country:[clist], women:T/F, nocountry:T/F}
-                if self.getOption('test2'):
+                if self.opt.test2:
                     pywikibot.output('tmpl:%s' % tmpl)
                 if u'country' in tmpl.keys():
                     cList = tmpl['country']
@@ -825,14 +825,14 @@ class BasicBot(
                             self.countryTable[lang][c] = 0
                         self.countryTable[lang][c] += 1
                         countryCount += 1
-                        if self.getOption('test2'):
+                        if self.opt.test2:
                             pywikibot.output(
                                 u'art:%i coutry:%i, [[%s:%s]]' % (artCount, countryCount, lang, a['title']))
         return
 
     def createWomenTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.getOption('test') or self.getOption('testwomen'):
+        if self.opt.test or self.opt.testwomen:
             pywikibot.output(u'createWomenTable')
             pywikibot.output(self.women)
         artCount = 0
@@ -848,18 +848,18 @@ class BasicBot(
                         continue
                 else:
                     continue
-                if self.getOption('testwomen'):
+                if self.opt.testwomen:
                     pywikibot.output('tmpl:%s' % tmpl)
                 if lang not in self.women.keys():
                     self.women[lang] = 1
                 else:
                     self.women[lang] += 1
-                if self.getOption('testwomen'):
+                if self.opt.testwomen:
                     pywikibot.output('self.women[%s]:%i' % (lang, self.women[lang]))
                 countryCount += 1
-                if self.getOption('test') or self.getOption('testwomen'):
+                if self.opt.test or self.opt.testwomen:
                     pywikibot.output(u'art:%i Women:True [[%s:%s]]' % (artCount, lang, a['title']))
-        if self.getOption('testwomen'):
+        if self.opt.testwomen:
             pywikibot.output('**********')
             pywikibot.output('self.women')
             pywikibot.output('**********')
@@ -868,7 +868,7 @@ class BasicBot(
 
     def createWomenAuthorsTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.getOption('test') or self.getOption('testwomenauthors'):
+        if self.opt.test or self.opt.testwomenauthors:
             pywikibot.output(u'createWomenAuthorsTable')
             pywikibot.output(self.womenAuthors)
         artCount = 0
@@ -878,7 +878,7 @@ class BasicBot(
                 # print a
                 artCount += 1
 
-                if self.getOption('testwomenauthors'):
+                if self.opt.testwomenauthors:
                     pywikibot.output('article:%s' % a)
 
                 lang = a['lang']  # source language
@@ -886,11 +886,11 @@ class BasicBot(
                 newart = a['newarticle']
                 womanart = tmpl['woman']
                 if not newart:
-                    if self.getOption('test') or self.getOption('testwomenauthors'):
+                    if self.opt.test or self.opt.testwomenauthors:
                         pywikibot.output(u'Skipping updated [%i]: [[%s:%s]]' % (artCount, lang, a['title']))
                     continue
                 if not womanart:
-                    if self.getOption('test') or self.getOption('testwomenauthors'):
+                    if self.opt.test or self.opt.testwomenauthors:
                         pywikibot.output(u'Skipping NOT WOMAN [%i]: [[%s:%s]]' % (artCount, lang, a['title']))
                     continue
                 user = a['creator']
@@ -900,7 +900,7 @@ class BasicBot(
                 else:
                     self.womenAuthors[user] = {'count': 1, 'list': [lang + ':' + a['title']]}
 
-        if self.getOption('testwomenauthors'):
+        if self.opt.testwomenauthors:
             pywikibot.output('**********')
             pywikibot.output('self.women.authors')
             pywikibot.output('**********')
@@ -909,7 +909,7 @@ class BasicBot(
 
     def createLengthTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.getOption('test') or self.getOption('testwomen') or self.getOption('testlength'):
+        if self.opt.test or self.opt.testwomen or self.opt.testlength:
             pywikibot.output(u'createLengthTable')
             pywikibot.output(self.lengthTable)
         artCount = 0
@@ -921,13 +921,13 @@ class BasicBot(
                     lang = a['lang']  # source language
                     title = lang + ':' + a['title']  # art title
 
-                    if self.getOption('testlength'):
+                    if self.opt.testlength:
                         pywikibot.output('Title:%s' % title)
                     self.lengthTable[title] = {'char': a['charcount'], 'word': a['wordcount'], 'creator': a['creator']}
-                    if self.getOption('testlength'):
+                    if self.opt.testlength:
                         pywikibot.output('self.lengthtable[%s]:%s' % (title, self.lengthTable[title]))
 
-        if self.getOption('testlength'):
+        if self.opt.testlength:
             pywikibot.output('**********')
             pywikibot.output('self.lengthTable')
             pywikibot.output('**********')
@@ -936,7 +936,7 @@ class BasicBot(
 
     def createLengthTablePL(self, aList):
         # creat dictionary with la:country article counts
-        if self.getOption('test') or self.getOption('testwomen') or self.getOption('testlength'):
+        if self.opt.test or self.opt.testwomen or self.opt.testlength:
             pywikibot.output(u'createLengthTable')
             pywikibot.output(self.lengthTable)
         artCount = 0
@@ -948,13 +948,13 @@ class BasicBot(
                         lang = a['lang']  # source language
                         title = a['title']  # art title
                         artCount += 1
-                        if self.getOption('testlength'):
+                        if self.opt.testlength:
                             pywikibot.output('Title:%s' % title)
                         self.lengthTablePL[title] = {'char': a['charcount'], 'word': a['wordcount'], 'creator': a['creator']}
-                        if self.getOption('testlength'):
+                        if self.opt.testlength:
                             pywikibot.output('self.lengthtablePL[%s]:%s' % (title, self.lengthTablePL[title]))
 
-        if self.getOption('testlength'):
+        if self.opt.testlength:
             pywikibot.output('**********')
             pywikibot.output('self.lengthTablePL')
             pywikibot.output('**********')
@@ -963,7 +963,7 @@ class BasicBot(
 
     def createAuthorsArticles(self, aList):
         # creat dictionary with author:wiki:{count,[artlist]} in self.authorsArticles
-        if self.getOption('test') or self.getOption('testauthorwiki'):
+        if self.opt.test or self.opt.testauthorwiki:
             pywikibot.output(u'createAuthorsArticles')
 
         wikilist = list(aList.keys())
@@ -981,7 +981,7 @@ class BasicBot(
                 self.authorsArticles[author][l]['count'] += 1
                 self.authorsArticles[author][l]['list'].append(a['title'])
 
-        if self.getOption('testauthorwiki'):
+        if self.opt.testauthorwiki:
             pywikibot.output('**********')
             pywikibot.output('createAuthorsArticles')
             pywikibot.output('**********')
@@ -998,7 +998,7 @@ class BasicBot(
 
     def createStatsDe(self, aList):
         # create dictionary with author:wiki:{count,[artlist]} in self.authorsArticlesDE
-        if self.getOption('test') or self.getOption('testde'):
+        if self.opt.test or self.opt.testde:
             pywikibot.output(u'createStatDE')
 
         for a in aList:
@@ -1013,7 +1013,7 @@ class BasicBot(
                 self.authorsArticlesDE[author]['total'] += self.dePoints(a['charcount'])
                 self.authorsArticlesDE[author]['articles'].append({'title': a['title'], 'points': self.dePoints(a['charcount'])})
 
-        if self.getOption('testde'):
+        if self.opt.testde:
             pywikibot.output('**********')
             pywikibot.output('createStatsDe')
             pywikibot.output('**********')
@@ -1023,28 +1023,28 @@ class BasicBot(
     def loadArticleList(self):
         # load article list form pickled dictionary
         result = {}
-        if self.getOption('reset'):
-            if self.getOption('testpickle'):
+        if self.opt.reset:
+            if self.opt.testpickle:
                 pywikibot.output('PICKLING SKIPPED at %s' % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         else:
-            if self.getOption('testpickle'):
+            if self.opt.testpickle:
                 pywikibot.output('PICKLING LOAD at %s' % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             try:
                 with open('masti/CEESpring2020.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
-                if self.getOption('testpickle'):
+                if self.opt.testpickle:
                     pywikibot.output('PICKLING FILE NOT FOUND')
                 result = {}
-        if self.getOption('testpickle'):
+        if self.opt.testpickle:
             pywikibot.output('PICKLING LOADED LANGUAGES: %i' % len(result))
             pywikibot.output('PICKLING RESULT:%s' % result)
         return (result)
 
     def saveArticleList(self, artList):
         # save list as pickle file
-        if self.getOption('testpickle'):
+        if self.opt.testpickle:
             pywikibot.output(
                 'PICKLING SAVE at %s ARTICLE count %i' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), len(artList)))
         with open('masti/CEESpring2020.dat', 'wb') as f:
@@ -1066,14 +1066,14 @@ class BasicBot(
             dataItem = d.get()
             count = 0
             for i in self.genInterwiki(p):
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output('Searching for interwiki. Page:%s, Type:%s' % (i, type(i)))
                 lang = self.lang(i.title(asLink=True, force_interwiki=True))
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output('Searching for interwiki. Lang:%s' % lang)
 
                 # test switch
-                if self.getOption('short'):
+                if self.opt.short:
                     if lang not in ('de'):
                         continue
 
@@ -1082,12 +1082,12 @@ class BasicBot(
                     u'Getting template redirs to %s Lang:%s' % (i.title(asLink=True, force_interwiki=True), lang))
                 for p in i.getReferences(namespaces=10, filter_redirects=True):
                     self.templatesList[lang].append(p.title())
-                    if self.getOption('test2'):
+                    if self.opt.test2:
                         pywikibot.output('REDIR TEMPLATE:%s' % p.title(asLink=True, force_interwiki=True))
 
                 pywikibot.output(
                     u'Getting references to %s Lang:%s' % (i.title(asLink=True, force_interwiki=True), lang))
-                if self.getOption('test2'):
+                if self.opt.test2:
                     pywikibot.output('REDIR TEMPLATE LIST:%s' % self.templatesList[lang])
                 countlang = 0
                 for p in i.getReferences(namespaces=1):
@@ -1096,7 +1096,7 @@ class BasicBot(
                     if art.exists():
                         countlang += 1
                         artList.append(art)
-                        if self.getOption('testgetart'):
+                        if self.opt.testgetart:
                             pywikibot.output(u'getArticleList #%i/%i:%s:%s' % (count, countlang, lang, art.title()))
                         count += 1
             # break
@@ -1107,19 +1107,19 @@ class BasicBot(
         for p in artList:
             s = p.site
             l = s.code
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'Page lang:%s : %s' % (l, p.title(asLink=True, force_interwiki=True)))
         return
 
     def printArtInfo(self, artInfo):
         # test print of article list result
-        # if self.getOption('testartinfo'):
+        # if self.opt.testartinfo:
         #    pywikibot.output(u'***************************************')
         #    pywikibot.output(u'**            artInfo                **')
         #    pywikibot.output(u'***************************************')
         for l in artInfo.keys():
             for a in artInfo[l]:
-                if self.getOption('testartinfo'):
+                if self.opt.testartinfo:
                     pywikibot.output(a)
         return
 
@@ -1163,7 +1163,7 @@ class BasicBot(
             artParams['charcount'] = self.getArtLength(cleantext)
             artParams['wordcount'] = self.getWordCount(cleantext)
 
-            if self.getOption('test2'):
+            if self.opt.test2:
                 pywikibot.output('artParams[ArtInfo]:%s' % artParams)
 
             artParams['template'] = {u'country': [], 'user': creator, 'woman': woman, 'nocountry': False}
@@ -1189,7 +1189,7 @@ class BasicBot(
             #    artParams['creator'] = artParams['template']['user']
 
             # print artParams
-            if self.getOption('test2'):
+            if self.opt.test2:
                 pywikibot.output('artParams:%s' % artParams)
         return (artParams)
 
@@ -1198,7 +1198,7 @@ class BasicBot(
         # using WikiData
         try:
             d = art.data_item()
-            if self.getOption('test4'):
+            if self.opt.test4:
                 pywikibot.output(u'WD: %s (checkWomen)' % d.title())
             dataItem = d.get()
             # pywikibot.output(u'DataItem:%s' % dataItem.keys()  )
@@ -1213,11 +1213,11 @@ class BasicBot(
             cjson = c.toJSON()
             genderclaim = cjson[u'mainsnak'][u'datavalue'][u'value'][u'numeric-id']
             if u'6581072' == str(genderclaim):
-                if self.getOption('test4'):
+                if self.opt.test4:
                     pywikibot.output(u'%s:Woman' % art.title())
                 return (True)
             else:
-                if self.getOption('test4'):
+                if self.opt.test4:
                     pywikibot.output(u'%s:Man' % art.title())
                 return (False)
         return (False)
@@ -1226,7 +1226,7 @@ class BasicBot(
         # find author and update datetime of the biggest update within CEESpring
         try:
             # initrev = art.oldest_revision
-            # if self.getOption('test3'):
+            # if self.opt.test3:
             #    pywikibot.output(initrev)
             # creator, creationDate = art.oldest_revision()
             creator = art.oldest_revision.user
@@ -1236,26 +1236,26 @@ class BasicBot(
             return ("'''UNKNOWN USER'''", "'''UNKNOWN DATE'''")
         # SpringStart = datetime.strptime("2020-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         if self.newArticle(art):
-            if self.getOption('test3'):
+            if self.opt.test3:
                 pywikibot.output(u'New art creator %s:%s (T:%s)' % (
                     art.title(asLink=True, force_interwiki=True), creator, creationDate))
             return (creator, creationDate)
         else:
             # for rv in art.revisions(reverse=True,starttime="2017-03-20T12:00:00Z",endtime="2017-06-01T00:00:00Z"):
             for rv in art.revisions(reverse=True, starttime=SpringStart):
-                if self.getOption('test3'):
+                if self.opt.test3:
                     pywikibot.output(u'updated art editor %s:%s (T:%s)' % (
                         art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
                 if datetime.strptime(str(rv.timestamp), "%Y-%m-%dT%H:%M:%SZ") > SpringStart:
-                    if self.getOption('test3'):
+                    if self.opt.test3:
                         pywikibot.output(u'returning art editor %s:%s (T:%s)' % (
                             art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
                     return (rv.user, rv.timestamp)
                 else:
-                    if self.getOption('test3'):
+                    if self.opt.test3:
                         pywikibot.output(u'Skipped returning art editor %s:%s (T:%s)' % (
                             art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
-                # if self.getOption('test3'):
+                # if self.opt.test3:
                 #    pywikibot.output(u'updated art editor %s:%s (T:%s)' % (art.title(asLink=True,force_interwiki=True),rv['user'],rv['timestamp']))
             #    return(rv['user'],rv['timestamp'])
             return ("'''UNKNOWN USER'''", creationDate)
@@ -1264,7 +1264,7 @@ class BasicBot(
         # check if the article was created within CEE Spring
         try:
             # initrev = art.oldest_revision
-            # if self.getOption('test3'):
+            # if self.opt.test3:
             #    pywikibot.output(initrev)
             # creationDate = art.oldest_revision().timestamp
             # creator = initrev.user
@@ -1280,7 +1280,7 @@ class BasicBot(
     def userName(self, text):
         # extract username from template param value
         uNameR = re.compile(r'.*?:(?P<username>.*)')
-        if self.getOption('testusername'):
+        if self.opt.testusername:
             pywikibot.output('userName:%s' % text)
         if '[' in text:
             uName = uNameR.match(text)
@@ -1303,7 +1303,7 @@ class BasicBot(
             # print(title)
             # print(params)
             tt = re.sub(r'\[\[.*?:(.*?)\]\]', r'\1', title.title())
-            if self.getOption('test2'):
+            if self.opt.test2:
                 pywikibot.output(u'tml:%s * %s * %s' % (title, tt, template))
             if tt in template:
                 paramcount = 1
@@ -1322,37 +1322,37 @@ class BasicBot(
                         name = str(paramcount)
                     param[name] = value
                     paramcount += 1
-                    if self.getOption('test2'):
+                    if self.opt.test2:
                         pywikibot.output(u'p:%s' % p)
                     # check username in template
                     if lang in self.userp.keys() and name.lower().startswith(self.userp[lang].lower()):
-                        if self.getOption('test'):
+                        if self.opt.test:
                             pywikibot.output(u'user:%s:%s' % (name, value))
                         # if lang in self.userp.keys() and value.lower().startswith(self.userp[lang].lower()):
                         #    parlist['user'] = value
                         parlist['user'] = self.userName(value)
-                        if self.getOption('testusername'):
+                        if self.opt.testusername:
                             pywikibot.output('[[%s]] par value:%s' % (page.title(), value))
                             pywikibot.output('[[%s]] username:%s' % (page.title(), parlist['user']))
                     # check article about women
                     if lang in self.topicp.keys() and name.lower().startswith(self.topicp[lang].lower()):
-                        if self.getOption('test2'):
+                        if self.opt.test2:
                             pywikibot.output(u'topic:%s:%s' % (name, value))
                         if lang in self.womenp.keys() and value.lower().startswith(self.womenp[lang].lower()):
                             # self.women[lang] += 1
                             parlist['woman'] = True
                     # check article about country
                     if lang in self.countryp.keys() and name.lower().startswith(self.countryp[lang].lower()):
-                        if self.getOption('test2'):
+                        if self.opt.test2:
                             pywikibot.output(u'country:%s:%s:%i' % (name, value, len(value)))
                         if len(value) > 0:
                             countryDef = True
                             if lang in countryNames.keys() and value in (countryNames[lang].keys()):
                                 countryEN = countryNames[lang][value]
-                                if self.getOption('test2'):
+                                if self.opt.test2:
                                     pywikibot.output(u'countryEN:%s (%s)' % (countryEN, value))
                                 if not countryEN in parlist['country']:
-                                    if self.getOption('test2'):
+                                    if self.opt.test2:
                                         pywikibot.output(u'appending countryEN:%s' % countryEN)
                                     parlist['country'].append(countryEN)
                                     if lang not in self.pagesCount.keys():
@@ -1363,13 +1363,13 @@ class BasicBot(
                                         self.pagesCount[lang][countryEN] = 1
                             else:
                                 if not value in parlist['country']:
-                                    if self.getOption('test2'):
+                                    if self.opt.test2:
                                         pywikibot.output(u'appending other country:%s' % value)
                                     parlist['country'].append(value)
                                     self.otherCountriesList[lang].append(value)
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.output(self.pagesCount)
-                if self.getOption('test3'):
+                if self.opt.test3:
                     # pywikibot.output(u'PARAM:%s' % param)
                     pywikibot.output(u'PARLIST:%s' % parlist)
                 return parlist
@@ -1384,10 +1384,10 @@ class BasicBot(
         iw.append(page)
         try:
             for s in page.iterlanglinks():
-                if self.getOption('testinterwiki'):
+                if self.opt.testinterwiki:
                     pywikibot.output(u'SL iw: %s' % s)
                 spage = pywikibot.Page(s)
-                if self.getOption('testinterwiki'):
+                if self.opt.testinterwiki:
                     pywikibot.output(u'SL spage')
                     pywikibot.output(u'gI Page: %s' % spage.title(force_interwiki=True))
                 iw.append(spage)
@@ -1408,7 +1408,7 @@ class BasicBot(
 
         finalpage = header
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'**************************')
             pywikibot.output(u'generateOtherCountriesTable')
             pywikibot.output(u'**************************')
@@ -1423,11 +1423,11 @@ class BasicBot(
 
         finalpage += footer
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test') or self.getOption('progress'):
+        if self.opt.test or self.opt.progress:
             pywikibot.output(u'OtherCountries:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
-        if self.getOption('test') or self.getOption('progress'):
+        outpage.save(summary=self.opt.summary)
+        if self.opt.test or self.opt.progress:
             pywikibot.output(u'OtherCountries SAVED')
 
         return
@@ -1442,7 +1442,7 @@ class BasicBot(
 
         finalpage = header
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'**************************')
             pywikibot.output(u'generateResultCountryTable')
             pywikibot.output(u'**************************')
@@ -1470,13 +1470,13 @@ class BasicBot(
             for c in countryList:
                 # newline += u' || '
                 if u'Other' in c:
-                    if self.getOption('test5'):
+                    if self.opt.test5:
                         pywikibot.output(u'other:%s' % c)
                         pywikibot.output(u'res[wiki]:%s' % res[wiki])
                     otherCountry = 0  # count other countries
                     for country in res[wiki]:
                         if country not in countryList and not country == u'':
-                            if self.getOption('test5'):
+                            if self.opt.test5:
                                 pywikibot.output(u'country:%s ** otherCountry=%i+%i=%i' % \
                                                  (country, otherCountry, res[wiki][country],
                                                   otherCountry + res[wiki][country]))
@@ -1485,17 +1485,17 @@ class BasicBot(
                     wikiTotal += otherCountry  # add to wiki total
                     countryTotals[c] += otherCountry
                 else:
-                    if self.getOption('test5'):
+                    if self.opt.test5:
                         pywikibot.output('c:%s, wiki:%s' % (c, wiki))
                     if c in res[wiki].keys():
-                        if self.getOption('test5'):
+                        if self.opt.test5:
                             pywikibot.output('c:%s, wiki:%s, res[wiki][c]:%s' % (c, wiki, res[wiki][c]))
                         if res[wiki][c]:
                             if wiki in languageCountry.keys() and languageCountry[wiki] == c:
                                 newline += ' || style="background-color:LightSlateGray" | ' + str(res[wiki][c])
                             else:
                                 newline += ' || ' + str(res[wiki][c])
-                            if self.getOption('test5'):
+                            if self.opt.test5:
                                 pywikibot.output(u'res[%s][%s]:%s - languageCountry[%s]:%s = %s' % \
                                                  (wiki, c, res[wiki][c], wiki, languageCountry[wiki], c))
                                 pywikibot.output('NEWLINE:%s' % newline)
@@ -1504,15 +1504,15 @@ class BasicBot(
 
                     elif wiki in languageCountry.keys():
                         if wiki in languageCountry.keys() and languageCountry[wiki] == c:
-                            if self.getOption('test5'):
+                            if self.opt.test5:
                                 pywikibot.output(u'languageCountry[wiki]:%s = %s' % (languageCountry[wiki], c))
                             newline += '|| style="background-color:LightSlateGray" | — '
                         else:
-                            if self.getOption('test5'):
+                            if self.opt.test5:
                                 pywikibot.output(u'Empty cell')
                             newline += ' || '
                     else:
-                        if self.getOption('test5'):
+                        if self.opt.test5:
                             pywikibot.output(u'Empty cell')
                         newline += ' || '
 
@@ -1536,14 +1536,14 @@ class BasicBot(
 
         finalpage += footer
 
-        if self.getOption('test2'):
+        if self.opt.test2:
             pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'WomenPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         return
 
@@ -1609,14 +1609,14 @@ class BasicBot(
 
         finalpage += footer
 
-        if self.getOption('testauthorwiki'):
+        if self.opt.testauthorwiki:
             pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('testauthorwiki'):
+        if self.opt.testauthorwiki:
             pywikibot.output(u'authorListperWiki:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         return
 
@@ -1658,10 +1658,10 @@ class BasicBot(
         # pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'WomenPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         return
 
     def generateResultWomenAuthorsTable(self, res, pagename, header, footer):
@@ -1672,7 +1672,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        if self.getOption('testwomenauthors'):
+        if self.opt.testwomenauthors:
             pywikibot.output(res)
 
         finalpage = header
@@ -1707,14 +1707,14 @@ class BasicBot(
         finalpage += "\n\n'''NOTE:''' page counts only newly created articles"
         finalpage += footer
 
-        if self.getOption('testwomenauthors'):
+        if self.opt.testwomenauthors:
             pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('testwomenauthors'):
+        if self.opt.testwomenauthors:
             pywikibot.output(u'WomenAuthorsPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         return
 
     def generateResultLengthPage(self, res, pagename, header, footer):
@@ -1731,7 +1731,7 @@ class BasicBot(
         finalpage += u'\n\nLength of new articles excluding disabled parts in text. Word count approximated.'
         finalpage += u'\n== Article length ==\n'
         # ath = sorted(self.authors, reverse=True)
-        if self.getOption('testlength'):
+        if self.opt.testlength:
             pywikibot.output(u'LengthPage:%s' % res)
         # ath = sorted(res, key=res.__getitem__, reverse=True)
         ath = sorted(res, key=lambda x: (res[x]['char']), reverse=True)
@@ -1748,7 +1748,7 @@ class BasicBot(
             wcount = res[a]['word']
             finalpage += u'\n|-\n| %i. || [[:%s]] || %i || %i' % (itemcount, a, ccount, wcount)
             csvpage += u'\n[[:%s]];%i;%i' % (a, ccount, wcount)
-            if self.getOption('testlength'):
+            if self.opt.testlength:
                 pywikibot.output(u'\n|-\n| %i. || [[:%s]] || %i || %i' % (itemcount, a, ccount, wcount))
 
         finalpage += u'\n|}'
@@ -1760,17 +1760,17 @@ class BasicBot(
         # pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'LengthPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         # save csv version
         outpage = pywikibot.Page(pywikibot.Site(), pagename + '/csv')
         pywikibot.output(u'CSVLengthPage:%s' % pagename + '/csv')
         # pywikibot.output(csvpage)
         outpage.text = csvpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         return
 
@@ -1799,7 +1799,7 @@ class BasicBot(
         # ath = sorted(self.authors, reverse=True)
         # ath = sorted(pagecounter, key=pagecounter.__getitem__, reverse=True)
         ath = sorted(pagecounter, key=lambda x: (pagecounter[x]['count']), reverse=True)
-        if self.getOption('testlength'):
+        if self.opt.testlength:
             pywikibot.output(u'LengthPage:%s' % ath)
 
         finalpage += u'\n{| class="wikitable sortable" style="text-align: center;"'
@@ -1816,7 +1816,7 @@ class BasicBot(
             else:
                 alist = ''
             finalpage += u'\n|-\n| %i. || [[user:%s|%s]] || %i || %s' % (itemcount, a, a, ccount, alist)
-            if self.getOption('testlength'):
+            if self.opt.testlength:
                 pywikibot.output(u'\n|-\n| %i. || [[:%s]] || %i || %s' % (itemcount, a, ccount, alist))
 
         finalpage += u'\n|}'
@@ -1826,10 +1826,10 @@ class BasicBot(
         # pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'AuthorsLengthPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         return
 
@@ -1856,7 +1856,7 @@ class BasicBot(
 
         # ath = sorted(self.authors, reverse=True)
         ath = sorted(res, key=res.__getitem__, reverse=True)
-        if self.getOption('test3'):
+        if self.opt.test3:
             pywikibot.output('generateResultAuthorsPage:%s' % ath)
         for a in ath:
             if not a:
@@ -1892,10 +1892,10 @@ class BasicBot(
         # pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'AuthorsPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         return
 
     def generateResultArticleList(self, res, pagename, header, footer):
@@ -1936,7 +1936,7 @@ class BasicBot(
             updatedArticles += u'\n!User'
             updatedArticles += u'\n!About'
             for i in res[l]:
-                if self.getOption('test3'):
+                if self.opt.test3:
                     pywikibot.output(u'Generating line from: %s:' % i)
                 itemcount += 1
                 artCount += 1
@@ -1952,7 +1952,7 @@ class BasicBot(
                         else:
                             cList.append(u"'''" + a + u"'''")
                     finalpage += artLine + ', '.join(cList)
-                    if self.getOption('test3'):
+                    if self.opt.test3:
                         pywikibot.output(artLine + u' (NEW)')
                 else:
                     # finalpage += u" '''(updated)'''"
@@ -1976,7 +1976,7 @@ class BasicBot(
                         else:
                             uList.append(u"'''" + a + u"'''")
                     updatedArticles += artLine + ', '.join(uList)
-                    if self.getOption('test3'):
+                    if self.opt.test3:
                         pywikibot.output(artLine + u" '''(updated)'''")
 
             finalpage += u'\n|}'
@@ -1991,10 +1991,10 @@ class BasicBot(
         # pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'ArticlesPage:%s' % outpage.title())
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         return
 
     def generateResultAuthorsPageDE(self, res, pagename, header, footer):
@@ -2012,7 +2012,7 @@ class BasicBot(
         # ath = sorted(self.authors, reverse=True)
         # ath = sorted(pagecounter, key=pagecounter.__getitem__, reverse=True)
         ath = sorted(res, key=lambda x: (res[x]['total']), reverse=True)
-        if self.getOption('testde'):
+        if self.opt.testde:
             pywikibot.output(u'AuthorsDE page:%s' % ath)
 
         finalpage += '<!-- Results table -->'
@@ -2039,11 +2039,11 @@ class BasicBot(
 
         desite = pywikibot.Site('de')
         outpage = pywikibot.Page(desite, pagename)
-        if self.getOption('testde'):
+        if self.opt.testde:
             pywikibot.output(u'AuthorsLengthPage:%s' % outpage.title())
             pywikibot.output(finalpage)
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
         return
 
@@ -2082,7 +2082,7 @@ class BasicBot(
             name = None
             value = param
         # test
-        if self.getOption('testtemplatearg'):
+        if self.opt.testtemplatearg:
             pywikibot.output(u'name:%s:value:%s' % (name, value))
         return (named, name, value)
 
