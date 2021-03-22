@@ -1068,7 +1068,7 @@ class BasicBot(
             for i in self.genInterwiki(p):
                 if self.opt.test:
                     pywikibot.output('Searching for interwiki. Page:%s, Type:%s' % (i, type(i)))
-                lang = self.lang(i.title(asLink=True, force_interwiki=True))
+                lang = self.lang(i.title(as_link=True, force_interwiki=True))
                 if self.opt.test:
                     pywikibot.output('Searching for interwiki. Lang:%s' % lang)
 
@@ -1079,14 +1079,14 @@ class BasicBot(
 
                 self.templatesList[lang] = [i.title()]
                 pywikibot.output(
-                    u'Getting template redirs to %s Lang:%s' % (i.title(asLink=True, force_interwiki=True), lang))
+                    u'Getting template redirs to %s Lang:%s' % (i.title(as_link=True, force_interwiki=True), lang))
                 for p in i.getReferences(namespaces=10, filter_redirects=True):
                     self.templatesList[lang].append(p.title())
                     if self.opt.test2:
-                        pywikibot.output('REDIR TEMPLATE:%s' % p.title(asLink=True, force_interwiki=True))
+                        pywikibot.output('REDIR TEMPLATE:%s' % p.title(as_link=True, force_interwiki=True))
 
                 pywikibot.output(
-                    u'Getting references to %s Lang:%s' % (i.title(asLink=True, force_interwiki=True), lang))
+                    u'Getting references to %s Lang:%s' % (i.title(as_link=True, force_interwiki=True), lang))
                 if self.opt.test2:
                     pywikibot.output('REDIR TEMPLATE LIST:%s' % self.templatesList[lang])
                 countlang = 0
@@ -1108,7 +1108,7 @@ class BasicBot(
             s = p.site
             l = s.code
             if self.opt.test:
-                pywikibot.output(u'Page lang:%s : %s' % (l, p.title(asLink=True, force_interwiki=True)))
+                pywikibot.output(u'Page lang:%s : %s' % (l, p.title(as_link=True, force_interwiki=True)))
         return
 
     def printArtInfo(self, artInfo):
@@ -1238,25 +1238,25 @@ class BasicBot(
         if self.newArticle(art):
             if self.opt.test3:
                 pywikibot.output(u'New art creator %s:%s (T:%s)' % (
-                    art.title(asLink=True, force_interwiki=True), creator, creationDate))
+                    art.title(as_link=True, force_interwiki=True), creator, creationDate))
             return (creator, creationDate)
         else:
             # for rv in art.revisions(reverse=True,starttime="2017-03-20T12:00:00Z",endtime="2017-06-01T00:00:00Z"):
             for rv in art.revisions(reverse=True, starttime=SpringStart):
                 if self.opt.test3:
                     pywikibot.output(u'updated art editor %s:%s (T:%s)' % (
-                        art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
+                        art.title(as_link=True, force_interwiki=True), rv.user, rv.timestamp))
                 if datetime.strptime(str(rv.timestamp), "%Y-%m-%dT%H:%M:%SZ") > SpringStart:
                     if self.opt.test3:
                         pywikibot.output(u'returning art editor %s:%s (T:%s)' % (
-                            art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
+                            art.title(as_link=True, force_interwiki=True), rv.user, rv.timestamp))
                     return (rv.user, rv.timestamp)
                 else:
                     if self.opt.test3:
                         pywikibot.output(u'Skipped returning art editor %s:%s (T:%s)' % (
-                            art.title(asLink=True, force_interwiki=True), rv.user, rv.timestamp))
+                            art.title(as_link=True, force_interwiki=True), rv.user, rv.timestamp))
                 # if self.opt.test3:
-                #    pywikibot.output(u'updated art editor %s:%s (T:%s)' % (art.title(asLink=True,force_interwiki=True),rv['user'],rv['timestamp']))
+                #    pywikibot.output(u'updated art editor %s:%s (T:%s)' % (art.title(as_link=True,force_interwiki=True),rv['user'],rv['timestamp']))
             #    return(rv['user'],rv['timestamp'])
             return ("'''UNKNOWN USER'''", creationDate)
 
