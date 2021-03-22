@@ -1639,6 +1639,7 @@ ignorelist = [
     re.compile('.*[\./@]e-dziennik\.mswia\.gov\.pl/DUM_MSW'),  # bot rejected on site (masti, Elfhelm)
     re.compile('.*[\./@]sport24\.ee'),  # bot rejected on site (masti, Barcival)
     re.compile('.*[\./@]biodiversitylibrary\.org'),  # bot rejected on site (masti, Pikador)
+    re.compile('.*[\./@]przemyska\.pl'),  # bot rejected on site (masti, Szoltys)
 ]
 
 

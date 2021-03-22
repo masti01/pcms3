@@ -561,6 +561,7 @@ class BasicBot(
     pagesCount = {}
     countryTable = {}
     lengthTable = {}
+    lengthTablePL = {}
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'de': [], 'crh': [],
                           'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
@@ -928,6 +929,33 @@ class BasicBot(
             pywikibot.output('self.lengthTable')
             pywikibot.output('**********')
             pywikibot.output(self.lengthTable)
+        return
+
+    def createLengthTablePL(self, aList):
+        # creat dictionary with la:country article counts
+        if self.getOption('test') or self.getOption('testwomen') or self.getOption('testlength'):
+            pywikibot.output(u'createLengthTable')
+            pywikibot.output(self.lengthTable)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                if a['lang'] == 'pl':
+                    if a['newarticle']:
+                        lang = a['lang']  # source language
+                        title = a['title']  # art title
+                        artCount += 1
+                        if self.getOption('testlength'):
+                            pywikibot.output('Title:%s' % title)
+                        self.lengthTablePL[title] = {'char': a['charcount'], 'word': a['wordcount'], 'creator': a['creator']}
+                        if self.getOption('testlength'):
+                            pywikibot.output('self.lengthtablePL[%s]:%s' % (title, self.lengthTablePL[title]))
+
+        if self.getOption('testlength'):
+            pywikibot.output('**********')
+            pywikibot.output('self.lengthTablePL')
+            pywikibot.output('**********')
+            pywikibot.output(self.lengthTablePL)
         return
 
     def createAuthorsArticles(self, aList):
