@@ -713,6 +713,7 @@ class BasicBot(
         self.createWomenTable(self.springList)  # generate results for pages about women
         self.createWomenAuthorsTable(self.springList)  # generate results for pages about women
         self.createLengthTable(self.springList)  # generate results for pages length
+        self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
 
         header = u'{{TNT|Wikimedia CEE Spring 2020 navbar}}\n\n'
@@ -734,6 +735,8 @@ class BasicBot(
                                              footer)  # generate results for pages about women
         self.generateResultLengthPage(self.lengthTable, self.getOption('outpage') + u'/Article length', header, footer)
         self.generateResultLengthAuthorsPage(self.lengthTable, self.getOption('outpage') + u'/Authors list over 2kB',
+                                             header, footer)
+        self.generateResultLengthAuthorsPage(self.lengthTablePL, self.getOption('outpage') + u'/Authors list over 2kB/Poland',
                                              header, footer)
 
 
