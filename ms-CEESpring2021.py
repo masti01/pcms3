@@ -574,11 +574,10 @@ class BasicBot(
     lengthTable = {}
     lengthTablePL = {}
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
-    otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'de': [], 'crh': [],
+    otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [], 'crh': [],
                           'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
-                          'lt': [], 'mk': [], 'mt': [], 'ro': [], 'ru': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [],
-                          'tt': [],
-                          'tr': [], 'uk': [], 'hu': []}
+                          'lt': [], 'mk': [], 'mt': [], 'ro': [], 'ru': [], 'sh':[], 'sk': [], 'sl': [], 'sq': [], 'sr': [],
+                          'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro':[], }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0, 'myv': 0,
              'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sk': 0,
              'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0}
@@ -586,8 +585,7 @@ class BasicBot(
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
                 'myv': 'мастор', 'ro': 'țară', 'ru': 'страна', 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
-                'sr': 'држава', 'tt': 'ил', 'tr': 'ülke',
-                'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел', }
+                'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел', }
     topicp = {'pl': 'parametr', 'az': 'qadınlar', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема', 'bs':'tema',
               'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo', 'hu': 'téma', 'ka': 'თემა',
               'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
