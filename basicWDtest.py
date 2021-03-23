@@ -115,13 +115,15 @@ class BasicBot(
         pywikibot.output('WDItem:{}'.format(wd))
         pywikibot.output('WDItem title:{}'.format(wd.title()))
         wd.get()
-        pywikibot.output('WDItem:{}'.format(wd))
-        # print(dir(wd))
+        claim_list = wd.claims
+        pywikibot.output('CLAIMS:{}'.format(claim_list))
+        print(dir(wd))
         # print(wd.claims)
         for c in wd.claims:
-            pywikibot.output('{}'.format(c))
-            cl = pywikibot.Claim(self.site,c)
-            print(cl.qualifiers.values())
+            pywikibot.output('CLAIM:{}'.format(c))
+            pywikibot.output('>>>{}'.format(c))
+
+            print(cl)
         # for i in wd.iterlinks(family='wikipedia'):
         #     pywikibot.output('Iterlink:{}'.format(i))
 

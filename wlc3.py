@@ -1640,6 +1640,10 @@ ignorelist = [
     re.compile('.*[\./@]sport24\.ee'),  # bot rejected on site (masti, Barcival)
     re.compile('.*[\./@]biodiversitylibrary\.org'),  # bot rejected on site (masti, Pikador)
     re.compile('.*[\./@]przemyska\.pl'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]strata\.geology\.wisc\.edu/jack/showgenera.php\?taxon=231&rank=class'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]strata\.geology\.wisc\.edu / jack / showgenera.php\?taxon=307&rank=class'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]diecezja\.opole\.pl/index\.php/parafie/alfabetycznie'),  # bot rejected on site (masti, Szoltys)
+
 ]
 
 
