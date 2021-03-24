@@ -89,7 +89,7 @@ languageCountry = {'el': 'Greece', 'eo': 'Esperanto', 'myv': 'Erzia', 'bg': 'Bul
                    'ro': 'Romania and Moldova', 'pl': 'Poland', 'hy': 'Armenia', 'ba': 'Bashkortostan', 'hr': 'Croatia',
                    'de': 'Germany', 'hu': 'Hungary', 'kk': 'Kazakhstan', 'sr': 'Serbia', 'sq': 'Albania',
                    'mk': 'North Macedonia', 'sk': 'Slovakia', 'mt': 'Malta', 'be-tarask': 'Belarus', 'uk': 'Ukraine',
-                   'sl': 'Slovenia', 'bs':'Bosnia and Herzegovina'}
+                   'sl': 'Slovenia', 'bs':'Bosnia and Herzegovina', 'fiu-vro':'Võro', }
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
@@ -102,7 +102,8 @@ countryNames = {
            'Polska': 'Poland', 'Region doński': 'Don', 'Romowie': 'Roma', 'Rosja': 'Russia', 'Rumunia': 'Romania and Moldova',
            'Rumunia i Mołdawia': 'Romania and Moldova', 'Republika Serbska': 'Republic of Srpska', 'Serbia': 'Serbia',
            'Serbołużyczanie': 'Sorbia', 'Słowacja': 'Slovakia', 'Słowenia': 'Slovenia', 'Turcja': 'Turkey',
-           'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan'},
+           'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan',
+           'język Võro':'Võro',},
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -200,7 +201,7 @@ countryNames = {
            'Makedonija': 'North Macedonia', 'Moldavija': 'Romania and Moldova', 'Poljska': 'Poland',
            'Republika Srpska': 'Republic of Srpska', 'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia',
            'Slovačka': 'Slovakia', 'Srbija': 'Serbia', 'Turska': 'Turkey', 'Ukrajina': 'Ukraine',
-           'Slovenija':'Slovenia', 'Romi':'Roma', 'Crna Gora':'Montenegro', },
+           'Slovenija':'Slovenia', 'Romi':'Roma', 'Crna Gora':'Montenegro', 'Virosi':'Võro'},
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
