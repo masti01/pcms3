@@ -133,7 +133,7 @@ countryNames = {
            'Серб Республикаһы': 'Republic of Srpska', 'Сербия': 'Serbia', 'Словакия': 'Slovakia',
            'Словак социалистик республикаһы': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Төркиә': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Ҡаҙағстан': 'Kazakhstan', 'Мальта': 'Malta',
-           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', },
+           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -199,7 +199,8 @@ countryNames = {
            'Kosovo': 'Kosovo', 'Latvija': 'Latvia', 'Litvanija': 'Lithuania', 'Mađarska': 'Hungary',
            'Makedonija': 'North Macedonia', 'Moldavija': 'Romania and Moldova', 'Poljska': 'Poland',
            'Republika Srpska': 'Republic of Srpska', 'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia',
-           'Slovačka': 'Slovakia', 'Srbija': 'Serbia', 'Turska': 'Turkey', 'Ukrajina': 'Ukraine', },
+           'Slovačka': 'Slovakia', 'Srbija': 'Serbia', 'Turska': 'Turkey', 'Ukrajina': 'Ukraine',
+           'Slovenija':'Slovenia', 'Romi':'Roma', 'Crna Gora':'Montenegro', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -297,7 +298,7 @@ countryNames = {
            'Serbu Republika': 'Republic of Srpska', 'Serbija': 'Serbia', 'Slovākija': 'Slovakia',
            'Slovēnija': 'Slovenia', 'Tatarstāna': 'Tatarstan', 'Turcija': 'Turkey', 'Ukraina': 'Ukraine',
            'Grieķija': 'Greece', 'Kazahstāna': 'Kazakhstan', 'Sorbi': 'Sorbia', 'rumāņi': 'Romania and Moldova',
-           'Malta': 'Malta', 'sorbi': 'Sorbia', },
+           'Malta': 'Malta', 'sorbi': 'Sorbia', 'Kipra':'Cyprus', },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
            'Baltarusija': 'Belarus', 'Bulgarija': 'Bulgaria', 'Armėnija': 'Armenia',
@@ -338,7 +339,7 @@ countryNames = {
            'Turcia': 'Turkey', 'Ucraina': 'Ukraine', 'Grecia': 'Greece', 'Kazahstan': 'Kazakhstan', 'Erzia': 'Erzia',
            'Malta': 'Malta', 'Tătari crimeeni': 'Crimean tatars', 'Tătarii din Crimeea': 'Crimean tatars', 'sorabi': 'Sorbia',
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
-           'Cipru':'Cyprus', },
+           'Cipru':'Cyprus', 'Romi':'Roma',  },
     # ru countries
     'ru': {'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Белоруссия': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
@@ -416,7 +417,7 @@ countryNames = {
            'Sırp Cumhuriyeti': 'Republic of Srpska', 'Sırbistan': 'Serbia', 'Sorblar': 'Sorbia', 'Slovakya': 'Slovakia',
            'Slovenya': 'Slovenia', 'Türkiye': 'Turkey', 'Ukrayna': 'Ukraine', 'Yunanistan': 'Greece',
            'Kazakistan': 'Kazakhstan', 'Tataristan': 'Tatarstan', 'Sırbistan Cumhuriyeti': 'Republic of Srpska',
-           'Sıbistan': 'Serbia', 'Võro dili':'Võro', 'Çingeneler':'Roma', },
+           'Sıbistan': 'Serbia', 'Võro dili':'Võro', 'Çingeneler':'Roma', 'Kıbrıs':'Cyprus', },
     # uk countries
     'uk': {'Албанія': 'Albania', 'Австрія': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Білорусія': 'Belarus', 'Білорусь': 'Belarus', 'Болгарія': 'Bulgaria', 'Вірменія': 'Armenia',
@@ -447,7 +448,7 @@ countryNames = {
            'Románia': 'Romania and Moldova', 'Boszniai Szerb Köztársaság': 'Republic of Srpska', 'Szerbia': 'Serbia',
            'Szlovákia': 'Slovakia', 'Szlovénia': 'Slovenia', 'Tatárföld': 'Tatarstan', 'Törökország': 'Turkey',
            'Ukrajna': 'Ukraine', 'Görögország': 'Greece', 'Kazahsztán': 'Kazakhstan', 'Málta': 'Malta',
-           'Szorbok': 'Sorbia', },
+           'Szorbok': 'Sorbia', 'Belarusz':'Belarus', 'Ciprusi Köztársaság':'Cyprus',  },
     # kk countries
     'kk': {'Албания': 'Albania', 'Аустрия': 'Austria', 'Әзірбайжан': 'Azerbaijan', 'Башқұртстан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
