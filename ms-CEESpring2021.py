@@ -699,7 +699,7 @@ class BasicBot(
                 aInfo = self.getArtInfo(a)
                 if self.opt.test:
                     pywikibot.output(aInfo)
-                if self.opt.progress and not count % 50:
+                if self.opt.progress and not count % 20:
                     pywikibot.output('[%s][%i] Lang:%s Article:%s' % \
                                      (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, aInfo['lang'],
                                       aInfo['title']))
