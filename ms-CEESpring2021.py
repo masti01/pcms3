@@ -84,12 +84,12 @@ countryList = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Bashkortostan', '
                'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
                'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
                'Turkey', 'Ukraine', 'Võro', 'Other', 'Empty']
-languageCountry = {'el': 'Greece', 'eo': 'Esperanto', 'myv': 'Erzia', 'bg': 'Bulgaria', 'et': 'Estonia',
-                   'az': 'Azerbaijan', 'ru': 'Russia', 'tt': 'Tatarstan', 'tr': 'Turkey', 'lv': 'Latvia',
+languageCountry = {'el': 'Greece', 'eo': 'Esperanto', 'myv': 'Erzia', 'bg': 'Bulgaria', 'et':['Estonia','Võro'],
+                   'az': 'Azerbaijan', 'ru': ['Russia','Don'], 'tt': 'Tatarstan', 'tr': 'Turkey', 'lv': 'Latvia',
                    'ro': 'Romania and Moldova', 'pl': 'Poland', 'hy': 'Armenia', 'ba': 'Bashkortostan', 'hr': 'Croatia',
                    'de': 'Germany', 'hu': 'Hungary', 'kk': 'Kazakhstan', 'sr': 'Serbia', 'sq': 'Albania',
                    'mk': 'North Macedonia', 'sk': 'Slovakia', 'mt': 'Malta', 'be-tarask': 'Belarus', 'uk': 'Ukraine',
-                   'sl': 'Slovenia', 'bs':'Bosnia and Herzegovina', 'fiu-vro':'Võro', }
+                   'sl': 'Slovenia', 'bs':['Bosnia and Herzegovina','Republic of Srpska'], 'fiu-vro':'Võro', }
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
@@ -1502,7 +1502,7 @@ class BasicBot(
                         if self.opt.test5:
                             pywikibot.output('c:%s, wiki:%s, res[wiki][c]:%s' % (c, wiki, res[wiki][c]))
                         if res[wiki][c]:
-                            if wiki in languageCountry.keys() and languageCountry[wiki] == c:
+                            if wiki in languageCountry.keys() and c in languageCountry[wiki]:
                                 newline += ' || style="background-color:LightSlateGray" | ' + str(res[wiki][c])
                             else:
                                 newline += ' || ' + str(res[wiki][c])
@@ -1514,7 +1514,7 @@ class BasicBot(
                             countryTotals[c] += res[wiki][c]
 
                     elif wiki in languageCountry.keys():
-                        if wiki in languageCountry.keys() and languageCountry[wiki] == c:
+                        if wiki in languageCountry.keys() and c in languageCountry[wiki]:
                             if self.opt.test5:
                                 pywikibot.output(u'languageCountry[wiki]:%s = %s' % (languageCountry[wiki], c))
                             newline += '|| style="background-color:LightSlateGray" | — '

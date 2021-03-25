@@ -121,12 +121,11 @@ class BasicBot(
         # print(wd.claims)
         for c in wd.claims:
             pywikibot.output('CLAIM:{}'.format(c))
-            pywikibot.output('>>>{}'.format(c))
+            pywikibot.output('>>>{}'.format(wd.claims[c]))
 
-            print(cl)
+            # print(cl)
         # for i in wd.iterlinks(family='wikipedia'):
         #     pywikibot.output('Iterlink:{}'.format(i))
-
 
 
 def main(*args: Tuple[str, ...]) -> None:
