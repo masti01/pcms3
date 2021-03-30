@@ -2055,8 +2055,8 @@ class BasicBot(
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
         finalpage += '\n!Teilnehmer(in)'
-        # finalpage += '\n!Neue bzw. veränderte Artikel'
-        finalpage += '\n!Neue Artikel'
+        finalpage += '\n!Neue bzw. veränderte Artikel'
+        # finalpage += '\n!Neue Artikel'
         finalpage += '\n!Anzahl Punkte'
 
         for a in ath:
