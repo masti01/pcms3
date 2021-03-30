@@ -1021,15 +1021,18 @@ class BasicBot(
 
         for a in aList:
             author = a['template']['user']
-            if not a['newarticle']:
-                continue
+
             if author not in self.authorsArticlesDE.keys():
-                self.authorsArticlesDE[author] = {'total':self.dePoints(a['charcount']),
-                                        'articles' : []}
-                self.authorsArticlesDE[author]['articles'].append({'title': a['title'], 'points': self.dePoints(a['charcount'])})
-            else:
+                self.authorsArticlesDE[author] = {'total':0,'articles' : []}
+
+            if a['newarticle']:
                 self.authorsArticlesDE[author]['total'] += self.dePoints(a['charcount'])
-                self.authorsArticlesDE[author]['articles'].append({'title': a['title'], 'points': self.dePoints(a['charcount'])})
+                self.authorsArticlesDE[author]['articles'].append(
+                    {'title': a['title'], 'points': self.dePoints(a['charcount'])})
+            else:
+                self.authorsArticlesDE[author]['total'] += self.dePoints(a['diff'])
+                self.authorsArticlesDE[author]['articles'].append(
+                    {'title': a['title'], 'points': self.dePoints(a['diff'])})
 
         if self.opt.testde:
             pywikibot.output('**********')
@@ -1162,6 +1165,26 @@ class BasicBot(
             user = re.sub(r'.*\>', '', user)
         return (user)
 
+    def getDiffSize(self,art,user):
+        # get diff size in art by user
+        # artsize = len(self.cleanText(art.text))
+        lastsize = 0
+        startsize = 0
+        found = False
+        for r in art.revisions():
+            if self.opt.testde:
+                pywikibot.output('REVISION: size:{}, user:{}, timestamp:{}'.format(r.size,r.user,r.timestamp))
+            if not found and r.user == user:
+                lastsize = r.size
+                found = True
+            if r.timestamp < SpringStart:
+                startsize = r.size
+                break
+        if self.opt.testde:
+            pywikibot.output('[[{}]]: last({}) - start({}) = {}'.format(art.title(),lastsize,startsize,lastsize-startsize))
+        return lastsize-startsize
+
+
     def getArtInfo(self, art):
         # get article language, creator, creation date
         artParams = {}
@@ -1198,13 +1221,8 @@ class BasicBot(
             if artParams['creator'] == "'''UNKNOWN USER'''":
                 artParams['creator'] = artParams['template']['user']
 
-            # if u'template' not in artParams.keys():
-            #    artParams['template'] = {u'country': [], 'user': creator, 'woman': woman, 'nocountry': True}
-            # if not artParams['newarticle'] :
-            # if artParams['newarticle'] :
-            #    artParams['template']['user'] = creator
-            # if not artParams['template']['user'] :
-            #    artParams['creator'] = artParams['template']['user']
+            if not artParams['newarticle'] and artParams['lang'] == 'de':
+                artParams['diff'] = self.getDiffSize(art,artParams['template']['user'])
 
             # print artParams
             if self.opt.test2:
@@ -2050,7 +2068,7 @@ class BasicBot(
 
         finalpage += u'\n|}'
 
-        finalpage += '\n\nNotiz: veränderte Artikel sind im Moment nicht berücksichtigt.'
+        # finalpage += '\n\nNotiz: veränderte Artikel sind im Moment nicht berücksichtigt.'
         finalpage += footer
 
         # pywikibot.output(finalpage)
