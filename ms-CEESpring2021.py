@@ -587,9 +587,9 @@ class BasicBot(
                           'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
                           'lt': [], 'mk': [], 'mt': [], 'ro': [], 'ru': [], 'sh':[], 'sk': [], 'sl': [], 'sq': [], 'sr': [],
                           'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro':[], }
-    women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0, 'myv': 0,
+    women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0, 'myv': 0,
              'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh':0, 'sk': 0,
-             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro':0,}
+             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro':0, }
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава', 'bs':'država',
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
