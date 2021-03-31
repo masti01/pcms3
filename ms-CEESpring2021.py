@@ -423,7 +423,7 @@ countryNames = {
            'Sırp Cumhuriyeti': 'Republic of Srpska', 'Sırbistan': 'Serbia', 'Sorblar': 'Sorbia', 'Slovakya': 'Slovakia',
            'Slovenya': 'Slovenia', 'Türkiye': 'Turkey', 'Ukrayna': 'Ukraine', 'Yunanistan': 'Greece',
            'Kazakistan': 'Kazakhstan', 'Tataristan': 'Tatarstan', 'Sırbistan Cumhuriyeti': 'Republic of Srpska',
-           'Sıbistan': 'Serbia', 'Võro dili':'Võro', 'Çingeneler':'Roma', 'Kıbrıs':'Cyprus', },
+           'Sıbistan': 'Serbia', 'Võro dili':'Võro', 'Çingeneler':'Roma', 'Kıbrıs':'Cyprus', 'Çekya':'Czechia',  },
     # uk countries
     'uk': {'Албанія': 'Albania', 'Австрія': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Білорусія': 'Belarus', 'Білорусь': 'Belarus', 'Болгарія': 'Bulgaria', 'Вірменія': 'Armenia',
@@ -503,7 +503,8 @@ countryNames = {
            'Erzya': 'Erzia', 'Erzji': 'Erzia', 'BiH': 'Bosnia and Herzegovina', 'Malti': 'Malta',
            'Bugarske': 'Bulgaria', 'Lužički Srbi': 'Sorbia', 'Sjevernoj Makedoniji': 'North Macedonia',
            'Slovenija': 'Slovenia', 'Donu': 'Don', 'Kazahstana': 'Kazakhstan', 'Tatarstana': 'Tatarstan',
-           'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto', },
+           'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto',
+           'Lužičkih Srba':'Sorbia', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -532,7 +533,7 @@ countryNames = {
            'Rumanija u Moldova': 'Romania and Moldova', 'Sorb': 'Sorbia', 'Tatarstan': 'Tatarstan',
            'Ukrajna': 'Ukraine', 'Federazzjoni Russa': 'Russia', 'Armenja': 'Armenia', 'Ażerbajġan': 'Azerbaijan',
            'Reġjun Don': 'Don', 'Erżja': 'Erzia', 'Repubblika Srpska': 'Republic of Srpska', 'Repubblika Ċeka':'Czechia',
-           'Russja':'Russia', },
+           'Russja':'Russia', 'Belarussja':'Belarus', },
     # sh countries
     'sh': {'Austriji':'Austria', 'Albaniji':'Albania', 'Kosovu':'Kosovo', 'Hrvatskoj':'Croatia',
            'Bosni i Hercegovini':'Bosnia and Herzegovina', },
