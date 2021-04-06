@@ -31,8 +31,7 @@ The following parameters are supported:
 from __future__ import absolute_import, unicode_literals
 from bs4 import BeautifulSoup
 # import BeautifulSoup
-import urllib2
-import difflib
+import requests
 
 #
 
@@ -185,14 +184,15 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.getOption('test'):
             pywikibot.output('getInitialWebPage:%s' % quote_page)
-        webpage = urllib2.urlopen(quote_page)
-        if webpage:
-            pywikibot.output("webpage: %s" % webpage)
-        else:
+        webpage = requests.get(quote_page)
+        if webpage.status_code != 200:
             pywikibot.output("NO WEBPAGE")
-        if self.getOption('test'):
-            pywikibot.output('webpage:%s' % webpage)
-        soup = BeautifulSoup(webpage, 'html.parser')
+            webpage.raise_for_status()
+        else:
+            pywikibot.output("webpage: %s" % webpage.text)
+        # if self.getOption('test'):
+        #     pywikibot.output('webpage:%s' % webpage.text)
+        soup = BeautifulSoup(webpage.text, 'html.parser')
         if self.getOption('test'):
             pywikibot.output('Soup:%s' % soup)
             pywikibot.output('Web Page:%s' % quote_page)
@@ -210,8 +210,8 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.getOption('test'):
             pywikibot.output('getting target page:%s' % quote_page)
-        webpage = urllib2.urlopen(quote_page)
-        soup = BeautifulSoup(webpage, 'html.parser')
+        webpage = requests.get(quote_page)
+        soup = BeautifulSoup(webpage.text, 'html.parser')
         idR = re.compile(r'\/isap\.nsf\/DocDetails\.xsp\?id=WDU(?P<id>.*)')
         first = True
         for t in soup.find(id="collapse_14").find_all('a'):
@@ -308,7 +308,7 @@ class BasicBot(
             self.WUs[tr]['newTemplate'] = self.newTemplate(tr)
             try:
                 self.WUs[tr]['toReplace'] = self.createReplaceList(self.getInitialWebPage(tr))
-            except urllib2.HTTPError:
+            except requests.exceptions.HTTPError:
                 self.WUs[tr]['toReplace'] = None
                 self.WUs[tr]['error'] = 'Brak strony w systemie isap'
             if not self.WUs[tr]['error'] and not self.WUs[tr]['toReplace']:
