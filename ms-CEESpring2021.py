@@ -103,7 +103,7 @@ countryNames = {
            'Rumunia i Mołdawia': 'Romania and Moldova', 'Republika Serbska': 'Republic of Srpska', 'Serbia': 'Serbia',
            'Serbołużyczanie': 'Sorbia', 'Słowacja': 'Slovakia', 'Słowenia': 'Slovenia', 'Turcja': 'Turkey',
            'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan',
-           'język Võro':'Võro', 'Język voro':'Võro', },
+           'język Võro':'Võro', 'Język voro':'Võro', 'Võro':'Võro', 'Tatarzy Krymscy':'Crimean Tatars', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
