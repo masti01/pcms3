@@ -117,7 +117,8 @@ countryNames = {
            'Slovakiya': 'Slovakia', 'Sloveniya': 'Slovenia', 'Tatarıstan': 'Tatarstan', 'Türkiyə': 'Turkey',
            'Ukrayna': 'Ukraine', 'Yunanıstan': 'Greece', 'Qazaxıstan': 'Kazakhstan', 'Krım-tatarlar': 'Crimean Tatars',
            'Don regionu': 'Don', 'Sorblar': 'Sorbia', 'Esperanto': 'Esperanto',
-           'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr':'Cyprus', 'Don vilayəti':'Don',   },
+           'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr':'Cyprus', 'Don vilayəti':'Don',
+           'Tatarstan': 'Tatarstan',  },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -135,7 +136,7 @@ countryNames = {
            'Серб Республикаһы': 'Republic of Srpska', 'Сербия': 'Serbia', 'Словакия': 'Slovakia',
            'Словак социалистик республикаһы': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Төркиә': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Ҡаҙағстан': 'Kazakhstan', 'Мальта': 'Malta',
-           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', },
+           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', 'Татар Республикаһы':'Tatarstan', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -359,7 +360,7 @@ countryNames = {
            'Сербская Республика': 'Republic of Srpska', 'Республика Сербская': 'Republic of Srpska', 'Сербия': 'Serbia',
            'Лужичане': 'Sorbia', 'Словакия': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Турция': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Казахстан': 'Kazakhstan',
-           'Мальта': 'Malta', 'Кипр':'Cyprus', 'Крым':'Crimean Tatars', },
+           'Мальта': 'Malta', 'Кипр':'Cyprus', 'Крым':'Crimean Tatars', 'Цыгане':'Roma', },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
            'Armenisë': 'Armenia', 'Armeni': 'Armenia', 'Austria': 'Austria', 'Austri': 'Austria',
