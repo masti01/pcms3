@@ -56,7 +56,7 @@ import pickle
 from pywikibot import config
 
 from pywikibot.bot import (
-    MultipleSitesBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    Bot, MultipleSitesBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
     AutomaticTWSummaryBot)
 
 # This is required for the text that is shown when you run this script
@@ -136,7 +136,8 @@ countryNames = {
            'Серб Республикаһы': 'Republic of Srpska', 'Сербия': 'Serbia', 'Словакия': 'Slovakia',
            'Словак социалистик республикаһы': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Төркиә': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Ҡаҙағстан': 'Kazakhstan', 'Мальта': 'Malta',
-           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', 'Татар Республикаһы':'Tatarstan', },
+           'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', 'Татар Республикаһы':'Tatarstan',
+           'Әзербайжанн':'Azerbaijan', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -179,7 +180,7 @@ countryNames = {
            'Словакия': 'Slovakia', 'Словения': 'Slovenia', 'Лужичани (сорби)': 'Sorbia', 'Турция': 'Turkey',
            'Украйна': 'Ukraine', 'Гърция': 'Greece', 'Казахстан': 'Kazakhstan', 'Татарстан': 'Tatarstan',
            'Азербайджан‎': 'Azerbaijan', 'лужичаните': 'Sorbia', 'Малта': 'Malta', 'ерзяните': 'Erzia',
-           'есперанто': 'Esperanto', },
+           'есперанто': 'Esperanto', 'Кипър':'Cyprus', },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
            'Baschkortostan': 'Bashkortostan', 'Weißrussland': 'Belarus', 'Bulgarien': 'Bulgaria', 'Armenien': 'Armenia',
@@ -360,7 +361,7 @@ countryNames = {
            'Сербская Республика': 'Republic of Srpska', 'Республика Сербская': 'Republic of Srpska', 'Сербия': 'Serbia',
            'Лужичане': 'Sorbia', 'Словакия': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Турция': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Казахстан': 'Kazakhstan',
-           'Мальта': 'Malta', 'Кипр':'Cyprus', 'Крым':'Crimean Tatars', 'Цыгане':'Roma', },
+           'Мальта': 'Malta', 'Кипр':'Cyprus', 'Крым':'Crimean Tatars', 'Цыгане':'Roma', 'Лужица':'Sorbia', },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
            'Armenisë': 'Armenia', 'Armeni': 'Armenia', 'Austria': 'Austria', 'Austri': 'Austria',
@@ -509,7 +510,7 @@ countryNames = {
            'Bugarske': 'Bulgaria', 'Lužički Srbi': 'Sorbia', 'Sjevernoj Makedoniji': 'North Macedonia',
            'Slovenija': 'Slovenia', 'Donu': 'Don', 'Kazahstana': 'Kazakhstan', 'Tatarstana': 'Tatarstan',
            'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto',
-           'Lužičkih Srba':'Sorbia', },
+           'Lužičkih Srba':'Sorbia', 'Romi':'Roma', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -562,7 +563,8 @@ countryNames = {
 class BasicBot(
     # Refer pywikibot.bot for generic bot classes
     # SingleSiteBot,  # A bot only working on one site
-    MultipleSitesBot,  # A bot class working on multiple sites
+    Bot,
+    # MultipleSitesBot,  # A bot class working on multiple sites
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
@@ -1105,7 +1107,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('de'):
+                    if lang not in ('eo'):
                         continue
 
                 self.templatesList[lang] = [i.title()]
@@ -1436,6 +1438,7 @@ class BasicBot(
                 if self.opt.testinterwiki:
                     pywikibot.output(u'SL spage')
                     pywikibot.output(u'gI Page: %s' % spage.title(force_interwiki=True))
+                    pywikibot.output(u'gI Site:%s' % (spage.site))
                 iw.append(spage)
                 print(iw)
         except Exception as e:
