@@ -1109,7 +1109,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('eo'):
+                    if lang not in ('de'):
                         continue
 
                 self.templatesList[lang] = [i.title()]
@@ -1185,9 +1185,12 @@ class BasicBot(
         lastsize = 0
         startsize = 0
         found = False
+        imported = False
         for r in art.revisions():
             if self.opt.testde:
-                pywikibot.output('REVISION: size:{}, user:{}, timestamp:{}'.format(r.size,r.user,r.timestamp))
+                pywikibot.output('REVISION: size:{}, user:{}, timestamp:{}, comment:{}'.format(r.size,r.user,r.timestamp,r.comment))
+            if 'importiert:' in r.comment:
+                imported = True
             if not found and r.user == user:
                 lastsize = r.size
                 found = True
@@ -1196,7 +1199,10 @@ class BasicBot(
                 break
         if self.opt.testde:
             pywikibot.output('[[{}]]: last({}) - start({}) = {}'.format(art.title(),lastsize,startsize,lastsize-startsize))
-        return lastsize-startsize
+        if imported:
+            return lastsize
+        else:
+            return lastsize-startsize
 
 
     def getArtInfo(self, art):
