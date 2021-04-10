@@ -2084,8 +2084,8 @@ class BasicBot(
             itemcount += 1
             alist = []
             for art in res[a]['articles']:
-                alist.append('[[:de:%s]] (%i)' % (art['title'], art['points']))
-            finalpage += u'\n|-\n| %i || [[:de:user:%s|%s]] || %s || %i' % (itemcount, a, a, ', '.join(alist), res[a]['total'])
+                alist.append('[[%s]] (%i)' % (art['title'], art['points']))
+            finalpage += u'\n|-\n| %i || [[Benutzer:%s|%s]] || %s || %i' % (itemcount, a, a, ', '.join(alist), res[a]['total'])
 
         finalpage += u'\n|}'
 
