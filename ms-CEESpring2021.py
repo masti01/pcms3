@@ -137,7 +137,7 @@ countryNames = {
            'Словак социалистик республикаһы': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Төркиә': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Ҡаҙағстан': 'Kazakhstan', 'Мальта': 'Malta',
            'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', 'Татар Республикаһы':'Tatarstan',
-           'Әзербайжанн':'Azerbaijan', 'Кипр':'Cyprus', },
+           'Әзербайжанн':'Azerbaijan', 'Кипр':'Cyprus', 'Ҡаҙаҡстан':'Kazakhstan', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -148,7 +148,7 @@ countryNames = {
            'Малдова': 'Romania and Moldova', 'Польшча': 'Poland', 'Расія': 'Russia', 'Румынія': 'Romania and Moldova',
            'Рэспубліка Сербская': 'Republic of Srpska', 'Сербія': 'Serbia', 'Лужычане': 'Sorbia',
            'Славакія': 'Slovakia', 'Татарстан': 'Tatarstan', 'Турцыя': 'Turkey', 'Украіна': 'Ukraine',
-           'Грэцыя': 'Greece', 'Казахстан': 'Kazakhstan', },
+           'Грэцыя': 'Greece', 'Казахстан':'Kazakhstan', },
     # be-tarask countries
     'be-tarask': {'Альбанія': 'Albania', 'Аўстрыя': 'Austria', 'Азэрбайджан': 'Azerbaijan',
                   'Башкартастан': 'Bashkortostan', 'Беларусь': 'Belarus', 'Баўгарыя': 'Bulgaria', 'Армэнія': 'Armenia',
@@ -514,7 +514,7 @@ countryNames = {
            'Bugarske': 'Bulgaria', 'Lužički Srbi': 'Sorbia', 'Sjevernoj Makedoniji': 'North Macedonia',
            'Slovenija': 'Slovenia', 'Donu': 'Don', 'Kazahstana': 'Kazakhstan', 'Tatarstana': 'Tatarstan',
            'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto',
-           'Lužičkih Srba':'Sorbia', 'Romi':'Roma', },
+           'Lužičkih Srba':'Sorbia', 'Romi':'Roma', 'Azerbejdžanu':'Azerbaijan', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
