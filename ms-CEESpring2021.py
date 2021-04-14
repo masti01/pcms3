@@ -137,7 +137,7 @@ countryNames = {
            'Словак социалистик республикаһы': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Төркиә': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Ҡаҙағстан': 'Kazakhstan', 'Мальта': 'Malta',
            'Ҡырым': 'Crimean Tatars', 'Эсперанто': 'Esperanto', 'Сиғандар':'Roma', 'Татар Республикаһы':'Tatarstan',
-           'Әзербайжанн':'Azerbaijan', 'Кипр':'Cyprus', 'Ҡаҙаҡстан':'Kazakhstan', },
+           'Әзербайжанн':'Azerbaijan', 'Кипр':'Cyprus', 'Ҡаҙаҡстан':'Kazakhstan', 'Мальта Республикаһы':'Malta',},
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -527,7 +527,7 @@ countryNames = {
            'Slovaška': 'Slovakia', 'Srbija': 'Serbia', 'Tatarstan': 'Tatarstan', 'Turčija': 'Turkey',
            'Ukrajina': 'Ukraine', 'Donska regija': 'Don', 'Romunija in Moldavija': 'Romania and Moldova',
            'Republika srbska': 'Republic of Srpska', 'Moldavija': 'Romania and Moldova', 'Romi':'Roma',
-           'Ciper':'Cyprus', 'Võrumaa':'Võro',  },
+           'Ciper':'Cyprus', 'Võrumaa':'Võro', 'Lužiška srbija':'Sorbia',  },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
@@ -545,7 +545,7 @@ countryNames = {
            'Ukrajna': 'Ukraine', 'Federazzjoni Russa': 'Russia', 'Armenja': 'Armenia', 'Ażerbajġan': 'Azerbaijan',
            'Reġjun Don': 'Don', 'Erżja': 'Erzia', 'Repubblika Srpska': 'Republic of Srpska', 'Repubblika Ċeka':'Czechia',
            'Russja':'Russia', 'Belarussja':'Belarus', 'Ċipru':'Cyprus', 'Tatari tal-Krimea':'Crimean Tatars',
-           'Võro':'Võro', 'Ażerbaiġan':'Azerbaijan', },
+           'Võro':'Võro', 'Ażerbaiġan':'Azerbaijan', 'Don-Region':'Don', },
     # sh countries
     'sh': {'Austriji':'Austria', 'Albaniji':'Albania', 'Kosovu':'Kosovo', 'Hrvatskoj':'Croatia',
            'Bosni i Hercegovini':'Bosnia and Herzegovina', 'Grčkoj':'Greece', 'Rumunjskoj':'Romania and Moldova',
