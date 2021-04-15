@@ -68,6 +68,7 @@ docuReplacements = {
 SpringStart = datetime.strptime("2021-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2021-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 newbieLimit = datetime.strptime("2021-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+allowedFamilies = ['wikipedia', 'wikivoyage']
 
 CEEtemplates = {'pl': 'Szablon:CEE Spring 2021', 'az': 'Şablon:Vikibahar 2021', 'ba': 'Ҡалып:Вики-яҙ 2021',
                 'be': 'Шаблон:CEE Spring 2021', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2021',
@@ -84,12 +85,13 @@ countryList = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Bashkortostan', '
                'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
                'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
                'Turkey', 'Ukraine', 'Võro', 'Other', 'Empty']
-languageCountry = {'el': 'Greece', 'eo': 'Esperanto', 'myv': 'Erzia', 'bg': 'Bulgaria', 'et':['Estonia','Võro'],
-                   'az': 'Azerbaijan', 'ru': ['Russia','Don'], 'tt': 'Tatarstan', 'tr': 'Turkey', 'lv': 'Latvia',
-                   'ro': 'Romania and Moldova', 'pl': 'Poland', 'hy': 'Armenia', 'ba': 'Bashkortostan', 'hr': 'Croatia',
-                   'de': 'Germany', 'hu': 'Hungary', 'kk': 'Kazakhstan', 'sr': 'Serbia', 'sq': 'Albania',
-                   'mk': 'North Macedonia', 'sk': 'Slovakia', 'mt': 'Malta', 'be-tarask': 'Belarus', 'uk': 'Ukraine',
-                   'sl': 'Slovenia', 'bs':['Bosnia and Herzegovina','Republic of Srpska'], 'fiu-vro':'Võro', }
+languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'], 'et':['Estonia','Võro'],
+                   'az': ['Azerbaijan'], 'ru': ['Russia','Don'], 'tt': ['Tatarstan'], 'tr': ['Turkey'], 'lv': ['Latvia'],
+                   'ro': ['Romania and Moldova'], 'pl': ['Poland'], 'hy': ['Armenia'], 'ba': ['Bashkortostan'],
+                   'hr': ['Croatia'], 'de': ['Germany'], 'hu': ['Hungary'], 'kk': ['Kazakhstan'], 'sr': ['Serbia'],
+                   'sq': ['Albania'], 'mk': ['North Macedonia'], 'sk': ['Slovakia'], 'mt': ['Malta'],
+                   'be-tarask': ['Belarus'], 'uk': ['Ukraine'], 'sl': ['Slovenia'],
+                   'bs':['Bosnia and Herzegovina','Republic of Srpska'], 'fiu-vro':['Võro'], }
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
@@ -918,6 +920,7 @@ class BasicBot(
                     pywikibot.output('article:%s' % a)
 
                 lang = a['lang']  # source language
+                fam = a['family']
                 tmpl = a['template']  # template data {country:[clist], women:T/F}
                 newart = a['newarticle']
                 womanart = tmpl['woman']
@@ -932,9 +935,9 @@ class BasicBot(
                 user = a['creator']
                 if user in self.womenAuthors.keys():
                     self.womenAuthors[user]['count'] += 1
-                    self.womenAuthors[user]['list'].append(lang + ':' + a['title'])
+                    self.womenAuthors[user]['list'].append((fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title'])
                 else:
-                    self.womenAuthors[user] = {'count': 1, 'list': [lang + ':' + a['title']]}
+                    self.womenAuthors[user] = {'count': 1, 'list': [(fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title']]}
 
         if self.opt.testwomenauthors:
             pywikibot.output('**********')
@@ -955,7 +958,8 @@ class BasicBot(
                 if a['newarticle']:
                     artCount += 1
                     lang = a['lang']  # source language
-                    title = lang + ':' + a['title']  # art title
+                    fam = a['family']
+                    title = (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title']  # art title
 
                     if self.opt.testlength:
                         pywikibot.output('Title:%s' % title)
@@ -982,7 +986,8 @@ class BasicBot(
                 if a['lang'] == 'pl':
                     if a['newarticle']:
                         lang = a['lang']  # source language
-                        title = lang + ':' + a['title']  # art title
+                        fam = a['family']
+                        title = (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title']  # art title
                         artCount += 1
                         if self.opt.testlength:
                             pywikibot.output('Title:%s' % title)
@@ -1107,13 +1112,15 @@ class BasicBot(
             for i in self.genInterwiki(p):
                 if self.opt.test:
                     pywikibot.output('Searching for interwiki. Page:%s, Type:%s' % (i, type(i)))
-                lang = self.lang(i.title(as_link=True, force_interwiki=True))
+                #lang = self.lang(i.title(as_link=True, force_interwiki=True))
+                lang = i.site.code
+                fam = i.site.family
                 if self.opt.test:
-                    pywikibot.output('Searching for interwiki. Lang:%s' % lang)
+                    pywikibot.output('Searching for interwiki. Lang:%s Family:%s' % (lang, fam))
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('de'):
+                    if lang not in ('eo'):
                         continue
 
                 self.templatesList[lang] = [i.title()]
@@ -1125,7 +1132,7 @@ class BasicBot(
                         pywikibot.output('REDIR TEMPLATE:%s' % p.title(as_link=True, force_interwiki=True))
 
                 pywikibot.output(
-                    u'Getting references to %s Lang:%s' % (i.title(as_link=True, force_interwiki=True), lang))
+                    u'Getting references to %s Lang:%s Fam:%s' % (i.title(as_link=True, force_interwiki=True), lang, fam))
                 if self.opt.test2:
                     pywikibot.output('REDIR TEMPLATE LIST:%s' % self.templatesList[lang])
                 countlang = 0
@@ -1136,7 +1143,7 @@ class BasicBot(
                         countlang += 1
                         artList.append(art)
                         if self.opt.testgetart:
-                            pywikibot.output(u'getArticleList #%i/%i:%s:%s' % (count, countlang, lang, art.title()))
+                            pywikibot.output(u'getArticleList #%i/%i:%s:%s:%s' % (count, countlang, fam, lang, art.title()))
                         count += 1
             # break
         # get sk.wiki article list
@@ -1217,10 +1224,12 @@ class BasicBot(
             creator, creationDate = self.getUpdater(art)
             creator = self.cleanUsername(creator)
             lang = art.site.code
+            fam = art.site.family.name
 
             woman = self.checkWomen(art)
             artParams['title'] = art.title()
             artParams['lang'] = lang
+            artParams['family'] = fam
             artParams['creator'] = creator
             artParams['creationDate'] = creationDate
             artParams['newarticle'] = self.newArticle(art)
@@ -1357,6 +1366,8 @@ class BasicBot(
         param = {}
         # author, creationDate = self.getUpdater(page)
         parlist = {'country': [], 'user': None, 'woman': False, 'nocountry': False}
+        if self.opt.test2:
+            pywikibot.output(u'page:%s' % page.text)
         # return dictionary with template params
         for t in page.templatesWithParams():
             title, params = t
@@ -1443,15 +1454,16 @@ class BasicBot(
         iw = []
         iw.append(page)
         try:
-            for s in page.iterlanglinks():
+            for s in page.data_item().iterlinks():
                 if self.opt.testinterwiki:
                     pywikibot.output(u'SL iw: %s' % s)
                 spage = pywikibot.Page(s)
                 if self.opt.testinterwiki:
                     pywikibot.output(u'SL spage')
                     pywikibot.output(u'gI Page: %s' % spage.title(force_interwiki=True))
-                    pywikibot.output(u'gI Site:%s' % (spage.site))
-                iw.append(spage)
+                    pywikibot.output(u'gI Site:%s Family:%s' % (spage.site, spage.site.family))
+                if spage.site.family in allowedFamilies:
+                    iw.append(spage)
                 print(iw)
         except Exception as e:
             pywikibot.output('genInterwiki EXCEPTION %s' % str(e))
@@ -1968,7 +1980,7 @@ class BasicBot(
         locpagename = re.sub(r'.*:', '', pagename)
 
         finalpage = header
-
+        # @@@@@
         itemcount = 0
         newartscount = 0
         updartscount = 0
@@ -1979,18 +1991,21 @@ class BasicBot(
             updarts = 0
 
             # print('[[:' + i + u':' + self.templatesList[i] +u'|' + i + u' wikipedia]]')
+            """
             if l in self.templatesList.keys():
                 finalpage += u'\n== [[:' + l + ':' + self.templatesList[l][0] + u'|' + l + u'.wikipedia]] =='
             else:
                 finalpage += u'\n== ' + l + u'.wikipedia =='
-            finalpage += u'\n=== ' + l + u'.wikipedia new articles ==='
+            """
+            finalpage += '\n== ' + l + ' =='
+            finalpage += u'\n=== ' + l + u' new articles ==='
             finalpage += u'\n{| class="wikitable"'
             finalpage += u'\n!#'
             finalpage += u'\n!Article'
             finalpage += u'\n!User'
             finalpage += u'\n!Date'
             finalpage += u'\n!About'
-            updatedArticles = u'\n\n=== ' + l + u'.wikipedia updated articles ==='
+            updatedArticles = u'\n\n=== ' + l + u' updated articles ==='
             updatedArticles += u'\n{| class="wikitable"'
             updatedArticles += u'\n!#'
             updatedArticles += u'\n!Article'
@@ -2004,8 +2019,9 @@ class BasicBot(
                 if i['newarticle']:
                     newarts += 1
                     newartscount += 1
+                    fam = i['family']
                     artLine = u'\n|-\n| %i. || [[:%s:%s]] || %s || %s || ' % (
-                        newarts, i['lang'], i['title'], i['creator'], i['creationDate'])
+                        newarts, (fam + ':' if fam != 'wikipedia' else '') + i['lang'], i['title'], i['creator'], i['creationDate'])
                     cList = []
                     for a in i['template']['country']:
                         if a in countryList:
@@ -2049,7 +2065,9 @@ class BasicBot(
         finalpage += u'\n\nNumber of updated articles: ' + str(updartscount)
         finalpage += u"\n\n'''Total number of articles: " + str(itemcount) + u"'''"
         finalpage += footer
-        # pywikibot.output(finalpage)
+
+        if self.opt.test2:
+            pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         if self.opt.test:
