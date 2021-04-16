@@ -529,7 +529,7 @@ countryNames = {
            'Slovaška': 'Slovakia', 'Srbija': 'Serbia', 'Tatarstan': 'Tatarstan', 'Turčija': 'Turkey',
            'Ukrajina': 'Ukraine', 'Donska regija': 'Don', 'Romunija in Moldavija': 'Romania and Moldova',
            'Republika srbska': 'Republic of Srpska', 'Moldavija': 'Romania and Moldova', 'Romi':'Roma',
-           'Ciper':'Cyprus', 'Võrumaa':'Võro', 'Lužiška srbija':'Sorbia',  },
+           'Ciper':'Cyprus', 'Võrumaa':'Võro', 'Lužiška srbija':'Sorbia', 'Lužiški Srbi':'Sorbia', },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
