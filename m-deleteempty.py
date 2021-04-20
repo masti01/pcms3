@@ -110,9 +110,10 @@ class BasicBot(
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
 
-        if len(self.current_page.text) < 4 :
-            if self.site.user() is None:
-                self.site.login()
+        # if len(self.current_page.text) < 4 :
+        #    if self.site.user() is None:
+        #       self.site.login()
+        if len(self.current_page.text) < 4:
             self.current_page.delete(self.opt.summary,
                                      not self.opt.always,
                                      self.opt.always,
