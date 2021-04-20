@@ -166,7 +166,7 @@ countryNames = {
                   'Лужычане': 'Sorbia', 'Расея (Татарстан)': 'Tatarstan', 'Татарстан': 'Tatarstan',
                   'Турэччына': 'Turkey', 'Украіна': 'Ukraine', 'Грэцыя': 'Greece', 'Казахстан': 'Kazakhstan',
                   'Мальта': 'Malta', 'эспэранта': 'Esperanto', 'Republika srbská': 'Republic of Srpska',
-                  'Tatársko': 'Tatarstan', 'эрзя':'Erzia', 'Цыганы':'Roma', },
+                  'Tatársko': 'Tatarstan', 'эрзя':'Erzia', 'Цыганы':'Roma', 'цыганы':'Roma',  },
     # bg countries
     'bg': {'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Беларус': 'Belarus', 'България': 'Bulgaria', 'Армения': 'Armenia',
@@ -337,7 +337,7 @@ countryNames = {
            'Република Српска': 'Republic of Srpska', 'Србија': 'Serbia', 'Словачка': 'Slovakia',
            'Словенија': 'Slovenia', 'Лужица': 'Sorbia', 'Турција': 'Turkey', 'Украина': 'Ukraine', 'Грција': 'Greece',
            'Казахстан': 'Kazakhstan', 'Татарстан': 'Tatarstan', 'Хрватса': 'Croatia', 'Донечка област': 'Don',
-           'Малта': 'Malta', 'Донскиот регион': 'Don', },
+           'Малта': 'Malta', 'Донскиот регион': 'Don', 'Кипар':'Cyprus', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
