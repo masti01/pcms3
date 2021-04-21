@@ -1109,7 +1109,7 @@ class BasicBot(
             pywikibot.output(u'Treating: %s' % p.title())
             d = p.data_item()
             pywikibot.output(u'WD: %s' % d.title())
-            dataItem = d.get()
+            # dataItem = d.get()
             count = 0
             for i in self.genInterwiki(p):
                 if self.opt.test:
