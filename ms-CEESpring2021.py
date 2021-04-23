@@ -338,7 +338,8 @@ countryNames = {
            'Република Српска': 'Republic of Srpska', 'Србија': 'Serbia', 'Словачка': 'Slovakia',
            'Словенија': 'Slovenia', 'Лужица': 'Sorbia', 'Турција': 'Turkey', 'Украина': 'Ukraine', 'Грција': 'Greece',
            'Казахстан': 'Kazakhstan', 'Татарстан': 'Tatarstan', 'Хрватса': 'Croatia', 'Донечка област': 'Don',
-           'Малта': 'Malta', 'Донскиот регион': 'Don', 'Кипар':'Cyprus', 'Мордовија':'Erzia', },
+           'Малта': 'Malta', 'Донскиот регион': 'Don', 'Кипар':'Cyprus', 'Мордовија':'Erzia', 'Казакстан':'Kazakhstan',
+           'Виру':'Võro', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -466,7 +467,7 @@ countryNames = {
            'Szlovákia': 'Slovakia', 'Szlovénia': 'Slovenia', 'Tatárföld': 'Tatarstan', 'Törökország': 'Turkey',
            'Ukrajna': 'Ukraine', 'Görögország': 'Greece', 'Kazahsztán': 'Kazakhstan', 'Málta': 'Malta',
            'Szorbok': 'Sorbia', 'Belarusz':'Belarus', 'Ciprusi Köztársaság':'Cyprus', 'Ciprus':'Cyprus',
-           'cigány':'Roma', 'Cigányok':'Roma', },
+           'cigány':'Roma', 'Cigányok':'Roma', 'Võro':'Võro', },
     # kk countries
     'kk': {'Албания': 'Albania', 'Аустрия': 'Austria', 'Әзірбайжан': 'Azerbaijan', 'Башқұртстан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
@@ -490,7 +491,7 @@ countryNames = {
            'Kreeka': 'Greece', 'Kasahstan': 'Kazakhstan', 'Ersa': 'Erzia', 'Malta': 'Malta',
            'Krimmitatari': 'Crimean Tatars', 'esperanto': 'Esperanto', 'Sorbi': 'Sorbia', 'Doni regioon': 'Don',
            'Roma':'Roma', 'Küpros':'Cyprus', 'Cyprus':'Cyprus', 'Crimean Tatars':'Crimean Tatars', 'Donimaa':'Don',
-            'Don':'Don', },
+            'Don':'Don', 'sorbid':'Sorbia', },
     # hr countries
     'hr': {'Albaniji': 'Albania', 'Albanija': 'Albania', 'Austriji': 'Austria', 'Austrija': 'Austria',
            'Azerbajdžanu': 'Azerbaijan', 'Azerbajdžan': 'Azerbaijan', 'Baškortostanu (Bashkortostan)': 'Bashkortostan',
