@@ -78,7 +78,7 @@ CEEtemplates = {'pl': 'Szablon:CEE Spring 2021', 'az': 'Şablon:Vikibahar 2021',
                 'lv': 'Veidne:CEE Spring 2021', 'lt': 'Šablonas:VRE 2021', 'mk': 'Шаблон:СИЕ Пролет 2021',
                 'myk': 'Шаблон:СИЕ Пролет 2021', 'ro': 'Format:Wikimedia CEE Spring 2021',
                 'ru': 'Шаблон:Вики-весна 2021', 'sr': 'Шаблон:ЦЕЕ пролеће 2021', 'tr': 'Şablon:Vikibahar 2021',
-                'uk': 'Шаблон:CEE Spring 2021'}
+                'uk': 'Шаблон:CEE Spring 2021', 'en':'Template:CEE Spring 2021'}
 countryList = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
@@ -567,6 +567,9 @@ countryNames = {
            'Republika Srpska': 'Republic of Srpska', 'Donský región': 'Don', 'Krymskí Tatári': 'Crimean Tatars',
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
            'Tatarstan': 'Tatarstan', 'Tatársko': 'Tatarstan', 'Sorbia': 'Sorbia', },
+    'en': { 'Montenegro':'Montenegro', 'Belarus':'Belarus', 'Erzya':'Erzia', 'Serbia':'Serbia', 'Poland':'Poland',
+            'Croatia':'Croatia',
+    },
 
 }
 
@@ -609,32 +612,34 @@ class BasicBot(
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [], 'crh': [],
                           'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
                           'lt': [], 'mk': [], 'mt': [], 'ro': [], 'ru': [], 'sh':[], 'sk': [], 'sl': [], 'sq': [], 'sr': [],
-                          'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro':[], }
+                          'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro':[], 'en':[], }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0, 'myv': 0,
              'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh':0, 'sk': 0,
-             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro':0, }
+             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro':0, 'en':0 }
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава', 'bs':'država',
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
                 'myv': 'мастор', 'ro': 'țară', 'ru': 'страна', 'sh':'zemlja', 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
-                'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел', }
+                'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
+                'en': 'country', }
     topicp = {'pl': 'parametr', 'az': 'qadınlar', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема', 'bs':'tema',
               'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo', 'hu': 'téma', 'ka': 'თემა',
               'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
               'ro': 'secțiune', 'ru': 'тема', 'sh':'tema', 'sl': 'tema', 'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
-              'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып', }
+              'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
+              'en':'topic', }
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs':'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები', 'lv': 'Sievietes',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh':'Žene', 'sl': 'Ženske',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
-              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք'}
+              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en':'Women', }
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
              'bg': 'потребител', 'bs':'korisnik', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
              'hu': 'szerkesztő', 'eo': 'uzanto',
              'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent',
              'myv': 'сёрмадыця', 'ro': 'utilizator', 'ru': 'участник', 'sh':'user',
              'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user', 'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı',
-             'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', }
+             'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en':'user',  }
 
     def __init__(self, generator, **kwargs):
         """
