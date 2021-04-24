@@ -339,7 +339,7 @@ countryNames = {
            'Словенија': 'Slovenia', 'Лужица': 'Sorbia', 'Турција': 'Turkey', 'Украина': 'Ukraine', 'Грција': 'Greece',
            'Казахстан': 'Kazakhstan', 'Татарстан': 'Tatarstan', 'Хрватса': 'Croatia', 'Донечка област': 'Don',
            'Малта': 'Malta', 'Донскиот регион': 'Don', 'Кипар':'Cyprus', 'Мордовија':'Erzia', 'Казакстан':'Kazakhstan',
-           'Виру':'Võro', },
+           'Виру':'Võro', 'Роми':'Roma', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
