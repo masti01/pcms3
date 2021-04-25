@@ -1445,7 +1445,8 @@ class BasicBot(
                                     if self.opt.test2:
                                         pywikibot.output(u'appending other country:%s' % value)
                                     parlist['country'].append(value)
-                                    self.otherCountriesList[lang].append(value)
+                                    if value not in self.otherCountriesList[lang]:
+                                        self.otherCountriesList[lang].append(value)
                     if self.opt.test:
                         pywikibot.output(self.pagesCount)
                 if self.opt.test3:
