@@ -418,7 +418,7 @@ countryNames = {
            'Tөркия': 'Turkey', 'Kосово': 'Kosovo', 'Косово': 'Kosovo', 'Төньяк Македония': 'North Macedonia',
            'Румыния һәм Moлдова': 'Romania and Moldova', 'Словения': 'Slovenia', 'Кырым-татар': 'Crimean Tatars',
            'Кырымтатарлары': 'Crimean Tatars', 'Румыния һәм Молдова':'Romania and Moldova', 'Дон төбәге':'Don',
-           'Башкортостан':'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', },
+           'Башкортостан':'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -550,7 +550,7 @@ countryNames = {
            'Ukrajna': 'Ukraine', 'Federazzjoni Russa': 'Russia', 'Armenja': 'Armenia', 'Ażerbajġan': 'Azerbaijan',
            'Reġjun Don': 'Don', 'Erżja': 'Erzia', 'Repubblika Srpska': 'Republic of Srpska', 'Repubblika Ċeka':'Czechia',
            'Russja':'Russia', 'Belarussja':'Belarus', 'Ċipru':'Cyprus', 'Tatari tal-Krimea':'Crimean Tatars',
-           'Võro':'Võro', 'Ażerbaiġan':'Azerbaijan', 'Don-Region':'Don', 'Georgia':'Georgia', },
+           'Võro':'Võro', 'Ażerbaiġan':'Azerbaijan', 'Don-Region':'Don', 'Georgia':'Georgia', 'Rom': 'Roma', },
     # sh countries
     'sh': {'Austriji':'Austria', 'Albaniji':'Albania', 'Kosovu':'Kosovo', 'Hrvatskoj':'Croatia',
            'Bosni i Hercegovini':'Bosnia and Herzegovina', 'Grčkoj':'Greece', 'Rumunjskoj':'Romania and Moldova',
@@ -566,7 +566,7 @@ countryNames = {
            'Turecko': 'Turkey', 'Baškirsko': 'Bashkortostan', 'Arménsko': 'Armenia', 'Bielorusko': 'Belarus',
            'Republika Srpska': 'Republic of Srpska', 'Donský región': 'Don', 'Krymskí Tatári': 'Crimean Tatars',
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
-           'Tatarstan': 'Tatarstan', 'Tatársko': 'Tatarstan', 'Sorbia': 'Sorbia', },
+           'Tatarstan': 'Tatarstan', 'Tatársko': 'Tatarstan', 'Sorbia': 'Sorbia', 'Kipru': 'Cyprus', },
     'en': { 'Montenegro':'Montenegro', 'Belarus':'Belarus', 'Erzya':'Erzia', 'Serbia':'Serbia', 'Poland':'Poland',
             'Croatia':'Croatia',
     },
