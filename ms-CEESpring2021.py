@@ -1128,7 +1128,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('eo'):
+                    if lang not in ('de'):
                         continue
 
                 self.templatesList[lang] = [i.title()]
