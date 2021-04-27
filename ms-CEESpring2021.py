@@ -1234,7 +1234,8 @@ class BasicBot(
             lang = art.site.code
             fam = art.site.family.name
 
-            woman = self.checkWomen(art)
+            # woman = self.checkWomen(art)
+            woman = False
             artParams['title'] = art.title()
             artParams['lang'] = lang
             artParams['family'] = fam
@@ -1253,8 +1254,8 @@ class BasicBot(
             if lang in self.templatesList.keys() and talk.exists():
                 TmplInfo = self.getTemplateInfo(talk, self.templatesList[lang], lang)
                 artParams['template'] = TmplInfo
-            if not artParams['template']['woman']:
-                artParams['template']['woman'] = woman
+            # if not artParams['template']['woman']:
+            #     artParams['template']['woman'] = woman
             if not len(artParams['template']['country']):
                 artParams['template']['nocountry'] = True
             # if artParams['template']['user']:
