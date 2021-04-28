@@ -519,7 +519,7 @@ countryNames = {
            'Slovenija': 'Slovenia', 'Donu': 'Don', 'Kazahstana': 'Kazakhstan', 'Tatarstana': 'Tatarstan',
            'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto',
            'Lužičkih Srba':'Sorbia', 'Romi':'Roma', 'Azerbejdžanu':'Azerbaijan', 'Cipru':'Cyprus', 'Esperanta':'Esperanto',
-           'Krimu':'Crimean Tatars', 'Võru':'Võro', },
+           'Krimu':'Crimean Tatars', 'Võru':'Võro', 'Lužici': 'Sorbia', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -554,7 +554,7 @@ countryNames = {
     # sh countries
     'sh': {'Austriji':'Austria', 'Albaniji':'Albania', 'Kosovu':'Kosovo', 'Hrvatskoj':'Croatia',
            'Bosni i Hercegovini':'Bosnia and Herzegovina', 'Grčkoj':'Greece', 'Rumunjskoj':'Romania and Moldova',
-           'Estoniji':'Estonia', 'Ukrajini':'Ukraine', 'Poljskoj':'Poland', 'Sloveniji':'Slovenia', },
+           'Estoniji':'Estonia', 'Ukrajini':'Ukraine', 'Poljskoj':'Poland', 'Sloveniji':'Slovenia', 'Kipru': 'Cyprus', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
