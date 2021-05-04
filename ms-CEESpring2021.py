@@ -633,7 +633,7 @@ class BasicBot(
               'en':'topic', }
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs':'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები', 'lv': 'Sievietes',
-              'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh':'Žene', 'sl': 'Ženske',
+              'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh':'Žene', 'sl': 'Ženske', 'mt':'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en':'Women', }
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
