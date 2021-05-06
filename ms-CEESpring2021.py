@@ -286,7 +286,7 @@ countryNames = {
            'Սլովակիա': 'Slovakia', 'Թաթարստան': 'Tatarstan', 'Թուրքիա': 'Turkey', 'Ուկրաինա': 'Ukraine',
            'Հունաստան': 'Greece', 'Ղազախստան': 'Kazakhstan', 'Սլովենիա': 'Slovenia', 'Մալթա': 'Malta',
            'Լեհատան': 'Poland', 'Հունաստամ': 'Greece', 'Ալբանիաիա': 'Albania',
-           'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', },
+           'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia', },
     # ka countries
     'ka': {'ალბანეთი': 'Albania', 'ავსტრია': 'Austria', 'აზერბაიჯანი': 'Azerbaijan', 'ბაშკირეთი': 'Bashkortostan',
            'ბელარუსი': 'Belarus', 'ბულგარეთი': 'Bulgaria', 'სომხეთი': 'Armenia',
