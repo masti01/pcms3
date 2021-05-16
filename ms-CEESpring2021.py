@@ -420,7 +420,7 @@ countryNames = {
            'Румыния һәм Moлдова': 'Romania and Moldova', 'Словения': 'Slovenia', 'Кырым-татар': 'Crimean Tatars',
            'Кырымтатарлары': 'Crimean Tatars', 'Румыния һәм Молдова':'Romania and Moldova', 'Дон төбәге':'Don',
            'Башкортостан':'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary',
-           'Мальта': 'Malta', },
+           'Мальта': 'Malta', 'Монтенегро': 'Montenegro', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -493,7 +493,7 @@ countryNames = {
            'Kreeka': 'Greece', 'Kasahstan': 'Kazakhstan', 'Ersa': 'Erzia', 'Malta': 'Malta',
            'Krimmitatari': 'Crimean Tatars', 'esperanto': 'Esperanto', 'Sorbi': 'Sorbia', 'Doni regioon': 'Don',
            'Roma':'Roma', 'Küpros':'Cyprus', 'Cyprus':'Cyprus', 'Crimean Tatars':'Crimean Tatars', 'Donimaa':'Don',
-            'Don':'Don', 'sorbid': 'Sorbia', 'Sorbia': 'Sorbia', 'Võro': 'Võro', },
+            'Don':'Don', 'sorbid': 'Sorbia', 'Sorbia': 'Sorbia', 'Võro': 'Võro', 'Erzya': 'Erzia', },
     # hr countries
     'hr': {'Albaniji': 'Albania', 'Albanija': 'Albania', 'Austriji': 'Austria', 'Austrija': 'Austria',
            'Azerbajdžanu': 'Azerbaijan', 'Azerbajdžan': 'Azerbaijan', 'Baškortostanu (Bashkortostan)': 'Bashkortostan',
@@ -557,7 +557,7 @@ countryNames = {
     'sh': {'Austriji':'Austria', 'Albaniji':'Albania', 'Kosovu':'Kosovo', 'Hrvatskoj':'Croatia',
            'Bosni i Hercegovini':'Bosnia and Herzegovina', 'Grčkoj':'Greece', 'Rumunjskoj':'Romania and Moldova',
            'Estoniji':'Estonia', 'Ukrajini':'Ukraine', 'Poljskoj':'Poland', 'Sloveniji':'Slovenia', 'Kipru': 'Cyprus',
-           'Rusiji': 'Russia', 'Češkoj': 'Czechia', },
+           'Rusiji': 'Russia', 'Češkoj': 'Czechia', 'Gruziji': 'Georgia', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
