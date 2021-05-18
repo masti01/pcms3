@@ -106,7 +106,7 @@ countryNames = {
            'Serbołużyczanie': 'Sorbia', 'Słowacja': 'Slovakia', 'Słowenia': 'Slovenia', 'Turcja': 'Turkey',
            'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan',
            'język Võro':'Võro', 'Język voro':'Võro', 'Võro':'Võro', 'Tatarzy Krymscy':'Crimean Tatars',
-           'Języki łużyckie': 'Sorbia', },
+           'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
