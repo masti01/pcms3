@@ -1645,6 +1645,8 @@ ignorelist = [
     re.compile('.*[\./@]diecezja\.opole\.pl/index\.php/parafie/alfabetycznie'),  # bot rejected on site (masti, Szoltys)
     re.compile('.*[\./@]gugik\.gov\.pl'),  # bot rejected on site (masti, Stok)
     re.compile('.*[\./@]eu-football\.info'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]stadiumguide.com'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]esbl.ee/biograafia'),  # bot rejected on site (masti, Szoltys)
 
 ]
 
