@@ -1645,8 +1645,15 @@ ignorelist = [
     re.compile('.*[\./@]diecezja\.opole\.pl/index\.php/parafie/alfabetycznie'),  # bot rejected on site (masti, Szoltys)
     re.compile('.*[\./@]gugik\.gov\.pl'),  # bot rejected on site (masti, Stok)
     re.compile('.*[\./@]eu-football\.info'),  # bot rejected on site (masti, Szoltys)
-    re.compile('.*[\./@]stadiumguide.com'),  # bot rejected on site (masti, Szoltys)
-    re.compile('.*[\./@]esbl.ee/biograafia'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]stadiumguide\.com'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]esbl\.ee/biograafia'),  # bot rejected on site (masti, Szoltys)
+    re.compile('.*[\./@]e-dziennik\.msw\.gov\.pl'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]rtvslo\.si'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]elperiodico\.com'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]ouest-france\.fr'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]cyprus-mail\.com'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]lrs\.lt'),  # bot rejected on site (masti, Elfhelm)
+    re.compile('.*[\./@]olsztyn24\.com'),  # bot rejected on site (masti, Elfhelm)
 
 ]
 
