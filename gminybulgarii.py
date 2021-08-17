@@ -46,6 +46,8 @@ cannot be set by settings file:
 #
 # Distributed under the terms of the MIT license.
 #
+import re
+
 import pywikibot
 from pywikibot import pagegenerators
 from pywikibot.backports import Tuple
@@ -96,33 +98,17 @@ class BasicBot(
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
+        popR = re.compile(r'liczba ludności\s*=\s*(?P<pop>[\d\s]+)')
+        leadR = re.compile(r'Populacja wynosi [\d\s]+ mieszkańców')
         text = self.current_page.text
 
-        ################################################################
-        # NOTE: Here you can modify the text in whatever way you want. #
-        ################################################################
-
-        # If you find out that you do not want to edit this page, just return.
-        # Example: This puts Text on a page.
-
-        # Retrieve your private option
-        # Use your own text or use the default 'Test'
-        text_to_add = self.opt.text
-
-        if self.opt.replace:
-            # replace the page text
-            text = text_to_add
-
-        elif self.opt.top:
-            # put text on top
-            text = text_to_add + text
-
-        else:
-            # put text on bottom
-            text += text_to_add
+        pop = popR.search(text).group('pop')
+        print(pop)
+        text = re.sub(leadR,'Populacja wynosi {0} mieszkańców'.format(pop),text)
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
+        print(text)
         self.put_current(text, summary=self.opt.summary)
 
 

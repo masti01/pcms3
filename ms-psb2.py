@@ -6,11 +6,8 @@
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
 
-This bot creates a pages with links to tennis players.
-
 Call:
-	python pwb.py masti/ms-psb.py -page:"Wikipedysta:PuchaczTrado/PSB" -maxlines:10000 -summary:"Bot uaktualnia tabelę"
-	python pwb.py masti/ms-psb.py -page:"Wikipedysta:mastiBot/PSB/Tabela" -maxlines:10000 -renew -summary:"Bot uaktualnia tabelę"
+    time /home/masti/venvwrapper python3 pwb.py masti/ms-psb.py -page:'Wikipedysta:PuchaczTrado/PSB/1' -maxlines:10000 -summary:'Bot uaktualnia tabelę #1'
 
 The following parameters are supported:
 
@@ -18,17 +15,11 @@ The following parameters are supported:
 
 -always           If used, the bot won't ask if it should file the message
                   onto user talk page.   
-
 -outpage          Results page; otherwise "Wikipedysta:mastiBot/test" is used
-
 -maxlines         Max number of entries before new subpage is created; default 1000
-
 -text:            Use this text to be added; otherwise 'Test' is used
-
 -replace:         Dont add text but replace it
-
 -top              Place additional text on top of the page
-
 -summary:         Set the action summary message for the edit.
 """
 #
@@ -61,32 +52,25 @@ docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
 import re
-import urllib3
 import datetime
 
-# This is required for the text that is shown when you run this script
-# with the parameter -help.
-docuReplacements = {
-    '&params;': pagegenerators.parameterHelp
-}
-
 actionCounters = {
-    'total':0,
-    'blue':0,
-    'red':0,
-    'redirs':0,
-    'disambigs':0
+    'total': 0,
+    'blue': 0,
+    'red': 0,
+    'redirs': 0,
+    'disambigs': 0
 }
 
 class Person(object):
-    #Class to describe person from list
+    # Class to describe person from list
     def __init__(self):
         self.title = None
-        self.dob = '' #Date of birth
-        self.dod = '' #Date of death
-        self.dobprecision = 11 #date precision for birth
-        self.dodprecision = 11 #date precision for death
-        self.occupation = [] #list of occupations
+        self.dob = ''  # Date of birth
+        self.dod = ''  # Date of death
+        self.dobprecision = 11  # date precision for birth
+        self.dodprecision = 11  # date precision for death
+        self.occupation = []  # list of occupations
         self.instanceof = None
         self.wditem = ''
         self.disambig = False
@@ -94,7 +78,7 @@ class Person(object):
         self.sex = None
         self.wdexists = False
         self.link = None
-        self.comment = None
+        self.comment = ''
 
     def personPrint(self):
         pywikibot.output('Link:%s' % self.link)
@@ -248,16 +232,6 @@ class BasicBot(
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
-    """
-    An incomplete sample bot.
-
-    @ivar summary_key: Edit summary message key. The message that should be
-        used is placed on /i18n subdirectory. The file containing these
-        messages should have the same name as the caller script (i.e. basic.py
-        in this case). Use summary_key to set a default edit summary message.
-
-    @type summary_key: str
-    """
 
     summary_key = 'basic-changing'
 
@@ -383,29 +357,7 @@ class BasicBot(
                 reflinks.append(refs)
             self.resetCounters()
 
-        """
-            count = 0
-            for p,t in self.genpages(text,ns=2):
-                count += 1
-                if count <= int(self.opt.skip): 
-                    continue
-                if count > int(self.opt.listscount):
-                    break
-                if self.opt.test:
-                    pywikibot.output(u'[%s][%i]L:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, p.title() ))
-                refs = self.treat(p) 
-                #if self.opt.test:
-                #    pywikibot.output(refs)
-                reflinks.append(refs)
-                self.resetCounters()
-
-        """
-
-        #footer += u'\n\nPrzetworzono ' + str(counter) + u' stron'
-
         outputpage = self.opt.outpage
-
-        #result = self.generateresultspage(reflinks,outputpage,header,footer)
 
     def getData(self,page):
         #get data from page & WD
@@ -463,58 +415,44 @@ class BasicBot(
         return(obj)
 
     def treat(self, page):
-        #treat all links on page
-        if self.opt.renew:
-            linkR = r'\|[ \d]*?\|\| *?\[\[(?P<title>[^\]]*)\]\]( *?\|\|.*?)*\|\| *(?P<description>.*)\|\|[ \t]*(?P<comment>.*)'
-        else:
-            linkR = r'# \[\[(?P<title>[^|\]]*?)(\|.*?)?\]\]\s*?(?P<description>.*)'
         result = []
-
         text = page.text
-
         count = 0
-        for p,t in self.genpages(text,rgx=linkR):
-            count += 1
-            if count > int(self.opt.testcount):
-                break
-            actionCounters['total'] += 1
-            obj = Person()
-            
+
+        obj = Person()
+
+        if self.opt.test:
+            pywikibot.output(u'Treat:[%s][%i][%i]:%s' % \
+               (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), actionCounters['total'], count, page.title() ))
+        if not page.exists():
+            actionCounters['red'] += 1
+        else:
+            actionCounters['blue'] += 1
+        pp = page
+        while pp.isRedirectPage():
+            actionCounters['redirs'] += 1
+            pp = pp.getRedirectTarget()
             if self.opt.test:
-                pywikibot.output(u'Treat:[%s][%i][%i]:%s' % \
-                    (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), actionCounters['total'], count, p.title() ))
-            if not p.exists():
-                actionCounters['red'] += 1
-            else:
-                actionCounters['blue'] += 1
-            pp = p
-            while pp.isRedirectPage():
-                actionCounters['redirs'] += 1
-                pp = pp.getRedirectTarget()
-                if self.opt.test:
-                    pywikibot.output(u'Redirect:[%s]:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pp.title() ))
+                pywikibot.output(u'Redirect:[%s]:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pp.title() ))
 
-            if pp.isDisambig():
-                actionCounters['disambigs'] += 1
-                obj = self.getData(pp)
-                obj.instanceof = '<strona ujednoznaczniająca>'
-                obj.disambig = True
-                obj.title = pp.title()
-                if self.opt.test:
-                    pywikibot.output(u'Disambig:[%s][#%i]:%s' % \
-                        (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),actionCounters['disambigs'], pp.title() ))
+        if pp.isDisambig():
+            actionCounters['disambigs'] += 1
+            obj = self.getData(pp)
+            obj.instanceof = '<strona ujednoznaczniająca>'
+            obj.disambig = True
+            obj.title = pp.title()
+            if self.opt.test:
+                 pywikibot.output(u'Disambig:[%s][#%i]:%s' % \
+                     (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),actionCounters['disambigs'], pp.title() ))
             else:
                 obj = self.getData(pp)
 
 
-            obj.link = p.title()
-            obj.description = t.group('description').strip()
-            if self.opt.renew:
-                obj.comment = t.group('comment').strip()
+        obj.link = page.title()
 
-            if self.opt.object:
-                obj.personPrint()
-            result.append(obj)
+        if self.opt.object:
+            obj.personPrint()
+        result.append(obj)
 
         if self.opt.renew:
             self.generateresultspage(result,page.title(),self.header(),self.footer())
@@ -529,8 +467,7 @@ class BasicBot(
         """
         maxlines = int(self.opt.maxlines)
         finalpage = header
-        #res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
-        #res = sorted(redirlist)
+
         res = redirlist
         itemcount = 0
         if self.opt.test:
@@ -570,9 +507,7 @@ class BasicBot(
             pywikibot.output(outpage.title())
         
         outpage.save(summary=self.opt.summary)
-        #if not outpage.save(finalpage, outpage, self.summary):
-        #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
-        #   success = False
+
         return(success)
 
 def main(*args: Tuple[str, ...]) -> None:
