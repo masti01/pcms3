@@ -7,3 +7,4 @@ cd ~/pw/core
 /home/masti/venvwrapper python3 pwb.py masti/ms-noimage.py -catr:"Pochowani na cmentarzu Bródnowskim w Warszawie" -outpage:"Wikipedysta:MastiBot/Bródnowski" -maxlines:10000 -ns:0 -summary:"Bot uaktualnia tabelę"
 /home/masti/venvwrapper python3 pwb.py masti/ms-noimage.py -catr:"Pochowani na cmentarzu żydowskim na Woli w Warszawie" -outpage:"Wikipedysta:MastiBot/żydowski na Woli" -maxlines:10000 -ns:0 -summary:"Bot uaktualnia tabelę"
 /home/masti/venvwrapper python3 pwb.py masti/ms-noimage.py -cat:"Pochowani na Cmentarzu Rakowickim w Krakowie" -outpage:"Wikipedysta:MastiBot/rakowicki" -maxlines:10000 -ns:0 -summary:"Bot uaktualnia tabelę"
+/home/masti/venvwrapper python3 pwb.py masti/ms-noimage.py -cat:"Pochowani na cmentarzu Salwatorskim w Krakowie" -outpage:"Wikipedysta:MastiBot/salwatorski" -maxlines:10000 -ns:0 -summary:"Bot uaktualnia tabelę"
