@@ -358,7 +358,7 @@ class BasicBot(
             source = page.text
 
         if self.getOption('nodisable'):
-        source = texlib.removeDisabledParts(source)
+            source = textlib.removeDisabledParts(source)
 
         # new version
         if self.getOption('regex'):
