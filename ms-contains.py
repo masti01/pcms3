@@ -55,7 +55,7 @@ from pywikibot.bot import (
 from pywikibot.tools import issue_deprecation_warning
 import re
 import datetime
-import textlib
+from pywikibot import textlib
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -358,7 +358,7 @@ class BasicBot(
             source = page.text
 
         if self.getOption('nodisable'):
-	    source = texlib.removeDisabledParts(source)
+        source = texlib.removeDisabledParts(source)
 
         # new version
         if self.getOption('regex'):
