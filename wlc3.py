@@ -127,7 +127,7 @@ import requests
 import pywikibot
 
 from pywikibot import comms, i18n, pagegenerators, textlib
-from pywikibot import config2 as config
+from pywikibot import config
 
 from pywikibot.bot import ExistingPageBot, SingleSiteBot, suggest_help
 from pywikibot.pagegenerators import (
