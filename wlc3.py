@@ -1694,7 +1694,7 @@ ignorelist = [
     re.compile('.*[\./@]gcatholic\.org/hierarchy/data/bishops'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]gcatholic\.org/hierarchy/data/officials'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]gcatholic\.org/orders'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]fmg\.ac/Projects/MedLands/CENTRAL%20ITALY\.htm'),  # bot rejected on site (masti, Ptjackyll)
+    re.compile('.*[\./@]fmg\.ac/Projects/MedLands'),  # bot rejected on site (masti, Ptjackyll)
 
 ]
 
