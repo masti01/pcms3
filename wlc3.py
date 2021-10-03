@@ -534,13 +534,7 @@ ignorelist = [
     re.compile('.*[\./@]erc24\.com/archives/16292'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]eredivisiestats\.nl/topscorers.php'),  # bot rejected on site (masti)
     re.compile('.*[\./@]esbl\.ee/biograafia'),  # bot rejected on site (masti)
-    re.compile('.*[\./@]ethnologue\.com/country/CF'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/country/CL'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/language/[a-z]{3}'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/subgroups/australian'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/subgroups/b2-1'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/subgroups/germanic'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]ethnologue\.com/subgroups/tangale'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ethnologue\.com'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]euroferroviarios\.net'),  # bot rejected on site (masti)
     re.compile('.*[\./@]europarl\.europa\.eu/meps(/.*)?'),  # links redirected  (masti)
     re.compile('.*[\./@]europe-politique\.eu'),  # bot rejected on site (masti, Elfhelm)
@@ -1695,6 +1689,11 @@ ignorelist = [
     re.compile('.*[\./@]gcatholic\.org/hierarchy/data/officials'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]gcatholic\.org/orders'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]fmg\.ac/Projects/MedLands'),  # bot rejected on site (masti, Ptjackyll)
+    re.compile('.*[\./@]academic\.oup\.com/sysbio/article/61/3/490/1674014'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jstor\.org/stable/25065646'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jstor\.org/stable/10.1086/432631'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jstor\.org/stable/10.1086/521066'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]skiinghistory\.org/history/women%E2%80%99s-ski-jumping-takes-aim-winter-olympics'),   # bot rejected on site (masti, szoltys)
 
 ]
 
