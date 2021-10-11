@@ -116,8 +116,7 @@ class BasicBot(
         if len(self.current_page.text) < 4:
             self.current_page.delete(self.opt.summary,
                                      not self.opt.always,
-                                     self.opt.always,
-                                     quit=True)
+                                     self.opt.always)
 
 
 def main(*args: Tuple[str, ...]) -> None:
