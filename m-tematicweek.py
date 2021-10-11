@@ -192,6 +192,7 @@ class BasicBot(
 
             workpage.text = worktext
             workpage.save(summary=summary)
+        return(True)
 
 
 def main(*args: str) -> None:
