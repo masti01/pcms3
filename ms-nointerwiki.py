@@ -141,6 +141,8 @@ class BasicBot(
 
         success = True
         #outpage = pywikibot.Page(pywikibot.Site(), pagename, ns='Wikiprojekt')
+        if self.opt.test:
+            pywikibot.output("Page: %s" % pagename)
         outpage = pywikibot.Page(pywikibot.Link(pagename))
         outpage.text = finalpage
 

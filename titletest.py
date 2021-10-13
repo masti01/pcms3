@@ -99,6 +99,10 @@ class BasicBot(
         pywikibot.output('Title: %s' % a.title)
         pywikibot.output('NS: %s' % a.namespace)
         pywikibot.output('Site: %s' % a.site)
+        b = pywikibot.Page(a)
+        pywikibot.output('Page Title: %s' % b.title())
+        pywikibot.output('Page NS: %s' % a.namespace)
+        pywikibot.output('Page Site: %s' % a.site)
 
 
 def main(*args: str) -> None:
