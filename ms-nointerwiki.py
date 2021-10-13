@@ -3,8 +3,6 @@
 Creates a list of articles without interwiki
 Call:
     python3 pwb.py masti/ms-nointerwiki.py -catr:"Hasła kanonu polskiej Wikipedii" -outpage:"Wikiprojekt:Polski kanon Wikipedii/bez interwiki" -summary:"Bot aktualizuje listę"
-    python3 pwb.py masti/ms-featured.py -page:"Kategoria:Listy na Medal" -lists -outpage:"Wikipedia:Brakujące listy na medal z innych Wikipedii" -summary:"Bot aktualizuje listę"
-    python3 pwb.py masti/ms-featured.py -page:"Kategoria:Dobre Artykuły" -good -outpage:"Wikipedia:Brakujące dobre artykuły z innych Wikipedii" -summary:"Bot aktualizuje listę"
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
@@ -97,13 +95,7 @@ class BasicBot(
         'outpage': u'User:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # print testoutput
-        'test2': False,  # print testoutput
-        'test3': False,  # print testoutput
-        'test4': False,  # print testoutput
-        'test5': False,  # print testoutput
-        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-        'good': False,  # work on good articles
-        'lists': False,  # work on featured lists
+
     }
 
     def run(self):
