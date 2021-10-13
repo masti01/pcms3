@@ -95,6 +95,7 @@ class BasicBot(
         'outpage': u'User:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # print testoutput
+        'progress': False,  # report progress
 
     }
 
@@ -106,7 +107,7 @@ class BasicBot(
         marked = 0
         for p in self.generator:
             count += 1
-            if self.opt.test:
+            if self.opt.test or self.opt.progress:
                 pywikibot.output(u'[%s] [%i/%i] Treating: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
             if self.treat(p):
                 marked += 1
