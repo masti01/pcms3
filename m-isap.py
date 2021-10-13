@@ -88,6 +88,7 @@ class BasicBot(
     """
 
     summary_key = 'basic-changing'
+    WUs = {}  # dict to keep info on processed templates
 
     update_options = {
         'replace': False,  # delete old text and write the new text
@@ -119,6 +120,8 @@ class BasicBot(
         for tr in self.toReplaceIDs(docNumber):
             repl.append(self.replEncode(tr))
             repl.append(self.replEncode(tr, labels=True))
+        if self.opt.test:
+            pywikibot.output(repl)
         if len(repl):
             return (repl)
         else:
@@ -233,7 +236,7 @@ class BasicBot(
     def fixPage(self, page):
         # get page, do replacements, save
         if self.getOption('test'):
-            pywikibot.output('Fixing page: %s' % page.title(asLink=True))
+            pywikibot.output('Fixing page: %s' % page.title(as_link=True))
         text = page.text
         replCount = 0
         for k in self.WUs.keys():
@@ -288,37 +291,40 @@ class BasicBot(
 
         if self.getOption('test'):
             pywikibot.output('toReplace:%s' % self.WUs)
+            pywikibot.output('toReplace LEN:%s' % len(self.WUs))
 
-        # get pages transcluding {{Dziennik Ustaw}}
-        duTemplatePage = pywikibot.Page(pywikibot.Site(), 'Dziennik Ustaw', ns=10)
-        count = 0
-        rpages = 0  # fixed pages count
-        rcount = 0  # replacements done
-        for du in duTemplatePage.getReferences(only_template_inclusion=True, namespaces=0):
-            count += 1
-            if count > int(self.getOption('maxlines')):
-                break
-            if self.getOption('test'):
-                pywikibot.output(
-                    '[%s] Page (%i):%s' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, du.title()))
-            # run replacements
-            rc = self.fixPage(du)  # count pages and replacements made
-            if rc:
-                rpages += 1
-                rcount += rc
+        if len(self.WUs):
+            # get pages transcluding {{Dziennik Ustaw}}
+            duTemplatePage = pywikibot.Page(pywikibot.Site(), 'Dziennik Ustaw', ns=10)
+            count = 0
+            rpages = 0  # fixed pages count
+            rcount = 0  # replacements done
+            for du in duTemplatePage.getReferences(only_template_inclusion=True, namespaces=0):
+                count += 1
+                if count > int(self.getOption('maxlines')):
+                    break
                 if self.getOption('test'):
-                    # pywikibot.output('Fixpages WUs:%s' % self.WUs)
-                    pywikibot.output('Fixpages WUs:%s' % du.title())
-        if self.getOption('test'):
-            pywikibot.output('[%s] %i replacements on %i pages after processing %i pages.' % (
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S"), rcount, rpages, count - 1))
-        # generate log
-        # cleanup
-        self.cleanup(page)
-        self.logUpdate()
-        # page.text = header
-        # page.save(summary='Bot czyści stronę po zakończeniu działania (isap)')
-
+                    pywikibot.output(
+                        '[%s] Page (%i):%s' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), count, du.title()))
+                # run replacements
+                rc = self.fixPage(du)  # count pages and replacements made
+                if rc:
+                    rpages += 1
+                    rcount += rc
+                    if self.getOption('test'):
+                        # pywikibot.output('Fixpages WUs:%s' % self.WUs)
+                        pywikibot.output('Fixpages WUs:%s' % du.title())
+            if self.getOption('test'):
+                pywikibot.output('[%s] %i replacements on %i pages after processing %i pages.' % (
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"), rcount, rpages, count - 1))
+            # generate log
+            # cleanup
+            self.cleanup(page)
+            self.logUpdate()
+            # page.text = header
+            # page.save(summary='Bot czyści stronę po zakończeniu działania (isap)')
+        else:
+            pywikibot.output('*** Nothing to do ***')
         return
 
     def cleanup(self, page):
