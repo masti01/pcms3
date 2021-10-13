@@ -116,7 +116,7 @@ class BasicBot(
                 if self.getOption('test'):
                     pywikibot.output(u'[%s] [%i/%i] Marking: %s' % (
                     datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
-                result.append(p.title(asLink=True))
+                result.append(p.title(as_link=True))
 
         header = 'Artykuły [[Wikiprojekt:Polski kanon Wikipedii|polskiego kanonu Wikipedii]] bez żadnych odpowiedników w innych Wikipediach\n\n'
         header += 'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]].\n\n'
