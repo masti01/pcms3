@@ -140,11 +140,11 @@ class BasicBot(
         finalpage += footer
 
         success = True
-        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        outpage = pywikibot.Page(pywikibot.Site(), pagename, ns='Wikiprojekt')
         outpage.text = finalpage
 
-        #if self.opt.test:
-        #    pywikibot.output(outpage.title())
+        if self.opt.test:
+            pywikibot.output(outpage.title())
 
         outpage.save(summary=self.opt.summary)
         # if not outpage.save(finalpage, outpage, self.summary):
