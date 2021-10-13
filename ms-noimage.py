@@ -1,10 +1,8 @@
 #!/usr/bin/python
 """
-An incomplete sample script.
-
-This is not a complete bot; rather, it is a template from which simple
-bots can be made. You can rename it to mybot.py, then edit it in
-whatever way you want.
+This bot lists pages without images
+Call:
+    python pwb.py masti/ms-noimage.py -catr:Sportowcy -outpage:"Wikipedysta:Szoltys/skoczkowie bez zdjęć" -maxlines:10000 -ns:0 -summary:"Bot uaktualnia tabelę"
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
@@ -48,7 +46,6 @@ cannot be set by settings file:
 #
 import pywikibot
 from pywikibot import pagegenerators
-from pywikibot.backports import Tuple
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
@@ -92,15 +89,15 @@ class BasicBot(
         'summary': None,  # your own bot summary
         'text': 'Test',  # add this text from option. 'Test' is default
         'top': False,  # append text on top of the page
-        'outpage': u'User:mastiBot/test',  # default output page
+        'outpage': 'User:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # print testoutput
         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
     }
 
     def run(self):
-        header = u"Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n"
-        header += u"Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n"
+        header = 'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n'
+        header += 'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
 
         reflinks = []  # initiate list
         counter = 0
@@ -108,19 +105,19 @@ class BasicBot(
         for tpage in self.generator:
             counter += 1
             if self.opt.test:
-                pywikibot.output(u'Treating #%i (%i marked): %s' % (counter, marked, tpage.title()))
+                pywikibot.output('Treating #%i (%i marked): %s' % (counter, marked, tpage.title()))
             refs = self.treat(tpage)  # get (name)
             # if self.opt.test:
-            # pywikibot.output(u'%s' % refs)
+            # pywikibot.output('%s' % refs)
             if refs:
                 reflinks.append(tpage.title(as_link=True))
                 marked += 1
 
-        footer = u'\n\nPrzetworzono ' + str(counter) + u' stron'
+        footer = '\n\nPrzetworzono ' + str(counter) + ' stron'
 
         outputpage = self.opt.outpage
 
-        result = self.generateresultspage(reflinks, outputpage, header, footer)
+        return self.generateresultspage(reflinks, outputpage, header, footer)
 
     def treat(self, page):
         # search for imagelinks in page
@@ -133,16 +130,16 @@ class BasicBot(
                 found = True
                 break
         if found:
-            return (None)
+            return None
         else:
-            return (page.title)
+            return page.title
 
     def excludedImage(self, title):
         exclusions = ('flag', 'map', 'stamp', 'pictogram', 'ensign', 'medal', 'logo')
         for e in exclusions:
             if e in title.lower():
-                return (True)
-        return (False)
+                return True
+        return False
 
     def generateresultspage(self, redirlist, pagename, header, footer):
         """
@@ -153,11 +150,11 @@ class BasicBot(
         maxlines = int(self.opt.maxlines)
         finalpage = header
         if self.opt.test:
-            pywikibot.output(u'GENERATING RESULTS')
+            pywikibot.output('GENERATING RESULTS')
         for p in redirlist:
             if self.opt.test:
                 pywikibot.output(p)
-            finalpage += u'\n# ' + p
+            finalpage += '\n# ' + p
 
         finalpage += footer
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
@@ -166,10 +163,10 @@ class BasicBot(
             pywikibot.output(outpage.title())
 
         outpage.save(summary=self.opt.summary)
-        return (True)
+        return
 
 
-def main(*args: Tuple[str, ...]) -> None:
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
