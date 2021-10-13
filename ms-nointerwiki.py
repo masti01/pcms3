@@ -102,20 +102,16 @@ class BasicBot(
         """TEST"""
         result = []
 
-        outputpage = self.getOption('outpage')
-        # pywikibot.output(u'OUTPUTPAGE:%s' % outputpage)
         count = 0
         marked = 0
         for p in self.generator:
             count += 1
-            if self.getOption('test'):
-                pywikibot.output(u'[%s] [%i/%i] Treating: %s' % (
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
+            if self.opt.test:
+                pywikibot.output(u'[%s] [%i/%i] Treating: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
             if self.treat(p):
                 marked += 1
-                if self.getOption('test'):
-                    pywikibot.output(u'[%s] [%i/%i] Marking: %s' % (
-                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
+                if self.opt.test:
+                    pywikibot.output(u'[%s] [%i/%i] Marking: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
                 result.append(p.title(as_link=True))
 
         header = 'Artykuły [[Wikiprojekt:Polski kanon Wikipedii|polskiego kanonu Wikipedii]] bez żadnych odpowiedników w innych Wikipediach\n\n'
@@ -125,7 +121,7 @@ class BasicBot(
         header += 'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
         footer = '\n\nPrzetworzono stron:' + str(count)
 
-        self.generateresultspage(result, self.getOption('outpage'), header, footer)
+        self.generateresultspage(result, self.opt.outpage, header, footer)
         return
 
     def generateresultspage(self, redirlist, pagename, header, footer):
@@ -146,37 +142,37 @@ class BasicBot(
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
 
-        if self.getOption('test'):
-            pywikibot.output(outpage.title())
+        #if self.opt.test:
+        #    pywikibot.output(outpage.title())
 
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         # if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
-        return (success)
+        return success
 
     def checkInterwiki(self, interwikis, lang):
         """Check if there are interwikis except lang"""
         for iw in interwikis:
             if iw.endswith('wiki') and iw != lang:
-                return (False)
-        return (True)
+                return False
+        return True
 
     def treat(self, page):
         #
         try:
             wd = pywikibot.ItemPage.fromPage(page)
             wdcontent = wd.get()
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(wdcontent['sitelinks'].keys())
         except pywikibot.NoPage:
             pywikibot.output('WikiData page for %s do not exists' % page.title(asLink=True))
-            return (None)
+            return None
         # except NotImplementedError:
         #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(asLink=True))
         #    return(None)
 
-        return (self.checkInterwiki(wdcontent['sitelinks'].keys(), 'plwiki'))
+        return self.checkInterwiki(wdcontent['sitelinks'].keys(), 'plwiki')
 
 
 def main(*args: str) -> None:
