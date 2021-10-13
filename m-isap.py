@@ -1,132 +1,105 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 """
-An incomplete sample script by masti for creating statistics/listings pages
-
 Usage:
 python pwb.py masti/m-isap.py -page:"Wikipedysta:MastiBot/DU" -summary:"Bot poprawia odwołania do ustawy" -outpage:'Wikipedysta:MastiBot/DU/log' -pt:0
+
 Page should contain a list of {{Dziennik Ustaw}} linking to a new wersion of law.
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
 
+
 The following parameters are supported:
 
-&params;
--always           If used, the bot won't ask if it should file the message
-                  onto user talk page.   
--outpage          Results page; otherwise "Wikipedysta:mastiBot/test" is used
--maxlines         Max number of entries before new subpage is created; default 1000
+-always           The bot won't ask for confirmation when putting a page
+
 -text:            Use this text to be added; otherwise 'Test' is used
--replace:         Dont add text but replace it
+
+-replace:         Don't add text but replace it
+
 -top              Place additional text on top of the page
+
 -summary:         Set the action summary message for the edit.
--negative:        mark if text not in page
+
+All settings can be made either by giving option with the command line
+or with a settings file which is scripts.ini by default. If you don't
+want the default values you can add any option you want to change to
+that settings file below the [basic] section like:
+
+    [basic] ; inline comments starts with colon
+    # This is a commend line. Assignments may be done with '=' or ':'
+    text: A text with line break and
+        continuing on next line to be put
+    replace: yes ; yes/no, on/off, true/false and 1/0 is also valid
+    summary = Bot: My first test edit with pywikibot
+
+Every script has its own section with the script name as header.
+
+In addition the following generators and filters are supported but
+cannot be set by settings file:
+
+&params;
 """
 #
-# (C) Pywikibot team, 2006-2016
+# (C) Pywikibot team, 2006-2021
 #
 # Distributed under the terms of the MIT license.
 #
-from __future__ import absolute_import, unicode_literals
-from bs4 import BeautifulSoup
-# import BeautifulSoup
-import requests
-
-#
-
 import pywikibot
 from pywikibot import pagegenerators
+from pywikibot.bot import (
+    AutomaticTWSummaryBot,
+    ConfigParserBot,
+    ExistingPageBot,
+    NoRedirectPageBot,
+    SingleSiteBot,
+)
+from bs4 import BeautifulSoup
+import urllib
 import re
 from datetime import datetime
 
-from pywikibot.bot import (
-    SingleSiteBot, ExistingPageBot, NoRedirectPageBot, AutomaticTWSummaryBot)
-from pywikibot.tools import issue_deprecation_warning
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
-docuReplacements = {
-    '&params;': pagegenerators.parameterHelp
-}
+docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
+    ConfigParserBot,  # A bot which reads options from scripts.ini setting file
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
+
     """
     An incomplete sample bot.
 
-    @ivar summary_key: Edit summary message key. The message that should be used
-        is placed on /i18n subdirectory. The file containing these messages
-        should have the same name as the caller script (i.e. basic.py in this
-        case). Use summary_key to set a default edit summary message.
-    @type summary_key: str
+    :ivar summary_key: Edit summary message key. The message that should be
+        used is placed on /i18n subdirectory. The file containing these
+        messages should have the same name as the caller script (i.e. basic.py
+        in this case). Use summary_key to set a default edit summary message.
+
+    :type summary_key: str
     """
 
     summary_key = 'basic-changing'
-    WUs = {}  # dict to keep info on processed templates
 
-    def __init__(self, generator, **kwargs):
-        """
-        Constructor.
-
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.availableOptions.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test',  # default output page
-            'maxlines': 10000,  # default number of entries per page
-            'test': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-            'id': '20190000506',  # starting isap page id - for test only
-        })
-
-        # call constructor of the super class
-        super(BasicBot, self).__init__(site=True, **kwargs)
-
-        # handle old -dry paramter
-        self._handle_dry_param(**kwargs)
-
-        # assign the generator to the bot
-        self.generator = generator
-
-    def _handle_dry_param(self, **kwargs):
-        """
-        Read the dry parameter and set the simulate variable instead.
-
-        This is a private method. It prints a deprecation warning for old
-        -dry paramter and sets the global simulate variable and informs
-        the user about this setting.
-
-        The constuctor of the super class ignores it because it is not
-        part of self.availableOptions.
-
-        @note: You should ommit this method in your own application.
-
-        @keyword dry: deprecated option to prevent changes on live wiki.
-            Use -simulate instead.
-        @type dry: bool
-        """
-        if 'dry' in kwargs:
-            issue_deprecation_warning('dry argument',
-                                      'pywikibot.config.simulate', 1)
-            # use simulate variable instead
-            pywikibot.config.simulate = True
-            pywikibot.output('config.simulate was set to True')
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'outpage': u'User:mastiBot/test',  # default output page
+        'maxlines': 10000,  # default number of entries per page
+        'test': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'id': '20190000506',  # starting isap page id - for test only
+    }
 
     def run(self):
         """TEST"""
@@ -184,15 +157,14 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.getOption('test'):
             pywikibot.output('getInitialWebPage:%s' % quote_page)
-        webpage = requests.get(quote_page)
-        if webpage.status_code != 200:
-            pywikibot.output("NO WEBPAGE")
-            webpage.raise_for_status()
+        webpage = urllib.urlopen(quote_page)
+        if webpage:
+            pywikibot.output("webpage: %s" % webpage)
         else:
-            pywikibot.output("webpage: %s" % webpage.text)
-        # if self.getOption('test'):
-        #     pywikibot.output('webpage:%s' % webpage.text)
-        soup = BeautifulSoup(webpage.text, 'html.parser')
+            pywikibot.output("NO WEBPAGE")
+        if self.getOption('test'):
+            pywikibot.output('webpage:%s' % webpage)
+        soup = BeautifulSoup(webpage, 'html.parser')
         if self.getOption('test'):
             pywikibot.output('Soup:%s' % soup)
             pywikibot.output('Web Page:%s' % quote_page)
@@ -210,8 +182,8 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.getOption('test'):
             pywikibot.output('getting target page:%s' % quote_page)
-        webpage = requests.get(quote_page)
-        soup = BeautifulSoup(webpage.text, 'html.parser')
+        webpage = urllib.urlopen(quote_page)
+        soup = BeautifulSoup(webpage, 'html.parser')
         idR = re.compile(r'\/isap\.nsf\/DocDetails\.xsp\?id=WDU(?P<id>.*)')
         first = True
         for t in soup.find(id="collapse_14").find_all('a'):
@@ -308,7 +280,7 @@ class BasicBot(
             self.WUs[tr]['newTemplate'] = self.newTemplate(tr)
             try:
                 self.WUs[tr]['toReplace'] = self.createReplaceList(self.getInitialWebPage(tr))
-            except requests.exceptions.HTTPError:
+            except urllib.HTTPError:
                 self.WUs[tr]['toReplace'] = None
                 self.WUs[tr]['error'] = 'Brak strony w systemie isap'
             if not self.WUs[tr]['error'] and not self.WUs[tr]['toReplace']:
@@ -341,7 +313,7 @@ class BasicBot(
             pywikibot.output('[%s] %i replacements on %i pages after processing %i pages.' % (
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"), rcount, rpages, count - 1))
         # generate log
-        # cleanup 
+        # cleanup
         self.cleanup(page)
         self.logUpdate()
         # page.text = header
@@ -398,14 +370,13 @@ class BasicBot(
         return
 
 
-def main(*args):
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
-    @type args: list of unicode
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -414,16 +385,13 @@ def main(*args):
     # This factory is responsible for processing command line arguments
     # that are also used by other scripts and that determine on which pages
     # to work on.
-    genFactory = pagegenerators.GeneratorFactory()
+    gen_factory = pagegenerators.GeneratorFactory()
 
-    # Parse command line arguments
+    # Process pagegenerators arguments
+    local_args = gen_factory.handle_args(local_args)
+
+    # Parse your own command line arguments
     for arg in local_args:
-
-        # Catch the pagegenerators options
-        if genFactory.handleArg(arg):
-            continue  # nothing to do here
-
-        # Now pick up your own options
         arg, sep, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text', 'outpage', 'maxlines', 'id'):
@@ -431,22 +399,19 @@ def main(*args):
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
         # take the remaining options as booleans.
-        # You will get a hint if they aren't pre-definded in your bot class
+        # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-    gen = genFactory.getCombinedGenerator()
+    # The preloading option is responsible for downloading multiple
+    # pages from the wiki simultaneously.
+    gen = gen_factory.getCombinedGenerator(preload=True)
     if gen:
-        # The preloading generator is responsible for downloading multiple
-        # pages from the wiki simultaneously.
-        gen = pagegenerators.PreloadingGenerator(gen)
         # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
+        bot = BasicBot(generator=gen, **options)
         bot.run()  # guess what it does
-        return True
     else:
         pywikibot.bot.suggest_help(missing_generator=True)
-        return False
 
 
 if __name__ == '__main__':
