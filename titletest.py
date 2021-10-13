@@ -1,8 +1,10 @@
 #!/usr/bin/python
 """
-Creates a list of articles without interwiki
-Call:
-    python3 pwb.py masti/ms-nointerwiki.py -catr:"Hasła kanonu polskiej Wikipedii" -outpage:"Wikiprojekt:Polski kanon Wikipedii/bez interwiki" -summary:"Bot aktualizuje listę"
+An incomplete sample script.
+
+This is not a complete bot; rather, it is a template from which simple
+bots can be made. You can rename it to mybot.py, then edit it in
+whatever way you want.
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
@@ -41,7 +43,6 @@ cannot be set by settings file:
 """
 #
 # (C) Pywikibot team, 2006-2021
-# (C) masti, 2021
 #
 # Distributed under the terms of the MIT license.
 #
@@ -54,8 +55,6 @@ from pywikibot.bot import (
     NoRedirectPageBot,
     SingleSiteBot,
 )
-import datetime
-import re
 
 
 # This is required for the text that is shown when you run this script
@@ -92,89 +91,14 @@ class BasicBot(
         'summary': None,  # your own bot summary
         'text': 'Test',  # add this text from option. 'Test' is default
         'top': False,  # append text on top of the page
-        'outpage': u'User:mastiBot/test',  # default output page
-        'maxlines': 1000,  # default number of entries per page
-        'test': False,  # print testoutput
-        'progress': False,  # report progress
-
     }
 
-    def run(self):
-        """TEST"""
-        result = []
-
-        count = 0
-        marked = 0
-        for p in self.generator:
-            count += 1
-            if self.opt.test or self.opt.progress:
-                pywikibot.output(u'[%s] [%i/%i] Treating: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
-            if self.treat(p):
-                marked += 1
-                if self.opt.test:
-                    pywikibot.output(u'[%s] [%i/%i] Marking: %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), marked, count, p.title()))
-                result.append(p.title(as_link=True))
-
-        header = 'Artykuły [[Wikiprojekt:Polski kanon Wikipedii|polskiego kanonu Wikipedii]] bez żadnych odpowiedników w innych Wikipediach\n\n'
-        header += 'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]].\n\n'
-        header += "Ostatnia aktualizacja: '''" + datetime.datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S (CEST)") + "'''.\n\n"
-        header += 'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
-        footer = '\n\nPrzetworzono stron:' + str(count)
-
-        self.generateresultspage(result, self.opt.outpage, header, footer)
-        return
-
-    def generateresultspage(self, redirlist, pagename, header, footer):
-        """
-        Generates results page from redirlist
-        Starting with header, ending with footer
-        Output page is pagename
-        """
-        finalpage = header
-        res = sorted(redirlist)
-        itemcount = 0
-        for i in res:
-            finalpage += u'\n# %s' % i
-
-        finalpage += footer
-
-        success = True
-        #outpage = pywikibot.Page(pywikibot.Site(), pagename, ns='Wikiprojekt')
-        outpage = pywikibot.Page(pywikibot.Link(pagename))
-        outpage.text = finalpage
-
-        if self.opt.test:
-            pywikibot.output(outpage.title())
-
-        outpage.save(summary=self.opt.summary)
-        # if not outpage.save(finalpage, outpage, self.summary):
-        #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
-        #   success = False
-        return success
-
-    def checkInterwiki(self, interwikis, lang):
-        """Check if there are interwikis except lang"""
-        for iw in interwikis:
-            if iw.endswith('wiki') and iw != lang:
-                return False
-        return True
-
-    def treat(self, page):
-        #
-        try:
-            wd = pywikibot.ItemPage.fromPage(page)
-            wdcontent = wd.get()
-            if self.opt.test:
-                pywikibot.output(wdcontent['sitelinks'].keys())
-        except pywikibot.NoPage:
-            pywikibot.output('WikiData page for %s do not exists' % page.title(asLink=True))
-            return None
-        # except NotImplementedError:
-        #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(asLink=True))
-        #    return(None)
-
-        return self.checkInterwiki(wdcontent['sitelinks'].keys(), 'plwiki')
+    def treat_page(self) -> None:
+        """Load the given page, do some changes, and save it."""
+        a = pywikibot.Link(self.opt.text)
+        pywikibot.output('Title: %s' % a.title)
+        pywikibot.output('NS: %s' % a.namespace)
+        pywikibot.output('Site: %s' % a.site)
 
 
 def main(*args: str) -> None:
