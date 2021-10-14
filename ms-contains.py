@@ -1,10 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-An incomplete sample script by masti for creating statistics/listings pages
-This is not a complete bot; rather, it is a template from which simple
-bots can be made. You can rename it to mybot.py, then edit it in
-whatever way you want.
+
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
 Call:
@@ -99,7 +96,7 @@ class BasicBot(
             'summary': None,  # your own bot summary
             'text': 'Test',  #default search string 'Test' is default
             'top': False,  # append text on top of the page
-            'outpage': u'Wikipedysta:mastiBot/test', #default output page
+            'outpage':'Wikipedysta:mastiBot/test', #default output page
             'maxlines': 1000, #default number of entries per page
             'negative': False, #if True mark pages that DO NOT contain search string
             'test': False, #switch on test functionality
@@ -154,24 +151,24 @@ class BasicBot(
 
     def run(self):
 
-        if not self.getOption('append'):
-            if self.getOption('table'):
-                header = u"Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''."
-                header += u"\n\nWszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]]."
-                if self.getOption('regex'):
-                    header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.getOption('text')
-                header +=u'\n{| class="wikitable sortable" style="font-size:85%;"'
-                header +=u'\n|-'
-                header +=u'\n!Nr'
-                header +=u'\n!Artykuł'
-                header +=u'\n!Wyniki'
+        if not self.opt.append:
+            if self.opt.table:
+                header = "Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''."
+                header += ""\n\nWszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]]."
+                if self.opt.regex:
+                    header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.opt.text
+                header +='\n{| class="wikitable sortable" style="font-size:85%;"'
+                header +='\n|-'
+                header +='\n!Nr'
+                header +='\n!Artykuł'
+                header +='\n!Wyniki'
             else:
-                header = u"Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''.\n\n"
-                header += u"Wszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]].\n\n"
-                if self.getOption('regex'):
-                    header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.getOption('text')
+                header = "Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''.\n\n"
+                header += "Wszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]].\n\n"
+                if self.opt.regex:
+                    header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.opt.text
         else:
-            header = u'\n\n'
+            header = '\n\n'
         
         reflinks = [] #initiate list
         pagecounter = 0
@@ -179,7 +176,7 @@ class BasicBot(
         marked = 0
         for page in self.generator:
             pagecounter += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output(u'[%s] Treating #%i (marked:%i, duplicates:%i): %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecounter, marked, duplicates, page.title()))
             if page.title() in reflinks:
                 duplicates += 1
@@ -188,18 +185,18 @@ class BasicBot(
             if refs:
                 if not refs in reflinks:
                     #test
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.output(refs)
                     reflinks.append(refs)
                     marked += 1
                 else:
                     #test
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.output(u'Already marked')
 
-        footer = u'\n\nPrzetworzono ' + str(pagecounter) + u' stron.'
+        footer ='\n\nPrzetworzono ' + str(pagecounter) +' stron.'
 
-        outputpage = self.getOption('outpage')
+        outputpage = self.opt.outpage
 
         result = self.generateresultspage(reflinks,outputpage,header,footer)
         
@@ -211,62 +208,62 @@ class BasicBot(
         Output page is pagename + pagenumber split at maxlines rows
         """
         #finalpage = header
-        finalpage = u''
-        if self.getOption('section'):
-            finalpage += u'== ' + self.getOption('section') + u' ==\n'
+        finalpage =''
+        if self.opt.section:
+            finalpage +='== ' + self.opt.section +' ==\n'
         #res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
         res = sorted(redirlist)
         itemcount = 0
         totalcount = len(res)
         pagecount = 0
 
-        if self.getOption('count'):
+        if self.opt.count:
             self.savepart(finalpage,pagename,pagecount,header,self.generateprefooter(pagename,totalcount,pagecount)+footer)
             return(1)
         
         for i in res:
-            if self.getOption('regex') and not self.getOption('negative'):
+            if self.opt.regex and not self.opt.negative:
                 title, link = i
             else:
                 title = i
-            #finalpage += u'\n# [[' + title + u']]'
-            linenumber = str(pagecount * int(self.getOption('maxlines')) + itemcount + 1) + u'.'
-            if self.getOption('table'):
-                finalpage += u'\n|-\n| %s || ' % linenumber
-                if self.getOption('edit'):
+            #finalpage +='\n# [[' + title +']]'
+            linenumber = str(pagecount * int(self.opt.maxlines) + itemcount + 1) +'.'
+            if self.opt.table:
+                finalpage +='\n|-\n| %s || ' % linenumber
+                if self.opt.edit:
                     nakedtitle = re.sub(r'\[\[|\]\]',u'',title)
-                    finalpage += u'{{Edytuj|%s|%s}}' % ( nakedtitle,nakedtitle)
+                    finalpage +='{{Edytuj|%s|%s}}' % ( nakedtitle,nakedtitle)
                 else:
                     finalpage += re.sub(r'\[\[',u'[[:',title, count=1)
-                finalpage += u' || '
+                finalpage +=' || '
             else:
-                if self.getOption('edit'):
+                if self.opt.edit:
                     nakedtitle = re.sub(r'\[\[|\]\]',u'',title)
-                    finalpage += u'\n:' + linenumber + ' {{Edytuj|' + nakedtitle + u'|' + nakedtitle + u'}}' 
+                    finalpage +='\n:' + linenumber + ' {{Edytuj|' + nakedtitle +'|' + nakedtitle +'}}' 
                 else:
-                    finalpage += u'\n:' + linenumber + u' ' + re.sub(r'\[\[',u'[[:',title, count=1)
-            if self.getOption('regex') and self.getOption('cite') and not self.getOption('negative'):
-                if self.getOption('multi'):
+                    finalpage +='\n:' + linenumber +' ' + re.sub(r'\[\[',u'[[:',title, count=1)
+            if self.opt.regex and self.opt.cite and not self.opt.negative:
+                if self.opt.multi:
                     #results are list
-                    if self.getOption('nowiki'):
-                        if self.getOption('table'):
+                    if self.opt.nowiki:
+                        if self.opt.table:
                             for r in link:
-                                finalpage += u'<nowiki>%s</nowiki><br />' % r
+                                finalpage +='<nowiki>%s</nowiki><br />' % r
                         else:
-                            finalpage += u' – <nowiki>' + ', '.join(link) + u'</nowiki><br />'
+                            finalpage +=' – <nowiki>' + ', '.join(link) +'</nowiki><br />'
                 else:
                     #results are single string
                     #TODO convert all results to lists
-                    if self.getOption('nowiki'):
-                        finalpage += u' – <nowiki>' + link + u'</nowiki>' if not self.getOption('table') else u'<nowiki>' + link + u'</nowiki>'
+                    if self.opt.nowiki:
+                        finalpage +=' – <nowiki>' + link +'</nowiki>' if not self.opt.table else'<nowiki>' + link +'</nowiki>'
                     else:
-                        finalpage += u' – ' + link if not self.getOption('table') else link
+                        finalpage +=' – ' + link if not self.opt.table else link
             itemcount += 1
 
-            if itemcount > int(self.getOption('maxlines'))-1:
+            if itemcount > int(self.opt.maxlines)-1:
                 pywikibot.output(u'***** saving partial results *****')
                 self.savepart(finalpage,pagename,pagecount,header,self.generateprefooter(pagename,totalcount,pagecount)+footer)
-                finalpage = u''
+                finalpage =''
                 itemcount = 0
                 pagecount += 1
 
@@ -280,61 +277,61 @@ class BasicBot(
     def generateprefooter(self,pagename, totalcount, pagecount):
         # generate text to appear before footer
 
-        if self.getOption('test'):
-            pywikibot.output(u'***** GENERATING PREFOOTER page '+ pagename + u' ' + str(pagecount) + u' *****')
-        result = u''
+        if self.opt.test:
+            pywikibot.output(u'***** GENERATING PREFOOTER page '+ pagename +' ' + str(pagecount) +' *****')
+        result =''
 
-        if self.getOption('table'):
-            result += u'\n|}'
+        if self.opt.table:
+            result +='\n|}'
         # if no results found to be reported
         if not totalcount:
-            result += u"\n\n'''Brak wyników'''\n\n"
-        elif self.getOption('count'):
-            result += u"\n\n'''Liczba stron spełniających warunki: " + str(totalcount) + u"'''"
+            result += "\n\n'''Brak wyników'''\n\n"
+        elif self.opt.count:
+            result += "\n\n'''Liczba stron spełniających warunki: " + str(totalcount) + "'''"
         else:
-            result += u"\n\n"
+            result += "\n\n"
 
         return(result)
 
     def navigation(self,pagename, pagecount):
         #generate navigation template
         if pagecount > 1:
-            result = u'\n\n{{User:mastiBot/Nawigacja|' + pagename + u' ' + str(pagecount-1) + u'|' + pagename + u' ' + str(pagecount+1) + u'}}\n\n'
+            result ='\n\n{{User:mastiBot/Nawigacja|' + pagename +' ' + str(pagecount-1) +'|' + pagename +' ' + str(pagecount+1) +'}}\n\n'
         elif pagecount:
-            result = u'\n\n{{User:mastiBot/Nawigacja|' + pagename + u'|' + pagename + u' ' + str(pagecount+1) + u'}}\n\n'
+            result ='\n\n{{User:mastiBot/Nawigacja|' + pagename +'|' + pagename +' ' + str(pagecount+1) +'}}\n\n'
         else:
-            result = u'\n\n{{User:mastiBot/Nawigacja|' + pagename + u'|' + pagename + u' ' + str(pagecount+1) + u'}}\n\n'
+            result ='\n\n{{User:mastiBot/Nawigacja|' + pagename +'|' + pagename +' ' + str(pagecount+1) +'}}\n\n'
         return(result)
         
 
     def savepart(self, pagepart, pagename, pagecount, header, footer):
         # generate resulting page
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output('***** SAVING PAGE #%i' % pagecount) 
             #pywikibot.output(finalpage)
 
-        if self.getOption('navi'):
+        if self.opt.navi:
             finalpage = self.navigation(pagename,pagecount) + header + pagepart + footer + self.navigation(pagename,pagecount) 
         else:
             finalpage = header + pagepart + footer
 
         if pagecount: 
-            numberedpage = pagename + u' ' + str(pagecount)
+            numberedpage = pagename +' ' + str(pagecount)
         else:
             numberedpage = pagename
 
         outpage = pywikibot.Page(pywikibot.Site(), numberedpage)
 
-        if self.getOption('append'):
+        if self.opt.append:
             outpage.text += finalpage
         else:
             outpage.text = finalpage
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(outpage.title())
             pywikibot.output(outpage.text)
         
-        success = outpage.save(summary=self.getOption('summary'))
+        success = outpage.save(summary=self.opt.summary)
         #if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
@@ -345,40 +342,40 @@ class BasicBot(
         Returns page title if param 'text' not in page
         """
 
-        if self.getOption('talk'):
+        if self.opt.talk:
             page = cpage.toggleTalkPage()
         else:
             page = cpage
 
 
         #choose proper source - title or text
-        if self.getOption('title'):
+        if self.opt.title:
             source = page.title()
         else:
             source = page.text
 
-        if self.getOption('nodisable'):
+        if self.opt.nodisable:
             source = textlib.removeDisabledParts(source)
 
         # new version
-        if self.getOption('regex'):
-            if u'?P<result>' in self.getOption('text'):
-                resultR =  self.getOption('text')
+        if self.opt.regex:
+            if'?P<result>' in self.opt.text:
+                resultR =  self.opt.text
             else:
-                resultR = u'(?P<result>' + self.getOption('text') + u')'
-            if self.getOption('flags'):
-                resultR = u'(?' + self.getOption('flags') + u')' + resultR
+                resultR ='(?P<result>' + self.opt.text +')'
+            if self.opt.flags:
+                resultR ='(?' + self.opt.flags +')' + resultR
 
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(resultR)
             resultR = re.compile(resultR)
 
             match = resultR.search(source)
 
-            if not match and self.getOption('negative'):
+            if not match and self.opt.negative:
                 return(cpage.title(asLink=True,forceInterwiki=True, textlink=True))
-            elif match and not self.getOption('negative'):
-                if self.getOption('multi'):
+            elif match and not self.opt.negative:
+                if self.opt.multi:
                     #return all found results
                     resultslist = []
                     for r in re.finditer(resultR,source):
@@ -394,13 +391,13 @@ class BasicBot(
             return(None)
             
         else:  
-            isIn = self.getOption('text') in source
-            if not isIn and self.getOption('negative'):
-                if self.getOption('test'):
+            isIn = self.opt.text in source
+            if not isIn and self.opt.negative:
+                if self.opt.test:
                     pywikibot.output('NEGATIVE:Text not found')
                 return(cpage.title(asLink=True,forceInterwiki=True, textlink=True))
-            if isIn and not self.getOption('negative'):
-                if self.getOption('test'):
+            if isIn and not self.opt.negative:
+                if self.opt.test:
                     pywikibot.output('POSITIVE:Text found')
                 return(cpage.title(asLink=True,forceInterwiki=True, textlink=True))
             return(None)
