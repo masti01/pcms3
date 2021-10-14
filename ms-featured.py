@@ -207,7 +207,7 @@ class BasicBot(
                 pywikibot.output('[%s] checkInterwiki: %s' % (
                 datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), wdcontent['sitelinks'].keys()))
             return (lang in wdcontent['sitelinks'].keys())
-        except pywikibot.NoPage:
+        except pywikibot.NoPageError:
             return (False)
 
     def wikiLangTranslate(self, lang):
