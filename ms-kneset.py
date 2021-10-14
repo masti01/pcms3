@@ -88,7 +88,7 @@ class BasicBot(
             'summary': None,  # your own bot summary
             'text': 'Test',  # add this text from option. 'Test' is default
             'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test',  # default output page
+            'outpage': 'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
             'testprint': False,  # print testoutput
             'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
@@ -122,14 +122,14 @@ class BasicBot(
         for tpage in self.generator:
             licznik += 1
             if self.opt.test:
-                pywikibot.output(u'Treating #%i: %s' % (licznik, tpage.title()))
+                pywikibot.output('Treating #%i: %s' % (licznik, tpage.title()))
             refs = self.treat(tpage)  # get (name, id, creator, lastedit)
             if self.opt.test:
                 pywikibot.output(refs)
             reflinks.append(refs)
 
-        footer = u'\n|}'
-        footer += u'\n\nPrzetworzono ' + str(licznik) + u' stron'
+        footer = '\n|}'
+        footer += '\n\nPrzetworzono ' + str(licznik) + ' stron'
 
         outputpage = self.opt.outpage
 
@@ -147,7 +147,7 @@ class BasicBot(
         res = sorted(redirlist)
         itemcount = 0
         if self.opt.test:
-            pywikibot.output(u'GENERATING RESULTS')
+            pywikibot.output('GENERATING RESULTS')
         for i in res:
 
             if self.opt.test:
@@ -158,29 +158,28 @@ class BasicBot(
                 itemcount += 1
 
                 if ident:
-                    finalpage += u'\n|-\n| ' + str(itemcount) + u' || ' + str(ident) + u' || [[' + title + u']] || '
-                    finalpage += u'[https://www.knesset.gov.il/mk/eng/mk_eng.asp?mk_individual_id_t=' + str(
-                        ident) + u' '
+                    finalpage += '\n|-\n| ' + str(itemcount) + ' || ' + str(ident) + ' || [[' + title + ']] || '
+                    finalpage += '[https://www.knesset.gov.il/mk/eng/mk_eng.asp?mk_individual_id_t=' + str(
+                        ident) + ' '
                     if name:
                         finalpage += name
                     else:
                         finalpage += title
-                    finalpage += u']'
-                    # finalpage += u'{{Kneset|' + str(ident) + u'|name='
+                    finalpage += ']'
+                    # finalpage += '{{Kneset|' + str(ident) + '|name='
                 else:
-                    finalpage += u'\n|-\n| ' + str(itemcount) + u' || ' + u"'''brak'''" + u' || [[' + title + u']] || '
+                    finalpage += '\n|-\n| ' + str(itemcount) + ' || ' + "'''brak'''" + ' || [[' + title + ']] || '
 
-                finalpage += u' || ' + str(size) + u' || [[Wikipedysta:' + creator + u'|' + creator + u']] || ' + str(
+                finalpage += ' || ' + str(size) + ' || [[Wikipedysta:' + creator + '|' + creator + ']] || ' + str(
                     lastedit)
-                finalpage += u' || [[Wikipedysta:' + lasteditor + u'|' + lasteditor + u']] || ' + self.linknumber(title,
-                                                                                                                  refscount) + u'\n'
+                finalpage += ' || [[Wikipedysta:' + lasteditor + '|' + lasteditor + ']] || ' + self.linknumber(title, refscount) + '\n'
 
                 if itemcount > maxlines - 1:
-                    pywikibot.output(u'*** Breaking output loop ***')
+                    pywikibot.output('*** Breaking output loop ***')
                     break
             else:
                 if self.opt.test:
-                    pywikibot.output(u'SKIPPING:%s' % title)
+                    pywikibot.output('SKIPPING:%s' % title)
 
         finalpage += footer
 
@@ -205,20 +204,20 @@ class BasicBot(
         name = None
         sTitle = self.short_title(tpage.title())
         if self.opt.test:
-            pywikibot.output(u'sTitle:%s' % sTitle)
+            pywikibot.output('sTitle:%s' % sTitle)
 
         # check for id & name(optional)
         for t in tpage.templatesWithParams():
             (tTitle, paramList) = t
             # test
             if self.opt.test:
-                pywikibot.output(u'Template:%s' % tTitle)
+                pywikibot.output('Template:%s' % tTitle)
             if tTitle.title().startswith('Szablon:Kneset'):
                 name = None
                 ident = None
                 for p in paramList:
                     if self.opt.test:
-                        pywikibot.output(u'param:%s' % p)
+                        pywikibot.output('param:%s' % p)
                     pnamed, pname, pvalue = self.template_arg(p)
                     if pnamed and pname.startswith('name'):
                         name = pvalue
@@ -226,11 +225,11 @@ class BasicBot(
                         try:
                             ident = int(pvalue)
                             if self.opt.test:
-                                pywikibot.output(u'ident:%s' % ident)
+                                pywikibot.output('ident:%s' % ident)
                         except:
                             ident = 0
                             if self.opt.test:
-                                pywikibot.output(u'ERROR: ident is not integer:%s' % ident)
+                                pywikibot.output('ERROR: ident is not integer:%s' % ident)
 
                 if not pnamed or (pnamed and name == sTitle):
                     break
@@ -241,7 +240,7 @@ class BasicBot(
         timestamp = tpage.oldest_revision.timestamp.strftime('%Y-%m-%d')
         # test
         if self.opt.test:
-            pywikibot.output(u'Creator:%s<<Timestamp %s' % (creator, timestamp))
+            pywikibot.output('Creator:%s<<Timestamp %s' % (creator, timestamp))
 
         # check for last edit
         lastedit = tpage.latest_revision.timestamp.strftime('%Y-%m-%d')
@@ -252,17 +251,17 @@ class BasicBot(
         size = len(tpage.text)
 
         if self.opt.test:
-            pywikibot.output(u'lastedit:%s' % lastedit)
-            pywikibot.output(u'ident:%s' % ident)
-            pywikibot.output(u'refsCount:%s' % refsCount)
-            pywikibot.output(u'lastEditor:%s' % lastEditor)
-            pywikibot.output(u'size:%s' % size)
+            pywikibot.output('lastedit:%s' % lastedit)
+            pywikibot.output('ident:%s' % ident)
+            pywikibot.output('refsCount:%s' % refsCount)
+            pywikibot.output('lastEditor:%s' % lastEditor)
+            pywikibot.output('size:%s' % size)
 
         return ident, tpage.title(), name, creator, lastedit, lastEditor, refsCount, size
 
     def short_title(self, t):
         """ return text without part in parentheses"""
-        if u'(' in t:
+        if '(' in t:
             shR = re.compile(r'(?P<short>.*?) \(')
             match = shR.search(t)
             return match.group("short").strip()
@@ -278,8 +277,8 @@ class BasicBot(
 
     def linknumber(self, t, i):
         if self.opt.test:
-            pywikibot.output('[[Specjalna:Linkujące/' + t + u'|' + str(i) + u']]')
-        return '[[Specjalna:Linkujące/' + t + u'|' + str(i) + u']]'
+            pywikibot.output('[[Specjalna:Linkujące/' + t + '|' + str(i) + ']]')
+        return '[[Specjalna:Linkujące/' + t + '|' + str(i) + ']]'
 
     def template_arg(self, param):
         """
@@ -304,7 +303,7 @@ class BasicBot(
             value = param
         # test
         if self.opt.test:
-            pywikibot.output(u'named:%s:name:%s:value:%s' % (named, name, value))
+            pywikibot.output('named:%s:name:%s:value:%s' % (named, name, value))
         return named, name, value
 
 
