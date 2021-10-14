@@ -98,7 +98,7 @@ class BasicBot(
         counter = 1
         changeCounter = 0
         for page in self.generator:
-            pywikibot.output(u'Processing #%i (%i changed):%s' % (counter, changeCounter, page.title(asLink=True)))
+            pywikibot.output(u'Processing #%i (%i changed):%s' % (counter, changeCounter, page.title(as_link=True)))
             counter += 1
             if self.treat(page):
                 changeCounter += 1
@@ -123,8 +123,8 @@ class BasicBot(
     
         # test printout
         if self.opt.test:
-            pywikibot.output(u'Page: %s' % articlepage.title(asLink=True))
-            pywikibot.output(u'Talk: %s' % page.title(asLink=True))
+            pywikibot.output(u'Page: %s' % articlepage.title(as_link=True))
+            pywikibot.output(u'Talk: %s' % page.title(as_link=True))
     
         # find dead link templates
         # linkR = re.compile(r'\{\{(?P<infobox>([^\]\n\|}]+?infobox))')
