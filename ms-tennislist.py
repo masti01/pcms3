@@ -80,7 +80,7 @@ class BasicBot(
             'summary': None,  # your own bot summary
             'text': 'Test',  # add this text from option. 'Test' is default
             'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test',  # default output page
+            'outpage': 'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
             'testprint': False,  # print testoutput
             'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
@@ -101,55 +101,55 @@ class BasicBot(
         for page in self.generator:
             licznik += 1
             if self.opt.test or self.opt.progress:
-                pywikibot.output(u'Treating #%i: %s' % (licznik, page.title()))
+                pywikibot.output('Treating #%i: %s' % (licznik, page.title()))
             refs = self.treat(page) # get flag code
             if self.opt.test:
                 pywikibot.output(refs)
             reflinks[page.title()] = refs
             if self.opt.test and reflinks[page.title()]['country']:
-                pywikibot.output(u'{{Flaga|%s}} [[%s]]' % (reflinks[page.title()]['country'],page.title()))
+                pywikibot.output('{{Flaga|%s}} [[%s]]' % (reflinks[page.title()]['country'],page.title()))
 
-        result = self.generateresultspage(reflinks,self.opt.outpage,u"Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''.\n\n",u'')
+        result = self.generateresultspage(reflinks,self.opt.outpage,"Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''.\n\n",'')
 
     def treat(self, page):
         """
         Creates a list of referencing pages
         """
         found = False
-        rowtext = u''
+        rowtext = ''
         result = {'country':None, 'variant':None}
 
         for t in page.templatesWithParams():
             (tTitle,paramList) = t
 
             if self.opt.test or self.opt.progress:
-                pywikibot.output(u'Template:%s' % tTitle.title(withNamespace=False))
-            if tTitle.title(withNamespace=False) in (u'Tenisista infobox',u'Sportowiec infobox'):
+                pywikibot.output('Template:%s' % tTitle.title(withNamespace=False))
+            if tTitle.title(withNamespace=False) in ('Tenisista infobox','Sportowiec infobox'):
                 found = True
                 if self.opt.test:
-                    pywikibot.output(u'Template:%s' % tTitle.title(withNamespace=False))
+                    pywikibot.output('Template:%s' % tTitle.title(withNamespace=False))
                 for p in paramList:
                     if self.opt.test:
-                        pywikibot.output(u'param:%s' % p)
+                        pywikibot.output('param:%s' % p)
                     pnamed, pname, pvalue = self.templateArg(p)
                     if pnamed and pname == 'państwo':
                         if len(pvalue.strip()):
                             if self.opt.test:
-                                pywikibot.output(u'Flaga:%s w %s;%s' % ( pvalue.strip(),page.title(),tTitle) )
+                                pywikibot.output('Flaga:%s w %s;%s' % ( pvalue.strip(),page.title(),tTitle) )
                             result['country'] = pvalue.strip()
                         else:
                             if self.opt.test:
-                                pywikibot.output(u'Brak flagi w %s;%s' % ( page.title(),tTitle) )
+                                pywikibot.output('Brak flagi w %s;%s' % ( page.title(),tTitle) )
                     if pnamed and pname == 'wariant flagi':
                         if len(pvalue.strip()):
                             if self.opt.test:
-                                pywikibot.output(u'Wariant:%s w %s;%s' % ( pvalue.strip(),page.title(),tTitle) )
+                                pywikibot.output('Wariant:%s w %s;%s' % ( pvalue.strip(),page.title(),tTitle) )
                             result['variant'] = pvalue.strip()
                         else:
                             if self.opt.test:
-                                pywikibot.output(u'Brak wariantu w %s;%s' % ( page.title(),tTitle) )
+                                pywikibot.output('Brak wariantu w %s;%s' % ( page.title(),tTitle) )
         if not found:
-            pywikibot.output(u'Nie znaleziono szablonu w:%s' % page.title())
+            pywikibot.output('Nie znaleziono szablonu w:%s' % page.title())
         return(result)
 
     def templateArg(self,param):
@@ -175,7 +175,7 @@ class BasicBot(
            value = param
 
         if self.opt.test:
-            pywikibot.output(u'named:%s:name:%s:value:%s' % (named, name, value))
+            pywikibot.output('named:%s:name:%s:value:%s' % (named, name, value))
         return named, name, value
 
     def generateresultspage(self, redirlist, pagename, header, footer):
@@ -190,20 +190,20 @@ class BasicBot(
         itemcount = 0
         for i in res:
             itemcount += 1
-            if u'(' in i:
+            if '(' in i:
                 title = re.sub(r'(.*?)( \(.*?\))', r'\1\2|\1', i)
             else:
                 title = i
             if redirlist[i]['country']:
                 if redirlist[i]['variant']:
-                    finalpage += u'# {{Flaga|' + redirlist[i]['country'] + u'|' + redirlist[i]['variant'] + u'}} [[' \
-                                 + title + u']] <nowiki>{{Flaga|' + redirlist[i]['country'] + u'|' + redirlist[i]['variant'] + u'}} [[' + title + u']]</nowiki>\n'
+                    finalpage += '# {{Flaga|' + redirlist[i]['country'] + '|' + redirlist[i]['variant'] + '}} [[' \
+                                 + title + ']] <nowiki>{{Flaga|' + redirlist[i]['country'] + '|' + redirlist[i]['variant'] + '}} [[' + title + ']]</nowiki>\n'
                 else:
-                    finalpage += u'# {{Flaga|' + redirlist[i]['country'] + u'}} [[' + title + u']] <nowiki>{{Flaga|' + redirlist[i]['country'] + u'}} [[' + title + u']]</nowiki>\n'
+                    finalpage += '# {{Flaga|' + redirlist[i]['country'] + '}} [[' + title + ']] <nowiki>{{Flaga|' + redirlist[i]['country'] + '}} [[' + title + ']]</nowiki>\n'
             else:
-                finalpage += u'# [[' + title + u']] <nowiki> [[' + title + u']]</nowiki>\n'
+                finalpage += '# [[' + title + ']] <nowiki> [[' + title + ']]</nowiki>\n'
             if itemcount > int(self.opt.maxlines)-1:
-                pywikibot.output(u'*** Breaking output loop ***')
+                pywikibot.output('*** Breaking output loop ***')
                 break
 
         finalpage += footer 
@@ -218,7 +218,7 @@ class BasicBot(
         
         outpage.save(summary=self.opt.summary)
         #if not outpage.save(finalpage, outpage, self.summary):
-        #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
+        #   pywikibot.output('Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
         return(success)
 
