@@ -168,7 +168,7 @@ class BasicBot(
 
         outputpage = self.opt.outpage
 
-        result = self.generateresultspage(reflinks, outputpage, header, footer)
+        return self.generateresultspage(reflinks, outputpage, header, footer)
 
     def generateresultspage(self, redirlist, pagename, header, footer):
         """
@@ -189,7 +189,7 @@ class BasicBot(
         if self.opt.count:
             self.savepart(finalpage, pagename, pagecount, header,
                           self.generateprefooter(pagename, totalcount, pagecount) + footer)
-            return (1)
+            return 1
 
         for i in res:
             if self.opt.regex and not self.opt.negative:
@@ -244,7 +244,7 @@ class BasicBot(
         self.savepart(finalpage, pagename, pagecount, header,
                       self.generateprefooter(pagename, totalcount, pagecount) + footer)
 
-        return (pagecount)
+        return pagecount
 
     def generateprefooter(self, pagename, totalcount, pagecount):
         # generate text to appear before footer
@@ -263,7 +263,7 @@ class BasicBot(
         else:
             result += "\n\n"
 
-        return (result)
+        return result
 
     def navigation(self, pagename, pagecount):
         # generate navigation template
@@ -276,7 +276,7 @@ class BasicBot(
         else:
             result = '\n\n{{User:mastiBot/Nawigacja|' + pagename + '|' + pagename + ' ' + str(
                 pagecount + 1) + '}}\n\n'
-        return (result)
+        return result
 
     def savepart(self, pagepart, pagename, pagecount, header, footer):
         # generate resulting page
@@ -310,7 +310,7 @@ class BasicBot(
         # if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output('Page %s not saved.' % outpage.title(as_link=True))
         #   success = False
-        return (success)
+        return success
 
     def treat(self, cpage):
         """
@@ -349,7 +349,7 @@ class BasicBot(
             match = resultR.search(source)
 
             if not match and self.opt.negative:
-                return (cpage.title(as_link=True, force_interwiki=True, textlink=True))
+                return cpage.title(as_link=True, force_interwiki=True, textlink=True)
             elif match and not self.opt.negative:
                 if self.opt.multi:
                     # return all found results
@@ -359,26 +359,26 @@ class BasicBot(
                         if (self.getOption("nonempty") and len(r.group('result').strip())) or not self.getOption(
                                 "nonempty"):
                             resultslist.append(r.group('result'))
-                    return (cpage.title(as_link=True, force_interwiki=True, textlink=True), resultslist)
+                    return cpage.title(as_link=True, force_interwiki=True, textlink=True), resultslist
                 else:
                     # return just first match
                     # based on nonempty
                     if (self.getOption("nonempty") and len(match.group('result').strip())) or not self.getOption(
                             "nonempty"):
-                        return (cpage.title(as_link=True, force_interwiki=True, textlink=True), match.group('result'))
-            return (None)
+                        return cpage.title(as_link=True, force_interwiki=True, textlink=True), match.group('result')
+            return None
 
         else:
             isIn = self.opt.text in source
             if not isIn and self.opt.negative:
                 if self.opt.test:
                     pywikibot.output('NEGATIVE:Text not found')
-                return (cpage.title(as_link=True, force_interwiki=True, textlink=True))
+                return cpage.title(as_link=True, force_interwiki=True, textlink=True)
             if isIn and not self.opt.negative:
                 if self.opt.test:
                     pywikibot.output('POSITIVE:Text found')
-                return (cpage.title(as_link=True, force_interwiki=True, textlink=True))
-            return (None)
+                return cpage.title(as_link=True, force_interwiki=True, textlink=True)
+            return None
 
     def listargs(self):
         # return list of arguments
@@ -409,7 +409,7 @@ def main(*args: str) -> None:
     for arg in local_args:
         arg, sep, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text', 'outpage', 'maxlines', 'section','flags'):
+        if option in ('summary', 'text', 'outpage', 'maxlines', 'section', 'flags'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
