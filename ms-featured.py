@@ -178,7 +178,7 @@ class BasicBot(
             if self.opt.testinterwiki:
                 pywikibot.output('SL spage')
                 pywikibot.output('gI Page: %s' % spage.title(force_interwiki=True))
-            yield (spage)
+            yield spage
 
     '''
     def interwikiGenerator(self,wdpage,namespace=0):
@@ -206,9 +206,9 @@ class BasicBot(
             if self.opt.test3:
                 pywikibot.output('[%s] checkInterwiki: %s' % (
                 datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), wdcontent['sitelinks'].keys()))
-            return (lang in wdcontent['sitelinks'].keys())
+            return lang in wdcontent['sitelinks'].keys()
         except pywikibot.NoPageError:
-            return (False)
+            return False
 
     def wikiLangTranslate(self, lang):
         # change lang in case of common errors, renames etc.
@@ -227,10 +227,10 @@ class BasicBot(
 
         if lang in translateTable.keys():
             pywikibot.output('Translated [%s] -> [%s]' % (lang, translateTable[lang]))
-            return (translateTable[lang])
+            return translateTable[lang]
         else:
             pywikibot.output('unTranslated [%s]' % lang)
-            return (lang)
+            return lang
 
     def treat(self, page):
         result = {}
@@ -255,7 +255,7 @@ class BasicBot(
             if self.opt.short:
                 pywikibot.output('Code:%s' % c.site.code)
                 # if lang not in ('be-tarask','tt'):
-                if code not in ('de'):
+                if code not in 'de':
                     continue
             if self.opt.test:
                 pywikibot.output('[%i] P:%s' % (count, c.title(as_link=True, force_interwiki=True)))
@@ -264,7 +264,7 @@ class BasicBot(
             result[code] = self.getArticles(c)
         if self.opt.test4:
             pywikibot.output(result)
-        return (result)
+        return result
 
     def getArticles(self, cat):
         # return a list of article titles without pl.interwiki
@@ -291,7 +291,7 @@ class BasicBot(
                 if self.opt.test3:
                     pywikibot.output('[%s] appended: %s' % (
                     datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), a.title(as_link=True, force_interwiki=True)))
-        return ({'count': count, 'marked': marked, 'result': result})
+        return {'count': count, 'marked': marked, 'result': result}
 
 
 def main(*args: str) -> None:
