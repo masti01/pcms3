@@ -55,7 +55,6 @@ from pywikibot.bot import (
     SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
     AutomaticTWSummaryBot)
 
-
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
@@ -71,7 +70,6 @@ class BasicBot(
     NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
-
     """
     An incomplete sample bot.
 
@@ -114,9 +112,13 @@ class BasicBot(
         #    if self.site.user() is None:
         #       self.site.login()
         if len(self.current_page.text) < 4:
-            self.current_page.delete(self.opt.summary,
-                                     not self.opt.always,
-                                     self.opt.always)
+            try:
+                self.current_page.delete(self.opt.summary,
+                                         not self.opt.always,
+                                         self.opt.always)
+            except pywikibot.exceptions.Error:
+                if self.opt.test:
+                    pywikibot.output('Page %s does not exist.' % self.current_page.title)
 
 
 def main(*args: Tuple[str, ...]) -> None:
