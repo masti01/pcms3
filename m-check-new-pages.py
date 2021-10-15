@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """
 call:
-    python pwb.py masti/m-check-new-pages.py -ns:0 -newpages -log -pt:0
+    python3 pwb.py masti/m-check-new-pages.py -ns:0 -newpages -pt:0 -always
 
 This is a bot to check new articles:
 * if no categories: add {{Dopracowac|kategoria=YYYY-MM}}
@@ -67,22 +67,21 @@ from pywikibot import textlib
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
-tmplcatlist = [
-    # list of templates adding categories
-    re.compile(r'{{Aktualne wydarzenie sportowe'),
-    re.compile(r'{{Animanga infobox/Anime'),
-    re.compile(r'{{Animanga infobox/Druk'),
-    re.compile(r'{{Animanga infobox/Film'),
-    re.compile(r'{{Animanga infobox/OVA'),
-    re.compile(r'{{Klasyfikacja ATC'),
-    re.compile(r'{{Euronext'),
-    re.compile(r'{{GPW'),
-    re.compile(r'{{London Stock Exchange'),
-    re.compile(r'{{NYSE'),
-    re.compile(r'{{SIX Swiss Exchange'),
-    re.compile(r'{{Tyo'),
-]
-
+# list of category adding templates
+tmplcat = {
+    'aktualne wydarzenie sportowe',
+    'animanga infobox/anime',
+    'animanga infobox/druk',
+    'animanga infobox/film',
+    'animanga infobox/ova',
+    'klasyfikacja atc',
+    'euronext',
+    'gpw',
+    'london stock exchange',
+    'nyse',
+    'six swiss exchange',
+    'tyo',
+}
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
@@ -118,7 +117,7 @@ class BasicBot(
 
     def treat_page(self):
         """Load the given page, do some changes, and save it."""
-        refR = re.compile(r'(?P<all><ref.*?<\/ref>)')
+        refR = re.compile(r'(?P<all><ref.*?</ref>)')
         # clenaupR = re.compile(r'(?i){{dopracować.*?}}')
         text = self.current_page.text
         links = {'links': 0,
@@ -152,18 +151,22 @@ class BasicBot(
                 links['template'] += 1
                 if 'infobox' in t:
                     links['infobox'] += 1
-                if 'Dopracować' in t or 'dopracować' in t:
+                if 'dopracować' in t.lower():
                     links['dopracować'] = True
-                    # cleanupTmpl = (t, p)
-                if 'rok w' in t or 'Rok w' in t:
+                if t.lower() in tmplcat: #  check for category adding templates
                     links['cat'] += 1
-                for tmplcatlistR in tmplcatlist:
-                    if tmplcatlistR.match(t, re.I):
-                        links['cat'] += 1
+                    if self.opt.test:
+                        pywikibot.output('Current cat#%i' % links['cat'])
+                    # cleanupTmpl = (t, p)
+                # if 'rok w' in t or 'Rok w' in t:
+                #     links['cat'] += 1
+
             for c in textlib.getCategoryLinks(text):
                 if self.opt.test:
                     pywikibot.output('Category:%s' % c)
                 links['cat'] += 1
+                if self.opt.test:
+                    pywikibot.output('Current cat#%i' % links['cat'])
             for r in refR.finditer(text):
                 if self.opt.test:
                     pywikibot.output('Ref:%s' % r.group('all'))
