@@ -53,7 +53,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 import datetime
-import re
+from pywikibot.exceptions import NoPageError
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -207,7 +207,7 @@ class BasicBot(
                 pywikibot.output('[%s] checkInterwiki: %s' % (
                 datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), wdcontent['sitelinks'].keys()))
             return lang in wdcontent['sitelinks'].keys()
-        except pywikibot.NoPageError:
+        except NoPageError:
             return False
 
     def wikiLangTranslate(self, lang):
