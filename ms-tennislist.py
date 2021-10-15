@@ -123,11 +123,11 @@ class BasicBot(
             (tTitle,paramList) = t
 
             if self.opt.test or self.opt.progress:
-                pywikibot.output('Template:%s' % tTitle.title(withNamespace=False))
-            if tTitle.title(withNamespace=False) in ('Tenisista infobox','Sportowiec infobox'):
+                pywikibot.output('Template:%s' % tTitle.title(with_ns=False))
+            if tTitle.title(with_ns=False) in ('Tenisista infobox','Sportowiec infobox'):
                 found = True
                 if self.opt.test:
-                    pywikibot.output('Template:%s' % tTitle.title(withNamespace=False))
+                    pywikibot.output('Template:%s' % tTitle.title(with_ns=False))
                 for p in paramList:
                     if self.opt.test:
                         pywikibot.output('param:%s' % p)
