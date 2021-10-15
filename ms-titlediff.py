@@ -100,7 +100,7 @@ class BasicBot(
         'negative': False,  # if True mark pages that DO NOT contain search string
         'test': False,  # switch on test functionality
         'regex': False,  # use text as regex
-        'aslink': False,  # put links as wikilinks
+        'as_link': False,  # put links as wikilinks
         'append': False,  # append results to page
         'section': None,  # section title
         'title': False,  # check in title not text
@@ -269,7 +269,7 @@ class BasicBot(
 
         success = outpage.save(summary=self.opt.summary)
         # if not outpage.save(finalpage, outpage, self.summary):
-        #   pywikibot.output('Page %s not saved.' % outpage.title(asLink=True))
+        #   pywikibot.output('Page %s not saved.' % outpage.title(as_link=True))
         #   success = False
         return (success)
 
@@ -294,12 +294,12 @@ class BasicBot(
             if npt.group('npt').strip() != fp.group('firstpar'):
                 if self.opt.text:
                     if not re.search(self.opt.text, source):
-                        return (page.title(asLink=True), fp.group('firstpar'))
+                        return (page.title(as_link=True), fp.group('firstpar'))
                     else:
                         if self.opt.test:
                             pywikibot.output('SKIPPING: regex matched')
                 else:
-                    return (page.title(asLink=True), fp.group('firstpar'))
+                    return (page.title(as_link=True), fp.group('firstpar'))
         return (None)
 
 
