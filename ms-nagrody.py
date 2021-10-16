@@ -121,7 +121,7 @@ class BasicBot(
                     'Processing page #{:d} ({:d} marked): {}'.format(counter, marked, page.title(as_link=True)))
             result = self.treat(page)
             if result:
-                results[page.title(with_namespace=False)] = result
+                results[page.title(with_ns=False)] = result
                 marked += 1
                 if self.opt.test:
                     pywikibot.output('Added line #{:d}: {}'.format(marked, page.title(as_link=True)))
