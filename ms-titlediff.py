@@ -132,7 +132,7 @@ class BasicBot(
             if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] Treating #%i (marked:%i, duplicates:%i): %s' % (
                 datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pagecounter, marked, duplicates, page.title()))
-                refs = self.treat(page)  # get (name)
+            refs = self.treat(page)  # get (name)
             if refs:
                 if not refs in reflinks:
                     # test
