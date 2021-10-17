@@ -142,7 +142,8 @@ class BasicBot(
         Output page is pagename
         """
         finalpage = header
-        res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
+        #res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
+        res = sorted(redirlist.items(), key=lambda rl: rl[1]['count'], reverse=True)
         if self.opt.test:
             pywikibot.output('***** INPUT *****')
             pywikibot.output(redirlist)
