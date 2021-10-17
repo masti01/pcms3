@@ -105,13 +105,11 @@ class BasicBot(
         if self.opt.test:
             pywikibot.output(self.opt.includes)
 
-        headerfull = "Poniżej znajduje się lista " + self.getOption(
-            'maxlines') + " martwych linków występujących w największej liczbie artykułów.\n\n"
+        headerfull = "Poniżej znajduje się lista " + self.opt.maxlines + " martwych linków występujących w największej liczbie artykułów.\n\n"
         headersum = headerfull
         if not self.opt.includes:
             headersum += "Zobacz też: [[" + self.opt.outpage + "|Statystykę szczegółowych linków]]\n\n"
-            headerfull += "Zobacz też: [[" + self.getOption(
-                'outpage') + "/ogólne|Statystykę domen z największą liczbą martwych linków]]\n\n"
+            headerfull += "Zobacz też: [[" + self.opt.outpage + "/ogólne|Statystykę domen z największą liczbą martwych linków]]\n\n"
 
         headerfull += "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n"
         headerfull += "Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n"
