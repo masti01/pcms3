@@ -121,7 +121,7 @@ class BasicBot(
             if self.opt.progress:
                 pywikibot.output(
                     u'{} #{:d} ({:d}) Treating:{}'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                                          counter, refscounter, page.title(asLink=True)))
+                                                          counter, refscounter, page.title(as_link=True)))
             refs = self.treat(page)
             if self.opt.progress:
                 pywikibot.output(
