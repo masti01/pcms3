@@ -111,7 +111,7 @@ class BasicBot(
         # if len(self.current_page.text) < 4 :
         #    if self.site.user() is None:
         #       self.site.login()
-        if len(self.current_page.text) < 4:
+        if len(self.current_page.text) < 4 or '{{Wikipedysta:Szoltys-bot/EK}}' in self.current_page.text:
             try:
                 self.current_page.delete(self.opt.summary,
                                          not self.opt.always,
