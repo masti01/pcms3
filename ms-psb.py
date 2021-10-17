@@ -321,8 +321,9 @@ class BasicBot(
         for t in titleR.finditer(text):
             title = re.sub(r'  ',' ',t.group('title'))
             page = pywikibot.Page(pywikibot.Site(),title)
+            link = re.sub(r'  ',' ',t.group('link'))
             if page.namespace() == ns:
-                yield page,t
+                yield link, page, t
 
     def header(self):
         header = u"Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja '''~~~~~'''."
@@ -473,7 +474,7 @@ class BasicBot(
         text = page.text
 
         count = 0
-        for p,t in self.genpages(text,rgx=linkR):
+        for l,p,t in self.genpages(text,rgx=linkR):
             count += 1
             if count > int(self.opt.testcount):
                 break
@@ -507,7 +508,7 @@ class BasicBot(
                 obj = self.getData(pp)
 
 
-            obj.link = p.title()
+            obj.link = l
             obj.description = t.group('description').strip()
             if self.opt.renew:
                 obj.comment = t.group('comment').strip()
