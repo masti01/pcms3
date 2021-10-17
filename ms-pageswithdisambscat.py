@@ -106,8 +106,7 @@ class BasicBot(
 
     def run(self):
         # prepare new page
-        header = u'Poniżej znajduje się lista artykułów linkujących do conajmniej %s [[:Kategoria:Strony ujednoznaczniające|stron ujednoznaczniających]].\n\n' % self.getOption(
-            'minlinks')
+        header = u'Poniżej znajduje się lista artykułów linkujących do conajmniej %s [[:Kategoria:Strony ujednoznaczniające|stron ujednoznaczniających]].\n\n' % self.opt.minlinks
 
         # header += u':<small>Pominięto strony z szablonem {{s|Inne znaczenia}}</small>\n\n'
         header += u"Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja przez bota: '''~~~~~'''. \n"
