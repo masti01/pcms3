@@ -123,7 +123,7 @@ class BasicBot(
                 pywikibot.output('Processing page #%i (%i marked): %s' % (counter, marked, page.title(as_link=True)))
             result = self.treat(page)
             if result:
-                results[page.title(withNamespace=False)] = (result, page.namespace() == 10)
+                results[page.title(with_ns=False)] = (result, page.namespace() == 10)
                 marked += 1
                 if self.opt.test:
                     pywikibot.output('Added line #%i: %s elements: %i' % (marked, page.title(as_link=True), len(result)))
