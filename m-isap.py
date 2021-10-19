@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """
 Usage:
-python pwb.py masti/m-isap.py -page:"Wikipedysta:MastiBot/DU" -summary:"Bot poprawia odwołania do ustawy" -outpage:'Wikipedysta:MastiBot/DU/log' -pt:0
+python3 pwb.py masti/m-isap.py -page:"Wikipedysta:MastiBot/DU" -summary:"Bot poprawia odwołania do ustawy" -outpage:'Wikipedysta:MastiBot/DU/log' -pt:0
 
 Page should contain a list of {{Dziennik Ustaw}} linking to a new wersion of law.
 
@@ -160,7 +160,7 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.opt.test:
             pywikibot.output('getInitialWebPage:%s' % quote_page)
-        webpage = urllib.urlopen(quote_page)
+        webpage =  urllib.request.urlopen(quote_page)
         if webpage:
             pywikibot.output("webpage: %s" % webpage)
         else:
@@ -185,7 +185,7 @@ class BasicBot(
         quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
         if self.opt.test:
             pywikibot.output('getting target page:%s' % quote_page)
-        webpage = urllib.urlopen(quote_page)
+        webpage = urllib.request.urlopen(quote_page)
         soup = BeautifulSoup(webpage, 'html.parser')
         idR = re.compile(r'\/isap\.nsf\/DocDetails\.xsp\?id=WDU(?P<id>.*)')
         first = True
@@ -283,7 +283,7 @@ class BasicBot(
             self.WUs[tr]['newTemplate'] = self.newTemplate(tr)
             try:
                 self.WUs[tr]['toReplace'] = self.createReplaceList(self.getInitialWebPage(tr))
-            except urllib.HTTPError:
+            except urllib.error.HTTPError:
                 self.WUs[tr]['toReplace'] = None
                 self.WUs[tr]['error'] = 'Brak strony w systemie isap'
             if not self.WUs[tr]['error'] and not self.WUs[tr]['toReplace']:
