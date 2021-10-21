@@ -251,7 +251,7 @@ class BasicBot(
             pywikibot.output('RefsCount:%s' % count)
         return count
         '''
-        return len(page.getReferences(namespaces=0))
+        return len(list(page.getReferences(namespaces=0)))
 
     def linknumber(self, t, i):
         if self.opt.test:
