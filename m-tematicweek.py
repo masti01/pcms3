@@ -1,9 +1,7 @@
 #!/usr/bin/python
 """
-An incomplete sample script.
-
 Call:
-        python pwb.py masti/m-tematicweek.py -page:"Wikiprojekt:Tygodnie tematyczne/Tydzień Artykułu Bhutańskiego" -pt:0 -log:"Tydzień Artykułu Bhutańskiego"
+        python pwb.py masti/m-tematicweek.py -page:"Wikiprojekt:Tygodnie tematyczne/Tydzień Artykułu Bhutańskiego" -pt:0
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
@@ -21,10 +19,12 @@ The following parameters are supported:
 
 -summary:         Set the action summary message for the edit.
 
-All settings can be made either by giving option with the command line
-or with a settings file which is scripts.ini by default. If you don't
-want the default values you can add any option you want to change to
-that settings file below the [basic] section like:
+This sample script is a
+:py:obj:`ConfigParserBot <pywikibot.bot.ConfigParserBot>`. All settings can be
+made either by giving option with the command line or with a settings file
+which is scripts.ini by default. If you don't want the default values you can
+add any option you want to change to that settings file below the [basic]
+section like:
 
     [basic] ; inline comments starts with colon
     # This is a commend line. Assignments may be done with '=' or ':'
@@ -91,25 +91,25 @@ class BasicBot(
         'summary': None,  # your own bot summary
         'text': 'Test',  # add this text from option. 'Test' is default
         'top': False,  # append text on top of the page
-        'outpage': u'User:mastiBot/test', #default output page
-        'maxlines': 1000, #default number of entries per page
-        'testprint': False, # print testoutput
-        'negative': False, #if True negate behavior i.e. mark pages that DO NOT contain search string
-        'test': False, #switch on test functionality
+        'outpage': 'User:mastiBot/test',  # default output page
+        'maxlines': 1000,  # default number of entries per page
+        'testprint': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'test': False,  # switch on test functionality
     }
 
     def run(self):
 
         # set up log page and load
-        logpage = pywikibot.Page(pywikibot.Site(), u'Wikipedysta:MastiBot/Tygodnie Tematyczne/zrobione')
+        logpage = pywikibot.Page(pywikibot.Site(), 'Wikipedysta:MastiBot/Tygodnie Tematyczne/zrobione')
         if not logpage.text:
             return
 
         for page in self.generator:
             if self.treat_page(page):
-                logpage.text += u'\n# [[' + page.title() + u']] --~~~~~'
+                logpage.text += '\n# [[' + page.title() + ']] --~~~~~'
 
-        logpage.save(summary=u'Tygodnie Tematyczne: log')
+        logpage.save(summary='Tygodnie Tematyczne: log')
 
     def treat_page(self, page):
         """Load the given page, retrieve links to updated pages. Add template to talkpage if necessary"""
@@ -120,31 +120,31 @@ class BasicBot(
         g = re.search(
             r'\{\{Tydzień tematyczny\/szablony.*?grafika tygodnia\s*?=\s*?(?P<iconname>[^\|\n]*).*?\[\[Wikiprojekt:Tygodnie tematyczne\/(?P<weekname>[^\|]*).*?}}',
             text, flags=re.S)
-        if self.getOption('test'):
-            pywikibot.output(u't:%s' % t)
-            pywikibot.output(u'g:%s' % g)
+        if self.opt.test:
+            pywikibot.output('t:%s' % t)
+            pywikibot.output('g:%s' % g)
         if not t and not g:
-            pywikibot.output(u'Template not found!')
-            return (False)
+            pywikibot.output('Template not found!')
+            return False
 
         if t:
             templatename = t.group('templatename')
         if g:
-            templatename = u'{{Wikiprojekt:Tygodnie tematyczne/info|' + g.group('weekname') + '|' + g.group(
-                'iconname') + u'}}'
-        if self.getOption('test'):
-            pywikibot.output(u'templatename:%s' % templatename)
+            templatename = '{{Wikiprojekt:Tygodnie tematyczne/info|' + g.group('weekname') + '|' + g.group(
+                'iconname') + '}}'
+        if self.opt.test:
+            pywikibot.output('templatename:%s' % templatename)
 
-        pywikibot.output(u'Template:%s' % templatename)
+        pywikibot.output('Template:%s' % templatename)
 
         # set summary for edits
-        summary = u'Bot dodaje szablon ' + templatename
+        summary = 'Bot dodaje szablon ' + templatename
 
         # get articlenames to work on
         # get article section
         t = re.search(r'(?P<articlesection>=== Lista alfabetyczna.*?)== ', text, re.DOTALL)
         articlesection = t.group('articlesection')
-        # pywikibot.output(u'Articles:%s' % articlesection)
+        # pywikibot.output('Articles:%s' % articlesection)
 
         Rlink = re.compile(r'\[\[(?P<title>[^\]\|\[]*)(\|[^\]]*)?\]\]')
 
@@ -154,7 +154,7 @@ class BasicBot(
                 title = title.replace("_", " ").strip(" ")
             except:
                 continue
-            # pywikibot.output(u'Art:[[%s]]' % title)
+            # pywikibot.output('Art:[[%s]]' % title)
             artpage = pywikibot.Page(pywikibot.Site(), title)
 
             # follow redirects
@@ -162,37 +162,38 @@ class BasicBot(
                 while artpage.isRedirectPage():
                     oldtitle = artpage.title()
                     artpage = artpage.getRedirectTarget()
-                    pywikibot.output(u'Art:[[%s]] FOLLOWING REDIR TO:%s' % (oldtitle, artpage.title()))
+                    pywikibot.output('Art:[[%s]] FOLLOWING REDIR TO:%s' % (oldtitle, artpage.title()))
             except:
                 continue
 
             # check if article exists
             if not (artpage.namespace() in [0, 10, 14]):
-                pywikibot.output(u'Art:[[%s]] SKIPPED:wrong namespace' % artpage.title())
+                pywikibot.output('Art:[[%s]] SKIPPED:wrong namespace' % artpage.title())
                 continue
             elif artpage.exists():
                 workpage = artpage.toggleTalkPage()
             else:
-                pywikibot.output(u'Art:[[%s]] DOES NOT EXIST' % artpage.title())
+                pywikibot.output('Art:[[%s]] DOES NOT EXIST' % artpage.title())
                 continue
-            # pywikibot.output(u'Art:[[%s]]>>>[[%s]]' % (title,workpage.title()))
+            # pywikibot.output('Art:[[%s]]>>>[[%s]]' % (title,workpage.title()))
             # load discussion Page
             worktext = workpage.text
             if worktext:
                 # check if template exists
-                if u'{{Wikiprojekt:Tygodnie tematyczne/info' in worktext or u'{{Wikiprojekt:Tygodnie tematyczne/info' in worktext:
-                    pywikibot.output(u'Art:[[%s]] not changed: template found' % workpage.title())
+                if '{{Wikiprojekt:Tygodnie tematyczne/info' in worktext or '{{Wikiprojekt:Tygodnie tematyczne/info' in worktext:
+                    pywikibot.output('Art:[[%s]] not changed: template found' % workpage.title())
                     continue
                 else:
-                    pywikibot.output(u'Art:[[%s]] changed: template added' % workpage.title())
-                    worktext = templatename + u'\n' + worktext
+                    pywikibot.output('Art:[[%s]] changed: template added' % workpage.title())
+                    worktext = templatename + '\n' + worktext
             else:
-                pywikibot.output(u'Art:[[%s]] created' % workpage.title())
+                pywikibot.output('Art:[[%s]] created' % workpage.title())
                 worktext = templatename
 
             workpage.text = worktext
             workpage.save(summary=summary)
-        return(True)
+
+        return True
 
 
 def main(*args: str) -> None:
@@ -219,7 +220,7 @@ def main(*args: str) -> None:
     for arg in local_args:
         arg, sep, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text'):
+        if option in ('summary', 'text', 'outpage', 'maxlines'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
