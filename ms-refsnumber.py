@@ -3,8 +3,7 @@
 This bot creates pages listing count of references to article from list:
 Wikipedysta:Andrzei111/nazwiska z inicjałem
 
-Call: python pwb.py masti/ms-refsnumber.py -page:'Wikipedysta:Andrzei111/nazwiska z inicjałem'
-        -summary:"Bot aktualizuje stronę" -outpage:'Wikipedysta:Andrzei111/nazwiska z inicjałem/licznik'
+Call: python3 pwb.py masti/ms-refsnumber.py -page:'Wikipedysta:Andrzei111/nazwiska z inicjałem'        -summary:"Bot aktualizuje stronę" -outpage:'Wikipedysta:Andrzei111/nazwiska z inicjałem/licznik'
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.

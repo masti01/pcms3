@@ -225,8 +225,7 @@ class BasicBot(
                     # results are single string
                     # TODO convert all results to lists
                     if self.opt.nowiki:
-                        finalpage += ' – <nowiki>' + link + '</nowiki>' if not self.getOption(
-                            'table') else '<nowiki>' + link + '</nowiki>'
+                        finalpage += ' – <nowiki>' + link + '</nowiki>' if not self.opt.table else '<nowiki>' + link + '</nowiki>'
                     else:
                         finalpage += ' – ' + link if not self.opt.table else link
             itemcount += 1
@@ -356,15 +355,13 @@ class BasicBot(
                     resultslist = []
                     for r in re.finditer(resultR, source):
                         # based on nonempty
-                        if (self.getOption("nonempty") and len(r.group('result').strip())) or not self.getOption(
-                                "nonempty"):
+                        if (self.opt.nonempty and len(r.group('result').strip())) or not self.opt.nonempty:
                             resultslist.append(r.group('result'))
                     return cpage.title(as_link=True, force_interwiki=True, textlink=True), resultslist
                 else:
                     # return just first match
                     # based on nonempty
-                    if (self.getOption("nonempty") and len(match.group('result').strip())) or not self.getOption(
-                            "nonempty"):
+                    if (self.opt.nonempty and len(match.group('result').strip())) or not self.opt.nonempty:
                         return cpage.title(as_link=True, force_interwiki=True, textlink=True), match.group('result')
             return None
 
