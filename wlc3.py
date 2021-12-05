@@ -2096,7 +2096,7 @@ class DeadLinkReportThread(threading.Thread):
                             'already been reported on {}{default}',
                             talkPage))
                         continue
-                except (pywikibot.NoPage, pywikibot.IsRedirectPage):
+                except (pywikibot.NoPageError, pywikibot.IsRedirectPage):
                     content = ''
 
                 if archiveURL:
