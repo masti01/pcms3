@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """
 Call:
-        python pwb.py masti/m-tematicweek.py -page:"Wikiprojekt:Tygodnie tematyczne/Tydzień Artykułu Bhutańskiego" -pt:0
+        python3 pwb.py masti/m-tematicweek.py -page:"Wikiprojekt:Tygodnie tematyczne/Tydzień Artykułu Bhutańskiego" -pt:0
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
