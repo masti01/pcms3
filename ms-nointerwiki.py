@@ -151,7 +151,7 @@ class BasicBot(
 
         outpage.save(summary=self.opt.summary)
         # if not outpage.save(finalpage, outpage, self.summary):
-        #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
+        #   pywikibot.output(u'Page %s not saved.' % outpage.title(as_link=True))
         #   success = False
         return success
 
@@ -169,11 +169,11 @@ class BasicBot(
             wdcontent = wd.get()
             if self.opt.test:
                 pywikibot.output(wdcontent['sitelinks'].keys())
-        except pywikibot.NoPage:
-            pywikibot.output('WikiData page for %s do not exists' % page.title(asLink=True))
+        except pywikibot.NoPageError:
+            pywikibot.output('WikiData page for %s do not exists' % page.title(as_link=True))
             return None
         # except NotImplementedError:
-        #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(asLink=True))
+        #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(as_link=True))
         #    return(None)
 
         return self.checkInterwiki(wdcontent['sitelinks'].keys(), 'plwiki')
