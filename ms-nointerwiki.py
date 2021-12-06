@@ -46,7 +46,7 @@ cannot be set by settings file:
 # Distributed under the terms of the MIT license.
 #
 import pywikibot
-from pywikibot import pagegenerators
+from pywikibot import pagegenerators, exceptions
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
@@ -55,7 +55,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 import datetime
-import re
+
 
 
 # This is required for the text that is shown when you run this script
@@ -169,7 +169,7 @@ class BasicBot(
             wdcontent = wd.get()
             if self.opt.test:
                 pywikibot.output(wdcontent['sitelinks'].keys())
-        except pywikibot.NoPageError:
+        except exceptions.NoPageError:
             pywikibot.output('WikiData page for %s do not exists' % page.title(as_link=True))
             return None
         # except NotImplementedError:
