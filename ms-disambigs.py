@@ -122,13 +122,13 @@ class BasicBot(
     def run(self):
         """TEST"""
         pywikibot.output('THIS IS A RUN METHOD')
-        outputpage = self.getOption('outpage')
+        outputpage = self.opt.outpage
         pywikibot.output('OUTPUTPAGE:%s' % outputpage)
 
         result = {}
         pagecount = 0
 
-        if self.getOption('load'):
+        if self.opt.load:
             try:
                 with open('masti/disambigs.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
@@ -138,7 +138,7 @@ class BasicBot(
 
         for p in self.generator:
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] Treating:[%s] %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p.title()))
             basic = self.basicTitle(p.title())
 
@@ -151,7 +151,7 @@ class BasicBot(
                     result[basic] = {'articles':[p.title()], 'disambig':p.title(), 'redir':None}
                 else:
                     result[basic] = {'articles':[p.title()], 'disambig':None, 'redir':None}
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(result)
 
         result = self.cleanupList(result)
@@ -162,7 +162,7 @@ class BasicBot(
 
         self.save(result)
 
-        self.generateresultspage(result, self.getOption('outpage'), self.header(), self.footer())
+        self.generateresultspage(result, self.opt.outpage, self.header(), self.footer())
 
     def save(self,results):
         """Save the .dat file to disk."""
@@ -178,22 +178,22 @@ class BasicBot(
         pagecount = 0
         for p in reslist.keys():
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] cleanupList:[%i] %s %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p,reslist[p]))
             if reslist[p]['disambig']:
                 if  p == reslist[p]['disambig']:
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.input('skipped')
                     continue
             else:
                 if len(reslist[p]['articles']) == 1 and p == reslist[p]['articles'][0] :
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.input('skipped')
                     continue
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.input('P:%s D:%s' % (p,reslist[p]['disambig']))
             d[p] = reslist[p]
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.input('solveRedirs: %s' % d[p])
 
         return(d)
@@ -203,7 +203,7 @@ class BasicBot(
         pagecount = 0
         for p in reslist.keys():
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] solveRedirs:[%i] %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p))
             page = pywikibot.Page(pywikibot.Site(),p)
             if page.isRedirectPage():
@@ -217,7 +217,7 @@ class BasicBot(
         pagecount = 0
         for p in reslist.keys():
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] getDisambTargets:[%i] %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p))
             if reslist[p]['disambig']:
                 page = pywikibot.Page(pywikibot.Site(),reslist[p]['disambig'])
@@ -240,7 +240,7 @@ class BasicBot(
         pagecount = 0
         for p in reslist.keys():
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] checkExistence:[%i] %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p))
             page = pywikibot.Page(pywikibot.Site(),p)
             reslist[p]['exists'] = page.exists()
@@ -253,7 +253,7 @@ class BasicBot(
         pagecount = 0
         for p in reslist.keys():
             pagecount += 1
-            if self.getOption('test') or self.getOption('progress'):
+            if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] guessDisambig:[%i] %s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),pagecount,p))
             if not reslist[p]['exists']:
                 reslist[p]['disambig'] = p
@@ -294,13 +294,13 @@ class BasicBot(
         Starting with header, ending with footer
         Output page is pagename
         """
-        maxlines = int(self.getOption('maxlines'))
+        maxlines = int(self.opt.maxlines)
         finalpage = header
         #res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
         res = sorted(redirlist.keys())
         #res = redirlist
         itemcount = 1
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output('GENERATING RESULTS')
         for i in res:
             disamb = '[[%s]]' % redirlist[i]['disambig'] if redirlist[i]['disambig'] else ''
@@ -318,16 +318,16 @@ class BasicBot(
 
         finalpage += footer 
         
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(finalpage)
         success = True
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(outpage.title())
         
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         #if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output('Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
