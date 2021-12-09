@@ -112,7 +112,7 @@ class BasicBot(
         refscounter = 0
 
         for page in self.generator:
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output('# %i (%i) Treating:%s' % (counter, refscounter, page.title(as_link=True)))
             refs = self.treat(page)
             counter += 1
@@ -154,9 +154,9 @@ class BasicBot(
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(redirlist)
         return res
 
