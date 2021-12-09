@@ -124,17 +124,17 @@ class BasicBot(
         licznik = 0
         for tpage in self.generator:
             licznik += 1
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'Treating #%i: %s' % (licznik, tpage.title()))
             refs = self.treat(tpage)  # get (name, id, creator, lastedit)
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(refs)
             reflinks.append(refs)
 
         footer = u'\n|}'
         footer += u'\n\nPrzetworzono ' + str(licznik) + u' stron'
 
-        outputpage = self.getOption('outpage')
+        outputpage = self.opt.outpage
 
         result = self.generateresultspage(reflinks, outputpage, header, footer)
 
@@ -144,16 +144,16 @@ class BasicBot(
         Starting with header, ending with footer
         Output page is pagename
         """
-        maxlines = int(self.getOption('maxlines'))
+        maxlines = int(self.opt.maxlines)
         finalpage = header
         # res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
         res = sorted(redirlist)
         itemcount = 0
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'GENERATING RESULTS')
         for i in res:
 
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(i)
             ident, title, name, creator, lastedit, lasteditor, refscount, size = i
 
@@ -182,21 +182,21 @@ class BasicBot(
                     pywikibot.output(u'*** Breaking output loop ***')
                     break
             else:
-                if self.getOption('test'):
+                if self.opt.test:
                     pywikibot.output(u'SKIPPING:%s' % title)
 
         finalpage += footer
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(finalpage)
         success = True
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(outpage.title())
 
-        outpage.save(summary=self.getOption('summary'))
+        outpage.save(summary=self.opt.summary)
         # if not outpage.save(finalpage, outpage, self.summary):
         #   pywikibot.output(u'Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
@@ -212,20 +212,20 @@ class BasicBot(
         name = None
         size = 0
         sTitle = self.shortTitle(tpage.title())
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'sTitle:%s' % sTitle)
 
         # check for id & name(optional)
         for t in tpage.templatesWithParams():
             (tTitle, paramList) = t
             # test
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'Template:%s' % tTitle)
             if tTitle.title().startswith('Szablon:Kneset'):
                 name = None
                 ident = None
                 for p in paramList:
-                    if self.getOption('test'):
+                    if self.opt.test:
                         pywikibot.output(u'param:%s' % p)
                     pnamed, pname, pvalue = self.templateArg(p)
                     if pnamed and pname.startswith('name'):
@@ -233,11 +233,11 @@ class BasicBot(
                     else:
                         try:
                             ident = int(pvalue)
-                            if self.getOption('test'):
+                            if self.opt.test:
                                 pywikibot.output(u'ident:%s' % ident)
                         except:
                             ident = 0
-                            if self.getOption('test'):
+                            if self.opt.test:
                                 pywikibot.output(u'ERROR: ident is not integer:%s' % ident)
 
                 if not pnamed or (pnamed and name == sTitle):
@@ -248,7 +248,7 @@ class BasicBot(
         creator = tpage.oldest_revision.user
         timestamp = tpage.oldest_revision.timestamp.strftime('%Y-%m-%d')
         # test
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'Creator:%s<<Timestamp %s' % (creator, timestamp))
 
         # check for last edit
@@ -259,7 +259,7 @@ class BasicBot(
         # get articlke size
         size = len(tpage.text)
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'lastedit:%s' % lastedit)
             pywikibot.output(u'ident:%s' % ident)
             pywikibot.output(u'refsCount:%s' % refsCount)
@@ -283,12 +283,12 @@ class BasicBot(
         for i in page.getReferences(namespaces=0):
             count += 1
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'RefsCount:%s' % count)
         return (count)
 
     def linknumber(self, t, i):
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'[[Specjalna:Linkujące/' + t + u'|' + str(i) + u']]')
         return (u'[[Specjalna:Linkujące/' + t + u'|' + str(i) + u']]')
 
@@ -314,7 +314,7 @@ class BasicBot(
             name = None
             value = param
         # test
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'named:%s:name:%s:value:%s' % (named, name, value))
         return named, name, value
 
