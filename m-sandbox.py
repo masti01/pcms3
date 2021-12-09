@@ -101,7 +101,7 @@ class BasicBot(
     }
 
     def treat_page(self):
-        self.put_current(self.getOption('text'), summary=self.getOption('summary'))
+        self.put_current(self.opt.text, summary=self.opt.summary)
 
 
 def main(*args: str) -> None:
