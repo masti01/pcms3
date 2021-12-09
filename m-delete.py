@@ -154,7 +154,7 @@ class DeletionRobot(MultipleSitesBot, CurrentPageBot):
         Display pages that link to the current page, sorted per namespace.
 
         Number of pages to display per namespace is provided by:
-        - self.getOption('isorphan')
+        - self.opt.isorphan
         """
         refs = self.current_page.ref_table
         if not refs:
@@ -168,7 +168,7 @@ class DeletionRobot(MultipleSitesBot, CurrentPageBot):
             pywikibot.warning('There is a page that links to {}.'
                               .format(self.current_page))
 
-        show_n_pages = self.getOption('isorphan')
+        show_n_pages = self.opt.isorphan
         width = len(max((ns.canonical_prefix() for ns in refs), key=len))
         pagecount = 0
         for ns in sorted(refs):
@@ -186,10 +186,10 @@ class DeletionRobot(MultipleSitesBot, CurrentPageBot):
 
     def skip_page(self, page):
         """Skip the page under some conditions."""
-        if self.getOption('undelete') and page.exists():
+        if self.opt.undelete and page.exists():
             pywikibot.output('Skipping: {0} already exists.'.format(page))
             return True
-        if not self.getOption('undelete') and not page.exists():
+        if not self.opt.undelete and not page.exists():
             pywikibot.output('Skipping: {0} does not exist.'.format(page))
             return True
         return super(DeletionRobot, self).skip_page(page)
@@ -200,8 +200,8 @@ class DeletionRobot(MultipleSitesBot, CurrentPageBot):
             if self.site.user() is None:
                 self.site.login()
             self.current_page.delete(self.summary,
-                                     not self.getOption('always'),
-                                     self.getOption('always'),
+                                     not self.opt.always,
+                                     self.opt.always,
                                      quit=True)
 
 
