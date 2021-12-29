@@ -176,7 +176,7 @@ class BasicBot(
         for p in ekatte_list:
             pywikibot.output(ekatte_list[p])
             page.text += ekatte_list[p].demo_template
-            page.text += '\n* {ekatte_list[p]}'
+            page.text += '\n* {}'.format(ekatte_list[p])
 
         page.save(summary=self.opt.summary)
         return
