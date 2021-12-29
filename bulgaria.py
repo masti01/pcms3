@@ -53,6 +53,7 @@ from urllib.request import Request, urlopen
 #
 import pywikibot
 from pywikibot import pagegenerators
+from pywikibot.textlib import add_text
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
@@ -205,6 +206,19 @@ class BasicBot(
                 pywikibot.output("Page {}, no EKATTE".format(page.title(as_link=True)))
             return None
 
+    def add_graph(self, text, graph):
+        """
+        add graph before References section
+        ad References if it does not exist
+        """
+
+        refR = r'(?i)(?P<ref>=+\s*?przypisy\s*?=+)'
+        ref = refR.search(text)
+        if ref:
+            return re.sub(ref.group('ref'), graph + '\n' + ref.group('ref'), text)
+        else:
+            return add_text(text, graph + '\n\n== Przypisy ==\n{{Przypisy}}\n')
+
     def treat(self, page) -> None:
         """Load the given page, do some changes, and save it."""
 
@@ -223,10 +237,13 @@ class BasicBot(
             pywikibot.output("Demo:{}".format(demo))
         ekatte_list[page.title()] = demo
 
-        return  # remove after preparing to update each page
+        page.text = self.add_graph(text, demo)
+
+        # return  # remove after preparing to update each page
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        # self.put_current(text, summary=self.opt.summary)
+
+        page.save()
 
 
 def main(*args: str) -> None:
