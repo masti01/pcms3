@@ -208,6 +208,13 @@ class BasicBot(
     def treat(self, page) -> None:
         """Load the given page, do some changes, and save it."""
 
+        """ Verify if action is necessary """
+        text = page.text
+        if "{{wykres demograficzny" in text.lower():
+            if self.opt.test:
+                pywikibot.output("[[{}]] Skipping: template found".format(page.title()))
+            return
+
         ekatte[page.title()] = self.ekatte_id(page)
 
         demo = Demography(page.title(), ekatte[page.title()], opt=True)
