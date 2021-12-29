@@ -142,7 +142,6 @@ class BasicBot(
 ):
 
     """
-    An incomplete sample bot.
 
     :ivar summary_key: Edit summary message key. The message that should be
         used is placed on /i18n subdirectory. The file containing these
@@ -194,7 +193,7 @@ class BasicBot(
 
         ekatteR = re.compile('\d+?')
         try:
-            claims3990 = wd.claims['P3990']
+            claims3990 = wd.claims['P3990'] # get EKATTE ID
             for c in claims3990:
                 value = c.getTarget()
                 if ekatteR.match(value):
@@ -213,7 +212,7 @@ class BasicBot(
         pywikibot.output("Demo:{}".format(demo))
         ekatte_list[page.title()] = demo
 
-        return
+        return #remove after preparing to update each page
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         # self.put_current(text, summary=self.opt.summary)
