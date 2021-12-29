@@ -105,10 +105,10 @@ class Demography():
         drowR = re.compile(r'(?is)<tr>\\n(?P<table>.*?)\\n</tr>')
         datesR = re.compile(r'(?i).*?(?P<year>\d{4})</td>\\n.*?(?P<population>\d*)</td>\\n.*?Census')
         for dr in drowR.finditer(str(webpage)):
-            pywikibot.output('DR:%s' % dr.group('table'))
+            # pywikibot.output('DR:%s' % dr.group('table'))
             dates = datesR.search(dr.group('table'))
             if dates:
-                pywikibot.output('Dates::%s' % str(dates))
+                # pywikibot.output('Dates::%s' % str(dates))
                 data.append((dates.group('year'),dates.group('population')))
 
         return(data)
