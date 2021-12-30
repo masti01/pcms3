@@ -212,7 +212,7 @@ class BasicBot(
         ad References if it does not exist
         """
 
-        refR = r'(?i)(?P<ref>=+\s*?przypisy\s*?=+)'
+        refR = re.compile(r'(?i)(?P<ref>=+\s*?przypisy\s*?=+)')
         ref = refR.search(text)
         if ref:
             return re.sub(ref.group('ref'), graph + '\n' + ref.group('ref'), text)
