@@ -215,9 +215,9 @@ class BasicBot(
         refR = re.compile(r'(?i)(?P<ref>=+\s*?przypisy\s*?=+)')
         ref = refR.search(text)
         if ref:
-            return re.sub(ref.group('ref'), graph + '\n' + ref.group('ref'), text)
+            return re.sub(ref.group('ref'), '{}\n{}'.format(graph, ref.group('ref')), text)
         else:
-            return add_text(text, graph + '\n\n== Przypisy ==\n{{Przypisy}}\n')
+            return add_text(text, '{}\n\n== Przypisy ==\n{{Przypisy}}\n'.format(graph))
 
     def treat(self, page) -> None:
         """Load the given page, do some changes, and save it."""
