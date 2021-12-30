@@ -44,6 +44,7 @@ cannot be set by settings file:
 &params;
 """
 import re
+from typing import List, Tuple, Union, Any
 from urllib.request import Request, urlopen
 
 #
@@ -71,6 +72,8 @@ ekatte_list = {}
 
 
 class Demography():
+    demo_data: List[Tuple[Union[str, Any], Union[str, Any]]]
+
     def __init__(self, name=None, ekatteid=None, opt=False):
         """Initializer."""
 
@@ -83,7 +86,8 @@ class Demography():
     def __str__(self):
         return '[[{self.name}]]: EKATTE:{self.ekatte_id} SID:{self.search_id} -> {self.demo_data}'.format(self=self)
 
-    def _search_page(self, ekatteid):
+    @staticmethod
+    def _search_page(ekatteid):
         quote_page = 'https://nsi.bg/nrnm/index.php?ezik=en&f=9&search=%s' % ekatteid
         web = Request(quote_page, headers={'User-Agent': 'Mozilla/5.0'})
         webpage = urlopen(web, timeout=10).read()
@@ -94,7 +98,8 @@ class Demography():
 
         return sid
 
-    def _demo_data(self, sid):
+    @staticmethod
+    def _demo_data(sid):
         data = []
         quote_page = 'https://nsi.bg/nrnm/show9.php?sid=%s&ezik=en' % sid
         web = Request(quote_page, headers={'User-Agent': 'Mozilla/5.0'})
@@ -110,6 +115,32 @@ class Demography():
                 data.append((dates.group('year'), dates.group('population')))
 
         return (data)
+
+    @property
+    def years(self):
+        # return generator of years of years with demographic data
+        for y,d in self.demo_data:
+            yield y
+
+    def population(self, year):
+        # return population for provided year or None
+        for y,d in self.demo_data:
+            if year == y:
+                return d
+        return None
+
+    @property
+    def count(self):
+        # return number of elements
+        return len(self.demo_data)
+
+    @property
+    def average(self):
+        # return average population
+        pop = 0
+        for y,d in self.demo_data:
+            pop += d
+        return pop/self.count
 
     @property
     def demo_template(self):
