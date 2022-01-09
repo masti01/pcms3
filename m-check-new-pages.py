@@ -81,6 +81,7 @@ tmplcat = {
     'nyse',
     'six swiss exchange',
     'tyo',
+    'kalendaria tematyczne',
 }
 
 class BasicBot(

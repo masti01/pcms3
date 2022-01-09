@@ -71,17 +71,16 @@ ekatte = {}
 ekatte_list = {}
 
 
-class Demography():
+class Demography:
     demo_data: List[Tuple[Union[str, Any], Union[str, Any]]]
 
-    def __init__(self, name=None, ekatteid=None, opt=False):
+    def __init__(self, name=None, ekatteid=None):
         """Initializer."""
 
         self.name = name
         self.ekatte_id = ekatteid
         self.search_id = self._search_page(self.ekatte_id)
         self.demo_data = self._demo_data(self.search_id)
-        self.opt = opt
 
     def __str__(self):
         return '[[{self.name}]]: EKATTE:{self.ekatte_id} SID:{self.search_id} -> {self.demo_data}'.format(self=self)
@@ -114,17 +113,17 @@ class Demography():
                 # pywikibot.output('Dates::%s' % str(dates))
                 data.append((dates.group('year'), dates.group('population')))
 
-        return (data)
+        return data
 
     @property
     def years(self):
         # return generator of years of years with demographic data
-        for y,d in self.demo_data:
+        for y, d in self.demo_data:
             yield y
 
     def population(self, year):
         # return population for provided year or None
-        for y,d in self.demo_data:
+        for y, d in self.demo_data:
             if year == y:
                 return d
         return None
@@ -138,9 +137,9 @@ class Demography():
     def average(self):
         # return average population
         pop = 0
-        for y,d in self.demo_data:
+        for y, d in self.demo_data:
             pop += d
-        return pop/self.count
+        return pop / self.count
 
     @property
     def demo_template(self):
@@ -218,7 +217,7 @@ class BasicBot(
 
         wd.get()
 
-        ekatteR = re.compile('\d+?')  # new EKATTE is digits only
+        ekatteR = re.compile(r'\d+?')  # new EKATTE is digits only
         try:
             claims3990 = wd.claims['P3990']  # get EKATTE ID
             for c in claims3990:
@@ -237,7 +236,8 @@ class BasicBot(
                 pywikibot.output("Page {}, no EKATTE".format(page.title(as_link=True)))
             return None
 
-    def add_graph(self, text, graph):
+    @staticmethod
+    def add_graph(text, graph):
         """
         add graph before References section
         ad References if it does not exist
@@ -262,7 +262,7 @@ class BasicBot(
 
         ekatte[page.title()] = self.ekatte_id(page)
 
-        demo = Demography(page.title(), ekatte[page.title()], opt=True)
+        demo = Demography(page.title(), ekatte[page.title()])
 
         if self.opt.test:
             pywikibot.output("Demo:{}".format(demo))
