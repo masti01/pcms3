@@ -53,11 +53,157 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 import re
-
+from collections import OrderedDict
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
+
+class BioInfobox():
+    def __init__(self,page):
+        self.dateR = re.compile(
+            r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
+        self.infoboxtitle, self.infoboxparams = self._listinfoboxes(page)
+        self.infoboxbday = self._infoboxbday()
+        self.infoboxbyear = self._infoboxbyear()
+        self.infoboxdday =  self._infoboxdday()
+        self.infoboxdyear = self._infoboxdyear()
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+    @staticmethod
+    def _refremove(text):
+        """
+        remove references from text
+        """
+        return re.sub("<ref.*?<\/ref>|\{\{r\|.*?\}\}|\{\{u\|.*?\}\}", '', text)
+
+    def _listinfoboxes(self,page):
+        par = OrderedDict()
+        for t, p in page.templatesWithParams():
+            if 'infobox' in t.title().lower():
+                pcount = 0
+                for pv in p:
+                    if '=' in pv:
+                        par[(pv.split('=', 1))[0]] = pv.split('=', 1)[1]
+                    else:
+                        par[str(pcount)] = pv
+                    pcount += 1
+
+                return t.title(with_ns=False), par
+        return None
+
+    def _infoboxbday(self):
+        if 'data urodzenia' in self.infoboxparams:
+            by = self.dateR.search(self._refremove(self.infoboxparams['data urodzenia']))
+            return by.group('day') if by else None
+        else:
+            return None
+
+    def _infoboxbyear(self):
+        if 'data urodzenia' in self.infoboxparams:
+            by = self.dateR.search(self._refremove(self.infoboxparams['data urodzenia']))
+            return by.group('year') if by else None
+        else:
+            return None
+
+    def _infoboxdday(self):
+        if 'data śmierci' in self.infoboxparams:
+            dy = self.dateR.search(self._refremove(self.infoboxparams['data śmierci']))
+            return dy.group('day') if dy else None
+        else:
+            return None
+
+    def _infoboxdyear(self):
+        if 'data śmierci' in self.infoboxparams:
+            dy = self.dateR.search(self._refremove(self.infoboxparams['data śmierci']))
+            return dy.group('year') if dy else None
+        else:
+            return None
+
+class Biography:
+    bbdayR = re.compile(
+        r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(\]{2})?')
+    bddayR = re.compile(
+        r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?")
+
+    def __init__(self, page: pywikibot.Page):
+
+        # general
+        self.shorttitle = page.title(without_brackets=True)
+        self.norefstext = self._refremove(page.text)
+        # first paragraph (lead) info
+        self.firstpar = self._firstpar(page)
+        self.leadname = self._leadname(self.firstpar)
+        self.leadbday = self._leadbday() if self._leadbday() else ''
+        self.leadbyear = self._leadbyear() if self._leadbyear() else ''
+        self.leadbdate = ('%s %s' % (self.leadbday, self.leadbyear)).strip()
+        # self.leaddday = self._leaddday() if self._leaddday() else ''
+        self.leaddday = self._leaddday()
+        self.leaddyear = self._leaddyear()
+        # self.leaddyear = self._leaddyear() if self._leaddyear() else ''
+        self.leadddate = ('%s %s' % (self.leaddday, self.leaddyear)).strip()
+        # categories info
+        self.catbyear = self._catbyear(self.norefstext)
+        self.catdyear = self._catdyear(self.norefstext)
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __str__(self):
+        r = "Class:%s" % self.__class__
+        for a in self.__dict__:
+            r += '\n%s:%s' % (a, self.__dict__[a])
+        return r
+
+    @staticmethod
+    def _firstpar(page):
+        """
+        return first paragraf (lead) of page
+        """
+        return re.search("(^|\n)(?P<firstpar>'''.*\n)", page.text).group('firstpar')
+
+    @staticmethod
+    def _leadname(text):
+        """
+        generate person name from lead paragraph
+        """
+        return re.search("'''(?P<header>.*?)'''", text).group('header')
+
+    @staticmethod
+    def _refremove(text):
+        """
+        remove references from text
+        """
+        return re.sub("<ref.*?<\/ref>|\{\{r\|.*?\}\}|\{\{u\|.*?\}\}", '', text)
+
+    def _leadbday(self):
+        bdd = self.bbdayR.search(self.firstpar)
+        return bdd.group('bbd') if bdd else None
+
+    def _leadbyear(self):
+        bdy = self.bbdayR.search(self.firstpar)
+        return bdy.group('bby') if bdy else None
+
+    def _leaddday(self):
+        bdd = self.bddayR.search(self.firstpar)
+        return bdd.group('bdd') if bdd else None
+
+    def _leaddyear(self):
+        bdy = self.bddayR.search(self.firstpar)
+        return bdy.group('bdy') if bdy else None
+
+    @staticmethod
+    def _catbyear(text):
+        cby = re.search(r"(?i)\[\[Kategoria:Urodzeni w (?P<cby>.*?)[\|\]]", text)
+        return cby.group('cby') if cby else None
+
+    @staticmethod
+    def _catdyear(text):
+        cdy = re.search(r"(?i)\[\[Kategoria:Zmarli w (?P<cdy>.*?)[\|\]]", text)
+        return cdy.group('cdy') if cdy else None
+
 
 
 class BasicBot(
@@ -70,7 +216,6 @@ class BasicBot(
     NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
-
     """
     An incomplete sample bot.
 
@@ -96,9 +241,9 @@ class BasicBot(
 
     def run(self):
 
-        footer = u'\n|}\n'
+        footer = '\n|}\n'
 
-        finalpage = self.prepareheader()
+        finalpage = self.header()
         licznik = 0
         wiersz = 0
         # pagelist = [page for page in self.generator]
@@ -108,26 +253,26 @@ class BasicBot(
         for page in self.generator:
             licznik += 1
             # finalpage = finalpage + self.treat(page)
-            pywikibot.output(u'Processing page #%s (%s marked): %s' % (str(licznik), str(wiersz), page.title(as_link=True)))
+            pywikibot.output(
+                'Processing page #%s (%s marked): %s' % (str(licznik), str(wiersz), page.title(as_link=True)))
             result = self.treat(page)
-            if not result == u'':
+            if not result == '':
                 wiersz += 1
-                finalpage += u'\n|-\n| ' + str(wiersz) + u' || ' + result
-                pywikibot.output(u'Added line #%i: %s' % (wiersz, u'\n|-\n| ' + str(wiersz) + u' || ' + result))
+                finalpage += '\n|-\n| ' + str(wiersz) + ' || ' + result
+                pywikibot.output('Added line #%i: %s' % (wiersz, '\n|-\n| ' + str(wiersz) + ' || ' + result))
             # pywikibot.output(finalpage)
         finalpage += footer
-        finalpage += u'\nPrzetworzono stron: ' + str(licznik)
-    
+        finalpage += '\nPrzetworzono stron: ' + str(licznik)
+
         finalpage = self.przypisy(finalpage)
-    
+
         # Save page
         # pywikibot.output(finalpage)
         outpage = pywikibot.Page(pywikibot.Site(), self.opt.outpage)
         outpage.text = finalpage
         outpage.save(summary=self.opt.summary)
-        
 
-    def prepareheader(self):
+    def header(self):
         # prepare new page with table
         header = u"Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. \nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
         header += u"\n\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
@@ -145,17 +290,15 @@ class BasicBot(
         header += u"\n*:'''Data urodzenia w infoboksie'''"
         header += u"\n*:'''Data śmierci w infoboksie'''"
         header += u"\n</small>\n"
-        header += u'{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Nagłówek\n!Data urodzenia\n!Data śmierci\n'
-        header += u'!Kategoria<br />Urodzeni w\n!Kategoria<br />zmarli w\n!Infoboksy\n!Infobox\n!Nazwisko<br />w infoboksie\n!Data urodzenia<br />w infoboksie\n!Data śmierci<br />w infoboksie'
+        header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Nagłówek\n!Data urodzenia\n!Data śmierci\n'
+        header += '!Kategoria<br />Urodzeni w\n!Kategoria<br />zmarli w\n!Infoboksy\n!Infobox\n!Nazwisko<br />w infoboksie\n!Data urodzenia<br />w infoboksie\n!Data śmierci<br />w infoboksie'
         return (header)
-    
-    
+
     def przypisy(self, text):
         """
         Searches text for references, adds {{Przypisy}} if found.
         """
-    
-    
+
         # przypisy?
         refR = re.compile(r'(?P<ref>(<ref|\{\{r))', flags=re.I)
         refs = refR.finditer(text)  # ptitleR.search(pagetitle).group('ptitle')
@@ -164,139 +307,182 @@ class BasicBot(
             reffound = True
             break
         if reffound:
-            text += u'\n\n{{Przypisy}}'
+            text += '\n\n{{Przypisy}}'
             return (text)
-    
-    
+
     def refremove(self, intext):
         """
         remove references from text
         """
         refR = re.compile(r'(<ref.*?<\/ref>|\{\{r\|.*?\}\}|\{\{u\|.*?\}\})')
-        output = re.sub(refR, u'', intext)
+        output = re.sub(refR, '', intext)
         # pywikibot.output(output)
         return (output)
-    
-    
+
+    def firstpar(self,page):
+        """
+        return first paragraf (lead) of page
+        """
+        return re.search("(^|\n)(?P<firstpar>'''.*\n)", page.text)
+
     def treat(self, page):
         """
         Loads the given page, looks for interwikis
         """
         found = False
-        rowtext = u''
-        textload = self.load(page)
-        if not textload:
-            return (u'')
-    
-        text = self.refremove(textload)
-        # pywikibot.output(text)
+        rowtext = ''
+
+        bc = Biography(page)
+        # pywikibot.output(bc)
+        pywikibot.output('*************************************')
+        pywikibot.output('ShortTitle:%s' % bc.shorttitle)
+        pywikibot.output('LeadName:%s' % bc.leadname)
+        pywikibot.output('*************************************')
+        pywikibot.output('LeadBDay:%s' % bc.leadbday)
+        pywikibot.output('LeadBYear:%s' % bc.leadbyear)
+        pywikibot.output('LeadBDate:%s' % bc.leadbdate)
+        pywikibot.output('*************************************')
+        pywikibot.output('LeadDDay:%s' % bc.leaddday)
+        pywikibot.output('LeadDYear:%s' % bc.leaddyear)
+        pywikibot.output('LeadDDate:%s' % bc.leadddate)
+        pywikibot.output('*************************************')
+        pywikibot.output('CatBYear:%s' % bc.catbyear)
+        pywikibot.output('CatDYear:%s' % bc.catdyear)
+        pywikibot.output('*************************************')
+
+        bi = BioInfobox(page)
+        pywikibot.output('*************************************')
+        pywikibot.output('BioInfobox:%s' % bi.__repr__())
+        pywikibot.output('*************************************')
+        pywikibot.output('BioInfobox:%s' % bi.infoboxtitle)
+        pywikibot.output('BioInfobox:%s' % bi.infoboxparams.keys())
+        pywikibot.output('*************************************')
+        pywikibot.output('BioIboxBDay:%s' % bi.infoboxbday)
+        pywikibot.output('BioIboxBYear:%s' % bi.infoboxbyear)
+        pywikibot.output('BioIboxDDay:%s' % bi.infoboxdday)
+        pywikibot.output('BioIboxDYear:%s' % bi.infoboxdyear)
+        pywikibot.output('*************************************')
+
+        return '' # temporary
+
+        text = self.refremove(page.text)
 
         # First paragraph
+        """
+        replace with firstpar()
         firstparR = re.compile(r"(^|\n)(?P<firstpar>'''.*\n)")
-        firstpars = u''
+        firstpars = ''
         firstline = True
         linki = firstparR.finditer(text)
         for firstpar in linki:
             found = True
-            pywikibot.output(u'Firstpar: %s' % firstpar.group('firstpar'))
+            pywikibot.output('Firstpar: %s' % firstpar.group('firstpar'))
             break
         if found:
             firstpars = firstpar.group('firstpar')
-        
+        """
+        firstpars = self.firstpar(page)
+
         # page title no disambig
+        """
         ptitleR = re.compile(r'(?P<ptitle>.*?) \(')
         pagetitle = page.title()
-        if u'(' in pagetitle:
+        if '(' in pagetitle:
             ptitle = ptitleR.search(pagetitle).group('ptitle')
         else:
             ptitle = pagetitle
-        pywikibot.output(u'PTitle (no disambig): %s' % ptitle)
-        
+        """
+        ptitle = page.title(without_brackets=True)
+        pywikibot.output('PTitle (no disambig): %s' % ptitle)
+
         # bolded header
         bheaderR = re.compile(r"(^|\n)'''(?P<header>.*?)'''", flags=re.I)
-        bheaders = u''
+        bheaders = ''
         firstline = True
         linki = bheaderR.finditer(firstpars)
         for bheader in linki:
             found = True
-            pywikibot.output(u'Header: %s' % bheader.group('header'))
+            pywikibot.output('Header: %s' % bheader.group('header'))
             if firstline:
                 firstline = False
                 bheaders += bheader.group('header')
             else:
-                bheaders += u'<br />' + bheader.group('header')
+                bheaders += '<br />' + bheader.group('header')
             break
-        
+
         # bolded birthday  ur\.\s*(\[\[)?\d*\s*\w*(\]\])?\s*(\[\[)?\d*
         bbdayR = re.compile(
-            r"ur\.(\s*w)?(\s*(\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{4})(\]{2})?", flags=re.I)
-        bbd = u''
-        bby = u''
+            r"ur\.(\s*w)?(\s*(\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{4})(\]{2})?",
+            flags=re.I)
+        bbd = ''
+        bby = ''
         firstline = True
         linki = bbdayR.finditer(firstpars)
         for bday in linki:
             found = True
-            pywikibot.output(u'BDAY: %s %s' % (bday.group('bbd'), bday.group('bby')))
+            pywikibot.output('BDAY: %s %s' % (bday.group('bbd'), bday.group('bby')))
             if not bday.group('bbd') == None:
                 bbd = bday.group('bbd')
             if not bday.group('bby') == None:
                 bby = bday.group('bby')
-                pywikibot.output(u'BDAY set: %s %s' % (bbd, bby))
+                pywikibot.output('BDAY set: %s %s' % (bbd, bby))
                 break
-        
+
         # bolded death
         bddayR = re.compile(
-            r"zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?", flags=re.I)
-        bdd = u''
-        bdy = u''
+            r"zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?",
+            flags=re.I)
+        bdd = ''
+        bdy = ''
         firstline = True
         linki = bddayR.finditer(firstpars)
         for dday in linki:
             found = True
-            pywikibot.output(u'DDAY: %s %s' % (dday.group('bdd'), dday.group('bdy')))
+            pywikibot.output('DDAY: %s %s' % (dday.group('bdd'), dday.group('bdy')))
             if not dday.group('bdd') == None:
                 bdd = dday.group('bdd')
             if not dday.group('bdy') == None:
                 bdy = dday.group('bdy')
-                pywikibot.output(u'DDAY set: %s %s' % (bdd, bdy))
+                pywikibot.output('DDAY set: %s %s' % (bdd, bdy))
                 break
-        
+
         # Category birthyear
         cbyearR = re.compile(r"\[\[Kategoria:Urodzeni w (?P<cby>.*?)[\|\]]")
-        cby = u''
+        cby = ''
         firstline = True
         linki = cbyearR.finditer(text)
         for cbyear in linki:
             found = True
-            # pywikibot.output(u'CATBYEAR: %s' % cbyear.group('cby'))
+            # pywikibot.output('CATBYEAR: %s' % cbyear.group('cby'))
             cby = cbyear.group('cby')
-            pywikibot.output(u'CATBYEAR: %s' % cby)
+            pywikibot.output('CATBYEAR: %s' % cby)
             break
-        
+
         # Category deathyear
         cdyearR = re.compile(r"\[\[Kategoria:Zmarli w (?P<cdy>.*?)[\|\]]")
-        cdy = u''
+        cdy = ''
         firstline = True
         linki = cdyearR.finditer(text)
         for cdyear in linki:
             found = True
-            # pywikibot.output(u'CATDYEAR: %s' % cdyear.group('cdy'))
+            # pywikibot.output('CATDYEAR: %s' % cdyear.group('cdy'))
             cdy = cdyear.group('cdy')
-            pywikibot.output(u'CATDYEAR: %s' % cdy)
+            pywikibot.output('CATDYEAR: %s' % cdy)
             break
-        
+
         # infobox name & title
         firstline = True
-        infoboxs = u''
-        iboxname = u''
-        iboxbd = u''
-        iboxby = u''
-        iboxdd = u''
-        iboxdy = u''
-        infoboxtitle = u''
+        infoboxs = ''
+        iboxname = ''
+        iboxbd = ''
+        iboxby = ''
+        iboxdd = ''
+        iboxdy = ''
+        infoboxtitle = ''
         infoboxtR = re.compile(r"\{\{(?P<iboxtitle>.*) infobox", flags=re.I)
         infoboxnR = re.compile(
-            r"^(Imię i nazwisko|Imię|polityk|imięinazwisko|imię i nazwisko|imięnazwisko)\s*=\s*(?P<iboxname>.*)", flags=re.I)
+            r"^(Imię i nazwisko|Imię|polityk|imięinazwisko|imię i nazwisko|imięnazwisko)\s*=\s*(?P<iboxname>.*)",
+            flags=re.I)
         infoboxbdR = re.compile(
             r"^(data urodzenia|dataurodzenia|data i miejsce urodzenia)\s*=(\s*(\[{2})?(?P<iboxbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<iboxby>\d{4})(\]{2})?",
             flags=re.I)
@@ -305,13 +491,14 @@ class BasicBot(
             flags=re.I)
         infoboxnumber = 0
         infoboxskip = False
-        for (t, args) in page.templatesWithParams():
-            if u'infobox' in t and not u'/' in t:
-                iboxname = u''
-                iboxbd = u''
-                iboxby = u''
-                iboxdd = u''
-                iboxdy = u''
+        for t, args in page.templatesWithParams():
+            pywikibot.output('Template: %s' % t.title())
+            if 'infobox' in t.title(with_ns=False) and '/' not in t.title(with_ns=False):
+                iboxname = ''
+                iboxbd = ''
+                iboxby = ''
+                iboxdd = ''
+                iboxdy = ''
                 infoboxnumber += 1
                 if infoboxskip:
                     break
@@ -320,78 +507,80 @@ class BasicBot(
                 pywikibot.output(p)
                 # name in infobox
                 arglist = infoboxnR.finditer(p)
-        for arg in arglist:
-            pywikibot.output(u'ARG: %s' % arg.group('iboxname'))
-            iboxname = arg.group('iboxname')
-            # birthdate and year in infobox
-            arglist = infoboxbdR.finditer(p)
-        for arg in arglist:
-            pywikibot.output(u'ARG: %s %s' % (arg.group('iboxbd'), arg.group('iboxby')))
-            if not arg.group('iboxbd') == None:
-                iboxbd = arg.group('iboxbd')
-            if not arg.group('iboxby') == None:
-                iboxby = arg.group('iboxby')
-                # deathdate and year in infobox
-            arglist = infoboxddR.finditer(p)
-        for arg in arglist:
-            pywikibot.output(u'ARG: %s %s' % (arg.group('iboxdd'), arg.group('iboxdy')))
-            if not arg.group('iboxdd') == None:
-                iboxdd = arg.group('iboxdd')
-            if not arg.group('iboxdy') == None:
-                iboxdy = arg.group('iboxdy')
-        pywikibot.output(u'iboxname: %s' % iboxname)
-        pywikibot.output(u'iboxbd: %s' % iboxbd)
-        pywikibot.output(u'iboxby: %s' % iboxby)
-        pywikibot.output(u'iboxdd: %s' % iboxdd)
-        pywikibot.output(u'iboxdy: %s' % iboxdy)
-        
+                for arg in arglist:
+                    pywikibot.output('ARG: %s' % arg.group('iboxname'))
+                    iboxname = arg.group('iboxname')
+                    # birthdate and year in infobox
+                    arglist = infoboxbdR.finditer(p)
+                for arg in arglist:
+                    pywikibot.output('ARG: %s %s' % (arg.group('iboxbd'), arg.group('iboxby')))
+                    if not arg.group('iboxbd') == None:
+                        iboxbd = arg.group('iboxbd')
+                    if not arg.group('iboxby') == None:
+                        iboxby = arg.group('iboxby')
+                        # deathdate and year in infobox
+                    arglist = infoboxddR.finditer(p)
+                for arg in arglist:
+                    pywikibot.output('ARG: %s %s' % (arg.group('iboxdd'), arg.group('iboxdy')))
+                    if not arg.group('iboxdd') == None:
+                        iboxdd = arg.group('iboxdd')
+                    if not arg.group('iboxdy') == None:
+                        iboxdy = arg.group('iboxdy')
+                pywikibot.output('iboxname: %s' % iboxname)
+                pywikibot.output('iboxbd: %s' % iboxbd)
+                pywikibot.output('iboxby: %s' % iboxby)
+                pywikibot.output('iboxdd: %s' % iboxdd)
+                pywikibot.output('iboxdy: %s' % iboxdy)
+
         # if firstline:
         #   firstline = False
         # else:
-        #   infoboxs += u'<br />'
-        # infoboxs += t + u'=>' + iboxname + u'=>' + iboxbd + u' ' + iboxby + u'=>' + iboxdd + u' ' + iboxdy
-        infoboxs += t + u' || ' + iboxname + u' || ' + iboxbd + u' ' + iboxby + u' || ' + iboxdd + u' ' + iboxdy
-        infoboxtitle = t
+        #   infoboxs += '<br />'
+        # infoboxs += t + '=>' + iboxname + '=>' + iboxbd + ' ' + iboxby + '=>' + iboxdd + ' ' + iboxdy
+        infoboxs += t.title(
+            with_ns=False) + ' || ' + iboxname + ' || ' + iboxbd + ' ' + iboxby + ' || ' + iboxdd + ' ' + iboxdy
+        infoboxtitle = t.title(with_ns=False)
         infoboxskip = True
-        
+
         # write result
         ToBeMarked = False
-        pywikibot.output(u'ptitle: %s' % ptitle)
-        pywikibot.output(u'bheaders: %s' % bheaders)
-        pywikibot.output(u'infoboxskip: %s' % infoboxskip)
+        pywikibot.output('ptitle: %s' % ptitle)
+        pywikibot.output('bheaders: %s' % bheaders)
+        pywikibot.output('infoboxskip: %s' % infoboxskip)
         if not iboxname == ptitle or not iboxname == bheaders:
             cond1 = True
         else:
             cond1 = False
-        pywikibot.output(u'Condition1: %s' % cond1)
-        pywikibot.output(u'Condition2: %s' % (infoboxskip and cond1))
+        pywikibot.output('Condition1: %s' % cond1)
+        pywikibot.output('Condition2: %s' % (infoboxskip and cond1))
         if not ptitle == bheaders or (infoboxskip and (not iboxname == ptitle or not iboxname == bheaders)):
             ToBeMarked = True
-            pywikibot.output(u'ToBeMarked: title vs bolded header')
-            ptitle = u'style="background-color:PowderBlue" | ' + ptitle
-            bheaders = u'style="background-color:PowderBlue" | ' + bheaders
-            iboxname = u'style="background-color:PowderBlue" | ' + iboxname
+            pywikibot.output('ToBeMarked: title vs bolded header')
+            ptitle = 'style="background-color:PowderBlue" | ' + ptitle
+            bheaders = 'style="background-color:PowderBlue" | ' + bheaders
+            iboxname = 'style="background-color:PowderBlue" | ' + iboxname
         if not bby == cby or (infoboxskip and (not iboxby == bby or not iboxby == cby)):
             ToBeMarked = True
-            pywikibot.output(u'ToBeMarked: Bolded BY vs cat BY')
-            bby = u'style="background-color:Lime" | ' + bby
-            cby = u'style="background-color:Lime" | ' + cby
-            iboxbd = u'style="background-color:Lime" | ' + iboxbd
+            pywikibot.output('ToBeMarked: Bolded BY vs cat BY')
+            bby = 'style="background-color:Lime" | ' + bby
+            cby = 'style="background-color:Lime" | ' + cby
+            iboxbd = 'style="background-color:Lime" | ' + iboxbd
         if not bdy == cdy or (infoboxskip and (not iboxdy == bdy or not iboxdy == cdy)):
             ToBeMarked = True
-            pywikibot.output(u'ToBeMarked: Bolded DY vs cat DY')
-            bdy = u'style="background-color:Orange" | ' + bdy
-            cdy = u'style="background-color:Orange" | ' + cdy
-            iboxdd = u'style="background-color:Orange" | ' + iboxdd
+            pywikibot.output('ToBeMarked: Bolded DY vs cat DY')
+            bdy = 'style="background-color:Orange" | ' + bdy
+            cdy = 'style="background-color:Orange" | ' + cdy
+            iboxdd = 'style="background-color:Orange" | ' + iboxdd
         if ToBeMarked:
-            pageiw = u'[[:' + page.title() + u']] || ' + bheaders + u' || ' + bbd + u' ' + bby + u' || ' + bdd + u' ' + bdy + u' || ' + cby + u' || ' + cdy + u' || ' + str(
-                infoboxnumber) + u' || ' + infoboxtitle + u' || ' + iboxname + u' || ' + iboxbd + u' ' + iboxby + u' || ' + iboxdd + u' ' + iboxdy
+            pageiw = '[[:' + page.title(
+                with_ns=False) + ']] || ' + bheaders + ' || ' + bbd + ' ' + bby + ' || ' + bdd + ' ' + bdy + ' || ' + cby + ' || ' + cdy + ' || ' + \
+                     str(infoboxnumber) + ' || ' + infoboxtitle + ' || ' + iboxname + ' || ' + iboxbd + ' ' + iboxby + ' || ' + iboxdd + ' ' + iboxdy
         else:
-            pageiw = u''
-        
+            pageiw = ''
+
             # test print
             pywikibot.output(u"%s" % pageiw)
-        
+
         return (pageiw)
 
     def load(self, page):
@@ -411,14 +600,13 @@ class BasicBot(
             return text
         return None
 
-
     def save(self, text, page, comment=None, minorEdit=True,
              botflag=True):
         # only save if something was changed
         try:
             pagetext = page.get()
         except:
-            pagetext = u''
+            pagetext = ''
             if text != pagetext:
                 # Show the title of the page we're working on.
                 # Highlight the title in purple.
@@ -426,9 +614,9 @@ class BasicBot(
                                  % page.title())
                 # show what was changed
                 pywikibot.showDiff(pagetext, text)
-                pywikibot.output(u'Comment: %s' % comment)
+                pywikibot.output('Comment: %s' % comment)
                 # choice = pywikibot.inputChoice(
-                #    u'Do you want to accept these changes?',
+                #    'Do you want to accept these changes?',
                 #    ['Yes', 'No'], ['y', 'N'], 'N')
                 try:
                     # Save the page
@@ -439,10 +627,10 @@ class BasicBot(
                                      % page.title(as_link=True))
                 except pywikibot.exceptions.EditConflictError:
                     pywikibot.output(
-                        u'Skipping %s because of edit conflict'
+                        'Skipping %s because of edit conflict'
                         % (page.title()))
                 except pywikibot.exceptions.SpamblacklistError as error:
-                    pywikibot.output(u'Cannot change %s because of spam blacklist entry %s'
+                    pywikibot.output('Cannot change %s because of spam blacklist entry %s'
                                      % (page.title(), error.url))
                 else:
                     return True
