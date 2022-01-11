@@ -274,24 +274,46 @@ class BasicBot(
 
     def header(self):
         # prepare new page with table
-        header = u"Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. \nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
-        header += u"\n\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-        header += u"\n<small>"
-        header += u"\n*Legenda:"
-        header += u"\n*:'''Hasło''' - Tytuł hasła"
-        header += u"\n*:'''Nagłówek''' - Nazwa wyróżniona"
-        header += u"\n*:'''Data urodzenia''' - Data urodzenia w nagłówku"
-        header += u"\n*:'''Data śmierci''' - Data śmierci w nagłówku"
-        header += u"\n*:'''Kategoria Urodzeni w''' - Rok w kategorii urodzonych"
-        header += u"\n*:'''Kategoria zmarli w''' - Rok w kategorii zmarłych"
-        header += u"\n*:'''Infoboksy''' - liczba infoboksów"
-        header += u"\n*:'''Infobox''' - tytuł infoboksu"
-        header += u"\n*:'''Nazwisko w infoboksie'''"
-        header += u"\n*:'''Data urodzenia w infoboksie'''"
-        header += u"\n*:'''Data śmierci w infoboksie'''"
-        header += u"\n</small>\n"
-        header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Nagłówek\n!Data urodzenia\n!Data śmierci\n'
-        header += '!Kategoria<br />Urodzeni w\n!Kategoria<br />zmarli w\n!Infoboksy\n!Infobox\n!Nazwisko<br />w infoboksie\n!Data urodzenia<br />w infoboksie\n!Data śmierci<br />w infoboksie'
+        header = (
+            "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. "
+            "Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
+            ""
+            "Strona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
+            "<small>"
+            "; Legenda:"
+            ":; Nazwisko"
+            ":: - '''Tytuł''' - tytuł artykułu bez wyróżników w nawiasie"
+            ":: - '''Nagłówek''' - nazwisko w pierwszym akapicie artykułu"
+            ":: - '''Infobox''' - nazwisko w infoboksie"
+            ":; Data urodzenia"
+            ":: - '''Nagłówek''' - data urodzenia w pierwszym akapicie artykułu"
+            ":: - '''Kategoria''' - data urodzenia w kategori Urodzeni w ..."
+            ":: - '''Infobox''' - data urodzenia w infoboksie"
+            ":; Data śmierci"
+            ":: - '''Nagłówek''' - data śmierci w pierwszym akapicie artykułu"
+            ":: - '''Kategoria''' - data śmierci w kategori Urodzeni w ..."
+            ":: - '''Infobox''' - data śmierci w infoboksie"
+            ": '''Infobox''' - infobox, z którego pobrano dane"
+            "</small>"
+            '{| class="wikitable" style="font-size:85%;"'
+            "|-"
+            "! rowspan=2 | Lp."
+            "! colspan=3 | Nazwisko"
+            "! colspan=3 | Data urodzenia"
+            "! colspan=3 | Data śmierci"
+            "! rowspan=2 | Infobox"
+            "|-"
+            "!Tytuł"
+            "!Nagłówek"
+            "!Infobox"
+            "!Nagłówek"
+            "!Kategoria"
+            "!Infobox"
+            "!Nagłówek"
+            "!Kategoria"
+            "!Infobox"
+        )
+
         return (header)
 
     def przypisy(self, text):
@@ -309,21 +331,6 @@ class BasicBot(
         if reffound:
             text += '\n\n{{Przypisy}}'
             return (text)
-
-    def refremove(self, intext):
-        """
-        remove references from text
-        """
-        refR = re.compile(r'(<ref.*?<\/ref>|\{\{r\|.*?\}\}|\{\{u\|.*?\}\})')
-        output = re.sub(refR, '', intext)
-        # pywikibot.output(output)
-        return (output)
-
-    def firstpar(self,page):
-        """
-        return first paragraf (lead) of page
-        """
-        return re.search("(^|\n)(?P<firstpar>'''.*\n)", page.text)
 
     def treat(self, page):
         """
@@ -367,20 +374,6 @@ class BasicBot(
 
         text = self.refremove(page.text)
 
-        # First paragraph
-        """
-        replace with firstpar()
-        firstparR = re.compile(r"(^|\n)(?P<firstpar>'''.*\n)")
-        firstpars = ''
-        firstline = True
-        linki = firstparR.finditer(text)
-        for firstpar in linki:
-            found = True
-            pywikibot.output('Firstpar: %s' % firstpar.group('firstpar'))
-            break
-        if found:
-            firstpars = firstpar.group('firstpar')
-        """
         firstpars = self.firstpar(page)
 
         # page title no disambig
