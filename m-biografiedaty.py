@@ -298,7 +298,7 @@ class BasicBot(
             result = self.treat(page)
             if result:
                 rowcounter += 1
-                finalpage += '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)
+                finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
                 pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
                 # pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| ' + str(rowcounter) + ' || ' + result))
 
