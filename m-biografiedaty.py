@@ -54,6 +54,7 @@ from pywikibot.bot import (
 )
 import re
 from collections import OrderedDict
+from pywikibot import textlib
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -74,7 +75,7 @@ class Biography:
         self.norefstext = self._refremove(page.text)
 
         # first paragraph (lead) info
-        self.firstpar = self._firstpar(page)
+        self.firstpar = self._firstpar(self.norefstext)
         self.leadname = self._leadname(self.firstpar) if self.firstpar else None
         self.leadbday = self._leadbday() if self._leadbday() else None
         self.leadbyear = self._leadbyear() if self._leadbyear() else None
@@ -112,11 +113,11 @@ class Biography:
     # article lead methods
 
     @staticmethod
-    def _firstpar(page):
+    def _firstpar(text):
         """
         return first paragraf (lead) of page
         """
-        match = re.search("(^|\n)(?P<firstpar>'''.*\n)", page.text)
+        match = re.search("(^|\n)(?P<firstpar>'''.*\n)", text)
         return match.group('firstpar') if match else None
 
     @staticmethod
@@ -163,10 +164,10 @@ class Biography:
     # Infobox methods
 
     @staticmethod
-    def _listinfoboxes(page):
+    def _listinfoboxes(text):
         par = OrderedDict()
-        for t, p in page.templatesWithParams():
-            if 'infobox' in t.title().lower():
+        for t, p in textlib.extract_templates_and_params(text):
+            if 'infobox' in t.lower():
                 pcount = 0
                 for pv in p:
                     if '=' in pv:
@@ -175,7 +176,7 @@ class Biography:
                         par[str(pcount)] = pv
                     pcount += 1
 
-                return t.title(with_ns=False), par
+                return t, par
         return (None, None)
 
     def _infoboxbday(self):
@@ -360,7 +361,7 @@ class BasicBot(
 
         bc = Biography(page)
 
-        if slef.opt.test:
+        if self.opt.test:
             pywikibot.output('*************************************')
             pywikibot.output('ShortTitle:%s' % bc.shorttitle)
             pywikibot.output('LeadName:%s' % bc.leadname)
@@ -412,7 +413,7 @@ class BasicBot(
             if text != pagetext:
                 # Show the title of the page we're working on.
                 # Highlight the title in purple.
-                self.opt.test:
+                if self.opt.test:
                     pywikibot.output(u"\n\n>>> \03{lightpurple}%s\03{default} <<<"
                                  % page.title())
                 # show what was changed
