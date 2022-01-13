@@ -336,7 +336,7 @@ class BasicBot(
             "\n:: - '''Infobox''' - data śmierci w infoboksie"
             "\n: '''Infobox''' - infobox, z którego pobrano dane"
             "\n</small>"
-            '\n{| class="wikitable" style="font-size:85%;"'
+            '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; "'
             "\n|-"
             "\n! rowspan=2 | Lp."
             "\n! rowspan=2 | Artykuł"
