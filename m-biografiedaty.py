@@ -323,7 +323,7 @@ class BasicBot(
             "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
             "\n"
             "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-            "\n; {{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
+            "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
             '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; "'
             "\n|-"
             "\n! rowspan=2 | Lp."
