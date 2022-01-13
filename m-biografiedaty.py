@@ -38,6 +38,8 @@ cannot be set by settings file:
 
 &params;
 """
+import re
+
 #
 # (C) Pywikibot team, 2006-2021
 #
@@ -45,6 +47,7 @@ cannot be set by settings file:
 #
 import pywikibot
 from pywikibot import pagegenerators
+from pywikibot import textlib
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
@@ -52,13 +55,11 @@ from pywikibot.bot import (
     NoRedirectPageBot,
     SingleSiteBot,
 )
-import re
-from collections import OrderedDict
-from pywikibot import textlib
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
+
 
 class Biography:
     bbdayR = re.compile(
@@ -170,7 +171,13 @@ class Biography:
             pywikibot.output('IBoxParams:%s' % p)
             if 'infobox' in t.lower():
                 return t,p
+        pywikibot.output('IBoxExists:%s' % False)
         return (None, None)
+
+    @property
+    def infoboxexists(self):
+        # If the infobox has been found
+        return self.infoboxtitle is not None
 
     def _infoboxbday(self):
         if 'data urodzenia' in self.infoboxparams:
@@ -201,32 +208,40 @@ class Biography:
             return None
 
     def _infoboxname(self):
-        if 'imię i nazwisko' in self.infoboxparams:
-            return self._refremove(self.infoboxparams['imię i nazwisko']).strip()
+        fields = ['imięi nazwisko', 'Imię i nazwisko']
+        for p in self.infoboxparams.keys():
+            pywikibot.output('IBoxParamKey: {}'.format(p))
+            if p in fields:
+                pywikibot.output('IBoxParamValue: {}'.format(self.infoboxparams[p]))
+                return self._refremove(self.infoboxparams[p])
 
     # conflict methods
 
-    def conflict(self, values):
+    @staticmethod
+    def conflict(values):
         # return not (o1 == o2 == o3)
         return not all(v == values[0] for v in values)
 
     @property
     def nameconflict(self):
-        return self.conflict((self.shorttitle, self.leadname, self.infoboxname))
+        return self.conflict((self.shorttitle, self.leadname, self.infoboxname)) if self.infoboxexists else \
+            self.conflict((self.shorttitle, self.leadname))
 
     @property
     def birthdayconflict(self):
-        return self.conflict((self.leadbyear, self.catbyear, self.infoboxbyear))
+        return self.conflict((self.leadbyear, self.catbyear, self.infoboxbyear)) if self.infoboxexists else \
+            self.conflict((self.leadbyear, self.catbyear))
 
     @property
     def deathdayconflict(self):
-        return self.conflict((self.leaddyear, self.catdyear, self.infoboxdyear))
+        return self.conflict((self.leaddyear, self.catdyear, self.infoboxdyear)) if self.infoboxexists else \
+            self.conflict((self.leaddyear, self.catdyear))
 
     # table row methods
 
     @staticmethod
     def paramrow(conflict, color, values):
-        separator = f' || style="background-color:{color}" | ' if conflict else ' || '
+        separator = ' || style="background-color:{}" | '.format(color) if conflict else ' || '
         return separator + separator.join(item or '' for item in values)
 
     def namerow(self):
@@ -237,6 +252,7 @@ class Biography:
 
     def ddaterow(self):
         return self.paramrow(self.deathdayconflict, '#ffc', (self.leadddate, self.catdyear, self.infoboxddate))
+
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
@@ -269,7 +285,7 @@ class BasicBot(
         'outpage': 'User:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # switch on test functionality
-        'progress': False, # report script progress
+        'progress': False,  # report script progress
     }
 
     def run(self):
@@ -298,7 +314,6 @@ class BasicBot(
                     pywikibot.output('Added line #%i: %s' % (
                         rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
 
-
         finalpage += footer
         finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
 
@@ -310,7 +325,8 @@ class BasicBot(
         outpage.text = finalpage
         outpage.save(summary=self.opt.summary)
 
-    def header(self):
+    @staticmethod
+    def header():
         # prepare new page with table
         return (
             "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja '''~~~~~''' "
@@ -339,7 +355,6 @@ class BasicBot(
             "\n!Infobox"
         )
 
-
     @staticmethod
     def przypisy(text) -> str:
         """
@@ -351,8 +366,6 @@ class BasicBot(
         """
         Loads the given page, performs action
         """
-        found = False
-        rowtext = ''
 
         bc = Biography(page)
 
@@ -395,47 +408,7 @@ class BasicBot(
             names=bc.namerow(),
             bdate=bc.bdaterow(),
             ddate=bc.ddaterow(),
-            ibox= '{{{{s|{}}}}}'.format(bc.infoboxtitle) if bc.infoboxtitle else '' )
-
-
-    def save(self, text, page, comment=None, minorEdit=True,
-             botflag=True):
-        # only save if something was changed
-        try:
-            pagetext = page.get()
-        except:
-            pagetext = ''
-            if text != pagetext:
-                # Show the title of the page we're working on.
-                # Highlight the title in purple.
-                if self.opt.test:
-                    pywikibot.output(u"\n\n>>> \03{lightpurple}%s\03{default} <<<"
-                                 % page.title())
-                # show what was changed
-                if self.opt.test:
-                    pywikibot.showDiff(pagetext, text)
-                    pywikibot.output('Comment: %s' % comment)
-                # choice = pywikibot.inputChoice(
-                #    'Do you want to accept these changes?',
-                #    ['Yes', 'No'], ['y', 'N'], 'N')
-                try:
-                    # Save the page
-                    page.put(text, comment=comment or self.comment,
-                             minorEdit=minorEdit, botflag=botflag)
-                except pywikibot.exceptions.LockedPageError:
-                    pywikibot.output(u"Page %s is locked; skipping."
-                                     % page.title(as_link=True))
-                except pywikibot.exceptions.EditConflictError:
-                    pywikibot.output(
-                        'Skipping %s because of edit conflict'
-                        % (page.title()))
-                except pywikibot.exceptions.SpamblacklistError as error:
-                    pywikibot.output('Cannot change %s because of spam blacklist entry %s'
-                                     % (page.title(), error.url))
-                else:
-                    return True
-        return False
-
+            ibox='{{{{s|{}}}}}'.format(bc.infoboxtitle) if bc.infoboxtitle else '')
 
 def main(*args: str) -> None:
     """
