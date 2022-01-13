@@ -290,17 +290,19 @@ class BasicBot(
         # for page in pagelist:
         for page in self.generator:
             pagecounter += 1
-            # finalpage = finalpage + self.treat(page)
-            pywikibot.output(
-                'Processing page #%s (%s marked): %s' % (str(pagecounter), str(rowcounter), page.title(as_link=True)))
+            if self.opt.test:
+                pywikibot.output(
+                    'Processing page #%s (%s marked): %s' % (str(pagecounter), str(rowcounter), page.title(as_link=True)))
             if page.isRedirectPage() or page.isDisambig():
                 continue
             result = self.treat(page)
             if result:
                 rowcounter += 1
                 finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
-                pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
-                # pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| ' + str(rowcounter) + ' || ' + result))
+                if self.opt.test:
+                    pywikibot.output('Added line #%i: %s' % (
+                        rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
+
 
         finalpage += footer
         finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
@@ -320,22 +322,7 @@ class BasicBot(
             "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
             "\n"
             "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-            "\n<small>"
-            "\n; Legenda:"
-            "\n:; Nazwisko"
-            "\n:: - '''Tytuł''' - tytuł artykułu bez wyróżników w nawiasie"
-            "\n:: - '''Nagłówek''' - nazwisko w pierwszym akapicie artykułu"
-            "\n:: - '''Infobox''' - nazwisko w infoboksie"
-            "\n:; Data urodzenia"
-            "\n:: - '''Nagłówek''' - data urodzenia w pierwszym akapicie artykułu"
-            "\n:: - '''Kategoria''' - data urodzenia w kategori Urodzeni w ..."
-            "\n:: - '''Infobox''' - data urodzenia w infoboksie"
-            "\n:; Data śmierci"
-            "\n:: - '''Nagłówek''' - data śmierci w pierwszym akapicie artykułu"
-            "\n:: - '''Kategoria''' - data śmierci w kategori Urodzeni w ..."
-            "\n:: - '''Infobox''' - data śmierci w infoboksie"
-            "\n: '''Infobox''' - infobox, z którego pobrano dane"
-            "\n</small>"
+            "\n; {{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
             '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; "'
             "\n|-"
             "\n! rowspan=2 | Lp."
@@ -373,39 +360,40 @@ class BasicBot(
 
         bc = Biography(page)
 
-        pywikibot.output('*************************************')
-        pywikibot.output('ShortTitle:%s' % bc.shorttitle)
-        pywikibot.output('LeadName:%s' % bc.leadname)
-        pywikibot.output('*************************************')
-        pywikibot.output('LeadBDay:%s' % bc.leadbday)
-        pywikibot.output('LeadBYear:%s' % bc.leadbyear)
-        pywikibot.output('LeadBDate:%s' % bc.leadbdate)
-        pywikibot.output('*************************************')
-        pywikibot.output('LeadDDay:%s' % bc.leaddday)
-        pywikibot.output('LeadDYear:%s' % bc.leaddyear)
-        pywikibot.output('LeadDDate:%s' % bc.leadddate)
-        pywikibot.output('*************************************')
-        pywikibot.output('CatBYear:%s' % bc.catbyear)
-        pywikibot.output('CatDYear:%s' % bc.catdyear)
-        pywikibot.output('*************************************')
+        if slef.opt.test:
+            pywikibot.output('*************************************')
+            pywikibot.output('ShortTitle:%s' % bc.shorttitle)
+            pywikibot.output('LeadName:%s' % bc.leadname)
+            pywikibot.output('*************************************')
+            pywikibot.output('LeadBDay:%s' % bc.leadbday)
+            pywikibot.output('LeadBYear:%s' % bc.leadbyear)
+            pywikibot.output('LeadBDate:%s' % bc.leadbdate)
+            pywikibot.output('*************************************')
+            pywikibot.output('LeadDDay:%s' % bc.leaddday)
+            pywikibot.output('LeadDYear:%s' % bc.leaddyear)
+            pywikibot.output('LeadDDate:%s' % bc.leadddate)
+            pywikibot.output('*************************************')
+            pywikibot.output('CatBYear:%s' % bc.catbyear)
+            pywikibot.output('CatDYear:%s' % bc.catdyear)
+            pywikibot.output('*************************************')
 
-        pywikibot.output('BioInfobox:%s' % bc.infoboxtitle)
-        pywikibot.output('BioInfobox:%s' % bc.infoboxparams.keys() if bc.infoboxparams else None)
-        pywikibot.output('*************************************')
-        pywikibot.output('BioIboxName:%s' % bc.infoboxname)
-        pywikibot.output('BioIboxBDay:%s' % bc.infoboxbday)
-        pywikibot.output('BioIboxBYear:%s' % bc.infoboxbyear)
-        pywikibot.output('BioIboxDDay:%s' % bc.infoboxdday)
-        pywikibot.output('BioIboxDYear:%s' % bc.infoboxdyear)
-        pywikibot.output('*************************************')
-        pywikibot.output('name Conflict:%s' % bc.nameconflict)
-        pywikibot.output('bday Conflict:%s' % bc.birthdayconflict)
-        pywikibot.output('dday Conflict:%s' % bc.deathdayconflict)
-        pywikibot.output('*************************************')
-        pywikibot.output('row test name:%s' % bc.namerow())
-        pywikibot.output('row test bdate:%s' % bc.bdaterow())
-        pywikibot.output('row test ddate:%s' % bc.ddaterow())
-        pywikibot.output('*************************************')
+            pywikibot.output('BioInfobox:%s' % bc.infoboxtitle)
+            pywikibot.output('BioInfobox:%s' % bc.infoboxparams.keys() if bc.infoboxparams else None)
+            pywikibot.output('*************************************')
+            pywikibot.output('BioIboxName:%s' % bc.infoboxname)
+            pywikibot.output('BioIboxBDay:%s' % bc.infoboxbday)
+            pywikibot.output('BioIboxBYear:%s' % bc.infoboxbyear)
+            pywikibot.output('BioIboxDDay:%s' % bc.infoboxdday)
+            pywikibot.output('BioIboxDYear:%s' % bc.infoboxdyear)
+            pywikibot.output('*************************************')
+            pywikibot.output('name Conflict:%s' % bc.nameconflict)
+            pywikibot.output('bday Conflict:%s' % bc.birthdayconflict)
+            pywikibot.output('dday Conflict:%s' % bc.deathdayconflict)
+            pywikibot.output('*************************************')
+            pywikibot.output('row test name:%s' % bc.namerow())
+            pywikibot.output('row test bdate:%s' % bc.bdaterow())
+            pywikibot.output('row test ddate:%s' % bc.ddaterow())
+            pywikibot.output('*************************************')
 
         return None if not bc.isconflicted else "{names}{bdate}{ddate} || {ibox}".format(
             names=bc.namerow(),
@@ -424,11 +412,13 @@ class BasicBot(
             if text != pagetext:
                 # Show the title of the page we're working on.
                 # Highlight the title in purple.
-                pywikibot.output(u"\n\n>>> \03{lightpurple}%s\03{default} <<<"
+                self.opt.test:
+                    pywikibot.output(u"\n\n>>> \03{lightpurple}%s\03{default} <<<"
                                  % page.title())
                 # show what was changed
-                pywikibot.showDiff(pagetext, text)
-                pywikibot.output('Comment: %s' % comment)
+                if self.opt.test:
+                    pywikibot.showDiff(pagetext, text)
+                    pywikibot.output('Comment: %s' % comment)
                 # choice = pywikibot.inputChoice(
                 #    'Do you want to accept these changes?',
                 #    ['Yes', 'No'], ['y', 'N'], 'N')
