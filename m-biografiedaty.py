@@ -89,7 +89,7 @@ class Biography:
         self.catdyear = self._catdyear(self.norefstext)
 
         # infobox info
-        self.infoboxtitle, self.infoboxparams = self._listinfoboxes(page)
+        self.infoboxtitle, self.infoboxparams = self._listinfoboxes(self.norefstext)
         self.infoboxbday = self._infoboxbday() if self.infoboxparams else None
         self.infoboxbyear = self._infoboxbyear() if self.infoboxparams else None
         self.infoboxbdate = ' '.join(item or '' for item in (self.infoboxbday, self.infoboxbyear))
