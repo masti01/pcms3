@@ -299,12 +299,13 @@ class BasicBot(
             if result:
                 rowcounter += 1
                 finalpage += '\n|-\n| {} || {}'.format(rowcounter, result)
-                pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| ' + str(rowcounter) + ' || ' + result))
+                pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| {} || {}'.format(rowcounter, result)))
+                # pywikibot.output('Added line #%i: %s' % (rowcounter, '\n|-\n| ' + str(rowcounter) + ' || ' + result))
 
         finalpage += footer
         finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
 
-        finalpage = self.przypisy(finalpage)
+        finalpage += self.przypisy(finalpage)
 
         # Save page
         # pywikibot.output(finalpage)
@@ -315,44 +316,44 @@ class BasicBot(
     def header(self):
         # prepare new page with table
         return (
-            "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. "
-            "Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
-            ""
-            "Strona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-            "<small>"
-            "; Legenda:"
-            ":; Nazwisko"
-            ":: - '''Tytuł''' - tytuł artykułu bez wyróżników w nawiasie"
-            ":: - '''Nagłówek''' - nazwisko w pierwszym akapicie artykułu"
-            ":: - '''Infobox''' - nazwisko w infoboksie"
-            ":; Data urodzenia"
-            ":: - '''Nagłówek''' - data urodzenia w pierwszym akapicie artykułu"
-            ":: - '''Kategoria''' - data urodzenia w kategori Urodzeni w ..."
-            ":: - '''Infobox''' - data urodzenia w infoboksie"
-            ":; Data śmierci"
-            ":: - '''Nagłówek''' - data śmierci w pierwszym akapicie artykułu"
-            ":: - '''Kategoria''' - data śmierci w kategori Urodzeni w ..."
-            ":: - '''Infobox''' - data śmierci w infoboksie"
-            ": '''Infobox''' - infobox, z którego pobrano dane"
-            "</small>"
-            '{| class="wikitable" style="font-size:85%;"'
-            "|-"
-            "! rowspan=2 | Lp."
-            "! rowspan=2 | Artykuł"
-            "! colspan=3 | Nazwisko"
-            "! colspan=3 | Data urodzenia"
-            "! colspan=3 | Data śmierci"
-            "! rowspan=2 | Infobox"
-            "|-"
-            "!Tytuł"
-            "!Nagłówek"
-            "!Infobox"
-            "!Nagłówek"
-            "!Kategoria"
-            "!Infobox"
-            "!Nagłówek"
-            "!Kategoria"
-            "!Infobox"
+            "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. "
+            "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
+            "\n"
+            "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
+            "\n<small>"
+            "\n; Legenda:"
+            "\n:; Nazwisko"
+            "\n:: - '''Tytuł''' - tytuł artykułu bez wyróżników w nawiasie"
+            "\n:: - '''Nagłówek''' - nazwisko w pierwszym akapicie artykułu"
+            "\n:: - '''Infobox''' - nazwisko w infoboksie"
+            "\n:; Data urodzenia"
+            "\n:: - '''Nagłówek''' - data urodzenia w pierwszym akapicie artykułu"
+            "\n:: - '''Kategoria''' - data urodzenia w kategori Urodzeni w ..."
+            "\n:: - '''Infobox''' - data urodzenia w infoboksie"
+            "\n:; Data śmierci"
+            "\n:: - '''Nagłówek''' - data śmierci w pierwszym akapicie artykułu"
+            "\n:: - '''Kategoria''' - data śmierci w kategori Urodzeni w ..."
+            "\n:: - '''Infobox''' - data śmierci w infoboksie"
+            "\n: '''Infobox''' - infobox, z którego pobrano dane"
+            "\n</small>"
+            '\n{| class="wikitable" style="font-size:85%;"'
+            "\n|-"
+            "\n! rowspan=2 | Lp."
+            "\n! rowspan=2 | Artykuł"
+            "\n! colspan=3 | Nazwisko"
+            "\n! colspan=3 | Data urodzenia"
+            "\n! colspan=3 | Data śmierci"
+            "\n! rowspan=2 | Infobox"
+            "\n|-"
+            "\n!Tytuł"
+            "\n!Nagłówek"
+            "\n!Infobox"
+            "\n!Nagłówek"
+            "\n!Kategoria"
+            "\n!Infobox"
+            "\n!Nagłówek"
+            "\n!Kategoria"
+            "\n!Infobox"
         )
 
 
