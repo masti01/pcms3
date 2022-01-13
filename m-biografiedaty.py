@@ -38,7 +38,6 @@ cannot be set by settings file:
 
 &params;
 """
-import re
 
 #
 # (C) Pywikibot team, 2006-2021
@@ -46,6 +45,7 @@ import re
 #
 # Distributed under the terms of the MIT license.
 #
+import re
 import pywikibot
 from pywikibot import pagegenerators
 from pywikibot import textlib
