@@ -155,12 +155,12 @@ class Biography:
     @staticmethod
     def _catbyear(text):
         cby = re.search(r"(?i)\[\[Kategoria:Urodzeni w (?P<cby>.*?)[\|\]]", text)
-        return cby.group('cby') if cby else None
+        return re.sub('wieku', 'wiek', cby.group('cby')) if cby else None
 
     @staticmethod
     def _catdyear(text):
         cdy = re.search(r"(?i)\[\[Kategoria:Zmarli w (?P<cdy>.*?)[\|\]]", text)
-        return cdy.group('cdy') if cdy else None
+        return re.sub('wieku', 'wiek', cdy.group('cdy')) if cdy else None
 
     # Infobox methods
 
