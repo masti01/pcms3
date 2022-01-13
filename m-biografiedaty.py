@@ -208,7 +208,7 @@ class Biography:
             return None
 
     def _infoboxname(self):
-        fields = ['imięi nazwisko', 'Imię i nazwisko']
+        fields = ['imię i nazwisko', 'Imię i nazwisko']
         for p in self.infoboxparams.keys():
             pywikibot.output('IBoxParamKey: {}'.format(p))
             if p in fields:
