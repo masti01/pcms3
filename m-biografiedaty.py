@@ -319,12 +319,13 @@ class BasicBot(
     def header(self):
         # prepare new page with table
         return (
-            "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. "
+            "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja '''~~~~~''' "
             "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
             "\n"
             "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
             "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
-            '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; "'
+            "\n"
+            '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; margin: auto;"'
             "\n|-"
             "\n! rowspan=2 | Lp."
             "\n! rowspan=2 | Artykuł"
