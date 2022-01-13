@@ -165,18 +165,11 @@ class Biography:
 
     @staticmethod
     def _listinfoboxes(text):
-        par = OrderedDict()
-        for t, p in textlib.extract_templates_and_params(text):
+        for t, p in textlib.extract_templates_and_params(text, remove_disabled_parts=True, strip=True):
+            pywikibot.output('IBoxTitle:%s' % t)
+            pywikibot.output('IBoxParams:%s' % p)
             if 'infobox' in t.lower():
-                pcount = 0
-                for pv in p:
-                    if '=' in pv:
-                        par[(pv.split('=', 1))[0]] = pv.split('=', 1)[1]
-                    else:
-                        par[str(pcount)] = pv
-                    pcount += 1
-
-                return t, par
+                return t,p
         return (None, None)
 
     def _infoboxbday(self):
