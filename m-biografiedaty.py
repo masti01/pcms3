@@ -407,11 +407,11 @@ class BasicBot(
         pywikibot.output('row test ddate:%s' % bc.ddaterow())
         pywikibot.output('*************************************')
 
-        return None if not bc.isconflicted else "{names}{bdate}{ddate} || {{{{s|{ibox}}}}}".format(
+        return None if not bc.isconflicted else "{names}{bdate}{ddate} || {ibox}".format(
             names=bc.namerow(),
             bdate=bc.bdaterow(),
             ddate=bc.ddaterow(),
-            ibox= bc.infoboxtitle if bc.infoboxtitle else '' )
+            ibox= '{{{{s|{}}}}}'.format(bc.infoboxtitle) if bc.infoboxtitle else '' )
 
 
     def save(self, text, page, comment=None, minorEdit=True,
