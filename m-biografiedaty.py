@@ -236,13 +236,13 @@ class Biography:
         return separator + separator.join(item or '' for item in values)
 
     def namerow(self):
-        return self.paramrow(self.nameconflict, 'PowderBlue', (self.shorttitle, self.leadname, self.infoboxname))
+        return self.paramrow(self.nameconflict, '#6cf', (self.shorttitle, self.leadname, self.infoboxname))
 
     def bdaterow(self):
-        return self.paramrow(self.birthdayconflict, 'Lime', (self.leadbdate, self.catbyear, self.infoboxbdate))
+        return self.paramrow(self.birthdayconflict, '#6fc', (self.leadbdate, self.catbyear, self.infoboxbdate))
 
     def ddaterow(self):
-        return self.paramrow(self.deathdayconflict, 'Orange', (self.leadddate, self.catdyear, self.infoboxddate))
+        return self.paramrow(self.deathdayconflict, '#ffc', (self.leadddate, self.catdyear, self.infoboxddate))
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
