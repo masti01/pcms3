@@ -236,7 +236,7 @@ class Biography:
         return separator + separator.join(item or '' for item in values)
 
     def namerow(self):
-        return self.paramrow(self.nameconflict, '#6cf', (self.shorttitle, self.leadname, self.infoboxname))
+        return self.paramrow(self.nameconflict, '#cff', (self.shorttitle, self.leadname, self.infoboxname))
 
     def bdaterow(self):
         return self.paramrow(self.birthdayconflict, '#6fc', (self.leadbdate, self.catbyear, self.infoboxbdate))
