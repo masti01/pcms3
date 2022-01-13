@@ -276,6 +276,7 @@ class BasicBot(
         'outpage': 'User:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # switch on test functionality
+        'progress': False, # report script progress
     }
 
     def run(self):
@@ -291,7 +292,7 @@ class BasicBot(
         # for page in pagelist:
         for page in self.generator:
             pagecounter += 1
-            if self.opt.test:
+            if self.opt.test or self.opt.progress:
                 pywikibot.output(
                     'Processing page #%s (%s marked): %s' % (str(pagecounter), str(rowcounter), page.title(as_link=True)))
             if page.isRedirectPage() or page.isDisambig():
