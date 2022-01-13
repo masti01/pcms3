@@ -407,7 +407,7 @@ class BasicBot(
         pywikibot.output('row test ddate:%s' % bc.ddaterow())
         pywikibot.output('*************************************')
 
-        return "{}{}{}".format(bc.namerow(),bc.bdaterow(),bc.ddaterow()) if bc.isconflicted else None
+        return "{}{}{} || {}".format(bc.namerow(), bc.bdaterow(), bc.ddaterow(), bc.infoboxtitle) if bc.isconflicted else None
 
 
 
