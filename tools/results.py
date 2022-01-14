@@ -35,7 +35,8 @@ class Results:
         @rtype: int
         """
         if self.test:
-            pywikibot.output("RES pages:{}".format(len(self.results) // self.lpp) + 1 if (len(self.results) % self.lpp) else len(self.results) // self.lpp)
+            pywikibot.output("RES pages:{}".format((len(self.results) // self.lpp) + 1)
+                             if (len(self.results) % self.lpp) else len(self.results) // self.lpp)
         return (len(self.results) // self.lpp) + 1 if (len(self.results) % self.lpp) else len(self.results) // self.lpp
 
     def add(self, result: str) -> None:
@@ -92,6 +93,14 @@ class Results:
             pywikibot.output("Saving page #{}".format(pagenum))
         self.currPage += self._pageend(pagenum)  # add footers
         self._savepage(self.currPage, self._currentpage(pagenum), self.summary)  # save page
+
+    @property
+    def enabletest(self):
+        self.test = True
+
+    @property
+    def disabletest(self):
+        self.test = False
 
     def saveresults(self):
         pagenum = 0
