@@ -11,13 +11,17 @@ import re
 import pywikibot
 from pywikibot import textlib
 
+
 class Biography:
     bbdayR = re.compile(
-        r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(\]{2})?')
+        r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(]{2})?')
+    #   r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(\]{2})?')
     bddayR = re.compile(
-        r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?")
+        r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(]{2})?")
+    #   r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?")
     dateR = re.compile(
-        r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
+        r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(]{2})?')
+    #   r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
 
     def __init__(self, page: pywikibot.Page):
 
@@ -85,7 +89,7 @@ class Biography:
         """
         remove references from text
         """
-        return re.sub("<ref.*?<\/ref>|\{\{r\|.*?\}\}|\{\{u\|.*?\}\}", '', text)
+        return re.sub("<ref.*?</ref>|{{r\|.*?}}|{{u\|.*?}}", '', text)
 
     def _leadbday(self):
         bdd = self.bbdayR.search(self.firstpar) if self.firstpar else None
@@ -105,12 +109,12 @@ class Biography:
 
     @staticmethod
     def _catbyear(text):
-        cby = re.search(r"(?i)\[\[Kategoria:Urodzeni w (?P<cby>.*?)[\|\]]", text)
+        cby = re.search(r"(?i)\[\[Kategoria:Urodzeni w (?P<cby>.*?)[|\]]", text)
         return re.sub('wieku', 'wiek', cby.group('cby')) if cby else None
 
     @staticmethod
     def _catdyear(text):
-        cdy = re.search(r"(?i)\[\[Kategoria:Zmarli w (?P<cdy>.*?)[\|\]]", text)
+        cdy = re.search(r"(?i)\[\[Kategoria:Zmarli w (?P<cdy>.*?)[|\]]", text)
         return re.sub('wieku', 'wiek', cdy.group('cdy')) if cdy else None
 
     # Infobox methods
@@ -119,8 +123,8 @@ class Biography:
     def _listinfoboxes(text):
         for t, p in textlib.extract_templates_and_params(text, remove_disabled_parts=True, strip=True):
             if 'infobox' in t.lower():
-                return t,p
-        return (None, None)
+                return t, p
+        return None, None
 
     @property
     def infoboxexists(self):
@@ -202,4 +206,3 @@ class Biography:
 
     def ddaterow(self):
         return self.paramrow(self.deathdayconflict, '#ffc', (self.leadddate, self.catdyear, self.infoboxddate))
-
