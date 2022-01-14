@@ -64,7 +64,6 @@ from tools.results import Results
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
-
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
@@ -109,7 +108,7 @@ class BasicBot(
 
         res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, int(self.opt.maxlines))
         if self.opt.test:
-            res.testenable
+            res.testenable()
 
         for page in self.generator:
             pagecounter += 1
@@ -150,10 +149,10 @@ class BasicBot(
                 "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
                 "\n"
                 "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-                "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
             )
         elif index == 2:
             return (
+                "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
                 "\n"
                 '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; margin: auto;"'
                 "\n|-"
