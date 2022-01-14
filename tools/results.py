@@ -66,7 +66,7 @@ class Results:
         outpage.save(summary=summary)
 
     def _previouspage(self, pagenum):
-        return "{} {}".format(self.bpname, pagenum - 1) if pagenum > 1 else (self.bpname if pagenum else None)
+        return "{} {}".format(self.bpname, pagenum - 1) if pagenum > 1 else (self.bpname if pagenum else '')
 
     def _nextpage(self, pagenum):
         """
@@ -81,10 +81,11 @@ class Results:
         """
         generate navbar template for current page
         """
-        opis = 'Strona {} z {}'.format(pagenum, self.pages)
+        opis = 'Strona {} z {}'.format(pagenum + 1, self.pages)
+
         pp = self._previouspage(pagenum)
         np = self._nextpage(pagenum)
-        return "{{{{Wikipedysta:MastiBot/Nawigacja|{}|{}|tekst={}|opis={}}}}}".format(pp, np, 'Nawiguj', opis)
+        return "{{{{Wikipedysta:MastiBot/Nawigacja|{}|{}|tekst={}|opis={}}}}}".format(pp, np, "'''Nawiguj'''", opis)
 
     def _pagestart(self, pagenum):
         return "{}\n{}\n{}".format(self.header1, self.navbar(pagenum), self.header2)
