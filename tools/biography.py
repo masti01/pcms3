@@ -191,7 +191,7 @@ class Biography:
 
     @staticmethod
     def paramrow(conflict, colour, values):
-        separator = ' || style="background-colour:{}" | '.format(colour) if conflict else ' || '
+        separator = ' || style="background-color:{}" | '.format(colour) if conflict else ' || '
         return separator + separator.join(item or '' for item in values)
 
     def namerow(self):
