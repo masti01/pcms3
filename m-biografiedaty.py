@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 """
+Bot to analyze biography articles on pl.wiki creating tables with found errors.
+Sample usage:
+    python3 pwb.py masti/m-biografiedaty.py -cat:"Ludzie związani z Warszawą" -pt:0 -summary:"test" \
+                    -outpage:"Wikipedysta:MastiBot/problemy w biogramach/test" -progress
+
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
