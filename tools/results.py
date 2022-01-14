@@ -100,7 +100,7 @@ class Results:
             pywikibot.output("Saving page #{}".format(pagenum))
 
         self.currPage += self._pageend(pagenum)  # add footers
-        #self.currPage = self._przypisy(self.currPage)
+        # self.currPage = self._przypisy(self.currPage)
         self._savepage(self.currPage, self._currentpage(pagenum), self.summary)  # save page
 
     @staticmethod
