@@ -25,7 +25,7 @@ add any option you want to change to that settings file below the [basic]
 section like:
 
     [basic] ; inline comments starts with colon
-    # This is a commend line. Assignments may be done with '=' or ':'
+    # This is a comment line. Assignments may be done with '=' or ':'
     text: A text with line break and
         continuing on next line to be put
     replace: yes ; yes/no, on/off, true/false and 1/0 is also valid
@@ -106,7 +106,8 @@ class BasicBot(
         rowcounter = 0
 
         pywikibot.output('outpage:{}'.format(self.opt.outpage))
-        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, int(self.opt.maxlines))
+        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '',
+                      self.opt.summary, int(self.opt.maxlines))
         if self.opt.test:
             res.testenable()
 
@@ -114,7 +115,8 @@ class BasicBot(
             pagecounter += 1
             if self.opt.test or self.opt.progress:
                 pywikibot.output(
-                    'Processing page #%s (%s marked): %s' % (str(pagecounter), str(rowcounter), page.title(as_link=True)))
+                    'Processing page #%s (%s marked): %s' % (str(pagecounter),
+                                                             str(rowcounter), page.title(as_link=True)))
             if page.isRedirectPage() or page.isDisambig():
                 continue
             result = self.treat(page)
@@ -124,21 +126,13 @@ class BasicBot(
                 # finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
                 if self.opt.test:
                     pywikibot.output('Added line #%i (#%i): %s' % (
-                        rowcounter, res.lines, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
+                        rowcounter, res.lines, '\n|-\n| {} || {} || {}'.format(rowcounter,
+                                                                               page.title(as_link=True), result)))
 
-        # finalpage += footer
-        # finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
         res.footer1 += '\nPrzetworzono stron: {:d}'.format(pagecounter)
-
-        #finalpage += self.przypisy(finalpage)
 
         # Save page
         res.saveresults()
-
-        # pywikibot.output(finalpage)
-        # outpage = pywikibot.Page(pywikibot.Site(), self.opt.outpage)
-        # outpage.text = finalpage
-        # outpage.save(summary=self.opt.summary)
 
     @staticmethod
     def header(index):
@@ -173,7 +167,6 @@ class BasicBot(
                 "\n!Kategoria"
                 "\n!Infobox"
             )
-
 
     def treat(self, page) -> str:
         """
@@ -223,6 +216,7 @@ class BasicBot(
             bdate=bc.bdaterow(),
             ddate=bc.ddaterow(),
             ibox='{{{{s|{}}}}}'.format(bc.infoboxtitle) if bc.infoboxtitle else '')
+
 
 def main(*args: str) -> None:
     """
