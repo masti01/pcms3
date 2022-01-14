@@ -107,7 +107,7 @@ class BasicBot(
         pagecounter = 0
         rowcounter = 0
 
-        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, self.opt.maxlines)
+        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, int(self.opt.maxlines))
         if self.opt.test:
             res.testenable
 
@@ -124,8 +124,8 @@ class BasicBot(
                 res.add('\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result))
                 # finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
                 if self.opt.test:
-                    pywikibot.output('Added line #%i: %s' % (
-                        rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
+                    pywikibot.output('Added line #%i (#%i): %s' % (
+                        rowcounter, res.lines, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
 
         # finalpage += footer
         # finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
