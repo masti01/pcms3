@@ -134,7 +134,7 @@ class BasicBot(
                         rowcounter, res.lines, '\n|-\n| {} || {} || {}'.format(rowcounter,
                                                                                page.title(as_link=True), result)))
 
-        res.footer1 += '\nPrzetworzono stron: {:d}'.format(pagecounter)
+        res.footer1 += self.stattable(pagecounter, rowcounter)
 
         # Save page
         res.saveresults()
@@ -172,6 +172,18 @@ class BasicBot(
                 "\n!Kategoria"
                 "\n!Infobox"
             )
+
+    @staticmethod
+    def stattable(total, marked):
+        # prepare table with stats
+        return (
+            '{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; margin: auto;"'
+            '|-'
+            '! Sprawdzone strony'
+            '! Strony z błędami'
+            '|-'
+            '| {} || {}\n|}'.format(total, marked)
+        )
 
     def treat(self, page) -> str:
         """
