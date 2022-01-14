@@ -45,7 +45,6 @@ cannot be set by settings file:
 #
 # Distributed under the terms of the MIT license.
 #
-import re
 import pywikibot
 from pywikibot import pagegenerators
 

@@ -111,11 +111,9 @@ class Results:
         """
         return '\n\n== Przypisy ==\n{{Przypisy}}' if re.search(r'(?i)<ref|{{([ru][ |])', text) else ''
 
-    @property
     def testenable(self):
         self.test = True
 
-    @property
     def testdisable(self):
         self.test = False
 
