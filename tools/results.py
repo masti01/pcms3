@@ -127,6 +127,8 @@ class Results:
         self._initpage(pagenum)
         for r in self.results:
             linenum += 1
+            if self.test:
+                pywikibot.output("(res);added:{}".format(r))
             self.currPage += r
             if not linenum % self.lpp:
                 self._closepage(pagenum)
