@@ -72,7 +72,7 @@ class Results:
         """
         return next page name
         """
-        return "{} {}".format(self.bpname, pagenum + 1)
+        return "{} {}".format(self.bpname, pagenum + 1) if pagenum < self.pages else ''
 
     def _currentpage(self, pagenum):
         return "{} {}".format(self.bpname, pagenum) if pagenum else self.bpname
