@@ -103,11 +103,13 @@ class BasicBot(
 
         footer = '\n|}\n'
 
-        finalpage = self.header()
+        # finalpage =  "{}\n{{{{Wikipedysta:MastiBot/Nawigacja}}}}\n\n{}".format(self.header(1), self.header(2))
         pagecounter = 0
         rowcounter = 0
 
-        res = Results()
+        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary)
+        if self.opt.test:
+            res.testenable()
 
         for page in self.generator:
             pagecounter += 1
@@ -119,51 +121,59 @@ class BasicBot(
             result = self.treat(page)
             if result:
                 rowcounter += 1
-                finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
+                res.add('\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result))
+                # finalpage += '\n|-\n| {} || {} {}'.format(rowcounter, page.title(as_link=True), result)
                 if self.opt.test:
                     pywikibot.output('Added line #%i: %s' % (
                         rowcounter, '\n|-\n| {} || {} || {}'.format(rowcounter, page.title(as_link=True), result)))
 
-        finalpage += footer
-        finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
+        # finalpage += footer
+        # finalpage += '\nPrzetworzono stron: ' + str(pagecounter)
+        res.footer1 += '\nPrzetworzono stron: {:d}'.format(pagecounter)
 
-        finalpage += self.przypisy(finalpage)
+        #finalpage += self.przypisy(finalpage)
 
         # Save page
+        res.saveresults()
+
         # pywikibot.output(finalpage)
-        outpage = pywikibot.Page(pywikibot.Site(), self.opt.outpage)
-        outpage.text = finalpage
-        outpage.save(summary=self.opt.summary)
+        # outpage = pywikibot.Page(pywikibot.Site(), self.opt.outpage)
+        # outpage.text = finalpage
+        # outpage.save(summary=self.opt.summary)
 
     @staticmethod
-    def header():
+    def header(index):
         # prepare new page with table
-        return (
-            "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja '''~~~~~''' "
-            "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
-            "\n"
-            "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
-            "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
-            "\n"
-            '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; margin: auto;"'
-            "\n|-"
-            "\n! rowspan=2 | Lp."
-            "\n! rowspan=2 | Artykuł"
-            "\n! colspan=3 | Nazwisko"
-            "\n! colspan=3 | Data urodzenia"
-            "\n! colspan=3 | Data śmierci"
-            "\n! rowspan=2 | Infobox"
-            "\n|-"
-            "\n!Tytuł"
-            "\n!Nagłówek"
-            "\n!Infobox"
-            "\n!Nagłówek"
-            "\n!Kategoria"
-            "\n!Infobox"
-            "\n!Nagłówek"
-            "\n!Kategoria"
-            "\n!Infobox"
-        )
+        if index == 1:
+            return (
+                "\nTa strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja '''~~~~~''' "
+                "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
+                "\n"
+                "\nStrona zawiera artykuły, w których wykryto niezgodność nazwisk lub lat urodzenia/śmierci."
+                "\n{{Wikipedysta:MastiBot/legendy/problemy w biogramach}}"
+            )
+        elif index == 2:
+            return (
+                "\n"
+                '\n{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; margin: auto;"'
+                "\n|-"
+                "\n! rowspan=2 | Lp."
+                "\n! rowspan=2 | Artykuł"
+                "\n! colspan=3 | Nazwisko"
+                "\n! colspan=3 | Data urodzenia"
+                "\n! colspan=3 | Data śmierci"
+                "\n! rowspan=2 | Infobox"
+                "\n|-"
+                "\n!Tytuł"
+                "\n!Nagłówek"
+                "\n!Infobox"
+                "\n!Nagłówek"
+                "\n!Kategoria"
+                "\n!Infobox"
+                "\n!Nagłówek"
+                "\n!Kategoria"
+                "\n!Infobox"
+            )
 
     @staticmethod
     def przypisy(text) -> str:

@@ -7,6 +7,7 @@ Class to present results on multiple pages
 # Distributed under the terms of the MIT license.
 #
 import pywikibot
+import re
 
 
 class Results:
@@ -92,7 +93,15 @@ class Results:
         if self.test:
             pywikibot.output("Saving page #{}".format(pagenum))
         self.currPage += self._pageend(pagenum)  # add footers
+        self.currPage = self._przypisy(self.currPage)
         self._savepage(self.currPage, self._currentpage(pagenum), self.summary)  # save page
+
+    @staticmethod
+    def _przypisy(text) -> str:
+        """
+        Searches text for references, adds {{Przypisy}} if found.
+        """
+        return '\n\n== Przypisy ==\n{{Przypisy}}' if re.search(r'(?i)<ref|{{([ru][ |])', text) else ''
 
     @property
     def testenable(self):
