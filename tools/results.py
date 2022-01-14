@@ -40,6 +40,11 @@ class Results:
                              if (len(self.results) % self.lpp) else len(self.results) // self.lpp)
         return (len(self.results) // self.lpp) + 1 if (len(self.results) % self.lpp) else len(self.results) // self.lpp
 
+    def lines(self):
+        if self.test:
+            pywikibot.output("Lines: {}".format(len(self.results)))
+        return len(self.results)
+
     def add(self, result: str) -> None:
         """
         add result to list

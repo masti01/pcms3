@@ -107,7 +107,7 @@ class BasicBot(
         pagecounter = 0
         rowcounter = 0
 
-        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary)
+        res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, self.opt.maxlines)
         if self.opt.test:
             res.testenable
 
