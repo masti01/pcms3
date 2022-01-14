@@ -95,11 +95,11 @@ class Results:
         self._savepage(self.currPage, self._currentpage(pagenum), self.summary)  # save page
 
     @property
-    def enabletest(self):
+    def testenable(self):
         self.test = True
 
     @property
-    def disabletest(self):
+    def testdisable(self):
         self.test = False
 
     def saveresults(self):
