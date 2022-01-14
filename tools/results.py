@@ -69,7 +69,7 @@ class Results:
         return "{} {}".format(self.bpname, pagenum + 1)
 
     def _currentpage(self, pagenum):
-        return "{} {}".format(self.bpname, pagenum)
+        return "{} {}".format(self.bpname, pagenum) if pagenum else self.bpname
 
     def navbar(self, pagenum):
         """

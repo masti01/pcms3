@@ -109,7 +109,7 @@ class BasicBot(
 
         res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary)
         if self.opt.test:
-            res.testenable()
+            res.testenable
 
         for page in self.generator:
             pagecounter += 1
@@ -175,12 +175,6 @@ class BasicBot(
                 "\n!Infobox"
             )
 
-    @staticmethod
-    def przypisy(text) -> str:
-        """
-        Searches text for references, adds {{Przypisy}} if found.
-        """
-        return '\n\n== Przypisy ==\n{{Przypisy}}' if re.search(r'(?i)<ref|\{\{(r|u)', text) else ''
 
     def treat(self, page) -> str:
         """
