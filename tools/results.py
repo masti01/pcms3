@@ -96,10 +96,10 @@ class Results:
             "'''Strony'''")
 
     def _pagestart(self, pagenum):
-        return "{}\n{}\n{}".format(self.header1, self.navbar(pagenum), self.header2)
+        return "{}\n{}\n{}".format(self.header1, self.navbar(pagenum) if self.pages != 1 else '\n' , self.header2)
 
     def _pageend(self, pagenum):
-        return "{}\n{}\n{}".format(self.footer1, self.navbar(pagenum), self.footer2)
+        return "{}\n{}\n{}".format(self.footer1, self.navbar(pagenum) if self.pages != 1 else '\n', self.footer2)
 
     def _initpage(self, pagenum):
         self.currPage = self._pagestart(pagenum)  # intialize page content
