@@ -181,6 +181,7 @@ class BasicBot(
         """
 
         bc = Biography(page)
+        bc.test = self.opt.test
 
         if self.opt.test:
             pywikibot.output('*************************************')
