@@ -57,6 +57,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 from tools.biography import Biography
+from tools.results import Results
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -105,10 +106,9 @@ class BasicBot(
         finalpage = self.header()
         pagecounter = 0
         rowcounter = 0
-        # pagelist = [page for page in self.generator]
 
-        # pagelist.sort()
-        # for page in pagelist:
+        res = Results()
+
         for page in self.generator:
             pagecounter += 1
             if self.opt.test or self.opt.progress:

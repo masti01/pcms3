@@ -11,8 +11,8 @@ import pywikibot
 
 class Results:
 
-    def __init__(self, results, basepage, header1, header2, footer1, footer2, summary, lpp=1000):
-        self.results = results or []
+    def __init__(self, basepage, header1, header2, footer1, footer2, summary, lpp=1000):
+        self.results = []
         self.header1 = header1 or ''  # header for all pages
         self.header2 = header2 or ''  # header for all pages
         self.footer1 = footer1 or ''  # footer for all pages
