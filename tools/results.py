@@ -18,7 +18,7 @@ class Results:
         self.header2 = header2 or ''  # header for all pages
         self.footer1 = footer1 or ''  # footer for all pages
         self.footer2 = footer2 or ''  # footer for all pages
-        self.bpname = basepage.title()  # text version of base Page
+        self.bpname = basepage  # text version of base Page
         self.lpp = lpp  # lines per page
         self.pagenum = 0  # current page number
         self.summary = summary

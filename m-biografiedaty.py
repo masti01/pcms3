@@ -105,6 +105,7 @@ class BasicBot(
         pagecounter = 0
         rowcounter = 0
 
+        pywikibot.output('outpage:{}'.format(self.opt.outpage))
         res = Results(self.opt.outpage, self.header(1), self.header(2), footer, '', self.opt.summary, int(self.opt.maxlines))
         if self.opt.test:
             res.testenable()
