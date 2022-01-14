@@ -98,6 +98,7 @@ class Results:
     def _closepage(self, pagenum):
         if self.test:
             pywikibot.output("Saving page #{}".format(pagenum))
+
         self.currPage += self._pageend(pagenum)  # add footers
         self.currPage = self._przypisy(self.currPage)
         self._savepage(self.currPage, self._currentpage(pagenum), self.summary)  # save page
@@ -121,6 +122,8 @@ class Results:
         pagenum = 0
         linenum = 0
 
+        if self.test:
+            pywikibot.output(("(results) Saving {} pages with {} lines.".format(self.pages, self.lines)))
         self._initpage(pagenum)
         for r in self.results:
             linenum += 1
