@@ -24,6 +24,7 @@ class Biography:
         # general
         self.shorttitle = page.title(without_brackets=True)
         self.norefstext = self._refremove(page.text)
+        self.test = False  # set to true for test outputs
 
         # first paragraph (lead) info
         self.firstpar = self._firstpar(self.norefstext)
@@ -117,11 +118,8 @@ class Biography:
     @staticmethod
     def _listinfoboxes(text):
         for t, p in textlib.extract_templates_and_params(text, remove_disabled_parts=True, strip=True):
-            pywikibot.output('IBoxTitle:%s' % t)
-            pywikibot.output('IBoxParams:%s' % p)
             if 'infobox' in t.lower():
                 return t,p
-        pywikibot.output('IBoxExists:%s' % False)
         return (None, None)
 
     @property
@@ -160,9 +158,11 @@ class Biography:
     def _infoboxname(self):
         fields = ['imię i nazwisko', 'Imię i nazwisko']
         for p in self.infoboxparams.keys():
-            pywikibot.output('IBoxParamKey: {}'.format(p))
+            if self.test:
+                pywikibot.output('IBoxParamKey: {}'.format(p))
             if p in fields:
-                pywikibot.output('IBoxParamValue: {}'.format(self.infoboxparams[p]))
+                if self.test:
+                    pywikibot.output('IBoxParamValue: {}'.format(self.infoboxparams[p]))
                 return self._refremove(self.infoboxparams[p])
 
     # conflict methods
@@ -190,8 +190,8 @@ class Biography:
     # table row methods
 
     @staticmethod
-    def paramrow(conflict, color, values):
-        separator = ' || style="background-color:{}" | '.format(color) if conflict else ' || '
+    def paramrow(conflict, colour, values):
+        separator = ' || style="background-colour:{}" | '.format(colour) if conflict else ' || '
         return separator + separator.join(item or '' for item in values)
 
     def namerow(self):
