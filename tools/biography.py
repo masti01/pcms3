@@ -14,13 +14,13 @@ from pywikibot import textlib
 
 class Biography:
     bbdayR = re.compile(
-        r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(]{2})?')
+        r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<bby>\d{1,4})))(]{2})?')
     #   r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(\]{2})?')
     bddayR = re.compile(
-        r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(]{2})?")
+        r'(?i)zm\.\s*((\[{2})?(?P<bdd>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<bdy>\d{1,4})))(]{2})?')
     #   r"(?i)zm\.(\s*w)?(\s*(\[{2})?(?P<bdd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bdy>\d{4})(\]{2})?")
     dateR = re.compile(
-        r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(]{2})?')
+        r'(?i)\s*((\[{2})?(?P<bdd>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<bdy>\d{1,4})))(]{2})?')
     #   r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
 
     def __init__(self, page: pywikibot.Page):
@@ -35,10 +35,8 @@ class Biography:
         self.leadname = self._leadname(self.firstpar) if self.firstpar else None
         self.leadbday = self._leadbday() if self._leadbday() else None
         self.leadbyear = self._leadbyear() if self._leadbyear() else None
-        self.leadbdate = ' '.join(item or '' for item in (self.leadbday, self.leadbyear))
         self.leaddday = self._leaddday()
         self.leaddyear = self._leaddyear()
-        self.leadddate = ' '.join(item or '' for item in (self.leaddday, self.leaddyear))
 
         # categories info
         self.catbyear = self._catbyear(self.norefstext)
@@ -48,10 +46,8 @@ class Biography:
         self.infoboxtitle, self.infoboxparams = self._listinfoboxes(self.norefstext)
         self.infoboxbday = self._infoboxbday() if self.infoboxparams else None
         self.infoboxbyear = self._infoboxbyear() if self.infoboxparams else None
-        self.infoboxbdate = ' '.join(item or '' for item in (self.infoboxbday, self.infoboxbyear))
         self.infoboxdday = self._infoboxdday() if self.infoboxparams else None
         self.infoboxdyear = self._infoboxdyear() if self.infoboxparams else None
-        self.infoboxddate = ' '.join(item or '' for item in (self.infoboxdday, self.infoboxdyear))
         self.infoboxname = self._infoboxname() if self.infoboxparams else None
 
         # results
@@ -202,7 +198,7 @@ class Biography:
         return self.paramrow(self.nameconflict, '#cff', (self.shorttitle, self.leadname, self.infoboxname))
 
     def bdaterow(self):
-        return self.paramrow(self.birthdayconflict, '#6fc', (self.leadbdate, self.catbyear, self.infoboxbdate))
+        return self.paramrow(self.birthdayconflict, '#6fc', (self.leadbday, self.catbyear, self.infoboxbday))
 
     def ddaterow(self):
-        return self.paramrow(self.deathdayconflict, '#ffc', (self.leadddate, self.catdyear, self.infoboxddate))
+        return self.paramrow(self.deathdayconflict, '#ffc', (self.leaddday, self.catdyear, self.infoboxdday))
