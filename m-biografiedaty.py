@@ -220,7 +220,7 @@ class BasicBot(
             names=bc.namerow(),
             bdate=bc.bdaterow(),
             ddate=bc.ddaterow(),
-            ibox='{{{{s|{}}}}}'.format(bc.infoboxtitle) if bc.infoboxtitle else '')
+            ibox='{}'.format(bc.infoboxtitle) if bc.infoboxtitle else '')
 
 
 def main(*args: str) -> None:
