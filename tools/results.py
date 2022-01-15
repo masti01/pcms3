@@ -89,7 +89,7 @@ class Results:
 
         pp = self._previouspage(pagenum)
         np = self._nextpage(pagenum)
-        return "{{{{Wikipedysta:MastiBot/Nawigacja|{}|{}|tekst={}|navbardescr={}}}}}".format(
+        return "{{{{Wikipedysta:MastiBot/Nawigacja|{}|{}|tekst={}|opis={}}}}}".format(
             pp,
             np,
             self._navbarnav(),
