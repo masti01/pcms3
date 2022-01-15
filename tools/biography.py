@@ -11,8 +11,23 @@ import re
 import pywikibot
 from pywikibot import textlib
 
+class Date:
+    """
+    extract date from text in article lead, ifobox or category
+    @todo: support freeform dates, {{Data}}
+    """
+
+    def __init__(self):
+        pass
+
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__, self.__dict__)
 
 class Biography:
+    """
+    Extract basic information from a biography wikipage
+
+    """
     bbdayR = re.compile(
         r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<bby>\d{1,4})))(]{2})?')
     #   r'(?i)ur\.\s*((\[{2})?(?P<bbd>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<bby>\d{1,4})(\]{2})?')
@@ -87,7 +102,7 @@ class Biography:
         """
         remove references from text
         """
-        return re.sub("<ref.*?</ref>|{{r\|.*?}}|{{u\|.*?}}|{{odn\|.*?}}|{{refn\|.*?}}", '', text)
+        return re.sub("<ref.*?/(ref)?>|{{r\|.*?}}|{{u\|.*?}}|{{odn\|.*?}}|{{refn\|.*?}}", '', text, flags=re.IGNORECASE)
 
     def _leadbday(self):
         bdd = self.bbdayR.search(self.firstpar) if self.firstpar else None
