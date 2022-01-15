@@ -22,6 +22,7 @@ class Biography:
     dateR = re.compile(
         r'(?i)\s*((\[{2})?(?P<day>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<year>\d{1,4})))(]{2})?')
     #   r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
+    yearR = re.compile(r'(?P<year>\d{,4})$')
 
     def __init__(self, page: pywikibot.Page):
 
@@ -44,11 +45,11 @@ class Biography:
 
         # infobox info
         self.infoboxtitle, self.infoboxparams = self._listinfoboxes(self.norefstext)
-        self.infoboxbday = self._infoboxbday() if self.infoboxparams else None
-        self.infoboxbyear = self._infoboxbyear() if self.infoboxparams else None
-        self.infoboxdday = self._infoboxdday() if self.infoboxparams else None
-        self.infoboxdyear = self._infoboxdyear() if self.infoboxparams else None
-        self.infoboxname = self._infoboxname() if self.infoboxparams else None
+        self.infoboxbday = re.sub(r']]\s*\[\[', ' ', self._infoboxbday()) if self.infoboxexists else None
+        self.infoboxbyear = self._infoboxbyear() if self.infoboxexists else None
+        self.infoboxdday = re.sub(r']]\s*\[\[', ' ', self._infoboxdday()) if self.infoboxexists else None
+        self.infoboxdyear = self._infoboxdyear() if self.infoboxexists else None
+        self.infoboxname = self._infoboxname() if self.infoboxexists else None
 
         # results
         self.isconflicted = self.nameconflict or self.birthdayconflict or self.deathdayconflict
@@ -92,16 +93,16 @@ class Biography:
         return bdd.group('bbd') if bdd else None
 
     def _leadbyear(self):
-        bdy = self.bbdayR.search(self.firstpar) if self.firstpar else None
-        return bdy.group('bby') if bdy else None
+        bdy = self.yearR.search(self.leadbday) if self.leadbday else None
+        return bdy.group('year') if bdy else None
 
     def _leaddday(self):
         bdd = self.bddayR.search(self.firstpar) if self.firstpar else None
         return bdd.group('bdd') if bdd else None
 
     def _leaddyear(self):
-        bdy = self.bddayR.search(self.firstpar) if self.firstpar else None
-        return bdy.group('bdy') if bdy else None
+        bdy = self.yearR.search(self.leaddday) if self.leaddday else None
+        return bdy.group('year') if bdy else None
 
     @staticmethod
     def _catbyear(text):
@@ -135,11 +136,8 @@ class Biography:
             return None
 
     def _infoboxbyear(self):
-        if 'data urodzenia' in self.infoboxparams:
-            by = self.dateR.search(self._refremove(self.infoboxparams['data urodzenia']))
-            return by.group('year') if by else None
-        else:
-            return None
+        iby = self.yearR.search(self.infoboxbday) if self.infoboxbday else None
+        return iby.group('year') if iby else None
 
     def _infoboxdday(self):
         if 'data śmierci' in self.infoboxparams:
@@ -149,11 +147,8 @@ class Biography:
             return None
 
     def _infoboxdyear(self):
-        if 'data śmierci' in self.infoboxparams:
-            dy = self.dateR.search(self._refremove(self.infoboxparams['data śmierci']))
-            return dy.group('year') if dy else None
-        else:
-            return None
+        idy = self.yearR.search(self.infoboxdday) if self.infoboxdday else None
+        return idy.group('year') if idy else None
 
     def _infoboxname(self):
         fields = ['imię i nazwisko', 'Imię i nazwisko']
