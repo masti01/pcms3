@@ -23,6 +23,7 @@ class Biography:
         r'(?i)\s*((\[{2})?(?P<day>\d{1,2}( [\wśńź]{4,12}(]{2})?|\.\d{2}\.)?\s*?(\[{2})?(?P<year>\d{1,4})))(]{2})?')
     #   r'(?i)((\[{2})?(?P<day>\d{1,2} [\wśńź]{4,12})(\]{2})?)?\s*?(\[{2})?(?P<year>\d{1,4})(\]{2})?')
     yearR = re.compile(r'(?P<year>\d{,4})$')
+    cleandayR = re.compile(r'[\[\]]')
 
     def __init__(self, page: pywikibot.Page):
 
@@ -34,9 +35,9 @@ class Biography:
         # first paragraph (lead) info
         self.firstpar = self._firstpar(self.norefstext)
         self.leadname = self._leadname(self.firstpar) if self.firstpar else None
-        self.leadbday = re.sub(r']]\s*\[\[', ' ', self._leadbday()) if self._leadbday() else None
+        self.leadbday = re.sub(self.cleandayR, '', self._leadbday()) if self._leadbday() else None
         self.leadbyear = self._leadbyear()
-        self.leaddday = re.sub(r']]\s*\[\[', ' ', self._leaddday()) if self._leaddday() else None
+        self.leaddday = re.sub(self.cleandayR, '', self._leaddday()) if self._leaddday() else None
         self.leaddyear = self._leaddyear()
 
         # categories info
@@ -45,9 +46,9 @@ class Biography:
 
         # infobox info
         self.infoboxtitle, self.infoboxparams = self._listinfoboxes(self.norefstext)
-        self.infoboxbday = re.sub(r']]\s*\[\[', ' ', self._infoboxbday()) if self._infoboxbday() else None
+        self.infoboxbday = re.sub(self.cleandayR, '', self._infoboxbday()) if self._infoboxbday() else None
         self.infoboxbyear = self._infoboxbyear() if self.infoboxexists else None
-        self.infoboxdday = re.sub(r']]\s*\[\[', ' ', self._infoboxdday()) if self._infoboxdday() else None
+        self.infoboxdday = re.sub(self.cleandayR, '', self._infoboxdday()) if self._infoboxdday() else None
         self.infoboxdyear = self._infoboxdyear() if self.infoboxexists else None
         self.infoboxname = self._infoboxname() if self.infoboxexists else None
 
