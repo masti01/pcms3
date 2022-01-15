@@ -78,8 +78,8 @@ class Results:
         return "{} {}".format(self.bpname, pagenum) if pagenum else self.bpname
 
     def _navbarnav(self):
-        return "'• [[{}|0]]  • ".format(self.bpname) + \
-               " • ".join(["[[{} {}|{}]]".format(self.bpname, i, i) for i in range(1, self.pages)]) + " •'"
+        return "• [[{}|0]]  • ".format(self.bpname) + \
+               " • ".join(["[[{} {}|{}]]".format(self.bpname, i, i) for i in range(1, self.pages)]) + " •"
 
     def navbar(self, pagenum):
         """
