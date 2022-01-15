@@ -178,7 +178,7 @@ class BasicBot(
         # prepare table with stats
         return '\n\n{{| class="wikitable" style="font-size:85%; text-align:center; vertical-align:middle; ' \
                'margin: auto;"\n|-\n! Sprawdzone strony !! Strony z błędami !! Procent błędnych stron\n|-\n' \
-               '| {} || {} || {:.1%}\n|}}'.format(total, marked, marked/total)
+               '| {} || {} || {:.1%}\n|}}'.format(total, marked, marked / total)
 
     def treat(self, page) -> str:
         """
