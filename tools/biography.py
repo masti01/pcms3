@@ -87,7 +87,7 @@ class Biography:
         """
         remove references from text
         """
-        return re.sub("<ref.*?</ref>|{{r\|.*?}}|{{u\|.*?}}", '', text)
+        return re.sub("<ref.*?</ref>|{{r\|.*?}}|{{u\|.*?}}|{{odn\|.*?}}|{{refn\|.*?}}", '', text)
 
     def _leadbday(self):
         bdd = self.bbdayR.search(self.firstpar) if self.firstpar else None
