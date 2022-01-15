@@ -45,9 +45,9 @@ class Biography:
 
         # infobox info
         self.infoboxtitle, self.infoboxparams = self._listinfoboxes(self.norefstext)
-        self.infoboxbday = re.sub(r']]\s*\[\[', ' ', self._infoboxbday()) if self.infoboxexists else None
+        self.infoboxbday = re.sub(r']]\s*\[\[', ' ', self._infoboxbday()) if self._infoboxbday() else None
         self.infoboxbyear = self._infoboxbyear() if self.infoboxexists else None
-        self.infoboxdday = re.sub(r']]\s*\[\[', ' ', self._infoboxdday()) if self.infoboxexists else None
+        self.infoboxdday = re.sub(r']]\s*\[\[', ' ', self._infoboxdday()) if self._infoboxdday() else None
         self.infoboxdyear = self._infoboxdyear() if self.infoboxexists else None
         self.infoboxname = self._infoboxname() if self.infoboxexists else None
 
