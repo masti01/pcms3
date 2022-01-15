@@ -129,22 +129,20 @@ class Biography:
         return self.infoboxtitle is not None
 
     def _infoboxbday(self):
-        if 'data urodzenia' in self.infoboxparams:
-            by = self.dateR.search(self._refremove(self.infoboxparams['data urodzenia']))
-            return by.group('day') if by else None
-        else:
-            return None
+        if self.infoboxparams:
+            if 'data urodzenia' in self.infoboxparams:
+                by = self.dateR.search(self._refremove(self.infoboxparams['data urodzenia']))
+                return by.group('day') if by else None
 
     def _infoboxbyear(self):
         iby = self.yearR.search(self.infoboxbday) if self.infoboxbday else None
         return iby.group('year') if iby else None
 
     def _infoboxdday(self):
-        if 'data śmierci' in self.infoboxparams:
-            dy = self.dateR.search(self._refremove(self.infoboxparams['data śmierci']))
-            return dy.group('day') if dy else None
-        else:
-            return None
+        if self.infoboxparams:
+            if 'data śmierci' in self.infoboxparams:
+                dy = self.dateR.search(self._refremove(self.infoboxparams['data śmierci']))
+                return dy.group('day') if dy else None
 
     def _infoboxdyear(self):
         idy = self.yearR.search(self.infoboxdday) if self.infoboxdday else None
