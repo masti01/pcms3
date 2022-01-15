@@ -33,9 +33,9 @@ class Biography:
         # first paragraph (lead) info
         self.firstpar = self._firstpar(self.norefstext)
         self.leadname = self._leadname(self.firstpar) if self.firstpar else None
-        self.leadbday = re.sub(r']]\s*\[\[', '', self._leadbday()) if self._leadbday() else None
+        self.leadbday = re.sub(r']]\s*\[\[', ' ', self._leadbday()) if self._leadbday() else None
         self.leadbyear = self._leadbyear()
-        self.leaddday = re.sub(r']]\s*\[\[', '', self._leaddday()) if self._leaddday() else None
+        self.leaddday = re.sub(r']]\s*\[\[', ' ', self._leaddday()) if self._leaddday() else None
         self.leaddyear = self._leaddyear()
 
         # categories info
