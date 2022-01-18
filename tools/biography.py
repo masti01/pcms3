@@ -11,14 +11,15 @@ import re
 import pywikibot
 from pywikibot import textlib
 
-class Date:
+class BiographyDate:
     """
     extract date from text in article lead, ifobox or category
     @todo: support freeform dates, {{Data}}
+    @todo: data formats: dd month year, dd.mm.yyyy, ISO yyyy-mm-yy (in {{Data}})
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, text):
+        self.text = text
 
     def __repr__(self):
         return "%s(%r)" % (self.__class__, self.__dict__)

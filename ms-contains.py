@@ -147,13 +147,14 @@ class BasicBot(
             pagecounter += 1
             if self.opt.test or self.opt.progress:
                 pywikibot.output('[%s] Treating #%i (marked:%i, duplicates:%i): %s' % (
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pagecounter, marked, duplicates, page.title()))
+                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    pagecounter, marked, duplicates, page.title()))
             if page.title() in reflinks:
                 duplicates += 1
                 continue
             refs = self.treat(page)  # get (name)
             if refs:
-                if not refs in reflinks:
+                if refs not in reflinks:
                     # test
                     if self.opt.test:
                         pywikibot.output(refs)
@@ -376,10 +377,6 @@ class BasicBot(
                     pywikibot.output('POSITIVE:Text found')
                 return cpage.title(as_link=True, force_interwiki=True, textlink=True)
             return None
-
-    def listargs(self):
-        # return list of arguments
-        pywikibot.output(options)
 
 
 def main(*args: str) -> None:
