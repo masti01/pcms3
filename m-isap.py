@@ -252,7 +252,7 @@ class BasicBot(
                 replCount += count
             else:
                 if self.opt.test:
-                    pywikibot.output("ERROR: skiping %s due to no replacements for %s" % (page.title(asLink=True), k))
+                    pywikibot.output("ERROR: skiping %s due to no replacements for %s" % (page.title(as_link=True), k))
 
         if page.text != text:
             page.text = text
