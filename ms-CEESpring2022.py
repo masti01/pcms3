@@ -645,55 +645,40 @@ class BasicBot(
              'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user', 'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı',
              'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en':'user',  }
 
-    def __init__(self, generator, **kwargs):
-        """
-        Constructor.
 
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.availableOptions.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'outpage': 'User:mastiBot/test',  # default output page
-            'maxlines': 1000,  # default number of entries per page
-            'testprint': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-            'test': False,  # make verbose output
-            'test2': False,  # make verbose output
-            'test3': False,  # make verbose output
-            'test4': False,  # make verbose output
-            'test5': False,  # make verbose output
-            'testartinfo': False,  # make verbose output
-            'testgetart': False,  # make verbose output
-            'testwomen': False,  # make verbose output for women table
-            'testwomenauthors': False,  # make verbose output for women authors table
-            'testnewbie': False,  # make verbose output for newbies
-            'testlength': False,  # make verbose output for article length
-            'testpickle': False,  # make verbose output for article list load/save
-            'testusername': False,  # make verbose output for username found in template
-            'testauthorwiki': False,  # make verbose output for author/wiki
-            'testinterwiki': False,  # make verbose output for interwiki
-            'testtemplatearg': False,  # make verbose output for interwiki
-            'short': False,  # make short run
-            'append': False,
-            'reset': False,  # rebuild database from scratch
-            'progress': False,  # report progress
-            'testde': False, # testprint for de.wiki stats
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'outpage': 'User:mastiBot/test',  # default output page
+        'maxlines': 1000,  # default number of entries per page
+        'testprint': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'test': False,  # make verbose output
+        'test2': False,  # make verbose output
+        'test3': False,  # make verbose output
+        'test4': False,  # make verbose output
+        'test5': False,  # make verbose output
+        'testartinfo': False,  # make verbose output
+        'testgetart': False,  # make verbose output
+        'testwomen': False,  # make verbose output for women table
+        'testwomenauthors': False,  # make verbose output for women authors table
+        'testnewbie': False,  # make verbose output for newbies
+        'testlength': False,  # make verbose output for article length
+        'testpickle': False,  # make verbose output for article list load/save
+        'testusername': False,  # make verbose output for username found in template
+        'testauthorwiki': False,  # make verbose output for author/wiki
+        'testinterwiki': False,  # make verbose output for interwiki
+        'testtemplatearg': False,  # make verbose output for interwiki
+        'short': False,  # make short run
+        'append': False,
+        'reset': False,  # rebuild database from scratch
+        'progress': False,  # report progress
+        'testde': False, # testprint for de.wiki stats
 
-        })
+    }
 
-        # call constructor of the super class
-        # super(BasicBot, self).__init__(site=True, **kwargs)
-        super(BasicBot, self).__init__(**kwargs)
-
-        # assign the generator to the bot
-        self.generator = generator
 
     def articleExists(self, art):
         # check if article already in springList
@@ -2218,7 +2203,7 @@ def main(*args: Tuple[str, ...]) -> None:
     gen = gen_factory.getCombinedGenerator(preload=True)
     if gen:
         # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
+        bot = BasicBot(generator=gen, **options)
         bot.run()  # guess what it does
     else:
         pywikibot.bot.suggest_help(missing_generator=True)
