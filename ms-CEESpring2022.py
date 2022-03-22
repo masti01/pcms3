@@ -607,6 +607,7 @@ class BasicBot(
     authorsData = {}
     authorsArticles = {}
     authorsArticlesDE = {}
+    authorsArticlesPL = {}
     missingCount = {}
     pagesCount = {}
     countryTable = {}
@@ -779,6 +780,10 @@ class BasicBot(
         if 'de' in self.springList.keys():
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
             self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2022/Punktestand', '', '')
+
+        if 'pl' in self.springList.keys():
+            self.createStatsPL(self.springList['pl'])  # generate list for stats on pl.wiki
+            self.generateResultAuthorsPagePL(self.authorsArticlesPL, 'Wikipedia:CEE Spring 2022/Uczestnicy i uczestniczki/Punktacja', '', '')
 
 
         return
@@ -1059,6 +1064,33 @@ class BasicBot(
             pywikibot.output('createStatsDe')
             pywikibot.output('**********')
             pywikibot.output(self.authorsArticlesDE)
+        return
+
+    def createStatsPL(self, aList):
+        # create dictionary with author:wiki:{count,[artlist]} in self.authorsArticlesDE
+        if self.opt.test or self.opt.testde:
+            pywikibot.output('createStatPL')
+
+        for a in aList:
+            author = a['template']['user']
+
+            if author not in self.authorsArticlesPL.keys():
+                self.authorsArticlesPL[author] = {'total':0,'articles' : []}
+
+            if a['newarticle']:
+                self.authorsArticlesPL[author]['total'] += self.dePoints(a['charcount'])
+                self.authorsArticlesPL[author]['articles'].append(
+                    {'title': a['title'], 'points': self.dePoints(a['charcount'])})
+            else:
+                self.authorsArticlesPL[author]['total'] += self.dePoints(a['diff'])
+                self.authorsArticlesPL[author]['articles'].append(
+                    {'title': a['title'], 'points': self.dePoints(a['diff'])})
+
+        if self.opt.testde:
+            pywikibot.output('**********')
+            pywikibot.output('createStatsPL')
+            pywikibot.output('**********')
+            pywikibot.output(self.authorsArticlesPL)
         return
 
     def loadArticleList(self):
@@ -2117,6 +2149,56 @@ class BasicBot(
 
         desite = pywikibot.Site('de')
         outpage = pywikibot.Page(desite, pagename)
+        if self.opt.testde:
+            pywikibot.output('AuthorsLengthPage:%s' % outpage.title())
+            pywikibot.output(finalpage)
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+
+        return
+
+    def generateResultAuthorsPagePL(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        finalpage = header + 'Zaktualizowano: ~~~~~\n\n'
+        itemcount = 0
+        finalpage += '\n\nLista uczestników, którzy stworzyli artykuły dłuższe niż 2kB (2000B).'
+
+        # ath = sorted(self.authors, reverse=True)
+        # ath = sorted(pagecounter, key=pagecounter.__getitem__, reverse=True)
+        ath = sorted(res, key=lambda x: (res[x]['total']), reverse=True)
+        if self.opt.testde:
+            pywikibot.output('AuthorsPL page:%s' % ath)
+
+        finalpage += '<!-- Results table -->'
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n!#'
+        finalpage += '\n!Użytkownik/Użytkowniczka'
+        finalpage += '\n!Artykuły'
+        # finalpage += '\n!Neue Artikel'
+        finalpage += '\n!Punktacja'
+
+        for a in ath:
+            itemcount += 1
+            alist = []
+            for art in res[a]['articles']:
+                alist.append('[[%s]] (%i)' % (art['title'], art['points']))
+            finalpage += '\n|-\n| %i || [[Wikipedysta:%s|%s]] || %s || %i' % (itemcount, a, a, ', '.join(alist), res[a]['total'])
+
+        finalpage += '\n|}'
+
+        # finalpage += '\n\nNotiz: veränderte Artikel sind im Moment nicht berücksichtigt.'
+        finalpage += footer
+
+        # pywikibot.output(finalpage)
+
+        plsite = pywikibot.Site('pl')
+        outpage = pywikibot.Page(plsite, pagename)
         if self.opt.testde:
             pywikibot.output('AuthorsLengthPage:%s' % outpage.title())
             pywikibot.output(finalpage)
