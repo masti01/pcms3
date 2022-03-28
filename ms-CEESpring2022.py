@@ -65,9 +65,9 @@ docuReplacements = {
     '&params;': pagegenerators.parameterHelp
 }
 
-SpringStart = datetime.strptime("2022-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
+SpringStart = datetime.strptime("2022-03-20T22:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2022-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-newbieLimit = datetime.strptime("2022-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+newbieLimit = datetime.strptime("2021-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 
 CEEtemplates = {'pl': 'Szablon:CEE Spring 2022', 'az': 'Şablon:Vikibahar 2022', 'ba': 'Ҡалып:Вики-яҙ 2022',
