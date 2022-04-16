@@ -780,9 +780,9 @@ class BasicBot(
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
             self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2022/Punktestand', '', '')
 
-        if 'pl' in self.springList.keys():
-            self.createStatsPL(self.springList['pl'])  # generate list for stats on pl.wiki
-            self.generateResultAuthorsPagePL(self.authorsArticlesPL, 'Wikipedia:CEE Spring 2022/Uczestnicy i uczestniczki/Punktacja', '', '')
+        #if 'pl' in self.springList.keys():
+        #    self.createStatsPL(self.springList['pl'])  # generate list for stats on pl.wiki
+        #    self.generateResultAuthorsPagePL(self.authorsArticlesPL, 'Wikipedia:CEE Spring 2022/Uczestnicy i uczestniczki/Punktacja', '', '')
 
 
         return
