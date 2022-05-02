@@ -1321,7 +1321,7 @@ class BasicBot(
             return (creator, creationDate)
         else:
             # for rv in art.revisions(reverse=True,starttime="2017-03-20T12:00:00Z",endtime="2017-06-01T00:00:00Z"):
-            for rv in art.revisions(reverse=True, starttime=SpringStart):
+            for rv in art.revisions(reverse=True, starttime=datetime.strftime(SpringStart, "%Y-%m-%dT%H:%M:%SZ")):
                 if self.opt.test3:
                     pywikibot.output('updated art editor %s:%s (T:%s)' % (
                         art.title(as_link=True, force_interwiki=True), rv.user, rv.timestamp))
