@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Call:
-	python pwb.py masti/ms-CEESpring2022.py -page:"Szablon:CEE Spring 2022" -outpage:"meta:Wikimedia CEE Spring 2022/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2022.py -page:"Szablon:CEE Spring 2022" -outpage:"meta:Wikimedia CEE Spring 2022/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
     python pwb.py masti/ms-CEESpring2022.py -page:"Szablon:CEE Spring 2022" -outpage:"Wikipedysta:Masti/CEE Spring 2022" -summary:"Bot updates statistics" -reset -progress -pt:0
 
 
@@ -721,8 +721,8 @@ class BasicBot(
                     pywikibot.output('checking existence: [%s:%s]==%s' % (lang, title, a['title']))
                 if a['title'] == title:
                     result = True
-                    return (result)
-        return (result)
+                    return result
+        return result
 
     def run(self):
 
@@ -813,7 +813,7 @@ class BasicBot(
     def newbie(self, lang, user):
         # check if user is a newbie
         if not user:
-            return (False)
+            return False
         # newbieLimit = datetime.strptime("2019-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         if self.opt.testnewbie:
             pywikibot.output('NEWBIE:%s' % self.authorsData)
@@ -821,9 +821,9 @@ class BasicBot(
             if lang not in self.authorsData[user]['wikis']:
                 self.authorsData[user]['wikis'].append(lang)
             if self.authorsData[user]['anon']:
-                return (False)
+                return False
             if not self.authorsData[user]['newbie']:
-                return (False)
+                return False
         else:
             self.authorsData[user] = {'newbie': True, 'wikis': [lang], 'anon': False, 'gender': 'unknown'}
         userpage = 'user:' + user
@@ -835,10 +835,10 @@ class BasicBot(
             userdata = pywikibot.User(site, userpage)
         except:
             pywikibot.output('NEWBIE Exception: [[%s:user:%s]]' % (lang, user))
-            return (False)
+            return False
         self.authorsData[user]['anon'] = userdata.isAnonymous()
         if self.authorsData[user]['anon']:
-            return (False)
+            return False
         usergender = userdata.gender()
         if not self.authorsData[user]['gender'] == 'female':
             self.authorsData[user]['gender'] = usergender
@@ -854,7 +854,7 @@ class BasicBot(
                 pywikibot.output('NEWBIE [%s]:%s' % (user, self.authorsData[user]))
                 pywikibot.output('registration:%s' % reg)
 
-        return (self.authorsData[user]['newbie'])
+        return self.authorsData[user]['newbie']
 
     def createCountryTable(self, aList):
         # creat dictionary with la:country article counts
