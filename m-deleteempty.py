@@ -1,10 +1,7 @@
 #!/usr/bin/python
 """
-An incomplete sample script.
-
-This is not a complete bot; rather, it is a template from which simple
-bots can be made. You can rename it to mybot.py, then edit it in
-whatever way you want.
+Usage:
+python3 pwb.py masti/m-deleteempty.py -start:'Dyskusja:!' -summary:'Pusta strona dyskusji' -pt:0 -always
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
