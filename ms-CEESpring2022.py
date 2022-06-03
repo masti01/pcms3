@@ -644,6 +644,7 @@ class BasicBot(
     lengthTable = {}
     lengthTablePL = {}
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
+    hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
                           'crh': [],
                           'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
@@ -651,6 +652,11 @@ class BasicBot(
                           'sr': [],
                           'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro': [], 'en': [], }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
+             'myv': 0,
+             'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh': 0,
+             'sk': 0,
+             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0}
+    hrights = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0,
              'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh': 0,
              'sk': 0,
@@ -715,6 +721,8 @@ class BasicBot(
         'reset': False,  # rebuild database from scratch
         'progress': False,  # report progress
         'testde': False,  # testprint for de.wiki stats
+        'testhrightsauthors': False,
+        'testhrights': False,
 
     }
 
@@ -785,6 +793,8 @@ class BasicBot(
         self.createCountryTable(self.springList)  # generate results for pages about countries
         self.createWomenTable(self.springList)  # generate results for pages about women
         self.createWomenAuthorsTable(self.springList)  # generate results for pages about women
+        self.createHrightsTable(self.springList)  # generate results for pages about human rights
+        self.createHrightsAuthorsTable(self.springList)  # generate results for pages about human rights
         self.createLengthTable(self.springList)  # generate results for pages length
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
@@ -805,6 +815,10 @@ class BasicBot(
         self.generateResultWomenPage(self.women, self.opt.outpage + '/Articles about women', header, footer)
         self.generateResultWomenAuthorsTable(self.womenAuthors,
                                              self.opt.outpage + '/Articles about women/Authors', header,
+                                             footer)  # generate results for pages about women
+        self.generateResultHrightsPage(self.hrights, self.opt.outpage + '/Articles about Human Rights', header, footer)
+        self.generateResultHrightsAuthorsTable(self.hrightsAuthors,
+                                             self.opt.outpage + '/Articles about Human Rights/Authors', header,
                                              footer)  # generate results for pages about women
         self.generateResultLengthPage(self.lengthTable, self.opt.outpage + '/Article length', header, footer)
         self.generateResultLengthAuthorsPage(self.lengthTable, self.opt.outpage + '/Authors list over 2kB',
@@ -980,6 +994,86 @@ class BasicBot(
             pywikibot.output('self.women.authors')
             pywikibot.output('**********')
             pywikibot.output(self.womenAuthors)
+        return
+
+    def createHrightsTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testwomen:
+            pywikibot.output('createHRightsTable')
+            pywikibot.output(self.hrights)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+                lang = a['lang']  # source language
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                if 'hrights' in tmpl.keys():
+                    if not tmpl['hrights']:
+                        continue
+                else:
+                    continue
+                if self.opt.testhrights:
+                    pywikibot.output('tmpl:%s' % tmpl)
+                if lang not in self.hrights.keys():
+                    self.hrights[lang] = 1
+                else:
+                    self.hrights[lang] += 1
+                if self.opt.testhrights:
+                    pywikibot.output('self.hrights[%s]:%i' % (lang, self.hrights[lang]))
+                countryCount += 1
+                if self.opt.test or self.opt.testhrights:
+                    pywikibot.output('art:%i HRights:True [[%s:%s]]' % (artCount, lang, a['title']))
+        if self.opt.testhrights:
+            pywikibot.output('**********')
+            pywikibot.output('self.hrights')
+            pywikibot.output('**********')
+            pywikibot.output(self.hrights)
+        return
+
+    def createHrightsAuthorsTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testhrightsauthors:
+            pywikibot.output('createHRightsAuthorsTable')
+            pywikibot.output(self.hrightsAuthors)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+
+                if self.opt.testhrightsauthors:
+                    pywikibot.output('article:%s' % a)
+
+                lang = a['lang']  # source language
+                fam = a['family']
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                newart = a['newarticle']
+                hrightsart = tmpl['hrights']
+                if not newart:
+                    if self.opt.test or self.opt.testhrightsauthors:
+                        pywikibot.output('Skipping updated [%i]: [[%s:%s]]' % (artCount, lang, a['title']))
+                    continue
+                if not hrightsart:
+                    if self.opt.test or self.opt.testhrightsauthors:
+                        pywikibot.output('Skipping NOT HRIGHTS [%i]: [[%s:%s]]' % (artCount, lang, a['title']))
+                    continue
+                user = a['creator']
+                if user in self.hrightsAuthors.keys():
+                    self.hrightsAuthors[user]['count'] += 1
+                    self.hrightsAuthors[user]['list'].append(
+                        (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title'])
+                else:
+                    self.hrightsAuthors[user] = {'count': 1, 'list': [
+                        (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title']]}
+
+        if self.opt.testhrightsauthors:
+            pywikibot.output('**********')
+            pywikibot.output('self.hrights.authors')
+            pywikibot.output('**********')
+            pywikibot.output(self.hrightsAuthors)
         return
 
     def createLengthTable(self, aList):
@@ -1269,6 +1363,7 @@ class BasicBot(
 
             woman = self.checkWomen(art)
             # woman = False
+            hrights = False
             artParams['title'] = art.title()
             artParams['lang'] = lang
             artParams['family'] = fam
@@ -1282,13 +1377,15 @@ class BasicBot(
             if self.opt.test2:
                 pywikibot.output('artParams[ArtInfo]:%s' % artParams)
 
-            artParams['template'] = {'country': [], 'user': creator, 'woman': woman, 'nocountry': False}
+            artParams['template'] = {'country': [], 'user': creator, 'woman': woman, 'hrights': hrights, 'nocountry': False}
 
             if lang in self.templatesList.keys() and talk.exists():
                 TmplInfo = self.getTemplateInfo(talk, self.templatesList[lang], lang)
                 artParams['template'] = TmplInfo
             if not artParams['template']['woman']:
                 artParams['template']['woman'] = woman
+            if not artParams['template']['hrights']:
+                artParams['template']['hrights'] = hrights
             if not len(artParams['template']['country']):
                 artParams['template']['nocountry'] = True
             # if artParams['template']['user']:
@@ -1407,7 +1504,7 @@ class BasicBot(
     def getTemplateInfo(self, page, template, lang):
         param = {}
         # author, creationDate = self.getUpdater(page)
-        parlist = {'country': [], 'user': None, 'woman': False, 'nocountry': False}
+        parlist = {'country': [], 'user': None, 'woman': False, 'hrights': False, 'nocountry': False}
         if self.opt.test2:
             pywikibot.output('page:%s' % page.text)
         # return dictionary with template params
@@ -1422,6 +1519,7 @@ class BasicBot(
                 paramcount = 1
                 countryDef = False  # check if country defintion exists
                 parlist['woman'] = False
+                parlist['hrights'] = False
                 parlist['country'] = []
                 parlist['user'] = None
                 for p in params:
@@ -1454,6 +1552,8 @@ class BasicBot(
                         if lang in self.womenp.keys() and value.lower().startswith(self.womenp[lang].lower()):
                             # self.women[lang] += 1
                             parlist['woman'] = True
+                        if value.lower().startswith('human rights'):
+                            parlist['hrights'] = True
                     # check article about country
                     if lang in self.countryp.keys() and name.lower().startswith(self.countryp[lang].lower()):
                         if self.opt.test2:
@@ -1795,6 +1895,103 @@ class BasicBot(
         itemcount = 0
         artcount = 0
         finalpage += '\n== Articles about women authors ==\n'
+
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n!#'
+        finalpage += '\n!Author'
+        finalpage += '\n!Count'
+        finalpage += '\n!Articles'
+
+        # ath = sorted(self.authors, reverse=True)
+        ath = sorted(res, key=lambda x: (res[x]['count']), reverse=True)
+        # ath = sorted(res, key=res.__getitem__, reverse=True)
+        for a in ath:
+            if not a or 'UNKNOWN USER' in a or a == '':
+                author = "'''unknown'''"
+            else:
+                author = a
+            itemcount += 1
+            finalpage += '\n|-\n| %i. || %s || %s || %s' % (
+                itemcount, author, res[a]['count'], '[[:' + ']], [[:'.join(res[a]['list']) + ']]')
+            artcount += res[a]['count']
+        # generate totals
+        finalpage += '\n|-\n! !! Total: !! %i !!' % artcount
+
+        finalpage += '\n|}'
+
+        finalpage += '\n\nTotal number of articles: ' + str(artcount)
+        finalpage += "\n\n'''NOTE:''' page counts only newly created articles"
+        finalpage += footer
+
+        if self.opt.testwomenauthors:
+            pywikibot.output(finalpage)
+
+        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        if self.opt.testwomenauthors:
+            pywikibot.output('WomenAuthorsPage:%s' % outpage.title())
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+        return
+
+    def generateResultHrightsPage(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        finalpage = header
+        itemcount = 0
+        artcount = 0
+        finalpage += '\n== Articles about Human Rights ==\n'
+
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n!#'
+        finalpage += '\n!Wikipedia'
+        finalpage += '\n!Articles'
+
+        # ath = sorted(self.authors, reverse=True)
+        ath = sorted(res, key=res.__getitem__, reverse=True)
+        for a in ath:
+            itemcount += 1
+            finalpage += '\n|-\n| %i. || %s || %i' % (itemcount, a, res[a])
+            artcount += res[a]
+        # generate totals
+        finalpage += '\n|-\n! !! Total: !! %i' % artcount
+
+        finalpage += '\n|}'
+
+        finalpage += '\n\nTotal number of articles: ' + str(artcount)
+
+        finalpage += "\n\n'''NOTE:''' page counts all articles - new and updated"
+
+        finalpage += footer
+
+        # pywikibot.output(finalpage)
+
+        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        if self.opt.test:
+            pywikibot.output('HrightsPage:%s' % outpage.title())
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+        return
+
+    def generateResultHrightsAuthorsTable(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        if self.opt.testwomenauthors:
+            pywikibot.output(res)
+
+        finalpage = header
+        itemcount = 0
+        artcount = 0
+        finalpage += '\n== Articles about Human Rights authors ==\n'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
