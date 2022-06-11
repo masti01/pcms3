@@ -683,6 +683,16 @@ class BasicBot(
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', }
+    hrightsp = {
+            'pl': 'prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'İnsan hüquqları',
+            'ba': 'Кеше хоҡуҡтары', 'be': 'Правы чалавека', 'be-tarask': 'Правы чалавека', 'sh': 'Ljudska prava',
+            'bs': 'Ljudska prava', 'hr': 'Ljudska prava', 'sr': 'Људска права', 'myv': 'Ломанень прават', 'et': 'Inimõigused',
+            'ge': 'ადამიანის უფლებები', 'de': 'Menschenrechte', 'el': 'νθρώπινα δικαιώματα', 'hu': 'Emberi jogok',
+            'lv': 'Cilvēktiesības', 'mk': 'Човекови права', 'mt': 'Drittijiet umani', 'pl': 'Prawa człowieka',
+            'ru': 'Права человека', 'sk': 'Ľudské práva', 'sl': 'Človekove pravice', 'tt': 'Кеше хокуклары',
+            'tr': 'İnsan hakları, '
+
+    }
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
              'bg': 'потребител', 'bs': 'korisnik', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
              'hu': 'szerkesztő', 'eo': 'uzanto',
@@ -1553,6 +1563,13 @@ class BasicBot(
                             # self.women[lang] += 1
                             parlist['woman'] = True
                         if value.lower().startswith('human rights'):
+                            parlist['hrights'] = True
+                    # check article about human rights
+                    if lang in self.topicp.keys() and name.lower().startswith(self.topicp[lang].lower()):
+                        if self.opt.test2:
+                            pywikibot.output('topic:%s:%s' % (name, value))
+                        if lang in self.hrightsp.keys() and value.lower().startswith(self.hrightsp[lang].lower()):
+                            # self.women[lang] += 1
                             parlist['hrights'] = True
                     # check article about country
                     if lang in self.countryp.keys() and name.lower().startswith(self.countryp[lang].lower()):
