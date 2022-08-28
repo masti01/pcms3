@@ -1695,6 +1695,8 @@ ignorelist = [
     re.compile('.*[\./@]jstor\.org/stable/10.1086/521066'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]skiinghistory\.org/history/women%E2%80%99s-ski-jumping-takes-aim-winter-olympics'),   # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]academic\.oup\.com'),   # bot rejected on site (masti, Salicyna)
+    re.compile('.*[\./@]na-svyazi\.ru'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ethnologue\.com'),  # bot rejected on site (masti, szoltys)
 
 ]
 
