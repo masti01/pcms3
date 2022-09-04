@@ -160,11 +160,13 @@ class BasicBot(
                 pywikibot.output(u'Unrecognized template content in %s' % page.title())
     
         if changed:
+            """
             if len(talktext) < 4:
                 if self.opt.test:
                     pywikibot.output(u'Deleting {0}.'.format(page))
                 if not self.opt.nodelete:
                     talktext = u'{{ek|Nieaktualna informacja o martwym linku zewnętrznym}}\n\n' + talktext
+            """
             page.text = talktext
             if self.opt.test:
                 pywikibot.output(talktext)
