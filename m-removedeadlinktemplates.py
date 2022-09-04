@@ -141,7 +141,7 @@ class BasicBot(
             # check if the template is properly built
             try:
                 weblink = re.search(weblinkR, template).group('weblink').strip()
-                if weblink in articletext:
+                if weblink in articletext and not self.linkarchived(weblink, articletext):
                     if self.opt.test:
                         pywikibot.output(u'Still there >>%s<<' % weblink)
                     if not self.removelinktemplate(weblink, articletext):
@@ -171,8 +171,15 @@ class BasicBot(
             page.save(summary=self.opt.summary)
             return True
         return False
-    
-    
+
+    def linkarchived(self, link, text):
+        """
+        build regex for searching for archived link
+        """
+        link = re.sub("\.", "\.", link)
+        link = re.sub("\?", "\?", link)
+        linkR = re.compile(f'web\.archive\.org/web/\d*/{link}')
+        return linkR.search(text)
     def removelinktemplate(self, link, text):
         """
         check if link is within {{cytuj...}} template with filled archiwum= field or within this field
