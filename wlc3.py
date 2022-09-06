@@ -1744,7 +1744,7 @@ ignorelist = [
     re.compile('.*[\./@]jstor\.org/stable/106717'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]jstor\.org/stable/106823'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]rcin\.org\.pl/dlibra/publication/'),  # bot rejected on site (masti, szoltys)
-    re.compile('.*[\./@]demo\.istat\.it/pop2010/index1_e\.html'),  # bot rejected on site (masti)
+    re.compile('.*[\./@]demo\.istat\.it/pop\d{4}/index1_e\.html'),  # bot rejected on site (masti)
 
 ]
 
