@@ -1770,7 +1770,26 @@ ignorelist = [
     re.compile('.*[\./@]chmielnik\.com/asp/pl_start\.asp\?typ=14&menu=26&strona=1'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]chmielnik\.com/asp/pl_start\.asp\?typ=14&menu=29&strona=1'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]chmielnik\.com/asp/pl_start\.asp\?typ=14&menu=480&strona=1&sub=318&subsub=475'),  # bot rejected on site (masti, szoltys)
-
+    re.compile('.*[\./@]trinityhouse\.co\.uk'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]infolotnicze\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ck\.gov\.pl/promotion'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]globalsecurity\.org/military'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]google\.pl/search\?hl=pl&tbo=p&tbm=bks&q=inauthor'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]google\.pl/search\?tbm=bks&hl=pl&q='),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]prudnik24\.pl/index\.php'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]oneartyminute\.com/lexique-artistique/academie-julian'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]google\.pl/search\?sa=G&hl=pl&tbm=bks&tbm=bks&q=inauthor:%22J%C3%B3zef+Premik%22&ei=5_u2U7aHBouS7AbdlIGoDw&ved=0CDYQ9AgwAw'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]naval-technology\.com/projects/littoral/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]amw\.gdynia\.pl/index\.php/o-nas/historia#poczet-komendantow'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]amw\.gdynia\.pl/index\.php/uczelnia/wladze-uczelni/item/1128-wladze-rektor-komendant'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]amw\.gdynia\.pl/images/AMW/Menu-zakladki/Nauka/Zeszyty_naukowe/Numery_archiwalne/2009/Nawrot_D2\.pdf'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]biodiversitylibrary\.org/page/32271873#page/434/mode/1up'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]dpsceilings\.com/kontakt/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]aldi\.com/impressum\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ipfs\.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/List_of_music_recording_certifications\.html#cite_ref-International_Certification_Award_levels_\.E2\.80\.93_2013_6-0'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hydra\.hull\.ac\.uk/assets/hull:9375/content'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]portalgorski\.pl/images/images_arch/topo/mirow_topo/mirow_topo_mg\.pdf'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]portalgorski\.pl/images/content/2013/07/topo_pdf'),  # bot rejected on site (masti, szoltys)
 ]
 
 
