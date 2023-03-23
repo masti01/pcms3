@@ -84,7 +84,7 @@ countryList = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Bashkortostan', '
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
                'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
                'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
-               'Turkey', 'Ukraine', 'Võro', 'Other', 'Empty']
+               'Turkey', 'Ukraine', 'Võro', 'Other', 'Empty', 'International']
 languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'],
                    'et': ['Estonia', 'Võro'],
                    'az': ['Azerbaijan'], 'ru': ['Russia', 'Don'], 'tt': ['Tatarstan'], 'tr': ['Turkey'],
@@ -109,7 +109,8 @@ countryNames = {
            'Serbołużyczanie': 'Sorbia', 'Słowacja': 'Slovakia', 'Słowenia': 'Slovenia', 'Turcja': 'Turkey',
            'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan',
            'język Võro': 'Võro', 'Język voro': 'Võro', 'Võro': 'Võro', 'Tatarzy Krymscy': 'Crimean Tatars',
-           'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', },
+           'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
+           'International': 'International',},
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -173,7 +174,7 @@ countryNames = {
                   'Турэччына': 'Turkey', 'Украіна': 'Ukraine', 'Грэцыя': 'Greece', 'Казахстан': 'Kazakhstan',
                   'Мальта': 'Malta', 'эспэранта': 'Esperanto', 'Republika srbská': 'Republic of Srpska',
                   'Tatársko': 'Tatarstan', 'эрзя': 'Erzia', 'Цыганы': 'Roma', 'цыганы': 'Roma', 'Кіпр': 'Cyprus',
-                  'лужычане': 'Sorbia', },
+                  'лужычане': 'Sorbia', 'Міжнародны': 'International', },
     # bg countries
     'bg': {'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Беларус': 'Belarus', 'България': 'Bulgaria', 'Армения': 'Armenia',
@@ -269,7 +270,8 @@ countryNames = {
             'Украина Мастор': 'Ukraine', 'Греция Мастор': 'Greece', 'Казахстан Мастор': 'Kazakhstan',
             'Словения Мастор': 'Slovenia', 'Мальта Мастор': 'Malta', 'Молдавия Мастор': 'Romania and Moldova',
             'Казахстан': 'Kazakhstan', '{{Цыганонь коцтось}}': 'Roma', 'Татарстан': 'Tatarstan',
-            'Кипр Республикась': 'Cyprus', 'Крым Республикась': 'Crimean Tatars', },
+            'Кипр Республикась': 'Cyprus', 'Крым Республикась': 'Crimean Tatars', 'International': 'International',
+            'Ukraine': 'Ukraine', },
     # eo countries
     'eo': {'Albanio': 'Albania', 'Aŭstrio': 'Austria', 'Azerbajĝano': 'Azerbaijan', 'Baŝkirio': 'Bashkortostan',
            'Belorusio': 'Belarus', 'Bulgario': 'Bulgaria', 'Armenio': 'Armenia',
@@ -436,7 +438,8 @@ countryNames = {
            'Румыния һәм Moлдова': 'Romania and Moldova', 'Словения': 'Slovenia', 'Кырым-татар': 'Crimean Tatars',
            'Кырымтатарлары': 'Crimean Tatars', 'Румыния һәм Молдова': 'Romania and Moldova', 'Дон төбәге': 'Don',
            'Башкортостан': 'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary',
-           'Мальта': 'Malta', 'Монтенегро': 'Montenegro', 'Белоруссия': 'Belarus', 'Россия': 'Russia', },
+           'Мальта': 'Malta', 'Монтенегро': 'Montenegro', 'Белоруссия': 'Belarus', 'Россия': 'Russia',
+           'Moлдова': 'Moldova', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -553,7 +556,7 @@ countryNames = {
            'Ukrajina': 'Ukraine', 'Donska regija': 'Don', 'Romunija in Moldavija': 'Romania and Moldova',
            'Republika srbska': 'Republic of Srpska', 'Moldavija': 'Romania and Moldova', 'Romi': 'Roma',
            'Ciper': 'Cyprus', 'Võrumaa': 'Võro', 'Lužiška srbija': 'Sorbia', 'Lužiški Srbi': 'Sorbia',
-           'Tatari': 'Crimean Tatars',
+           'Tatari': 'Crimean Tatars', 'mednarodno': 'International',
            },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
