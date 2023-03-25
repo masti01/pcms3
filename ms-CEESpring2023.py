@@ -205,7 +205,7 @@ countryNames = {
            'Kasachstan': 'Kazakhstan', 'Malta': 'Malta', 'Sorbisches Siedlungsgebiet': 'Sorbia',
            'Nordmazedonien': 'North Macedonia', 'Tatarstan': 'Tatarstan', 'Zypern': 'Cyprus',
            'die Republik Moldau': 'Romania and Moldova', 'die Türkei': 'Turkey', 'Sorbisch': 'Sorbia',
-           'Sorben': 'Sorbia', },
+           'Sorben': 'Sorbia', 'Belarus': 'Belarus', },
     # bs countries
     'bs': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbejdžan': 'Azerbaijan', 'Baškortostan': 'Bashkortostan',
            'Bjelorusija': 'Belarus', 'Bosna i Hercegovina': 'Bosnia and Herzegovina', 'Bugarska': 'Bulgaria',
