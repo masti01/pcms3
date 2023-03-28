@@ -219,7 +219,7 @@ countryNames = {
            'Krimski Tatari': 'Crimean Tatars', 'Kipar': 'Cyprus', 'Sjeverna Makedonija': 'North Macedonia',
            'Don': 'Don',
            'Erzja': 'Erzia', 'Malta': 'Malta', 'Rumunija i Moldavija': 'Romania and Moldova', 'Lužički Srbi': 'Sorbia',
-           'Tatarstan': 'Tatarstan', 'Sorbisch': 'Sorbia', },
+           'Tatarstan': 'Tatarstan', 'Sorbisch': 'Sorbia', 'Krimeanski Tatari': 'Crimean Tatars', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
