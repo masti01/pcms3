@@ -77,14 +77,15 @@ CEEtemplates = {'pl': 'Szablon:CEE Spring 2023', 'az': 'Şablon:Vikibahar 2023',
                 'hu': 'Sablon:CEE Tavasz 2023', 'hy': 'Կաղապար:CEE Spring 2023', 'ka': 'თარგი:ვიკიგაზაფხული 2023',
                 'lv': 'Veidne:CEE Spring 2023', 'lt': 'Šablonas:VRE 2023', 'mk': 'Шаблон:СИЕ Пролет 2023',
                 'myk': 'Шаблон:СИЕ Пролет 2023', 'ro': 'Format:Wikimedia CEE Spring 2023',
-                'ru': 'Шаблон:Вики-весна 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
+                'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
+                'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
                 'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
-countryList = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
+countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
                'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
-               'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
-               'Turkey', 'Ukraine', 'Võro', 'Other', 'Empty', 'International']
+               'Romania and Moldova', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
+               'Turkey', 'Ukraine', 'Võro', 'Western Armenian', 'Other', 'Empty', 'International']
 languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'],
                    'et': ['Estonia', 'Võro'],
                    'az': ['Azerbaijan'], 'ru': ['Russia', 'Don'], 'tt': ['Tatarstan'], 'tr': ['Turkey'],
@@ -300,6 +301,9 @@ countryNames = {
            'Լեհատան': 'Poland', 'Հունաստամ': 'Greece', 'Ալբանիաիա': 'Albania',
            'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia',
            'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', },
+    # hyw countries
+    'hyw': {
+    },
     # ka countries
     'ka': {'ალბანეთი': 'Albania', 'ავსტრია': 'Austria', 'აზერბაიჯანი': 'Azerbaijan', 'ბაშკირეთი': 'Bashkortostan',
            'ბელარუსი': 'Belarus', 'ბულგარეთი': 'Bulgaria', 'სომხეთი': 'Armenia',
@@ -372,6 +376,9 @@ countryNames = {
            'sorabi': 'Sorbia',
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
            'Cipru': 'Cyprus', 'Romi': 'Roma', 'Võro': 'Võro', 'Federația Rusă': 'Russia', },
+    # roa-rup countries
+    'roa-rup': {
+            },
     # ru countries
     'ru': {'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Белоруссия': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
@@ -386,6 +393,9 @@ countryNames = {
            'Турция': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Казахстан': 'Kazakhstan',
            'Мальта': 'Malta', 'Кипр': 'Cyprus', 'Крым': 'Crimean Tatars', 'Цыгане': 'Roma', 'Лужица': 'Sorbia',
            'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', },
+    # sah countries
+    'sah': {
+    },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
            'Armenisë': 'Armenia', 'Armeni': 'Armenia', 'Austria': 'Austria', 'Austri': 'Austria',
@@ -649,43 +659,44 @@ class BasicBot(
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
-                          'crh': [],
-                          'el': [], 'et': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [], 'kk': [], 'lv': [],
-                          'lt': [], 'mk': [], 'mt': [], 'ro': [], 'ru': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [],
-                          'sr': [],
-                          'tt': [], 'tr': [], 'uk': [], 'hu': [], 'fiu-vro': [], 'en': [], }
+                          'crh': [], 'el': [], 'et': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
+                          'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
+                          'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
+                          'hu': [], 'fiu-vro': [], 'en': [], }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
-             'myv': 0,
-             'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh': 0,
-             'sk': 0,
-             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0}
+             'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
+             'ro': 0, 'roa-rup':0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0 }
     hrights = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
-             'myv': 0,
-             'eo': 0, 'hr': 0, 'hy': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0, 'ro': 0, 'ru': 0, 'sh': 0,
-             'sk': 0,
-             'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0, 'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0}
+             'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
+             'ro': 0, 'roa-rup':0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0 }
+    # local name for coutry parameter
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава',
                 'bs': 'država',
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
-                'myv': 'мастор', 'ro': 'țară', 'ru': 'страна', 'sh': 'zemlja', 'sl': 'država', 'sk': 'Krajina',
+                'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja', 'sl': 'država', 'sk': 'Krajina',
                 'sq': 'country',
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
                 'en': 'country', }
+    # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'qadınlar', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
               'bs': 'tema',
               'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo', 'hu': 'téma', 'ka': 'თემა',
               'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
-              'ro': 'secțiune', 'ru': 'тема', 'sh': 'tema', 'sl': 'tema', 'sk': 'Parameter', 'sq': 'topic',
+              'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema', 'sk': 'Parameter', 'sq': 'topic',
               'sr': 'тема',
               'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
               'en': 'topic', }
+    # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
               'lv': 'Sievietes',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', }
+    # local name for parameter value for: human rights
     hrightsp = {
             'pl': 'prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'İnsan hüquqları',
             'ba': 'Кеше хоҡуҡтары', 'be': 'Правы чалавека', 'be-tarask': 'Правы чалавека', 'sh': 'Ljudska prava',
@@ -696,11 +707,12 @@ class BasicBot(
             'tr': 'İnsan hakları, '
 
     }
+    # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
              'bg': 'потребител', 'bs': 'korisnik', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
              'hu': 'szerkesztő', 'eo': 'uzanto',
              'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent',
-             'myv': 'сёрмадыця', 'ro': 'utilizator', 'ru': 'участник', 'sh': 'user',
+             'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник', 'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user',
              'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user', 'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı',
              'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', }
 
