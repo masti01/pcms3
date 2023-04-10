@@ -363,7 +363,7 @@ countryNames = {
            'Малта': 'Malta', 'Донскиот регион': 'Don', 'Кипар': 'Cyprus', 'Мордовија': 'Erzia',
            'Казакстан': 'Kazakhstan',
            'Виру': 'Võro', 'Роми': 'Roma', 'Донски Регион': 'Don', 'Донски регион': 'Don',
-           'Меѓународна статија': 'International', 'Ермениј': 'Armenia', },
+           'Меѓународна статија': 'International', 'Ермениј': 'Armenia', 'Ромска заедница': 'Roma', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -379,7 +379,7 @@ countryNames = {
            'Malta': 'Malta', 'Tătari crimeeni': 'Crimean tatars', 'Tătarii din Crimeea': 'Crimean tatars',
            'sorabi': 'Sorbia',
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
-           'Cipru': 'Cyprus', 'Romi': 'Roma', 'Võro': 'Võro', 'Federația Rusă': 'Russia', },
+           'Cipru': 'Cyprus', 'Romi': 'Roma', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian', },
     # roa-rup countries
     'roa-rup': {
             },
