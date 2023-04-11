@@ -223,7 +223,7 @@ countryNames = {
            'Tatarstan': 'Tatarstan', 'Sorbisch': 'Sorbia', 'Krimeanski Tatari': 'Crimean Tatars',
            'Međunarodne teme': 'International', 'Međunarodni': 'International', 'Krimski tatari': 'Crimean Tatars',
            'Lužički srbi': 'Sorbia', 'Arumuni': 'Aromanian', 'Tatari': 'Crimean Tatars', 'Republika Saha': 'Sakha',
-           'Võro (jezik)': 'Võro', 'Võro': 'Võro', 'Zapadnoarmenijski jezik': 'Western Armenian', },
+           'Võro (jezik)': 'Võro', 'Võro': 'Võro', 'Zapadnoarmenijski jezik': 'Western Armenian', 'Saha': 'Sakha', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -303,7 +303,7 @@ countryNames = {
            'Հունաստան': 'Greece', 'Ղազախստան': 'Kazakhstan', 'Սլովենիա': 'Slovenia', 'Մալթա': 'Malta',
            'Լեհատան': 'Poland', 'Հունաստամ': 'Greece', 'Ալբանիաիա': 'Albania',
            'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia',
-           'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', },
+           'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha', },
     # hyw countries
     'hyw': {
     },
