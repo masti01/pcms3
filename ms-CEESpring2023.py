@@ -126,7 +126,8 @@ countryNames = {
            'Ukrayna': 'Ukraine', 'Yunanıstan': 'Greece', 'Qazaxıstan': 'Kazakhstan', 'Krım-tatarlar': 'Crimean Tatars',
            'Don regionu': 'Don', 'Sorblar': 'Sorbia', 'Esperanto': 'Esperanto',
            'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr': 'Cyprus', 'Don vilayəti': 'Don',
-           'Tatarstan': 'Tatarstan', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina', },
+           'Tatarstan': 'Tatarstan', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
+           'Krım tatar': 'Crimean Tatars', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -585,7 +586,7 @@ countryNames = {
            'Bożnija-Ħerzegovina': 'Bosnia and Herzegovina', 'Sorbi': 'Sorbia', 'Bulgarija': 'Bulgaria',
            'Tatar tal-Krimea': 'Crimean Tatars', 'Maċedonja ta': 'North Macedonia', 'Kosovo': 'Kosovo',
            'Albanija': 'Albania', 'Serbja': 'Serbia', 'Montenegro': 'Montenegro',
-           'BUlgarija': 'Bulgaria', 'Ungerija': 'Hungary', 'Latvja': 'Latvia',
+           'Bulgarija': 'Bulgaria', 'Ungerija': 'Hungary', 'Latvja': 'Latvia',
            'Litwanja': 'Lithuania', 'Rumanija': 'Romania and Moldova', 'Slovakkja': 'Slovakia', 'Slovenja': 'Slovenia',
            'Kroazja': 'Croatia', 'Don region': 'Don', 'Erzya': 'Erzia', 'Esperanto': 'Esperanto', 'Estonja': 'Estonia',
            'Turkija': 'Turkey', 'Ġeorġja': 'Georgia', 'Każakistan': 'Kazakhstan',
@@ -596,7 +597,8 @@ countryNames = {
            'Repubblika Ċeka': 'Czechia',
            'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus', 'Tatari tal-Krimea': 'Crimean Tatars',
            'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don', 'Georgia': 'Georgia', 'Rom': 'Roma',
-           'Roma': 'Roma', 'Baxkorstostan': 'Bashkortostan', 'Internazzjonali': 'International', },
+           'Roma': 'Roma', 'Baxkorstostan': 'Bashkortostan', 'Internazzjonali': 'International',
+           "Reġjun ta' Don": 'Don', },
     # sh countries
     'sh': {'Austriji': 'Austria', 'Albaniji': 'Albania', 'Kosovu': 'Kosovo', 'Hrvatskoj': 'Croatia',
            'Bosni i Hercegovini': 'Bosnia and Herzegovina', 'Grčkoj': 'Greece', 'Rumunjskoj': 'Romania and Moldova',
