@@ -385,7 +385,7 @@ countryNames = {
            'sorabi': 'Sorbia',
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
            'Cipru': 'Cyprus', 'Romi': 'Roma', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
-           'Aromâni': 'Aromanian', 'romi': 'Roma', 'Armenia de Vest': 'West Armennian', },
+           'Aromâni': 'Aromanian', 'romi': 'Roma', 'Armenia de Vest': 'West Armenian', },
     # roa-rup countries
     'roa-rup': {
             },
@@ -402,7 +402,8 @@ countryNames = {
            'Лужичане': 'Sorbia', 'Словакия': 'Slovakia', 'Словения': 'Slovenia', 'Татарстан': 'Tatarstan',
            'Турция': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Казахстан': 'Kazakhstan',
            'Мальта': 'Malta', 'Кипр': 'Cyprus', 'Крым': 'Crimean Tatars', 'Цыгане': 'Roma', 'Лужица': 'Sorbia',
-           'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', },
+           'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', 'Че́хия': 'Czechia',
+           'Western Armenian': 'West Armenian', },
     # sah countries
     'sah': {
     },
