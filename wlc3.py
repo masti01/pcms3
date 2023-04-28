@@ -2060,6 +2060,14 @@ ignorelist = [
     re.compile('.*[\./@]nagrzyby\.pl/atlas\?id=5010'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]riley-smith\.net/'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]zawadzka\.eu/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]liturgia\.cerkiew\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]theplantlist\.org'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]mat\.umk\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]polcul\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]navypedia\.org/ships'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]newsbeezer\.com'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]journals\.lww\.com'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]arthur-conan-doyle\.com/index\.php\?title='),  # bot rejected on site (masti, szoltys)
 ]
 
 
