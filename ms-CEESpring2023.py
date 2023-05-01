@@ -307,7 +307,8 @@ countryNames = {
            'Հունաստան': 'Greece', 'Ղազախստան': 'Kazakhstan', 'Սլովենիա': 'Slovenia', 'Մալթա': 'Malta',
            'Լեհատան': 'Poland', 'Հունաստամ': 'Greece', 'Ալբանիաիա': 'Albania',
            'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia',
-           'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha', },
+           'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
+           'Ղրիմ': 'Crimean Tatars', },
     # hyw countries
     'hyw': {
     },
@@ -368,7 +369,7 @@ countryNames = {
            'Казакстан': 'Kazakhstan',
            'Виру': 'Võro', 'Роми': 'Roma', 'Донски Регион': 'Don', 'Донски регион': 'Don',
            'Меѓународна статија': 'International', 'Ермениј': 'Armenia', 'Ромска заедница': 'Roma',
-           'Западноерменски јазик': 'West Armenian', },
+           'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -403,7 +404,8 @@ countryNames = {
            'Турция': 'Turkey', 'Украина': 'Ukraine', 'Греция': 'Greece', 'Казахстан': 'Kazakhstan',
            'Мальта': 'Malta', 'Кипр': 'Cyprus', 'Крым': 'Crimean Tatars', 'Цыгане': 'Roma', 'Лужица': 'Sorbia',
            'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', 'Че́хия': 'Czechia',
-           'Western Armenian': 'West Armenian', },
+           'Western Armenian': 'West Armenian', 'Erzya': 'Erzya', 'Western Armenian community': 'Western Armenian',
+           'Cyprus': 'Cyprus', },
     # sah countries
     'sah': {
     },
@@ -476,7 +478,7 @@ countryNames = {
            'Slovenya': 'Slovenia', 'Türkiye': 'Turkey', 'Ukrayna': 'Ukraine', 'Yunanistan': 'Greece',
            'Kazakistan': 'Kazakhstan', 'Tataristan': 'Tatarstan', 'Sırbistan Cumhuriyeti': 'Republic of Srpska',
            'Sıbistan': 'Serbia', 'Võro dili': 'Võro', 'Çingeneler': 'Roma', 'Kıbrıs': 'Cyprus', 'Çekya': 'Czechia',
-           'Belarus': 'Belarus', 'Kırımçaklar': 'Crimean Tatars', 'Saha Cumhuriyeti': 'Sakha',  },
+           'Belarus': 'Belarus', 'Kırımçaklar': 'Crimean Tatars', 'Saha Cumhuriyeti': 'Sakha', 'Don bölgesi': 'Don', },
     # uk countries
     'uk': {'Албанія': 'Albania', 'Австрія': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Білорусія': 'Belarus', 'Білорусь': 'Belarus', 'Болгарія': 'Bulgaria', 'Вірменія': 'Armenia',
@@ -563,7 +565,7 @@ countryNames = {
            'Rusije': 'Russia', 'Tatarstanu': 'Tatarstan', 'Baškirskoj': 'Bashkortostan', 'Esperantu': 'Esperanto',
            'Lužičkih Srba': 'Sorbia', 'Romi': 'Roma', 'Azerbejdžanu': 'Azerbaijan', 'Cipru': 'Cyprus',
            'Esperanta': 'Esperanto', 'Krimu': 'Crimean Tatars', 'Võru': 'Võro', 'Lužici': 'Sorbia', 'Malte': 'Malta',
-           'Cipra': 'Cyprus', 'Grčke': 'Greece', },
+           'Cipra': 'Cyprus', 'Grčke': 'Greece', 'Romskoj zajednici': 'Roma', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -599,7 +601,7 @@ countryNames = {
            'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus', 'Tatari tal-Krimea': 'Crimean Tatars',
            'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don', 'Georgia': 'Georgia', 'Rom': 'Roma',
            'Roma': 'Roma', 'Baxkorstostan': 'Bashkortostan', 'Internazzjonali': 'International',
-           "Reġjun ta' Don": 'Don', },
+           "Reġjun ta' Don": 'Don', 'Tatari': 'Crimean Tatars', },
     # sh countries
     'sh': {'Austriji': 'Austria', 'Albaniji': 'Albania', 'Kosovu': 'Kosovo', 'Hrvatskoj': 'Croatia',
            'Bosni i Hercegovini': 'Bosnia and Herzegovina', 'Grčkoj': 'Greece', 'Rumunjskoj': 'Romania and Moldova',
