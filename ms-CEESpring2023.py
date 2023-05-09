@@ -538,7 +538,7 @@ countryNames = {
            'Krimmitatari': 'Crimean Tatars', 'esperanto': 'Esperanto', 'Sorbi': 'Sorbia', 'Doni regioon': 'Don',
            'Roma': 'Roma', 'Küpros': 'Cyprus', 'Cyprus': 'Cyprus', 'Crimean Tatars': 'Crimean Tatars', 'Donimaa': 'Don',
            'Don': 'Don', 'sorbid': 'Sorbia', 'Sorbia': 'Sorbia', 'Võro': 'Võro', 'Erzya': 'Erzia',
-           'Georgia': 'Georgia', 'Sakha': 'Sakha', },
+           'Georgia': 'Georgia', 'Sakha': 'Sakha', 'Sahha': 'Sakha', },
     # hr countries
     'hr': {'Albaniji': 'Albania', 'Albanija': 'Albania', 'Austriji': 'Austria', 'Austrija': 'Austria',
            'Azerbajdžanu': 'Azerbaijan', 'Azerbajdžan': 'Azerbaijan', 'Baškortostanu (Bashkortostan)': 'Bashkortostan',
