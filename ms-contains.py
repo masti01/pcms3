@@ -99,7 +99,7 @@ class BasicBot(
         'maxlines': 1000,  # default number of entries per page
         'negative': False,  # if True mark pages that DO NOT contain search string
         'test': False,  # switch on test functionality
-        'regex': False,  # use text as regex
+        'regex': False,  # use text as regex. has to contain ctaching group (?P<result>)
         'as_link': False,  # put links as wikilinks
         'append': False,  # append results to page
         'section': None,  # section title
