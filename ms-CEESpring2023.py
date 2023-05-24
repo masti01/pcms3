@@ -111,7 +111,8 @@ countryNames = {
            'Ukraina': 'Ukraine', 'Grecja': 'Greece', 'Kazachstan': 'Kazakhstan', 'Tatarstan': 'Tatarstan',
            'język Võro': 'Võro', 'Język voro': 'Võro', 'Võro': 'Võro', 'Tatarzy Krymscy': 'Crimean Tatars',
            'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
-           'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha', },
+           'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
+           'język zachodnioormiański': 'Western Armenian', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
