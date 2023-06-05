@@ -211,7 +211,7 @@ countryNames = {
            'Kasachstan': 'Kazakhstan', 'Malta': 'Malta', 'Sorbisches Siedlungsgebiet': 'Sorbia',
            'Nordmazedonien': 'North Macedonia', 'Tatarstan': 'Tatarstan', 'Zypern': 'Cyprus',
            'die Republik Moldau': 'Romania and Moldova', 'die Türkei': 'Turkey', 'Sorbisch': 'Sorbia',
-           'Sorben': 'Sorbia', 'Belarus': 'Belarus', 'Roma und Sinti': 'Roma', },
+           'Sorben': 'Sorbia', 'Belarus': 'Belarus', 'Roma und Sinti': 'Roma', 'Ersjanisch': 'Erzia', },
     # bs countries
     'bs': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbejdžan': 'Azerbaijan', 'Baškortostan': 'Bashkortostan',
            'Bjelorusija': 'Belarus', 'Bosna i Hercegovina': 'Bosnia and Herzegovina', 'Bugarska': 'Bulgaria',
@@ -342,7 +342,8 @@ countryNames = {
            'Slovēnija': 'Slovenia', 'Tatarstāna': 'Tatarstan', 'Turcija': 'Turkey', 'Ukraina': 'Ukraine',
            'Grieķija': 'Greece', 'Kazahstāna': 'Kazakhstan', 'Sorbi': 'Sorbia', 'rumāņi': 'Romania and Moldova',
            'Malta': 'Malta', 'sorbi': 'Sorbia', 'Kipra': 'Cyprus', 'veru valoda': 'Võro', 'čigāni': 'Roma',
-           'Erzji': 'Erzia', 'Veru valoda': 'Võro', },
+           'Erzji': 'Erzia', 'Veru valoda': 'Võro', 'tatāri': 'Crimean Tatars', 'Starptautiskā tēma': 'International',
+           'Aromūnu valoda': 'Aromanian', },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
            'Baltarusija': 'Belarus', 'Bulgarija': 'Bulgaria', 'Armėnija': 'Armenia',
@@ -409,7 +410,7 @@ countryNames = {
            'Мальта': 'Malta', 'Кипр': 'Cyprus', 'Крым': 'Crimean Tatars', 'Цыгане': 'Roma', 'Лужица': 'Sorbia',
            'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', 'Че́хия': 'Czechia',
            'Western Armenian': 'West Armenian', 'Erzya': 'Erzya', 'Western Armenian community': 'Western Armenian',
-           'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', },
+           'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Crimean tatars' },
     # sah countries
     'sah': {
     },
