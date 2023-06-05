@@ -1468,7 +1468,10 @@ class BasicBot(
             return (False)
         for c in gender:
             cjson = c.toJSON()
-            genderclaim = cjson['mainsnak']['datavalue']['value']['numeric-id']
+            try:
+                genderclaim = cjson['mainsnak']['datavalue']['value']['numeric-id']
+            except KeyError:
+                continue
             if '6581072' == str(genderclaim):
                 if self.opt.test4:
                     pywikibot.output('%s:Woman' % art.title())
