@@ -410,7 +410,8 @@ countryNames = {
            'Мальта': 'Malta', 'Кипр': 'Cyprus', 'Крым': 'Crimean Tatars', 'Цыгане': 'Roma', 'Лужица': 'Sorbia',
            'Выру': 'Võro', 'Румыния и Молдавия': 'Romania and Moldova', 'Че́хия': 'Czechia',
            'Western Armenian': 'West Armenian', 'Erzya': 'Erzya', 'Western Armenian community': 'Western Armenian',
-           'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Crimean tatars' },
+           'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Crimean tatars',
+           'Crimean tatars': 'Crimean tatars', },
     # sah countries
     'sah': {
     },
