@@ -67,7 +67,7 @@ docuReplacements = {
 
 SpringStart = datetime.strptime("2023-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2023-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+newbieLimit = datetime.strptime("2022-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 
 CEEtemplates = {'pl': 'Szablon:CEE Spring 2023', 'az': 'Şablon:Vikibahar 2023', 'ba': 'Ҡалып:Вики-яҙ 2023',
