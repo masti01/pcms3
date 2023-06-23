@@ -66,7 +66,7 @@ docuReplacements = {
 }
 
 SpringStart = datetime.strptime("2023-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
-SpringEnd = datetime.strptime("2023-06-20T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
+SpringEnd = datetime.strptime("2023-06-21T02:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2022-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 
