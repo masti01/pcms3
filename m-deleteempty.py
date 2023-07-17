@@ -84,7 +84,7 @@ class BasicBot(
 
     update_options = {
         'replace': False,  # delete old text and write the new text
-        'summary': None,  # your own bot summary
+        'summary': "Bot usuwa pustą stronę dyskusji",  # your own bot summary
         'text': 'Test',  # add this text from option. 'Test' is default
         'top': False,  # append text on top of the page
         'test': False,  # print test messages
