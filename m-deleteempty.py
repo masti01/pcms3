@@ -39,18 +39,19 @@ cannot be set by settings file:
 &params;
 """
 #
-# (C) Pywikibot team, 2006-2021
+# (C) Pywikibot team, 2006-2022
 #
 # Distributed under the terms of the MIT license.
 #
 import pywikibot
-
-from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
-
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
-    AutomaticTWSummaryBot)
+    AutomaticTWSummaryBot,
+    ConfigParserBot,
+    ExistingPageBot,
+    SingleSiteBot,
+)
+
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -64,44 +65,30 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
+
     """
     An incomplete sample bot.
 
-    @ivar summary_key: Edit summary message key. The message that should be
+    :ivar summary_key: Edit summary message key. The message that should be
         used is placed on /i18n subdirectory. The file containing these
         messages should have the same name as the caller script (i.e. basic.py
         in this case). Use summary_key to set a default edit summary message.
 
-    @type summary_key: str
+    :type summary_key: str
     """
 
+    use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs) -> None:
-        """
-        Initializer.
-
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.available_options.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'test': False,  # print test messages
-        })
-
-        # call initializer of the super class
-        super().__init__(site=True, **kwargs)
-        # assign the generator to the bot
-        self.generator = generator
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'test': False,  # print test messages
+    }
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
@@ -119,13 +106,13 @@ class BasicBot(
                     pywikibot.output('Page %s does not exist.' % self.current_page.title)
 
 
-def main(*args: Tuple[str, ...]) -> None:
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -141,7 +128,7 @@ def main(*args: Tuple[str, ...]) -> None:
 
     # Parse your own command line arguments
     for arg in local_args:
-        arg, sep, value = arg.partition(':')
+        arg, _, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text'):
             if not value:
@@ -155,12 +142,12 @@ def main(*args: Tuple[str, ...]) -> None:
     # The preloading option is responsible for downloading multiple
     # pages from the wiki simultaneously.
     gen = gen_factory.getCombinedGenerator(preload=True)
-    if gen:
+
+    # check if further help is needed
+    if not pywikibot.bot.suggest_help(missing_generator=not gen):
         # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
+        bot = BasicBot(generator=gen, **options)
         bot.run()  # guess what it does
-    else:
-        pywikibot.bot.suggest_help(missing_generator=True)
 
 
 if __name__ == '__main__':
