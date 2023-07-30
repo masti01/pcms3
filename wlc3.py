@@ -135,7 +135,7 @@ from pywikibot.pagegenerators import (
 )
 
 from pywikibot.tools.formatter import color_format
-from pywikibot.tools import ThreadList
+from pywikibot.tools.threading import ThreadList
 
 try:
     import memento_client
