@@ -2312,6 +2312,7 @@ ignorelist = [
     re.compile('.*[\./@]independent\.co\.uk/news/uk/home-news/is-this-the-bella-in-the-wych-elm-unravelling-the-mystery-of-the-skull-found-in-a-tree-trunk-8546497\.html'),   # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]independent\.co\.uk/news/obituaries/metropolitan-vitaly-ustinov-417796\.html'),   # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]independent\.co\.uk/arts-entertainment/music/reviews/5sos-new-album-review-bebe-rexha-nine-inch-nails-kamasi-washington-a8408281\.html'),   # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]teatrwkrakowie\.pl'),   # bot rejected on site (masti, MiniMiniBomba)
 ]
 
 
