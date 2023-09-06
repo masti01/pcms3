@@ -123,7 +123,7 @@ class BasicBot(
             header += "\n:Lista stron zawierających linki do innych Wikipedii w postaci linku webowego - często uzywane jako nieprawidłowe źródło."
             if self.opt.noimages:
                 header += "\n:Pominięto linki do grafik."
-            header += "\n\n{{Wikiprojekt:Strony zawierające linki webowe do innych Wikipedii/Nagłówek}}"
+            # header += "\n\n{{Wikiprojekt:Strony zawierające linki webowe do innych Wikipedii/Nagłówek}}"
 
         header += '\n\n{| class="wikitable sortable" style="text-align:center"'
         header += '\n! Lp.'
@@ -318,7 +318,7 @@ class BasicBot(
             # pywikibot.output(finalpage)
 
         if self.opt.navi:
-            finalpage = header + self.navigation(pagename, pagecount) + pagepart + footer + self.navigation(pagename,
+            finalpage = self.navigation(pagename, pagecount) + header + pagepart + footer + self.navigation(pagename,
                                                                                                             pagecount)
         else:
             finalpage = header + pagepart + footer
@@ -326,7 +326,7 @@ class BasicBot(
         if pagecount:
             numberedpage = pagename + '/' + str(pagecount + 1)
         else:
-            numberedpage = pagename + '/1'
+            numberedpage = pagename
 
         outpage = pywikibot.Page(pywikibot.Site(), numberedpage)
 
