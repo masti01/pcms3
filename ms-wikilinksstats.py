@@ -56,7 +56,9 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-
+from pywikibot import textlib
+import re
+import datetime
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
