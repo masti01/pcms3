@@ -237,6 +237,9 @@ class BasicBot(
 
             # finalpage += '\n# [[' + title + ']]'
             linenumber = pagecount * int(self.opt.maxlines) + itemcount + 1
+
+            if self.opt.test:
+                pywikibot.output(f'redirlist[link]: {redirlist[link]}')
             pages = []
             for p,c in redirlist[link]:
                 pages.append(f'[[{p}]] ({c})')
