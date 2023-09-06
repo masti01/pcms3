@@ -117,6 +117,8 @@ class BasicBot(
     def run(self):
 
         pywikibot.output(f'OPTIONS: {self.update_options}')
+        for k,v in self.opt.items():
+            pywikibot.output(f'{k}:{v} ({type(v)}')
 
         if not self.opt.append:
             # header = "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n"
