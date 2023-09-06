@@ -149,10 +149,10 @@ class BasicBot(
 
             for r in refs:
                 if r.get("links") in reflinks.keys():
-                    reflinks[r.get("links")].append(page.title)
+                    reflinks[r.get("links")].append(page.title())
                     marked += 1
                 else:
-                    reflinks[r.get("links")] = [page.title]
+                    reflinks[r.get("links")] = [page.title()]
 
             if len(refs):
                 marked += 1
