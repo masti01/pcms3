@@ -194,8 +194,8 @@ class BasicBot(
                           self.generateprefooter(pagename, totalcount, pagecount) + footer)
             return (1)
 
-        #for link in res:
-        for link in redirlist.keys():
+        for link in res.keys():
+        # for link in redirlist.keys():
 
             #link = redirlist[i]
 
