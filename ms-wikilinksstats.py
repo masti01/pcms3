@@ -96,6 +96,7 @@ class BasicBot(
         'top': False,  # append text on top of the page
         'outpage': 'Wikipedysta:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
+        'maxresults': 100,  # default number of results
         'test': False,  # test options
         'progress': False,  # display progress
         'append': False,  # append results to page
