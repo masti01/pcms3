@@ -302,6 +302,7 @@ class BasicBot(
         return (result)
 
     def navigation(self, pagename, pagecount):
+        pywikibot.output(f'pagename:{pagename} ({type(pagename)}, pagecount:{pagecount} ({type(pagecount)}')
         # generate navigation template
         if pagecount > 1:
             result = '\n\n{{User:mastiBot/Nawigacja|' + pagename + ' ' + str(
