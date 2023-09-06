@@ -96,7 +96,7 @@ class BasicBot(
         'top': False,  # append text on top of the page
         'outpage': 'Wikipedysta:mastiBot/test',  # default output page
         'maxlines': 1000,  # default number of entries per page
-        'maxresults': 100,  # default number of results
+        'maxresults': 100,  # default number of results, set to 0 for unlimited
         'test': False,  # test options
         'progress': False,  # display progress
         'append': False,  # append results to page
@@ -162,7 +162,7 @@ class BasicBot(
             if len(refs):
                 marked += 1
 
-            if marked > int(self.opt.maxresults) - 1:
+            if int(self.opt.maxresults) and marked > int(self.opt.maxresults) - 1:
                 pywikibot.output('MAXRESULTS limit reached')
                 break
 
