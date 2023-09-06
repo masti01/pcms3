@@ -321,7 +321,7 @@ class BasicBot(
         for r in re.finditer(resultR, source):
             if self.opt.test:
                 pywikibot.output('R:%s' % r.group('result'))
-            if not self.opt.noimages:
+            if self.opt.noimages:
                 img = imageR.search(r.group('result'))
                 if not img:
                     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
