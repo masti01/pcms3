@@ -311,7 +311,7 @@ class BasicBot(
             resultR = re.compile(
                 '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/wiki/[^\s\|<\]\}]*)')
         # allowed filtypes: svg, png, jpeg, tiff, gif, xcf
-        #imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
+        imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
 
         source = textlib.removeDisabledParts(page.text)
 
