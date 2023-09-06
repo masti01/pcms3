@@ -261,7 +261,7 @@ class BasicBot(
                 if link == unquote(link):
                     finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {", ".join(pages)}'
                 else:
-                    finalpage += f'\n|-\n| {linenumber} || {unquote(link)}<br />({link}) || {len(redirlist[link])} || {", ".join(pages)}'
+                    finalpage += f'\n|-\n| {linenumber} || {link}<br />({unquote(link)}) || {len(redirlist[link])} || {", ".join(pages)}'
 
             if self.opt.cite and not self.opt.negative:
                 # results are list
