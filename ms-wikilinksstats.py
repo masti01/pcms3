@@ -96,6 +96,9 @@ class BasicBot(
         'maxlines': 1000,  # default number of entries per page
         'test': False,  # test options
         'progress': False,  # display progress
+        'append': False,  # append results to page
+        'section': None,  # section title
+        'title': False,  # check in title not text
         'includes': False,  # only include links that include this text
         'edit': False,  # link thru template:edytuj instead of wikilink
         'cite': False,  # cite search results
