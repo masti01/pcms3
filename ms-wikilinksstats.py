@@ -141,7 +141,7 @@ class BasicBot(
                 # pywikibot.output('[%s] Treating #%i (marked:%i, duplicates:%i): %s' % (
                 #     datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pagecounter, marked, duplicates,
                 #     page.title()))
-                pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Treating #{pagecounter} (marked:{marked}): {page.title}')
+                pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Treating #{pagecounter} (marked:{marked}): {page.title()}')
             # if page.title() in reflinks:
             #     duplicates += 1
             #     continue
@@ -199,10 +199,10 @@ class BasicBot(
             linenumber = pagecount * int(self.opt.maxlines) + itemcount + 1
             if self.opt.edit:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
-                finalpage += f'\n|-\n| {linenumber} || {len(redirlist[link])} || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
+                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
             else:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
-                finalpage += f'\n|-\n| {linenumber} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
+                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
 
             if self.opt.cite and not self.opt.negative:
                 # results are list
@@ -323,6 +323,7 @@ class BasicBot(
             #     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
             resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
 
+        pywikibot.output(f'RESULT: {resultlist}')
         return (resultslist)
 
 def main(*args: str) -> None:
