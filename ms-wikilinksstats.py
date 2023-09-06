@@ -154,6 +154,9 @@ class BasicBot(
                 else:
                     reflinks[r.get("links")] = [page.title()]
 
+            if self.opt.test:
+                pywikibot.output(f'REFLINKS: {reflinks}')
+
             if len(refs):
                 marked += 1
 
@@ -190,8 +193,8 @@ class BasicBot(
                           self.generateprefooter(pagename, totalcount, pagecount) + footer)
             return (1)
 
-        for link in res:
-
+        #for link in res:
+        for link in redirlist.keys():
 
             #link = redirlist[i]
 
@@ -323,7 +326,8 @@ class BasicBot(
             #     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
             resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
 
-        pywikibot.output(f'RESULT: {resultslist}')
+        if self.opt.test:
+            pywikibot.output(f'RESULT: {resultslist}')
         return (resultslist)
 
 def main(*args: str) -> None:
