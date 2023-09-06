@@ -183,7 +183,8 @@ class BasicBot(
         if self.opt.section:
             finalpage += '== ' + self.opt.section + ' ==\n'
         # res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
-        res = sorted(redirlist.keys())
+        # res = sorted(redirlist.keys())
+        res = sorted(redirlist, key=lambda x: (len(redirlist[x])), reverse=True)
         itemcount = 0
         totalcount = len(res)
         pagecount = 0
