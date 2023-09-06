@@ -97,39 +97,227 @@ class BasicBot(
         'test': False,  # test options
         'progress': False,  # display progress
         'includes': False,  # only include links that include this text
+        'edit': False,  # link thru template:edytuj instead of wikilink
+        'cite': False,  # cite search results
+        'nowiki': False,  # put citation in <nowiki> tags
+        'count': False,  # count pages only
+        'navi': False,  # add navigation template
+        'progress': False,  # report progress
+        'wikipedia': False,  # report only wikipedia links
+        'noimages': False,  # do not include image links
     }
 
-    def treat_page(self) -> None:
-        """Load the given page, do some changes, and save it."""
-        text = self.current_page.text
+    def run(self):
 
-        ################################################################
-        # NOTE: Here you can modify the text in whatever way you want. #
-        ################################################################
+        if not self.opt.append:
+            # header = "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n"
+            # header = "Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''.\n\n"
+            header = "Ostatnia aktualizacja: '''~~~~~'''."
+            header += "\n\nWszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]]."
+            header += "\n:Lista stron zawierających linki do innych Wikipedii w postaci linku webowego - często uzywane jako nieprawidłowe źródło."
+            if self.opt.noimages:
+                header += "\n:Pominięto linki do grafik."
+            header += "\n\n{{Wikiprojekt:Strony zawierające linki webowe do innych Wikipedii/Nagłówek}}"
 
-        # If you find out that you do not want to edit this page, just return.
-        # Example: This puts Text on a page.
+        header += '\n\n{| class="wikitable sortable" style="text-align:center"'
+        header += '\n! Lp.'
+        header += '\n! Link'
+        header += '\n! Stron'
+        header += '\n! Artykuły'
 
-        # Retrieve your private option
-        # Use your own text or use the default 'Test'
-        text_to_add = self.opt.text
+        reflinks = {}  # initiate list
+        pagecounter = 0
+        duplicates = 0
+        marked = 0
+        for page in self.generator:
+            pagecounter += 1
+            if self.opt.test or self.opt.progress:
+                # pywikibot.output('[%s] Treating #%i (marked:%i, duplicates:%i): %s' % (
+                #     datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), pagecounter, marked, duplicates,
+                #     page.title()))
+                pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Treating #{pagecounter} (marked:{marked}): {page.title}')
+            # if page.title() in reflinks:
+            #     duplicates += 1
+            #     continue
+            refs = self.treat(page)  # get (name)
 
-        if self.opt.replace:
-            # replace the page text
-            text = text_to_add
+            for r in refs:
+                if r.get("links") in reflinks.keys():
+                    reflinks[r.get("links")].append(page.title)
+                    marked += 1
+                else:
+                    reflinks[r.get("links")] = [page.title]
 
-        elif self.opt.top:
-            # put text on top
-            text = text_to_add + text
+            if len(refs):
+                marked += 1
 
+            if marked > int(self.opt.maxresults) - 1:
+                pywikibot.output('MAXRESULTS limit reached')
+                break
+
+        footer = '\n\nPrzetworzono ' + str(pagecounter) + ' stron.'
+        footer += '\n\n[[Kategoria:Wikiprojekt Strony zawierające linki webowe do innych Wikipedii]]'
+
+        outputpage = self.opt.outpage
+
+        pywikibot.output(str(reflinks))
+        return self.generateresultspage(reflinks, outputpage, header, footer)
+
+    def generateresultspage(self, redirlist, pagename, header, footer):
+        """
+        Generates results page from redirlist
+        Starting with header, ending with footer
+        Output page is pagename + pagenumber split at maxlines rows
+        """
+        # finalpage = header
+        finalpage = ''
+        if self.opt.section:
+            finalpage += '== ' + self.opt.section + ' ==\n'
+        # res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)
+        res = sorted(redirlist.keys())
+        itemcount = 0
+        totalcount = len(res)
+        pagecount = 0
+
+        if self.opt.count:
+            self.savepart(finalpage, pagename, pagecount, header,
+                          self.generateprefooter(pagename, totalcount, pagecount) + footer)
+            return (1)
+
+        for link in res:
+
+
+            #link = redirlist[i]
+
+            # finalpage += '\n# [[' + title + ']]'
+            linenumber = pagecount * int(self.opt.maxlines) + itemcount + 1
+            if self.opt.edit:
+                # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
+                finalpage += f'\n|-\n| {linenumber} || {len(redirlist[link])} || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
+            else:
+                # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
+                finalpage += f'\n|-\n| {linenumber} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
+
+            if self.opt.cite and not self.opt.negative:
+                # results are list
+                if self.opt.nowiki:
+                    finalpage += ' - <nowiki>'
+                firstlink = True
+                for r in link:
+                    if not firstlink:
+                        finalpage += '<br />'
+                    finalpage += r['link']
+                    firstlink = False
+                if self.opt.nowiki:
+                    finalpage += '</nowiki>'
+
+            itemcount += 1
+
+            if itemcount > int(self.opt.maxlines) - 1:
+                pywikibot.output('***** saving partial results *****')
+                self.savepart(finalpage, pagename, pagecount, header,
+                              self.generateprefooter(pagename, totalcount, pagecount) + footer)
+                finalpage = ''
+                itemcount = 0
+                pagecount += 1
+
+        # save remaining results
+        pywikibot.output('***** saving remaining results *****')
+        self.savepart(finalpage, pagename, pagecount, header,
+                      self.generateprefooter(pagename, totalcount, pagecount) + footer)
+
+        return (pagecount)
+
+    def generateprefooter(self, pagename, totalcount, pagecount):
+        # generate text to appear before footer
+
+        if self.opt.test:
+            pywikibot.output('***** GENERATING PREFOOTER page ' + pagename + ' ' + str(pagecount) + ' *****')
+        result = '\n|}'
+
+        # if no results found to be reported
+        if not totalcount:
+            result += "\n\n'''Brak wyników'''\n\n"
+        elif self.opt.count:
+            result += "\n\n'''Liczba stron spełniających warunki: " + str(totalcount) + "'''"
         else:
-            # put text on bottom
-            text += text_to_add
+            result += "\n\n"
 
-        # if summary option is None, it takes the default i18n summary from
-        # i18n subdirectory with summary_key as summary key.
-        self.put_current(text, summary=self.opt.summary)
+        return (result)
 
+    def navigation(self, pagename, pagecount):
+        # generate navigation template
+        if pagecount > 1:
+            result = '\n\n{{User:mastiBot/Nawigacja|' + pagename + ' ' + str(
+                pagecount - 1) + '|' + pagename + ' ' + str(pagecount + 1) + '}}\n\n'
+        elif pagecount:
+            result = '\n\n{{User:mastiBot/Nawigacja|' + pagename + '|' + pagename + ' ' + str(pagecount + 1) + '}}\n\n'
+        else:
+            result = '\n\n{{User:mastiBot/Nawigacja|' + pagename + '|' + pagename + ' ' + str(pagecount + 1) + '}}\n\n'
+        return (result)
+
+    def savepart(self, pagepart, pagename, pagecount, header, footer):
+        # generate resulting page
+        if self.opt.test:
+            pywikibot.output('***** SAVING PAGE #%i' % pagecount)
+            # pywikibot.output(finalpage)
+
+        if self.opt.navi:
+            finalpage = header + self.navigation(pagename, pagecount) + pagepart + footer + self.navigation(pagename,
+                                                                                                            pagecount)
+        else:
+            finalpage = header + pagepart + footer
+
+        if pagecount:
+            numberedpage = pagename + '/' + str(pagecount + 1)
+        else:
+            numberedpage = pagename + '/1'
+
+        outpage = pywikibot.Page(pywikibot.Site(), numberedpage)
+
+        if self.opt.append:
+            outpage.text += finalpage
+        else:
+            outpage.text = finalpage
+
+        if self.opt.test:
+            pywikibot.output(outpage.title())
+            pywikibot.output(outpage.text)
+
+        success = outpage.save(summary=self.opt.summary)
+        # if not outpage.save(finalpage, outpage, self.summary):
+        #   pywikibot.output('Page %s not saved.' % outpage.title(asLink=True))
+        #   success = False
+        return (success)
+
+    def treat(self, page):
+        """
+        Returns page title if param 'text' not in page
+        """
+
+        if self.opt.wikipedia:
+            resultR = re.compile(
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia)\.org/wiki/[^\s\|<\]\}]*)')
+        else:
+            resultR = re.compile(
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/wiki/[^\s\|<\]\}]*)')
+        # allowed filtypes: svg, png, jpeg, tiff, gif, xcf
+        #imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
+
+        source = textlib.removeDisabledParts(page.text)
+
+        # return all found results
+        resultslist = []
+
+        for r in re.finditer(resultR, source):
+            if self.opt.test:
+                pywikibot.output('R:%s' % r.group('result'))
+            # img = imageR.search(r.group('result'))
+            # if not img:
+            #     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
+            resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
+
+        return (resultslist)
 
 def main(*args: str) -> None:
     """
