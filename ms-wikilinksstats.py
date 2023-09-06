@@ -241,10 +241,11 @@ class BasicBot(
             if self.opt.test:
                 pywikibot.output(f'redirlist[link]: {redirlist[link]}')
             pages = []
-            for p in redirlist[link].keys():
+            for l in redirlist[link]:
+                p,c = l
                 if self.opt.test:
-                    pywikibot.output(f'p: {p}, v:{redirlist[link][p]}')
-                pages.append(f'[[{p}]] ({redirlist[link][p]})')
+                    pywikibot.output(f'p: {p}, v:{c}')
+                pages.append(f'[[{p}]] ({c})')
             if self.opt.edit:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
                 finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
