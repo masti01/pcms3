@@ -148,11 +148,11 @@ class BasicBot(
             refs = self.treat(page)  # get (name)
 
             for r in refs:
-                if r.get("links") in reflinks.keys():
-                    reflinks['link'].append(page.title())
+                if r['link'] in reflinks.keys():
+                    reflinks[r['link']].append(page.title())
                     marked += 1
                 else:
-                    reflinks['link'] = [page.title()]
+                    reflinks[r['link']] = [page.title()]
 
             if self.opt.test:
                 pywikibot.output(f'REFLINKS: {reflinks}')
