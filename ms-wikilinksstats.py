@@ -307,10 +307,10 @@ class BasicBot(
 
         if self.opt.wikipedia:
             resultR = re.compile(
-                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia)\.org/wiki/[^\s\|<\]\}]*)')
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia)\.org/[^\s\|<\]\}]*)')
         else:
             resultR = re.compile(
-                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/wiki/[^\s\|<\]\}]*)')
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/[^\s\|<\]\}]*)')
         # allowed filtypes: svg, png, jpeg, tiff, gif, xcf
         imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
 
