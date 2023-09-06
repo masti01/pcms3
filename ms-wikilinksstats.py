@@ -59,6 +59,7 @@ from pywikibot.bot import (
 from pywikibot import textlib
 import re
 import datetime
+from urllib.parse import unquote
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -257,7 +258,10 @@ class BasicBot(
             else:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
                 # finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
-                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {", ".join(pages)}'
+                if link == unquote(link):
+                    finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {", ".join(pages)}'
+                else:
+                    finalpage += f'\n|-\n| {linenumber} || {unquote(link)}<br />({link}) || {len(redirlist[link])} || {", ".join(pages)}'
 
             if self.opt.cite and not self.opt.negative:
                 # results are list
