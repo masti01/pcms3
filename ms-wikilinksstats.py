@@ -323,7 +323,7 @@ class BasicBot(
             #     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
             resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
 
-        pywikibot.output(f'RESULT: {resultlist}')
+        pywikibot.output(f'RESULT: {resultslist}')
         return (resultslist)
 
 def main(*args: str) -> None:
