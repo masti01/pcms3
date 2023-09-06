@@ -149,10 +149,12 @@ class BasicBot(
 
             for r in refs:
                 if r['link'] in reflinks.keys():
-                    reflinks[r['link']].append(page.title())
-                    marked += 1
+                    if page.title() in reflinks[r['link']]:
+                        reflinks[r['link']][page.title()] += 1
+                    else:
+                        reflinks[r['link']].append({page.title(): 1})
                 else:
-                    reflinks[r['link']] = [page.title()]
+                    reflinks[r['link']] = [{page.title(): 1}]
 
             if self.opt.test:
                 pywikibot.output(f'REFLINKS: {reflinks}')
@@ -171,6 +173,40 @@ class BasicBot(
 
         pywikibot.output(str(reflinks))
         return self.generateresultspage(reflinks, outputpage, header, footer)
+
+    def treat(self, page):
+        """
+        Returns page title if param 'text' not in page
+        """
+
+        if self.opt.wikipedia:
+            resultR = re.compile(
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia)\.org/[^\s\|<\]\}]*)')
+        else:
+            resultR = re.compile(
+                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/[^\s\|<\]\}]*)')
+        # allowed filtypes: svg, png, jpeg, tiff, gif, xcf
+        imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
+
+        source = textlib.removeDisabledParts(page.text)
+
+        # return all found results
+        resultslist = []
+
+        for r in re.finditer(resultR, source):
+            if self.opt.test:
+                pywikibot.output('R:%s' % r.group('result'))
+            if self.opt.noimages:
+                img = imageR.search(r.group('result'))
+                if not img:
+                    resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
+            else:
+                resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
+
+        if self.opt.test:
+            pywikibot.output(f'RESULT: {resultslist}')
+        return (resultslist)
+
 
     def generateresultspage(self, redirlist, pagename, header, footer):
         """
@@ -201,12 +237,16 @@ class BasicBot(
 
             # finalpage += '\n# [[' + title + ']]'
             linenumber = pagecount * int(self.opt.maxlines) + itemcount + 1
+            pages = []
+            for p,c in redirlist[link]:
+                pages.append(f'[[{p}]] ({c})')
             if self.opt.edit:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
                 finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
             else:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
-                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
+                # finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
+                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || ", ".join({pages})'
 
             if self.opt.cite and not self.opt.negative:
                 # results are list
@@ -299,39 +339,6 @@ class BasicBot(
         #   pywikibot.output('Page %s not saved.' % outpage.title(asLink=True))
         #   success = False
         return (success)
-
-    def treat(self, page):
-        """
-        Returns page title if param 'text' not in page
-        """
-
-        if self.opt.wikipedia:
-            resultR = re.compile(
-                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia)\.org/[^\s\|<\]\}]*)')
-        else:
-            resultR = re.compile(
-                '(?i)(?P<result>https?://(?P<lang>[^\.]*?)\.(?P<project>wikipedia|wikisource|wiktionary|wikivoyage|wikimedia)\.org/[^\s\|<\]\}]*)')
-        # allowed filtypes: svg, png, jpeg, tiff, gif, xcf
-        imageR = re.compile('(?i).*\.(svg|png|jpeg|jpg|tiff|tif|gif|xcf)$')
-
-        source = textlib.removeDisabledParts(page.text)
-
-        # return all found results
-        resultslist = []
-
-        for r in re.finditer(resultR, source):
-            if self.opt.test:
-                pywikibot.output('R:%s' % r.group('result'))
-            if self.opt.noimages:
-                img = imageR.search(r.group('result'))
-                if not img:
-                    resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
-            else:
-                resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
-
-        if self.opt.test:
-            pywikibot.output(f'RESULT: {resultslist}')
-        return (resultslist)
 
 def main(*args: str) -> None:
     """
