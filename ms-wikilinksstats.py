@@ -162,7 +162,7 @@ class BasicBot(
             if len(refs):
                 marked += 1
 
-            if int(self.opt.maxresults):
+            if not int(self.opt.maxresults):
                 if marked > int(self.opt.maxresults) - 1:
                     pywikibot.output('MAXRESULTS limit reached')
                     break
