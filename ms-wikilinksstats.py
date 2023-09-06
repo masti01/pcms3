@@ -162,9 +162,10 @@ class BasicBot(
             if len(refs):
                 marked += 1
 
-            if int(self.opt.maxresults) and marked > int(self.opt.maxresults) - 1:
-                pywikibot.output('MAXRESULTS limit reached')
-                break
+            if int(self.opt.maxresults):
+                if marked > int(self.opt.maxresults) - 1:
+                    pywikibot.output('MAXRESULTS limit reached')
+                    break
 
         footer = '\n\nPrzetworzono ' + str(pagecounter) + ' stron.'
         footer += '\n\n[[Kategoria:Wikiprojekt Strony zawierające linki webowe do innych Wikipedii]]'
