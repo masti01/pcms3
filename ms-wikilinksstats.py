@@ -241,7 +241,7 @@ class BasicBot(
             if self.opt.test:
                 pywikibot.output(f'redirlist[link]: {redirlist[link]}')
             pages = []
-            for key, value in redirlist[link]:
+            for key, value in redirlist[link].items():
                 if self.opt.test:
                     pywikibot.output(f'p: {key}, v:{value}')
                 pages.append(f'[[{key}]] ({value})')
