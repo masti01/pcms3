@@ -252,7 +252,7 @@ class BasicBot(
             else:
                 # finalpage += '\n|-\n| %i || {{Edytuj| %s | %s }} || %i || ' % (linenumber, title, title, len(link))
                 # finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || [[{"]], [[".join(redirlist[link])}]]'
-                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || ", ".join({pages})'
+                finalpage += f'\n|-\n| {linenumber} || {link} || {len(redirlist[link])} || {", ".join(pages)}'
 
             if self.opt.cite and not self.opt.negative:
                 # results are list
