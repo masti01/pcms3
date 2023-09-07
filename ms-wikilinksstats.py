@@ -210,7 +210,7 @@ class BasicBot(
                 img = imageR.search(r.group('result'))
                 if not img:
                     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
-            elif: self.opt.onlyimages:
+            elif self.opt.onlyimages:
                 img = imageR.search(r.group('result'))
                 if img:
                     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
