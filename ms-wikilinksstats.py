@@ -342,12 +342,12 @@ class BasicBot(
             finalpage = header + pagepart + footer
 
         if pagecount:
-            numberedpage = pagename + '/' + str(pagecount + 1)
+            numberedpage = pagename + ' ' + str(pagecount)
         else:
             numberedpage = pagename
 
         outpage = pywikibot.Page(pywikibot.Site(), numberedpage)
-
+unquote links
         if self.opt.append:
             outpage.text += finalpage
         else:
