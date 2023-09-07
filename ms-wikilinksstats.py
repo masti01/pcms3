@@ -347,7 +347,7 @@ class BasicBot(
             numberedpage = pagename
 
         outpage = pywikibot.Page(pywikibot.Site(), numberedpage)
-unquote links
+
         if self.opt.append:
             outpage.text += finalpage
         else:
