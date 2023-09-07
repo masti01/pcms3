@@ -112,6 +112,7 @@ class BasicBot(
         'progress': False,  # report progress
         'wikipedia': False,  # report only wikipedia links
         'noimages': False,  # do not include image links
+        'onlyimages': False,  # report only images links
     }
 
 
@@ -129,6 +130,8 @@ class BasicBot(
             header += "\n:Lista stron zawierających linki do innych Wikipedii w postaci linku webowego - często uzywane jako nieprawidłowe źródło."
             if self.opt.noimages:
                 header += "\n:Pominięto linki do grafik."
+            if self.opt.onlyimages:
+                header += "\n:Lista zawiera wyłącznie linki do grafik"
             # header += "\n\n{{Wikiprojekt:Strony zawierające linki webowe do innych Wikipedii/Nagłówek}}"
 
         header += '\n\n{| class="wikitable sortable" style="text-align:center"'
@@ -206,6 +209,10 @@ class BasicBot(
             if self.opt.noimages:
                 img = imageR.search(r.group('result'))
                 if not img:
+                    resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
+            elif: self.opt.onlyimages:
+                img = imageR.search(r.group('result'))
+                if img:
                     resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
             else:
                 resultslist.append({'link': r.group('result'), 'lang': r.group('lang'), 'project': r.group('project')})
