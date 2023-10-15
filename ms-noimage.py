@@ -106,7 +106,7 @@ class BasicBot(
             counter += 1
             if self.opt.test:
                 # pywikibot.output('Treating #%i (%i marked): %s' % (counter, marked, tpage.title()))
-                pywikibot.output(f'Treating #{counter} (%{marked} marked): {tpage.title()}'
+                pywikibot.output(f'Treating #{counter} (%{marked} marked): {tpage.title()}')
             refs = self.treat(tpage)  # get (name)
             # if self.opt.test:
             # pywikibot.output('%s' % refs)
