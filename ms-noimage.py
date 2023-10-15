@@ -96,8 +96,8 @@ class BasicBot(
     }
 
     def run(self):
-        header = 'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n'
-        header += 'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
+        header = f'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n'
+        header += f'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
         header += f'{self.opt.text}\n\n'
 
         reflinks = []  # initiate list
@@ -106,7 +106,8 @@ class BasicBot(
         for tpage in self.generator:
             counter += 1
             if self.opt.test:
-                pywikibot.output('Treating #%i (%i marked): %s' % (counter, marked, tpage.title()))
+                # pywikibot.output('Treating #%i (%i marked): %s' % (counter, marked, tpage.title()))
+                pywikibot.output(f'Treating #{counter} (%{marked} marked): {tpage.title()}'
             refs = self.treat(tpage)  # get (name)
             # if self.opt.test:
             # pywikibot.output('%s' % refs)
@@ -114,7 +115,7 @@ class BasicBot(
                 reflinks.append(tpage.title(as_link=True))
                 marked += 1
 
-        footer = '\n\nPrzetworzono ' + str(counter) + ' stron'
+        footer = f'\n\nPrzetworzono {counter} stron.'
 
         outputpage = self.opt.outpage
 
