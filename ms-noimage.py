@@ -149,6 +149,7 @@ class BasicBot(
         Output page is pagename
         """
         maxlines = int(self.opt.maxlines)
+        linecount = 0
         finalpage = header
         if self.opt.test:
             pywikibot.output('GENERATING RESULTS')
@@ -156,6 +157,9 @@ class BasicBot(
             if self.opt.test:
                 pywikibot.output(p)
             finalpage += '\n# ' + p
+            linecount += 1
+            if linecount >= maxlines:
+                break
 
         finalpage += footer
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
