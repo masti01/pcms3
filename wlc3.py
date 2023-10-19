@@ -2492,6 +2492,7 @@ ignorelist = [
     re.compile('.*[\./@]zerkow\.pl/asp/pl_start\.asp\?typ=13&sub=6&menu=43&artykul=1115&akcja=artykul'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]sztetl\.org\.pl/pl/media/45478-kamionka-cmentarz-zydowski-macewa-fajgi-corki-jechiela'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]cgm\.pl/felietony/10-najbardziej-oniryczne-plyty-wszech-czasow/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]fashionista\.com'),  # bot rejected on site (masti)
 ]
 
 
