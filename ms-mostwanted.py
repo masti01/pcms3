@@ -200,7 +200,7 @@ class BasicBot(
                     finalpage += '{{Edytuj|%s|%s}}' % (nakedtitle, nakedtitle)
                 else:
                     finalpage += re.sub(r'\[\[', '[[:', title, count=1)
-                finalpage += ' || '
+                finalpage += f' || {res[i]}'
             else:
                 if self.opt.edit:
                     nakedtitle = re.sub(r'\[\[|\]\]', '', title)
