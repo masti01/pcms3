@@ -149,6 +149,10 @@ class BasicBot(
                 duplicates += 1
                 continue
             refs = self.treat(page)  # get list of linked nonexisting pages
+            if self.opt.test:
+                pywikibot,output(f'{refs}')
+            if len(refs):
+                marked += 1
             for r in refs:
                 if r in reflinks:
                     reflinks[r] += 1
