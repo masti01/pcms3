@@ -150,7 +150,7 @@ class BasicBot(
                 continue
             refs = self.treat(page)  # get list of linked nonexisting pages
             if self.opt.test:
-                pywikibot,output(f'{refs}')
+                pywikibot.output(f'{refs}')
             if len(refs):
                 marked += 1
             for r in refs:
