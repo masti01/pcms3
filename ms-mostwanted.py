@@ -120,6 +120,7 @@ class BasicBot(
             if self.opt.table:
                 header = "Ostatnia aktualizacja: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}}</onlyinclude>'''."
                 header += "\n\nWszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]]."
+                header += f"\n\nLista niestniejących stron z największą liczbą linkowań z innych artykułów w Wikipedii."
                 if self.opt.regex:
                     header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.opt.text
                 header += '\n{| class="wikitable sortable" style="font-size:85%;text-align:center"'
