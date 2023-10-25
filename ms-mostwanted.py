@@ -122,7 +122,7 @@ class BasicBot(
                 header += "\n\nWszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]]."
                 if self.opt.regex:
                     header += '\n\nregex: <code><nowiki>\'%s\'</nowiki></code>\n' % self.opt.text
-                header += '\n{| class="wikitable sortable" style="font-size:85%;"'
+                header += '\n{| class="wikitable sortable" style="font-size:85%;text-align:center"'
                 header += '\n|-'
                 header += '\n!Nr'
                 header += '\n!Artykuł'
