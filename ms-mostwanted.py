@@ -324,8 +324,8 @@ class BasicBot(
 
         result = []
         for l in cpage.linkedPages(namespaces=0, follow_redirects=True):
-            if self.opt.test:
-                pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}')
+            # if self.opt.test:
+            #     pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}')
             if not l.exists():
                 if self.opt.test:
                     pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}: MISSING')
