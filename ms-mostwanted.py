@@ -175,7 +175,7 @@ class BasicBot(
         finalpage = ''
         if self.opt.section:
             finalpage += '== ' + self.opt.section + ' ==\n'
-        res = sorted(redirlist, key=redirlist.__getitem__, reverse=False)[:self.opt.maxlines]
+        res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)[:self.opt.maxlines]
         # res = sorted(redirlist)
         itemcount = 0
         totalcount = len(res)
