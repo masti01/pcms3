@@ -319,12 +319,13 @@ class BasicBot(
             source = page.text
 
         if self.opt.nodisabled:
-            source = textlib.removeDisabledParts(source,
-                                                 tags={'comment', 'noinclude', 'nowiki', 'pre', 'syntaxhighlight'})
+            source = textlib.removeDisabledParts(source, tags={'comment', 'noinclude', 'nowiki', 'pre', 'syntaxhighlight'})
             # pywikibot.output(source)
 
         result = []
         for l in cpage.linkedPages(namespaces=0, follow_redirects=True):
+            if self.opt.test:
+                pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}')
             if not l.exists():
                 result.append(l.title(with_section=False, as_link=True))
 
