@@ -327,7 +327,12 @@ class BasicBot(
             if self.opt.test:
                 pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}')
             if not l.exists():
+                if self.opt.test:
+                    pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}: MISSING')
                 result.append(l.title(with_section=False, as_link=True))
+            else:
+                if self.opt.test:
+                    pywikibot.output(f'Checking {l.title(with_section=False, as_link=True)}: FOUND')
 
         return result
 
