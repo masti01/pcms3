@@ -223,7 +223,7 @@ class BasicBot(
     def suffix(self,count):
         if count == 1:
             suffix = ''
-        elif str(count)[-1] in ('234') and (count < 10 or count > 20):
+        elif count % 10 in (2, 3, 4) and (count < 10 or count > 20):
             suffix = 'i'
         else:
             suffix = 'ów'
