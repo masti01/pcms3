@@ -195,13 +195,13 @@ class BasicBot(
             # finalpage += '\n# [[' + title + ']]'
             linenumber = str(pagecount * int(self.opt.maxlines) + itemcount + 1) + '.'
             if self.opt.table:
+                nakedtitle = re.sub(r'\[\[|\]\]', '', title)
                 finalpage += '\n|-\n| %s || ' % linenumber
                 if self.opt.edit:
-                    nakedtitle = re.sub(r'\[\[|\]\]', '', title)
                     finalpage += '{{Edytuj|%s|%s}}' % (nakedtitle, nakedtitle)
                 else:
                     finalpage += re.sub(r'\[\[', '[[:', title, count=1)
-                finalpage += f' || [[Specjalna:Linkujące/{i}|{redirlist[i]} link{self.suffix(redirlist[i])}]]'
+                finalpage += f' || [[Specjalna:Linkujące/{nakedtitle}|{redirlist[i]} link{self.suffix(redirlist[i])}]]'
 
             itemcount += 1
 
