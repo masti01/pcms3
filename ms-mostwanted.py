@@ -201,29 +201,8 @@ class BasicBot(
                     finalpage += '{{Edytuj|%s|%s}}' % (nakedtitle, nakedtitle)
                 else:
                     finalpage += re.sub(r'\[\[', '[[:', title, count=1)
-                finalpage += f' || {redirlist[i]}'
-            else:
-                if self.opt.edit:
-                    nakedtitle = re.sub(r'\[\[|\]\]', '', title)
-                    finalpage += '\n:' + linenumber + ' {{Edytuj|' + nakedtitle + '|' + nakedtitle + '}}'
-                else:
-                    finalpage += '\n:' + linenumber + ' ' + re.sub(r'\[\[', '[[:', title, count=1)
-            if self.opt.regex and self.opt.cite and not self.opt.negative:
-                if self.opt.multi:
-                    # results are list
-                    if self.opt.nowiki:
-                        if self.opt.table:
-                            for r in link:
-                                finalpage += '<nowiki>%s</nowiki><br />' % r
-                        else:
-                            finalpage += ' – <nowiki>' + ', '.join(link) + '</nowiki><br />'
-                else:
-                    # results are single string
-                    # TODO convert all results to lists
-                    if self.opt.nowiki:
-                        finalpage += ' – <nowiki>' + link + '</nowiki>' if not self.opt.table else '<nowiki>' + link + '</nowiki>'
-                    else:
-                        finalpage += ' – ' + link if not self.opt.table else link
+                finalpage += f' || [[Specjalna:Linkujące/{i}|{redirlist[i]} link{self.suffix(redirlist[i])}]]'
+
             itemcount += 1
 
             if itemcount > int(self.opt.maxlines) - 1:
@@ -240,6 +219,16 @@ class BasicBot(
                       self.generateprefooter(pagename, totalcount, pagecount) + footer)
 
         return pagecount
+
+    def suffix(self,count):
+        if count == 1:
+            suffix = ''
+        elif str(count)[-1] in ('234') and (count < 10 or count > 20):
+            suffix = 'i'
+        else:
+            suffix = 'ów'
+
+        return suffix
 
     def generateprefooter(self, pagename, totalcount, pagecount):
         # generate text to appear before footer
