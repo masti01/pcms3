@@ -143,14 +143,14 @@ class BasicBot(
         linkcount = 0
         for i in res:
             count = redirlist[i]
-            strcount = str(count)
             if count == 1:
                 suffix = ''
-            elif strcount[len(strcount) - 1] in ('2', '3', '4') and count > 20:
+            elif count % 10 in (2, 3, 4) and (count < 10 or count > 20):
                 suffix = 'i'
             else:
                 suffix = 'ów'
-            finalpage += '# [[' + i + u']] ([[Specjalna:Linkujące/' + i + '|' + str(count) + ' link' + suffix + ']])\n'
+            # finalpage += '# [[' + i + u']] ([[Specjalna:Linkujące/' + i + '|' + str(count) + ' link' + suffix + ']])\n'
+            finalpage += f'# [[{i}]] ([[Specjalna:Linkujące/{i}|{count} link{suffix}]])\n'
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
