@@ -321,15 +321,23 @@ class BasicBot(
         return success
 
     def declination(self, v, t1, t2, t3):
-        value = int(str(v)[-2:])
-        if value == 0:
+        if v == 0:
             return (t3)
-        elif value == 1:
+        elif v == 1:
             return (t1)
-        elif value < 5:
+        elif v % 10 in (2, 3, 4) and (v < 10 or v > 20):
             return (t2)
         else:
             return (t3)
+        # value = int(str(v)[-2:])
+        # if value == 0:
+        #     return (t3)
+        # elif value == 1:
+        #     return (t1)
+        # elif value < 5:
+        #     return (t2)
+        # else:
+        #     return (t3)
 
 
 def main(*args: str) -> None:
