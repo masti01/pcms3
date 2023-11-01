@@ -2729,14 +2729,12 @@ class LinkCheckThread(threading.Thread):
                                      self.page.title()))
             raise
         if not exception:
-            if r.status_code != requests.codes.ok \
-                    or r.status_code in self.HTTPignore:
+            if (r.status_code != requests.codes.ok) or (r.status_code in self.HTTPignore):
                 ok = True
             else:
                 message = str(r.status_code)
 
-        if r.status_code != requests.codes.ok \
-                or r.status_code in self.HTTPignore:
+        if (r.status_code != requests.codes.ok) and (r.status_code not in self.HTTPignore):
             message = str(r.status_code)
             pywikibot.output('*[{}]:{} links to {} - {}.'
                              .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
