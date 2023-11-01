@@ -2721,7 +2721,7 @@ class LinkCheckThread(threading.Thread):
             message = i18n.twtranslate(self.page.site,
                                        'weblinkchecker-badurl_msg',
                                        {'URL': self.url})
-        except (pywikibot.exceptions.FatalServerError, requests.exceptions.ConnectionError, requests.exceptions.SSLError, Exception):
+        except (pywikibot.exceptions.FatalServerError, requests.exceptions.ConnectionError, requests.exceptions.SSLError, pywikibot.exceptions.ServerError, Exception):
             exception = True
             message = 'Exception while connecting.'
             pywikibot.output('[{}] Exception while processing URL {} in page [[{}]]'
