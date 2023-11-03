@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """
 Call:
-        python pwb.py masti/ms-mostwanted.py -catr:"Posłowie do Kneset" -outpage:"Wikipedysta:mastiBot/Most wanted" \
+        python pwb.py masti/ms-mostwanted.py -start:'!' -outpage:"Wikipedysta:mastiBot/Most wanted" \
                 -summary:"Bot uaktualnia tabelę"
 
 Use global -simulate option for test purposes. No changes to live wiki
@@ -176,7 +176,8 @@ class BasicBot(
         finalpage = ''
         if self.opt.section:
             finalpage += '== ' + self.opt.section + ' ==\n'
-        res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)[:self.opt.maxlines]
+        # res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)[:self.opt.maxlines]
+        res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
         # res = sorted(redirlist)
         itemcount = 0
         totalcount = len(res)
