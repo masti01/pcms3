@@ -180,6 +180,8 @@ ignorelist = [
     re.compile(r'.*[\./@]wiktionary\.org(/.*)?'),
     re.compile(r'.*[\./@]wikisource\.org(/.*)?'),
     re.compile(r'.*[\./@]wikimedia\.org(/.*)?'),
+    re.compile(r'.*[\./@]wikivoyage\.org(/.*)?'),
+    re.compile(r'.*[\./@]wikidata\.org(/.*)?'),
 
 
     # Ignore links containing * in domain name
