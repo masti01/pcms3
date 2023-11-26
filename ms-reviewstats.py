@@ -44,6 +44,10 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
+import urllib.parse
+import datetime
+from time import strftime
+
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
