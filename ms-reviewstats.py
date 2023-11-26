@@ -134,7 +134,7 @@ class BasicBot(
         reviews24 = self.countReviews(currtime, 24)
         reviews168 = self.countReviews(currtime, 168)
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'Results24: %s' % reviews24)
             pywikibot.output(u'Results168: %s' % reviews168)
 
@@ -142,7 +142,7 @@ class BasicBot(
 
     def countReviews(self,starttime, hours):
 
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'Analyzing review log last %i hours.' % hours)
 
         # Dict of tuples (review total, initial, other, unreview)
@@ -153,7 +153,7 @@ class BasicBot(
         #for le in self.site.logevents(end=starttime, start=starttime-datetime.timedelta(hours=hours), reverse=True):
             #if le.action().startswith('unapprove'):
             count += 1
-            if self.getOption('test'):
+            if self.opt.test:
                 #pywikibot.output(le)
                 pywikibot.output(u'%i>>%s>>%s>>%s>>%s>>%s>>%s' % (count, le.type(), le.logid(),le.timestamp(),le.action(),le.user(),le.page()))
             r = self.addreview(reviews,le.user(),le.action())
@@ -173,10 +173,10 @@ class BasicBot(
             initial = 0
             other = 0
             unreview = 0
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'IN:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
         # distinguish automatic review
-        if self.getOption('automatic') or not action.endswith('a'):
+        if self.opt.automatic or not action.endswith('a'):
             total += 1
             if action.startswith('unapprove'):
                 unreview += 1
@@ -185,9 +185,9 @@ class BasicBot(
             else:
                 other += 1
         else:
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'Skipped automatic review')
-        if self.getOption('test'):
+        if self.opt.test:
             pywikibot.output(u'OUT:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
         return (total, initial, other, unreview)
 
@@ -278,7 +278,7 @@ class BasicBot(
 
         res = sorted(reviews, key=reviews.__getitem__, reverse=True)
         for i in res:
-            if self.getOption('test'):
+            if self.opt.test:
                 pywikibot.output(u'%s->%s' % (i, reviews[i]))
             total, initial, other, unreview = reviews[i]
             output += u'\t\t\t<tr>\n'
@@ -303,7 +303,7 @@ class BasicBot(
         #pywikibot.output(u'Writing file: %s' % self.getOption('outpage'))
         #pywikibot.output(output)
         #pywikibot.output('Type: %s' % type(output))
-        rf= open(u'masti/html/'+self.getOption('outpage'),'wb')
+        rf= open(u'masti/html/'+self.opt.outpage,'wb')
         rf.write(bytes(output, 'UTF-8'))
         rf.close()
         return
