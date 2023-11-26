@@ -326,13 +326,14 @@ def main(*args: str) -> None:
     gen_factory = pagegenerators.GeneratorFactory()
 
     # Process pagegenerators arguments
-    local_args = gen_factory.handle_args(local_args)
+    # local_args = gen_factory.handle_args(local_args)
+    local_args = gen_factory.handleArg(local_args)
 
     # Parse your own command line arguments
     for arg in local_args:
         arg, _, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text', 'outpage', 'maxlines'):
+        if option in ('summary', 'text'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
