@@ -85,14 +85,14 @@ class BasicBot(
         'automatic': False,  # include automatic reviews in stats
     }
 
-        # call constructor of the super class
-        super(BasicBot, self).__init__(site=True, **kwargs)
-
-        # handle old -dry paramter
-        self._handle_dry_param(**kwargs)
-
-        # assign the generator to the bot
-        self.generator = generator
+        # # call constructor of the super class
+        # super(BasicBot, self).__init__(site=True, **kwargs)
+        #
+        # # handle old -dry paramter
+        # self._handle_dry_param(**kwargs)
+        #
+        # # assign the generator to the bot
+        # self.generator = generator
 
     def _handle_dry_param(self, **kwargs):
         """
