@@ -327,7 +327,7 @@ def main(*args: str) -> None:
 
     # Process pagegenerators arguments
     # local_args = gen_factory.handle_args(local_args)
-    local_args = gen_factory.handleArg(local_args)
+    local_args = gen_factory.handle_args(local_args)
 
     # Parse your own command line arguments
     for arg in local_args:
