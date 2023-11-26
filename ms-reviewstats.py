@@ -333,7 +333,7 @@ def main(*args: str) -> None:
     for arg in local_args:
         arg, _, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text'):
+        if option in ('summary', 'text', 'outpage', 'maxlines'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
