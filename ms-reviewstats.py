@@ -254,7 +254,7 @@ class BasicBot(
     def reviewheader(self,hours):
         #create section header
         header  =u'                <h2><a name="reviewers'+ str(hours) + u'h"></a>Najaktywniejsi redaktorzy w ostatnich ' + str(hours) + u'h</h2>\n'
-        header +=u'                <table class="wikitable sortable">\n'
+        header +=u'                <table class="wikitable sortable" style="text-align:center">\n'
         header +=u'                        <colgroup span="1"></colgroup>\n'
         header +=u'                        <colgroup span="1" style="width: 20%; text-align: center"></colgroup>\n'
         header +=u'                        <colgroup span="1" style="width: 20%; text-align: center"></colgroup>\n'
