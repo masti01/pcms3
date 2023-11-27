@@ -367,7 +367,7 @@ class BasicBot(
 
         output = self.mainheader()
 
-        output += self.generatedeletereasonsection(delete1,int(self.opt.'days))
+        output += self.generatedeletereasonsection(delete1,int(self.opt.days))
         output += self.generatedeletestatsection(delete2,int(self.opt.days))
 
         output += self.mainfooter()
