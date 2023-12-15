@@ -2680,6 +2680,7 @@ ignorelist = [
     re.compile('.*[\./@]ku96\.ru'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]cityofwashougal\.us'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]tualatinoregon\.gov'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]wici\.info'),  # bot rejected on site (masti, Kynikos)
 ]
 
 
