@@ -170,7 +170,7 @@ class BasicBot(
             wd = pywikibot.ItemPage.fromPage(page)
             wdcontent = wd.get()
             if self.opt.test:
-                pywikibot.output(wdcontent['sitelinks'].keys())
+                pywikibot.output(wdcontent['sitelinks'])
         except exceptions.NoPageError:
             pywikibot.output('WikiData page for %s do not exists' % page.title(as_link=True))
             return None
@@ -178,7 +178,7 @@ class BasicBot(
         #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(as_link=True))
         #    return(None)
 
-        pywikibot.output(f'{page.title(asLink=True)}: {wdcontent["sitelinks"].keys()}')
+        #pywikibot.output(f'{page.title(asLink=True)}: {wdcontent["sitelinks"].keys()}')
         return self.checkInterwiki(wdcontent['sitelinks'].keys(), 'enwiki')
 
 
