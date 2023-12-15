@@ -178,7 +178,7 @@ class BasicBot(
         #    pywikibot.output('Skipped: WikiData page for %s returns erros' % page.title(as_link=True))
         #    return(None)
 
-        pywikibot.output(f'{page.title(asLink=True)}: {wdcontent['sitelinks'].keys()})
+        pywikibot.output(f'{page.title(asLink=True)}: {wdcontent["sitelinks"].keys()}')
         return self.checkInterwiki(wdcontent['sitelinks'].keys(), 'enwiki')
 
 
