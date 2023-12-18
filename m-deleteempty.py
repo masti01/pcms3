@@ -96,11 +96,17 @@ class BasicBot(
         # if len(self.current_page.text) < 4 :
         #    if self.site.user() is None:
         #       self.site.login()
-        if len(self.current_page.text) < 4 or '{{Wikipedysta:Szoltys-bot/EK}}' in self.current_page.text:
+        szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in self.current_page.text
+        if len(self.current_page.text) < 4 or szoltysEK:
             try:
-                self.current_page.delete(self.opt.summary,
+                if szoltysEK:
+                    self.current_page.delete(self.opt.summary,
                                          not self.opt.always,
                                          self.opt.always)
+                else:
+                    self.current_page.delete(f'{self.opt.summary} (Szoltys-bot/EK)',
+                                             not self.opt.always,
+                                             self.opt.always)
             except pywikibot.exceptions.Error:
                 if self.opt.test:
                     pywikibot.output('Page %s does not exist.' % self.current_page.title)
