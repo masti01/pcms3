@@ -100,11 +100,11 @@ class BasicBot(
         if len(self.current_page.text) < 4 or szoltysEK:
             try:
                 if szoltysEK:
-                    self.current_page.delete(self.opt.summary,
+                    self.current_page.delete(f'{self.opt.summary} (Szoltys-bot/EK)',
                                          not self.opt.always,
                                          self.opt.always)
                 else:
-                    self.current_page.delete(f'{self.opt.summary} (Szoltys-bot/EK)',
+                    self.current_page.delete(self.opt.summary,
                                              not self.opt.always,
                                              self.opt.always)
             except pywikibot.exceptions.Error:
