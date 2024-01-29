@@ -24,6 +24,7 @@ import sys
 import os
 
 import pywikibot
+import requests
 from pywikibot.comms.http import request
 import datetime, time
 # from time import strftime
@@ -33,8 +34,8 @@ import irc.bot
 import irc.strings
 
 def getURL(site):
-    self.apiURL = f'https://{site.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
-    r = requests.get(self.apiURL)
+    apiURL = f'https://{site.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
+    r = requests.get(apiURL)
     return r.text
 
 class ArtNoDisp(irc.bot.SingleServerIRCBot):
