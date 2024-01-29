@@ -139,7 +139,6 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 # NAthread = newArticleThread((topage,))
 
                 # register edit
-                pywikibot.output(f'SITEINFO:{str(self.site.siteinfo)}')
                 # text = self.site.getUrl(self.apiURL)
                 text = getURL(site=self.site)
                 # print text.encode('UTF-8')
@@ -158,8 +157,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 else:
                     # logline = arts + ';' + currtime + ';AM;' + mvpageto + u';\n'
                     logline = f'{arts};{currtime};AM;{mvpageto}\n'
-                pywikibot.output(logline.encode('UTF-8'))
-                logfile.write(logline.encode('UTF-8'))
+                pywikibot.output(logline)
+                logfile.write(logline)
                 logfile.close()
 
         elif edit:
@@ -205,8 +204,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                         logline = f'{arts};{currtime};R;{mpage};{mpage}\n'
                 else:
                     logline = arts + ';' + currtime + ';A;' + mpage + u';\n'
-                pywikibot.output(logline.encode('UTF-8'))
-                logfile.write(logline.encode('UTF-8'))
+                pywikibot.output(logline)
+                logfile.write(logline)
                 logfile.close()
                 # print 'look ma, thread is not alive: ', thread.is_alive()
             # elif page.namespace() == 2:
