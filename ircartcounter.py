@@ -41,7 +41,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         # self.lang = site.language()
         self.lang = site.lang
         self.apiURL = f'https://{self.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
-        self.logname = f'ircbot/artnos{self.lang}.log'
+        self.logname = f'masti/ircbot/artnos{self.lang}.log'
 
         ns = []
         # for n in site.namespaces():
@@ -222,7 +222,7 @@ def savepid(suffix):
     # scrR = r'.*\/(.*?)\.py'
     script = re.sub('.*\/(.*?)\.py', '\1', sys.argv[0])
     pid = os.getpid()
-    pidname = f'masti/pid/{script}{suffix}.pid'
+    pidname = f'masti/pid/ircartcounter{suffix}.pid'
     pidfile = open(pidname, "w")
     pidfile.write(f'{str(pid)}\n')
     pidfile.close()
