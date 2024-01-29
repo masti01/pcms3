@@ -27,13 +27,15 @@ import pywikibot
 import datetime, time
 # from time import strftime
 # import irclib
-from ircbot import SingleServerIRCBot
+# from irc.bot import SingleServerIRCBot
+import irc.bot
+import irc.strings
 
 
-class ArtNoDisp(SingleServerIRCBot):
+class ArtNoDisp(irc.bot.SingleServerIRCBot):
 
     def __init__(self, site, channel, nickname, server, port=6667):
-        SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
+        irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         self.channel = channel
         self.site = site
         self.lang = site.language()
