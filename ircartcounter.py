@@ -244,6 +244,7 @@ def main():
     for arg in sys.argv:
         if arg.startswith('-lang:'):
             lang = arg[6:]
+            botname = f'{botname}{lang}'
         if arg.startswith('-name:'):
             botname = arg[6:]
     savepid(u'-' + lang)
