@@ -115,15 +115,15 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
             # pywikibot.output(u'DELETE_REDIR')
 
         if move or move_redir or delete_redir:
-            mvpagefrom = unicode(matchmove.group('frompage'), 'utf-8')
-            mvpageto = unicode(matchmove.group('topage'), 'utf-8')
+            mvpagefrom = matchmove.group('frompage')
+            mvpageto = matchmove.group('topage')
             # mvactionu = unicode(matchmove.group('actionu'), 'utf-8')
-            mvaction = unicode(matchmove.group('action'), 'utf-8')
+            mvaction = matchmove.group('action')
             if matchmove.group('summary'):
-                mvsummary = unicode(matchmove.group('summary'), 'utf-8')
+                mvsummary = matchmove.group('summary')
             else:
                 mvsummary = u''
-            mvuser = unicode(matchmove.group('user'), 'utf-8')
+            mvuser = matchmove.group('user')
             currtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             pywikibot.output('MOVE->F:%s:T:%s:AT:%s:S:%s:SU:%s:T:%s' % (
             mvpagefrom, mvpageto, mvaction, mvuser, mvsummary, currtime))
@@ -155,11 +155,11 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 logfile.close()
 
         elif edit:
-            mflags = unicode(match.group('flags'), 'utf-8')
+            mflags = match.group('flags')
             # murl = unicode(match.group('url'), 'utf-8')
             # muser = unicode(match.group('user'), 'utf-8')
             # mbytes = unicode(match.group('bytes'), 'utf-8')
-            mpage = unicode(match.group('page'), 'utf-8')
+            mpage = match.group('page')
             # msummary = unicode(match.group('summary'), 'utf-8')
             currtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             # print (u'P:%s:F:%s:U:%s:B:%s:S:%s:U:%s:T:%s' % (mpage,mflags,muser,mbytes,msummary,murl,currtime)).encode('UTF-8')
