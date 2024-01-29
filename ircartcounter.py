@@ -140,7 +140,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 # register edit
                 pywikibot.output(f'SITEINFO:{str(self.site.siteinfo)}')
                 # text = self.site.getUrl(self.apiURL)
-                text = getURL(self.site)
+                text = getURL(site=self.site)
                 # print text.encode('UTF-8')
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
                 match = artsR.search(text)
@@ -189,7 +189,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 pywikibot.output(f'SITEINFO:{str(self.site.siteinfo)}')
                 # text = self.site.getUrl(self.apiURL)
                 # print text.encode('UTF-8')
-                text = getURL(self.site)
+                text = getURL(site=self.site)
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
                 match = artsR.search(text)
                 arts = match.group('arts')
