@@ -38,7 +38,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         irc.bot.SingleServerIRCBot.__init__(self, [(server, port)], nickname, nickname)
         self.channel = channel
         self.site = site
-        self.lang = site.language()
+        # self.lang = site.language()
+        self.lang = site.lang
         self.apiURL = f'https://{self.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
         self.logname = f'ircbot/artnos{self.lang}.log'
 
