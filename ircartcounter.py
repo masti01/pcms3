@@ -133,6 +133,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 # NAthread = newArticleThread((topage,))
 
                 # register edit
+                pywikibot.output(f'SITEINFO:{self.site.siteinfo}')
                 text = self.site.getUrl(self.apiURL)
                 # print text.encode('UTF-8')
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
@@ -179,6 +180,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
                 # currtime = strftime("%Y-%m-%d %H:%M:%S", datetime.datetime.now().time())
 
                 # register edit
+                pywikibot.output(f'SITEINFO:{self.site.siteinfo}')
                 text = self.site.getUrl(self.apiURL)
                 # print text.encode('UTF-8')
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
