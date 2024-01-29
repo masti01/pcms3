@@ -44,7 +44,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         self.logname = f'ircbot/artnos{self.lang}.log'
 
         ns = []
-        for n in site.namespaces():
+        # for n in site.namespaces():
+        for n in site.namespaces:
             if isinstance(n, tuple):  # I am wondering that this may occur!
                 ns += n[0]
             else:
