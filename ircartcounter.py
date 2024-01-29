@@ -80,9 +80,9 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         # pywikibot.output(c)
         # pywikibot.output(e)
         # source = unicode(e.source().split ( '!' ) [ 0 ], 'utf-8')
-        # text = unicode(e.arguments() [ 0 ], 'utf-8')
+        # text = unicode(e.arguments [ 0 ], 'utf-8')
         # source = e.source().split('!')[0]
-        # text = e.arguments()[0]
+        # text = e.arguments[0]
         # print text
         # pywikibot.output(u'CONNECTION:%s' % unicode(c[ 0 ], 'utf-8'))
         # pywikibot.output(u'SOURCE:%s' % source)
@@ -94,10 +94,10 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         move_redir = False
         delete_redir = False
 
-        match = self.re_edit.match(e.arguments()[0])
-        matchmove = self.re_move.match(e.arguments()[0])
-        matchmoveredir = self.re_move_redir.match(e.arguments()[0])
-        matchdeleteredir = self.re_delete_redir.match(e.arguments()[0])
+        match = self.re_edit.match(e.arguments[0])
+        matchmove = self.re_move.match(e.arguments[0])
+        matchmoveredir = self.re_move_redir.match(e.arguments[0])
+        matchdeleteredir = self.re_delete_redir.match(e.arguments[0])
 
         if match:
             edit = True
