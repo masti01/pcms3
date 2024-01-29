@@ -54,13 +54,13 @@ class ArtNoDisp(SingleServerIRCBot):
             r'^C14\[\[^C07(?P<page>.+?)^C14\]\]^C4 (?P<flags>.*?)^C10 ^C02(?P<url>.+?)^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C \(?^B?(?P<bytes>[+-]?\d+?)^B?\) ^C10(?P<summary>.*)^C'.replace(
                 '^B', '\002').replace('^C', '\003').replace('^U', '\037'))
         self.re_move = re.compile(
-            ur'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 move^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10]] to \[\[(?P<topage>.+?)]]((?P<summary>.*))?^C'.replace(
+            r'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 move^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10]] to \[\[(?P<topage>.+?)]]((?P<summary>.*))?^C'.replace(
                 '^C', '\003'))
         self.re_move_redir = re.compile(
-            ur'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 move_redir^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10]] to \[\[(?P<topage>.+?)]] over redirect: ((?P<summary>.*))?^C'.replace(
+            r'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 move_redir^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10]] to \[\[(?P<topage>.+?)]] over redirect: ((?P<summary>.*))?^C'.replace(
                 '^C', '\003'))
         self.re_delete_redir = re.compile(
-            ur'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 delete_redir^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10\]\](?P<reason>.*?):(?P<comment>.*?„\[\[(?P<topage>.*?\]\])”)^C'.replace(
+            r'^C14\[\[^C07(?P<page>.+?)^C14]]^C4 delete_redir^C10 ^C02^C ^C5\*^C ^C03(?P<user>.+?)^C ^C5\*^C  ^C10(?P<action>.+?) \[\[^C02(?P<frompage>.+?)^C10\]\](?P<reason>.*?):(?P<comment>.*?„\[\[(?P<topage>.*?\]\])”)^C'.replace(
                 '^C', '\003'))
 
     def on_nicknameinuse(self, c, e):
