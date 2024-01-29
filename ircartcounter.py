@@ -238,7 +238,8 @@ def main():
     savepid(u'-' + lang)
     site = pywikibot.Site(lang, fam='wikipedia')
     # site.forceLogin()
-    chan = f'#{site.language()}.{site.family.name}'
+    # chan = f'#{site.language()}.{site.family.name}'
+    chan = f'#{site.lang}.{site.family}'
 
     bot = ArtNoDisp(site, chan, botname, "irc.wikimedia.org")
     bot.start()
