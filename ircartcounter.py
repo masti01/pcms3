@@ -81,8 +81,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         # pywikibot.output(e)
         # source = unicode(e.source().split ( '!' ) [ 0 ], 'utf-8')
         # text = unicode(e.arguments() [ 0 ], 'utf-8')
-        source = e.source().split('!')[0]
-        text = e.arguments()[0]
+        # source = e.source().split('!')[0]
+        # text = e.arguments()[0]
         # print text
         # pywikibot.output(u'CONNECTION:%s' % unicode(c[ 0 ], 'utf-8'))
         # pywikibot.output(u'SOURCE:%s' % source)
