@@ -32,7 +32,7 @@ import datetime, time
 import irc.bot
 import irc.strings
 
-def getURL(self, site):
+def getURL(site):
     self.apiURL = f'https://{site.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
     r = requests.get(self.apiURL)
     return r.text
