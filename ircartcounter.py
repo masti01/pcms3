@@ -24,6 +24,7 @@ import sys
 import os
 
 import pywikibot
+from pywikibot.comms.http import request
 import datetime, time
 # from time import strftime
 # import irclib
@@ -31,6 +32,10 @@ import datetime, time
 import irc.bot
 import irc.strings
 
+def getURL(self, site):
+    self.apiURL = f'https://{site.lang}.{site.family.name}.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml'
+    r = requests.get(self.apiURL)
+    return r.text
 
 class ArtNoDisp(irc.bot.SingleServerIRCBot):
 
@@ -134,7 +139,8 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
 
                 # register edit
                 pywikibot.output(f'SITEINFO:{str(self.site.siteinfo)}')
-                text = self.site.getUrl(self.apiURL)
+                # text = self.site.getUrl(self.apiURL)
+                text = getURL(self.site)
                 # print text.encode('UTF-8')
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
                 match = artsR.search(text)
@@ -181,8 +187,9 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
 
                 # register edit
                 pywikibot.output(f'SITEINFO:{str(self.site.siteinfo)}')
-                text = self.site.getUrl(self.apiURL)
+                # text = self.site.getUrl(self.apiURL)
                 # print text.encode('UTF-8')
+                text = getURL(self.site)
                 artsR = re.compile(r'articles="(?P<arts>.*?)"')
                 match = artsR.search(text)
                 arts = match.group('arts')
