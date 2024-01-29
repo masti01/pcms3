@@ -226,8 +226,8 @@ def main(*args):
     artlist = []
     result = ''
 
-    logfile = 'ircbot/artnos' + lang + '.log'
-    resultfile = 'ircbot/artykuly' + lang + '.html'
+    logfile = 'masti/ircbot/artnos' + lang + '.log'
+    resultfile = 'masti/ircbot/artykuly' + lang + '.html'
 
     file = codecs.open(logfile, "r", "utf-8")
     artlist = file.readlines()
