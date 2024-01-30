@@ -14,6 +14,7 @@ except FileNotFoundError:
     pass
 
 print(f'PID found:{pid}')
-
-os.kill(pid, SIGKILL)
-
+try:
+    os.kill(pid, SIGKILL)
+except ProcessLookupError:
+    print(f'Process {pid} NOT FOUND')
