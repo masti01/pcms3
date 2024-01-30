@@ -1,8 +1,7 @@
 import os
 from signal import SIGKILL, SIGTERM
 import psutil
-import datetime
-
+from datetime import datetime
 
 proceses = {
     'ircartcounter-pl': 'masti/artnos pl &',
