@@ -22,3 +22,5 @@ for pname in proceses.keys():
     except ProcessLookupError:
         print(f'Process {pid} NOT FOUND')
 
+    print(f'Respawning {pidname}')
+    os.system(f'{proceses[pidname]}')
