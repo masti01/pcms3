@@ -23,7 +23,7 @@ with open("masti/pid/respawn.log", "a") as logfile:
             pid = int(file.readline())
             file.close()
         except FileNotFoundError:
-            pass
+            pid = None
 
         #print(f'PID found:{pid}')
 
@@ -31,7 +31,7 @@ with open("masti/pid/respawn.log", "a") as logfile:
             print(f'Process {pname} (PID:{pid}) running. Not respawning')
         else:
             print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
-            logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
+            logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...\n')
             os.system(f'{proceses[pname]}')
 
             # kill process
