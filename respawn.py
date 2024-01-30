@@ -1,5 +1,7 @@
 import os
 from signal import SIGKILL
+import psutil
+
 
 proceses = {
     'ircartcounter-pl': 'masti/artnos pl &',
@@ -17,10 +19,17 @@ for pname in proceses.keys():
         pass
 
     print(f'PID found:{pid}')
-    try:
-        os.kill(pid, SIGKILL)
-    except ProcessLookupError:
-        print(f'Process {pid} NOT FOUND')
 
-    print(f'Respawning {pname}')
-    os.system(f'{proceses[pname]}')
+    if pid in psutil.pids():
+        print(f'Process {pname} (PID:{pid}) running. Not respawning')
+    else:
+        print(f'Respawning {pname}')
+        os.system(f'{proceses[pname]}')
+
+        # kill process
+        # try:
+        #     os.kill(pid, SIGKILL)
+        # except ProcessLookupError:
+        #     print(f'Process {pid} NOT FOUND')
+
+
