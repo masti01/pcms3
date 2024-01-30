@@ -8,12 +8,12 @@ pidname = f'masti/pid/ircartcounter-pl.pid'
 
 try:
     file = f = open(pidname, "r")
-    pid = file.readline()
+    pid = int(file.readline())
     file.close()
 except FileNotFoundError:
     pass
 
-print(f'PID found:{int(pid)}')
+print(f'PID found:{pid}')
 
 os.kill(pid, SIGKILL)
 
