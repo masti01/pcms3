@@ -1,6 +1,7 @@
 import os
 from signal import SIGKILL, SIGTERM
 import psutil
+import datetime
 
 
 proceses = {
@@ -10,30 +11,34 @@ proceses = {
     'ircartcounter-tr': 'masti/artnos tr &',
 }
 
-for pname in proceses.keys():
 
-    # get pidfile name
-    pidname = f'masti/pid/{pname}.pid'
+with open("masti/pid/respawn.log", "a") as logfile:
 
-    try:
-        file = f = open(pidname, "r")
-        pid = int(file.readline())
-        file.close()
-    except FileNotFoundError:
-        pass
+    for pname in proceses.keys():
 
-    #print(f'PID found:{pid}')
+        # get pidfile name
+        pidname = f'masti/pid/{pname}.pid'
 
-    if pid in psutil.pids():
-        print(f'Process {pname} (PID:{pid}) running. Not respawning')
-    else:
-        print(f'Respawning {pname}')
-        os.system(f'{proceses[pname]}')
+        try:
+            file = f = open(pidname, "r")
+            pid = int(file.readline())
+            file.close()
+        except FileNotFoundError:
+            pass
 
-        # kill process
-        # try:
-        #     os.kill(pid, SIGKILL)
-        # except ProcessLookupError:
-        #     print(f'Process {pid} NOT FOUND')
+        #print(f'PID found:{pid}')
+
+        if pid in psutil.pids():
+            print(f'Process {pname} (PID:{pid}) running. Not respawning')
+        else:
+            print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
+            logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
+            os.system(f'{proceses[pname]}')
+
+            # kill process
+            # try:
+            #     os.kill(pid, SIGKILL)
+            # except ProcessLookupError:
+            #     print(f'Process {pid} NOT FOUND')
 
 
