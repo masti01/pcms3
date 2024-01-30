@@ -10,9 +10,10 @@ proceses = {
     'ircartcounter-tr': 'masti/artnos tr &',
 }
 
-
+# enable logging
 with open("masti/pid/respawn.log", "a") as logfile:
 
+    # run for all processes
     for pname in proceses.keys():
 
         # get pidfile name
@@ -25,19 +26,11 @@ with open("masti/pid/respawn.log", "a") as logfile:
         except FileNotFoundError:
             pid = None
 
-        #print(f'PID found:{pid}')
-
-        if pid in psutil.pids():
-            print(f'Process {pname} (PID:{pid}) running. Not respawning')
-        else:
+        # check if proper process still running
+        if pid not in psutil.pids():
             print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
             logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...\n')
             os.system(f'{proceses[pname]}')
 
-            # kill process
-            # try:
-            #     os.kill(pid, SIGKILL)
-            # except ProcessLookupError:
-            #     print(f'Process {pid} NOT FOUND')
 
 
