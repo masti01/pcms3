@@ -233,8 +233,9 @@ def main(*args):
         file = codecs.open(logfile, "r", "utf-8")
         artlist = file.readlines()
         file.close()
-    except:
+    except FileNotFoundError:
         artlist = []
+
     arts = artlist[-100:]
 
     # print artlist
