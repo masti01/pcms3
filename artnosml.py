@@ -229,9 +229,12 @@ def main(*args):
     logfile = 'masti/ircbot/artnos' + lang + '.log'
     resultfile = 'masti/ircbot/artykuly' + lang + '.html'
 
-    file = codecs.open(logfile, "r", "utf-8")
-    artlist = file.readlines()
-    file.close()
+    try:
+        file = codecs.open(logfile, "r", "utf-8")
+        artlist = file.readlines()
+        file.close()
+    except:
+        artlist = []
     arts = artlist[-100:]
 
     # print artlist
