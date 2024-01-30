@@ -20,7 +20,7 @@ with open("masti/pid/respawn.log", "a") as logfile:
         pidname = f'masti/pid/{pname}.pid'
 
         try:
-            file = f = open(pidname, "r")
+            file = open(pidname, "r")
             pid = int(file.readline())
             file.close()
         except FileNotFoundError:
