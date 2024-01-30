@@ -21,3 +21,5 @@ six==1.15.0
 soupsieve==2.1
 sseclient==0.0.27
 urllib3==1.26.3
+irc
+psutil
