@@ -1,14 +1,18 @@
 import os
-from signal import SIGKILL
+from signal import SIGKILL, SIGTERM
 import psutil
 
 
 proceses = {
     'ircartcounter-pl': 'masti/artnos pl &',
+    'ircartcounter-szl': 'masti/artnos szl &',
+    'ircartcounter-csb': 'masti/artnos csb &',
+    'ircartcounter-tr': 'masti/artnos tr &',
 }
 
 for pname in proceses.keys():
-    # pidname = f'masti/pid/ircartcounter-pl.pid'
+
+    # get pidfile name
     pidname = f'masti/pid/{pname}.pid'
 
     try:
@@ -18,7 +22,7 @@ for pname in proceses.keys():
     except FileNotFoundError:
         pass
 
-    print(f'PID found:{pid}')
+    #print(f'PID found:{pid}')
 
     if pid in psutil.pids():
         print(f'Process {pname} (PID:{pid}) running. Not respawning')
