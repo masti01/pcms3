@@ -105,22 +105,26 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         matchmoveredir = self.re_move_redir.match(e.arguments[0])
         matchdeleteredir = self.re_delete_redir.match(e.arguments[0])
 
-        if match:
-            edit = True
-            # pywikibot.output(u'EDIT')
-        elif matchmove:
-            move = True
-            # pywikibot.output(u'MOVE')
-        elif matchmoveredir:
-            move_redir = True
-            matchmove = matchmoveredir
-            # pywikibot.output(u'MOVE_REDIR')
-        elif matchdeleteredir:
-            delete_redir = True
-            matchmove = matchdeleteredir
-            # pywikibot.output(u'DELETE_REDIR')
+        try:
+            if match:
+                edit = True
+                # pywikibot.output(u'EDIT')
+            elif matchmove:
+                move = True
+                # pywikibot.output(u'MOVE')
+            elif matchmoveredir:
+                move_redir = True
+                matchmove = matchmoveredir
+                # pywikibot.output(u'MOVE_REDIR')
+            # elif matchdeleteredir:
+            #     delete_redir = True
+            #     matchmove = matchdeleteredir
+            #     # pywikibot.output(u'DELETE_REDIR')
+        except:
+            pass
 
-        if move or move_redir or delete_redir:
+        # if move or move_redir or delete_redir:
+        if move or move_redir:
             mvpagefrom = matchmove.group('frompage')
             mvpageto = matchmove.group('topage')
             # mvactionu = unicode(matchmove.group('actionu'), 'utf-8')
