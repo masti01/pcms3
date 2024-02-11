@@ -2794,6 +2794,164 @@ ignorelist = [
     re.compile('.*[\./@]allmusic\.com/album/pleasures-pave-sewers-mw0000054662'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]allmusic\.com/album/private-audition-mw0000650244'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]allmusic\.com/album/the-lexicon-of-love-mw0000649803w'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]olsztyn24\.com/news'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]acad\.ro/bdar'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]altierospinelli\.org'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]terebess\.hu'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]kristall-saratov\.ru'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafia-panienka\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://wiki\.meteoritica\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://chelm\.mojeosiedle\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://polaneis\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]daviscup\.com/en/draws-results/tie\.aspx\?id=M-DC'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]usopen\.org/en_US/scores/stats/54101\.html\?promo=matchchanger'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]daviscup\.com/en/draws-results/group-iii/americas/2018\.aspx'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]trbovlje\.si/'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]ubitennis\.net/2017/12/roof-roland-garros-stadium-court-phillippe-chatrier-plans-motion-video/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]esri\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]dalmacijadanas\.hr/nova-hit-rekreativna-zona-splicana-setnica-uz-rijeku-zrnovnicu-do-usca-u-stobrecu/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]sherlockian\.net/hounds-summary/blan-hounds/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]mixmag\.net/read/tokimonsta-jon-hopkins-and-justice-nominated-for-grammy-awards-news'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]oetker\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]redstormsports\.com/sports/mens-basketball/roster/tariq-owens/375'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]crittersbuggin\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]johanniskirchturm\.de/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]en\.tengrinews\.kz/people/24-year-old-gets-into-the-forbes-list-of-100-richest-people-23871/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]tengrinews\.kz/sports/skonchalsya-izvestnyiy-kazahstanskiy-jurnalist-i-kommentator-407310/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]tengrinews\.kz/kazakhstan_news/umer-byivshiy-predsedatel-kgb-kazahskoy-ssr-zakash-317619/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]www2\.fbi\.gov/wanted/topten/fugitives/bulger\.htm'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]cambridge-news\.co\.uk/news/uk-world-news/bernard-giles-serial-killer-crimes-15798955'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]lhf\.lv/lv/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]lincolnshirelive\.co\.uk/sport/other-sport/golden-girl-georgie-twigg-announces-1852795'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]newsweek\.com/who-was-elisa-leonida-zamfirescu-facts-and-quotes-one-worlds-first-women-1210496'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]bioguideretro\.congress\.gov/Home/MemberDetails\?memIndex=t000057'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]linkedin\.com/in/krzysztof-landa-%C5%82anda-03727515a/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ec\.bialystok\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]indiapost\.gov\.in/vas/pages/findpincode\.aspx'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://tarnopol\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]esm\.rochester\.edu/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]zspryglice\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]collegeslam\.com/2019Results'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hockeycanada\.ca/en-ca/news/tsn-rds-to-remain-hockey-canada-home'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hokej-bialystok\.pl/druzyna-adh/aktualnosci/92-pierwsze-ligowe-punkty-w-sezonie-2012-13'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]cska-hockey\.ru/club/rukovodstvo/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hcmvd\.ru/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]katalog\.rajska\.info/0631900294031/ksiazka/encyklopedia-pedagogiczna-xxi-wieku'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]katalog\.rajska\.info/search/description\?q=Nowak%2C+Ewa+%281941-+%29&index=7&rp=50&f4%5B0%5D=1&s=author_asc'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://niedzwiedzie\.sanok\.pl/aktualnosci/6-turniej-w-sanoku'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hockeydb\.com/ihdb/draft/nhl2000e\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://orlikopole\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]# http://easternhockey\.stats\.pointstreak\.com/playerpage\.html\?playerid=712406&seasonid=2025'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]# http://eihcpolesie\.stats\.pointstreak\.com/en/playerpage\.html\?playerid=3490460&seasonid=4928'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://rebase\.neb\.com/rebase/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]motorsport\.hyundai\.com/ott-signs-for-two-years/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]journals\.lib\.unb\.ca/index\.php/scl/article/view/8114/9171'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]miegon\.tokraw\.pl/zyciorys\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]seminarium\.wloclawek\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]modbee\.com/news/local/article231678328\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]pinczow\.com/turystyka/slawne-znane-postacie-zwiazane-ziemia-pinczowska/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]radiowarszawa\.com\.pl/ks-stanislaw-jurczuk-posmiertnie-odznaczony-krzyzem-kawalerskim-orderu-odrodzenia-polski/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]duch\.koszalin\.opoka\.org\.pl/gazetka/naszezycie65/skrzatusz\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]karmelwadowice\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]wioskaindianska\.eu/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]sbdiocese\.org/bishops/delriego\.cfm'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://diocesedecaxiasdomaranhao\.org/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiarozborz\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://hiroshima\.catholic\.jp/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://czernichow\.duszpasterstwa\.bielsko\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiawolkapanienska\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]changbai\.gov\.cn/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]diocesistabasco\.org\.mx/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]chiesasavona\.it/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://mbozejlubartow\.pl/duszpasterze/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]obispadorqta\.org\.ar/v3/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]zorymb\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]sacredheartdanbury\.org/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]narodzenianmp\.wloclawek\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiaoleszyce\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://kresowe\.pl/wpieramy-polski-kosciol-w-stryju/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]nurt\.kck\.com\.pl/index\.php/jury/komisja-artystyczna/280-maria-malatyska'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]nurt\.kck\.com\.pl/index\.php\?option=com_content&view=article&id=124:informacja-o-przyznanych-nagrodach-2010&catid=35:2010&Itemid=58&lang=pl'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]chelm\.mojeosiedle\.pl/fakt\.php\?fid=283&spi=2'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://bc\.wbp\.lublin\.pl/dlibra/docmetadata\?id=21371&from=publication'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://bc\.wbp\.lublin\.pl/dlibra/docmetadata\?id=3218&from=publication'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]edvinohrstrom\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://nplit\.ru/books/item/f00/s00/z0000040/index\.shtml'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]krzyz-zawada\.katowice\.opoka\.org\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafia-piatnica\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafiaswietejtrojcy\.boguszow-gorce\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]oczamiduszy\.pl/stygmaty-sw-franciszka/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafiachwarstnica\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]kozalwagrowiec\.pl/nasz-kosciol/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://antoni-reda\.pl/wp/istotne-daty/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://mikolaj\.siedliska\.info/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://strumien\.duszpasterstwa\.bielsko\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiachotow\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]syriac-catholic\.org/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://roczyny\.duszpasterstwa\.bielsko\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]arytmia\.eu/niezwykle-zwykle-zycie-w-swiecie-wedlug-ludwiczka/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]arytmia\.eu/mad-men-serial-ktory-szanuje-widza/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://wolarusinowska\.cba\.pl/parafia/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://sosnicowice\.opw\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafia\.elacko\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafiastaryzmigrod\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parswkazimierzaleszno\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]turbia\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]powiat-plonski\.pl/pl/prezentacjapowiatu/turystykawpowiecie/najciekawsze-koscioly-powiatu-plonskiego\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]maksymilian\.eu/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]pisarzowice\.duszpasterstwa\.bielsko\.pl/historia\.php'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafia\.czerwonka\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]# http://parafia\.dolsk\.info\.pl/asp/pl_start\.asp\?typ=14&menu=77&strona=1'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]poddebicki\.pl/asp/zabytki,264,,1'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiaswstanislawa\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]regestry\.lubgens\.eu/viewpage\.php\?page_id=1052&par=395'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]parafiabiedrusko\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]krosnowojciech\.przemyska\.pl/'),  # bot rejected on site (masti, szoltys)
 ]
 
 
