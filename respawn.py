@@ -18,14 +18,13 @@ with open("masti/pid/respawn.log", "a") as logfile:
 
         # get pidfile name
         pidname = f'masti/pid/{pname}.pid'
-        print(f'Proc:{pname} PID:{pidname}')
 
         try:
             file = open(pidname, "r")
             pid = int(file.readline())
             file.close()
         except FileNotFoundError:
-            print(f'Proc:{pname} PID:{pidname} NOT FOUND')
+            logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (File:{pidname} NOT FOUND\n')
             pid = None
 
         # check if proper process still running
