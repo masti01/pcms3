@@ -97,12 +97,17 @@ class BasicBot(
         #    if self.site.user() is None:
         #       self.site.login()
         szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in self.current_page.text
-        if len(self.current_page.text) < 4 or szoltysEK:
+        martwyEK = '{{ek|nieaktualna' in self.current_page.text
+        if len(self.current_page.text) < 4 or szoltysEK or martwyEK:
             try:
                 if szoltysEK:
                     self.current_page.delete(f'{self.opt.summary} (Szoltys-bot/EK)',
                                          not self.opt.always,
                                          self.opt.always)
+                if martwyEK:
+                    self.current_page.delete(f'{self.opt.summary} (nieaktualna informacja o martwym linku)',
+                                             not self.opt.always,
+                                             self.opt.always)
                 else:
                     self.current_page.delete(self.opt.summary,
                                              not self.opt.always,
