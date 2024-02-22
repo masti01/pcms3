@@ -2468,7 +2468,8 @@ class BasicBot(
         return (named, name, value)
 
 
-def main(*args: Tuple[str, ...]) -> None:
+# def main(*args: Tuple[str, ...]) -> None:
+def main(*args) -> None:
     """
     Process command line arguments and invoke bot.
 
