@@ -46,7 +46,7 @@ __version__ = '$Id: c1795dd2fb2de670c0b4bddb289ea9d13b1e9b3f $'
 #
 
 import pywikibot
-from pywikibot.backports import Tuple
+# from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 
 import re
