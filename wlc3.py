@@ -2952,6 +2952,153 @@ ignorelist = [
     # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]parafiabiedrusko\.pl/'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]krosnowojciech\.przemyska\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jstage\.jst\.go\.jp'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]satkurier\.pl/news'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]istoriya-kino\.ru/kinematograf/item'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]bip\.pomorskie\.eu'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]legislacja\.rcl\.gov\.pl/projekt'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]adf-gallery\.com\.au'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]archiwum\.sky-watcher\.pl/content'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]opowiecie\.info'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]wikizaglebie\.pl/wiki'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]wow\.gm/africa/gambia/article'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]digital\.library\.unt\.edu'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]nrc\.gov'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]interq\.or\.jp'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]movieway\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]visual-memory\.co\.uk'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]thelyricarchive\.com'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]galeria\.mojeosiedle\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gingergeneration\.it'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gdynia-oksywie\.mojeosiedle\.pl'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hrfilm\.hr'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ptakiegzotyczne\.net'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]actupny\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]campionatoprimavera\.com/giocatori/derossi/derossi/derossi\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]na\.icreb\.org/2006-argiope-brunnich-spider-description-of-a-yellow-blac\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]haf\.gr/en/history/historical-aircraft/fairey-battle-b-1/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gdansk-orunia\.mojeosiedle\.pl/\?gdansk-orunia=gdansk-orunia'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]morena\.mojeosiedle\.pl/gal\.php\?&g=5&m=1'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gdansk-nowy-port\.mojeosiedle\.pl/viewtopic\.php\?t=39585'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gdansk-lostowice\.mojeosiedle\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]gdansk-ujescisko\.mojeosiedle\.pl/viewtopic\.php\?t=17500'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]info\.filg\.uj\.edu\.pl/ifk/knfkuj/\?page_id=75'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]foxsports\.com\.au/football/a-league/roy-krishna-and-christine-nairn-were-the-big-winners-at-the-dolan-warren-awards-in-sydney/news-story/c6dcdbc125f7986e59676d24c24e0ef8'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]rodionova\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]worldathletics\.org/athletes/biographies/letter=v/country=cze/athcode=240921/index\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]microsoft\.com/pl-pl/useterms'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]romanianliteraturenow\.com/authors/adriana-bittel/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]mnlr\.ro/case-memoriale/casa-memoriala-george-si-agatha-bacovia/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]independent\.co\.uk/arts-entertainment/music/reviews/album-reviews-wilco-wilco-schmilco-jack-white-acoustic-recordings-mia-aim-and-more-a7232056\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]reliefweb\.int/report/japan/japan-prefectures-open-shelters-tsunami-survivors'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]measuringworth\.com/calculators/exchange/result_exchall\.php\?action=&iyear=1931&dyear=2014&ivalue=115&itype=pound'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]films-sans-frontieres\.fr/laviesansprincipe/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]namu\.wiki/w/%EB%A1%9C%EB%B3%B4%ED%8A%B8%20%ED%82%B9'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]truetears\.jp/index\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]lesne-zacisze\.net/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]thekitchn\.com/when-healthy-eating-becomes-a-bad-thing-orthorexia-254259'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]glartent\.com/PL/Katowice/124535997641054/Galeria-Pi%C4%99tro-Wy%C5%BCej'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]rs-online\.com/designspark/running-george-3-on-a-raspberry-pi'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]eintracht-trier\.com/stadion/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]eintracht-trier\.com/geschichte/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]backstage\.com/resources/detail/productionlisting/the-laundromat-86794/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]backstage\.com/uk/magazine/article/netflix-stranger-kadiff-kirwan-70153/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]janosik\.terchova-info\.sk/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]doyouknowturkey\.com/soz-the-oath-series-special-forces-of-turkish-television/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]sincity-2\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]glartent\.com/PL/Gliwice/1688978184651818/Rockin%27-Silesia'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]steeton\.net/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]teatrtv\.vod\.tvp\.pl/594085/samolot-do-londynu'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]stengazeta\.net/\?p=10002396'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]manana\.pl/pl/component/k2/72-nieulotne\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]tvdrama-db\.com/drama_info/p/id-39512'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]femmefatalethemovie\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]whoscored\.com/Players/77056/Show/Alban-Pnishi'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]dziennikpolski24\.pl/potomek-rodziny-buchalow-z-wysokiej-ktora-ocalila-romana-polanskiego-podczas-okupacji-otrzymal-medal-od-izraela/ar/c13-15236717'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]soundcloud\.com/micrec-publishing/fomins-kleins-dziesma-par-1/sets'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]radioradicale\.it/scheda/528218/intervista-a-gabriele-panizzi-gia-presidente-della-regione-lazio-sulla-sua-iscrizione\?i=3791862'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]francescosalvi\.it/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]swiatmlodych\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]semanticscholar\.org/paper/An-updated-classification-of-Orchidaceae-Chase-Chase/a0d6040ee391286d94cf594ffa4edb2b343838b1'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]deathmagnetic\.pl/naszym-zdaniem/recenzje/decapitated-recenzja-albumu-anticult/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]rtvslo\.si/slovenija/marjan-sarec-v-vladni-palaci-ze-prevzel-premierske-posle/465770'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]biol-chem\.uwb\.edu\.pl/aktualnosci/jak-ustalic-tozsamosc-dzieciola-339/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]steamdb\.info/app/324160/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]monsoongroup\.pl/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]dinosaur-world\.com/feathered_dinosaurs/dromaeosaurus_albertensis\.htm'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]taxonsearch\.uchicago\.edu/\?exe=browse&ke=key'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jboyd\.net/Taxo/List22\.html#cettiidae'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]jboyd\.net/Taxo/List29\.html#fringillidae'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]birdinfo\.co\.uk/sites/Mules_Hybrids/goldfinch_crosses\.htm'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]wingspan\.co\.nz/birds_of_prey_new_zealand_falcon\.html'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]arthurgrosset\.com/sabirds/sharpbill\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]pl\.russellhobbs\.com/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]guess\.eu/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]znakitowarowe-blog\.pl/uniewazniono-znak-towarowy-szachownicy-louis-vuitton/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]kaefer-der-welt\.de/lycus_trabeatus\.htm'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]motyle-motyle\.pl/index\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]biocontrol\.entomology\.cornell\.edu/predators/Phalangium\.php'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]ape-o-naut\.org/famous/famous/reallife\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]departments\.bucknell\.edu/biology/resources/msw3/browse\.asp\?s=y&id=13100002'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]zuzelend\.com/stadion\.php\?id=92'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]peoples\.ru/tv/kevin_s__bright/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]peoples\.ru/sport/trainer/vladimir_alikin/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]rymanow\.pl/asp/pl_start\.asp\?typ=13&sub=0&subsub=0&menu=8&artykul=3714&akcja=artykul'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]fis-ski\.com/DB/DB/cross-country/calendar-results\.html\?eventselection=&place=&sectorcode=CC&seasoncode=2020&categorycode=SCAN&disciplinecode=&gendercode=&racedate=&racecodex=&nationcode=&seasonmonth=X-2020&saveselection=-1&seasonselection='),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]nabiegowkach\.pl/Sprzet/index\.php\?option=com_k2&view=item&id=40&Itemid=3'),
+    # bot rejected on site (masti, szoltys)
+    re.compile(
+        '.*[\./@]wiesentbote\.de/2018/07/25/neue-gegentribuene-im-bayreuther-hans-walter-wild-stadion-die-arbeiten-beginnen-frueher/'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]bibliographie\.uni-tuebingen\.de/xmlui/handle/10900/37173'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]lengvoji\.lt/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]instagram\.com/p/BbUQvkSj-np/'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]hardingsports\.com/news/2006/3/9/Track%20regional%20awards\.aspx\?path=mtrack'),
+    # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]blog\.pgd\.pl/historia-shelby-droga-carrolla-shelbyego-przez-ciernie-do-chwaly/'),
+    # bot rejected on site (masti, szoltys)
 ]
 
 
