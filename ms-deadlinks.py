@@ -99,6 +99,7 @@ class BasicBot(
         'test': False,  # test options
         'progress': False,  # display progress
         'includes': False,  # only include links that include this text
+        'delays': False, # test for delays
     }
 
     def run(self):
@@ -225,7 +226,7 @@ class BasicBot(
                 break
             except:
                 delay = randint(10,100)
-                if self.opt.test:
+                if self.opt.delays:
                     pywikibot.output(f'Delaying {delay}s in [[{art.title()}]]')
                 time.sleep(delay)
         return arttext
