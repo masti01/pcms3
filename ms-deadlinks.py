@@ -225,7 +225,7 @@ class BasicBot(
             try:
                 arttext = art.text
                 break
-            except:
+            except pywikibot.exceptions.ServerError:
                 delay = randint(5,100)
                 if self.opt.delays:
                     pywikibot.output(f'Delaying {delay}s in [[{art.title()}]]')
