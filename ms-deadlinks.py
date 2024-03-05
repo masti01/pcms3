@@ -58,6 +58,7 @@ from pywikibot.bot import (
 )
 import re
 import datetime
+import time
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -217,6 +218,18 @@ class BasicBot(
 
         return linkscount
 
+    def getarttext(self, art):
+        while True:
+            try:
+                arttext = art.text
+                break
+            except:
+                delay = randint(10,100)
+                if self.opt.test:
+                    pywikibot.output(f'Delaying {delay}s in [[{art.title()}]]')
+                time.sleep(delay)
+        return arttext
+
     def treat(self, page):
         """
         Creates a list of weblinks
@@ -229,7 +242,8 @@ class BasicBot(
             pywikibot.output('domains=False')
         links = ''
         art = page.toggleTalkPage()
-        arttext = art.text
+        # arttext = art.text
+        arttext = self.getarttext(art)
         templs = tempR.finditer(page.text)
         for link in templs:
             template = link.group('template').strip()
