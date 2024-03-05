@@ -59,6 +59,7 @@ from pywikibot.bot import (
 import re
 import datetime
 import time
+from random import randint
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -225,7 +226,7 @@ class BasicBot(
                 arttext = art.text
                 break
             except:
-                delay = randint(10,100)
+                delay = randint(5,100)
                 if self.opt.delays:
                     pywikibot.output(f'Delaying {delay}s in [[{art.title()}]]')
                 time.sleep(delay)
