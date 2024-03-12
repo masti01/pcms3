@@ -3119,7 +3119,7 @@ def _get_closest_memento_url(url, when=None, timegate_uri=None):
         try:
             memento_info = mc.get_memento_info(url, when)
             break
-        except (requests.ConnectionError, MementoClientException) as e:
+        except (requests.exceptions.ConnectionError, MementoClientException) as e:
             error = e
             retry_count += 1
             pywikibot.sleep(config.retry_wait)
@@ -3498,7 +3498,7 @@ class DeadLinkReportThread(threading.Thread):
                             'already been reported on {}{default}',
                             talkPage))
                         continue
-                except (pywikibot.NoPageError, pywikibot.IsRedirectPage):
+                except (pywikibot.exceptions.NoPageError, pywikibot.exceptions.IsRedirectPage):
                     content = ''
 
                 if archiveURL:
@@ -3540,7 +3540,7 @@ class DeadLinkReportThread(threading.Thread):
 
                 try:
                     talkPage.put(content, comment)
-                except pywikibot.SpamblacklistError as error:
+                except pywikibot.exceptions.SpamblacklistError as error:
                     pywikibot.output(color_format(
                         '{lightaqua}** SpamblacklistError while trying to '
                         'change {0}: {1}{default}',
