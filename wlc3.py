@@ -3099,6 +3099,10 @@ ignorelist = [
     # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]blog\.pgd\.pl/historia-shelby-droga-carrolla-shelbyego-przez-ciernie-do-chwaly/'),
     # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]whiplash.net/materias'),  # bot rejected on site (masti, Renvoy)
+    re.compile('.*[\./@]eddies.it/'),  # bot rejected on site (masti, Renvoy)
+    re.compile('.*[\./@]belfastlive.co.uk/news/tv/belsonic-ticket-warning-summer-shows-17809395'),
+    # bot rejected on site (masti, Renvoy)
 ]
 
 
