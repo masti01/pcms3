@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Call:
-    python pwb.py masti/ms-CEESpring2024.py -page:"Szablon:CEE Spring 2024" -outpage:"meta:Wikimedia CEE Spring 2024/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
-    python pwb.py masti/ms-CEESpring2024.py -page:"Szablon:CEE Spring 2024" -outpage:"Wikipedysta:Masti/CEE Spring 2024" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2023.py -page:"Szablon:CEE Spring 2023" -outpage:"meta:Wikimedia CEE Spring 2023/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2023.py -page:"Szablon:CEE Spring 2023" -outpage:"Wikipedysta:Masti/CEE Spring 2023" -summary:"Bot updates statistics" -reset -progress -pt:0
 
 
 Use global -simulate option for test purposes. No changes to live wiki
@@ -46,7 +46,7 @@ __version__ = '$Id: c1795dd2fb2de670c0b4bddb289ea9d13b1e9b3f $'
 #
 
 import pywikibot
-from pywikibot.backports import Tuple
+# from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 
 import re
@@ -65,21 +65,21 @@ docuReplacements = {
     '&params;': pagegenerators.parameterHelp
 }
 
-SpringStart = datetime.strptime("2024-03-20T23:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
+SpringStart = datetime.strptime("2024-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage' ]
 
-# CEEtemplates = {'pl': 'Szablon:CEE Spring 2023', 'az': 'Şablon:Vikibahar 2023', 'ba': 'Ҡалып:Вики-яҙ 2023',
-#                 'be': 'Шаблон:CEE Spring 2023', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2023',
-#                 'bg': 'Шаблон:CEE Spring 2023', 'de': 'Vorlage:CEE Spring 2023', 'eo': 'Ŝablono:VikiPrintempo COE 2023',
-#                 'el': 'Πρότυπο:CEE Spring 2023', 'et': 'Mall:CEE Spring 2023', 'hr': 'Predložak:CEE proljeće 2023.',
-#                 'hu': 'Sablon:CEE Tavasz 2023', 'hy': 'Կաղապար:CEE Spring 2023', 'ka': 'თარგი:ვიკიგაზაფხული 2023',
-#                 'lv': 'Veidne:CEE Spring 2023', 'lt': 'Šablonas:VRE 2023', 'mk': 'Шаблон:СИЕ Пролет 2023',
-#                 'myk': 'Шаблон:СИЕ Пролет 2023', 'ro': 'Format:Wikimedia CEE Spring 2023',
-#                 'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
-#                 'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
-#                 'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
+CEEtemplates = {'pl': 'Szablon:CEE Spring 2023', 'az': 'Şablon:Vikibahar 2023', 'ba': 'Ҡалып:Вики-яҙ 2023',
+                'be': 'Шаблон:CEE Spring 2023', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2023',
+                'bg': 'Шаблон:CEE Spring 2023', 'de': 'Vorlage:CEE Spring 2023', 'eo': 'Ŝablono:VikiPrintempo COE 2023',
+                'el': 'Πρότυπο:CEE Spring 2023', 'et': 'Mall:CEE Spring 2023', 'hr': 'Predložak:CEE proljeće 2023.',
+                'hu': 'Sablon:CEE Tavasz 2023', 'hy': 'Կաղապար:CEE Spring 2023', 'ka': 'თარგი:ვიკიგაზაფხული 2023',
+                'lv': 'Veidne:CEE Spring 2023', 'lt': 'Šablonas:VRE 2023', 'mk': 'Шаблон:СИЕ Пролет 2023',
+                'myk': 'Шаблон:СИЕ Пролет 2023', 'ro': 'Format:Wikimedia CEE Spring 2023',
+                'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
+                'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
+                'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
 countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
@@ -850,8 +850,8 @@ class BasicBot(
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
 
-        header = '{{TNT|Wikimedia CEE Spring 2024 navbar}}\n\n'
-        header += '{{Wikimedia CEE Spring 2024/Statistics/Header}}\n\n'
+        header = '{{TNT|Wikimedia CEE Spring 2023 navbar}}\n\n'
+        header += '{{Wikimedia CEE Spring 2023/Statistics/Header}}\n\n'
         # header += "Last update: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}} UTC</onlyinclude>'''.\n\n"
         header += "Last update: '''%s CEST'''.\n\n" % datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         footer = ''
@@ -880,7 +880,7 @@ class BasicBot(
         # special needs
         # if 'de' in self.springList.keys():
         #     self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
-        #     self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2024/Punktestand',
+        #     self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2023/Punktestand',
         #                                      '', '')
 
         return
@@ -1256,7 +1256,7 @@ class BasicBot(
             if self.opt.testpickle:
                 pywikibot.output('PICKLING LOAD at %s' % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             try:
-                with open('masti/CEESpring2024.dat', 'rb') as datfile:
+                with open('masti/CEESpring2023.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
@@ -1273,7 +1273,7 @@ class BasicBot(
         if self.opt.testpickle:
             pywikibot.output(
                 'PICKLING SAVE at %s ARTICLE count %i' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), len(artList)))
-        with open('masti/CEESpring2024.dat', 'wb') as f:
+        with open('masti/CEESpring2023.dat', 'wb') as f:
             pickle.dump(artList, f, protocol=config.pickle_protocol)
 
     def getArticleList(self):
@@ -1282,7 +1282,7 @@ class BasicBot(
         pywikibot.output('GETARTICLELIST artList:%s' % artList)
         # use pagegenerator to get articles linking to CEE templates
         # plwiki = pywikibot.Site('pl',fam='wikipedia')
-        # p = pywikibot.Page( plwiki, "Szablon:CEE Spring 2024" )
+        # p = pywikibot.Page( plwiki, "Szablon:CEE Spring 2023" )
         # while True:
         for p in self.generator:
             # p = t.toggleTalkPage()
@@ -2468,7 +2468,8 @@ class BasicBot(
         return (named, name, value)
 
 
-def main(*args: Tuple[str, ...]) -> None:
+# def main(*args: Tuple[str, ...]) -> None:
+def main(*args) -> None:
     """
     Process command line arguments and invoke bot.
 
