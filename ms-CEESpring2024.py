@@ -451,7 +451,7 @@ countryNames = {
            'Украјина': 'Ukraine', 'грчка': 'Greece', 'Грчка': 'Greece', 'Казахстан': 'Kazakhstan', 'Grčka': 'Greece',
            'Малта': 'Malta', 'Võrumaa': 'Võro', 'Кипар': 'Cyprus', 'БиХ': 'Bosnia and Herzegovina',
            'Лeтoнија': 'Latvia', 'Пољскаа': 'Poland', 'Српска': 'Republic of Srpska', 'Маđарска': 'Hungary',
-           'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', },
+           'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', 'Руција':'Russia', },
     # tt countries
     'tt': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайҗан': 'Azerbaijan', 'Азәрбайҗан': 'Azerbaijan',
            'Башкортстан': 'Bashkortostan', 'Белорусия': 'Belarus', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
