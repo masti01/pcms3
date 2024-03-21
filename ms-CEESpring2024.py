@@ -799,7 +799,7 @@ class BasicBot(
 
         # generate dictionary of articles
         # article[pl:title] = pageobject
-        ceeArticles = self.getArticleList()
+        ceeArticles = self.getArticleList
         self.printArtList(ceeArticles)
 
         # if self.opt.testpickle:
@@ -1004,7 +1004,7 @@ class BasicBot(
             pywikibot.output('createWomenAuthorsTable')
             pywikibot.output(self.womenAuthors)
         artCount = 0
-        countryCount = 0
+        # countryCount = 0
         for l in aList.keys():
             for a in aList[l]:
                 # print a
@@ -1251,7 +1251,7 @@ class BasicBot(
             if self.opt.testpickle:
                 pywikibot.output(f'PICKLING LOAD at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
             try:
-                with open('masti/CEESpring2023.dat', 'rb') as datfile:
+                with open('masti/CEESpring2024.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
@@ -1267,9 +1267,10 @@ class BasicBot(
         # save list as pickle file
         if self.opt.testpickle:
             pywikibot.output(f'PICKLING SAVE at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ARTICLE count {len(artList)}')
-        with open('masti/CEESpring2023.dat', 'wb') as f:
+        with open('masti/CEESpring2024.dat', 'wb') as f:
             pickle.dump(artList, f, protocol=config.pickle_protocol)
 
+    @property
     def getArticleList(self):
         # generate article list
         artList = []
@@ -1301,18 +1302,18 @@ class BasicBot(
 
                 self.templatesList[lang] = [i.title()]
                 pywikibot.output(f'Getting template redirs to {i.title(as_link=True, force_interwiki=True)} Lang:{lang}')
-                for p in i.getReferences(namespaces=10, filter_redirects=True):
-                    self.templatesList[lang].append(p.title())
+                for r in i.getReferences(namespaces=10, filter_redirects=True):
+                    self.templatesList[lang].append(r.title())
                     if self.opt.test2:
-                        pywikibot.output(f'REDIR TEMPLATE:{p.title(as_link=True, force_interwiki=True)}')
+                        pywikibot.output(f'REDIR TEMPLATE:{r.title(as_link=True, force_interwiki=True)}')
 
                 pywikibot.output(f'Getting references to {i.title(as_link=True, force_interwiki=True)} Lang:{lang} Fam:{fam}')
                 if self.opt.test2:
                     pywikibot.output(f'REDIR TEMPLATE LIST:{self.templatesList[lang]}')
                 countlang = 0
-                for p in i.getReferences(namespaces=1):
+                for r in i.getReferences(namespaces=1):
                     artParams = {}
-                    art = p.toggleTalkPage()
+                    art = r.toggleTalkPage()
                     if art.exists():
                         countlang += 1
                         artList.append(art)
@@ -1321,7 +1322,7 @@ class BasicBot(
                         count += 1
             # break
         # get sk.wiki article list
-        return (artList)
+        return artList
 
     def printArtList(self, artList):
         for p in artList:
@@ -1348,21 +1349,21 @@ class BasicBot(
         text = textlib.removeDisabledParts(text)
         text = textlib.removeLanguageLinks(text)
         text = textlib.removeCategoryLinks(text)
-        return (text)
+        return text
 
     def getWordCount(self, text):
         # get a word count for text
-        return (len(text.split()))
+        return len(text.split())
 
     def getArtLength(self, text):
         # get article length
-        return (len(text))
+        return len(text)
 
     def cleanUsername(self, user):
         # remove lang> from username
         if '>' in user:
             user = re.sub(r'.*\>', '', user)
-        return (user)
+        return user
 
     def getDiffSize(self, art, user):
         # get diff size in art by user
@@ -1437,7 +1438,7 @@ class BasicBot(
             # print artParams
             if self.opt.test2:
                 pywikibot.output('artParams:%s' % artParams)
-        return (artParams)
+        return artParams
 
     def checkWomen(self, art):
         # check if the article is about woman
@@ -1507,7 +1508,7 @@ class BasicBot(
                 # if self.opt.test3:
                 #    pywikibot.output('updated art editor %s:%s (T:%s)' % (art.title(as_link=True,force_interwiki=True),rv['user'],rv['timestamp']))
             #    return(rv['user'],rv['timestamp'])
-            return ("'''UNKNOWN USER'''", creationDate)
+            return "'''UNKNOWN USER'''", creationDate
 
     def newArticle(self, art):
         # check if the article was created within CEE Spring
@@ -1524,7 +1525,7 @@ class BasicBot(
         # SpringStart = datetime.strptime("2023-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         # SpringEnd = datetime.strptime("2023-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
         # return (datetime.strptime(creationDate, "%Y-%m-%dT%H:%M:%SZ") > SpringStart)
-        return (creationDate > SpringStart)
+        return creationDate > SpringStart
 
     def userName(self, text):
         # extract username from template param value
@@ -1536,11 +1537,11 @@ class BasicBot(
             if uName:
                 return (uName.group('username'))
             else:
-                return (None)
+                return None
         elif not len(text):
-            return (None)
+            return None
         else:
-            return (text)
+            return text
 
     def getTemplateInfo(self, page, template, lang):
         param = {}
@@ -1638,7 +1639,7 @@ class BasicBot(
         return parlist
 
     def lang(self, template):
-        return (re.sub(r'\[\[(.*?):.*?\]\]', r'\1', template))
+        return re.sub(r'\[\[(.*?):.*?\]\]', r'\1', template)
 
     def genInterwiki(self, page):
         # yield interwiki sites generator
@@ -1660,7 +1661,7 @@ class BasicBot(
             pywikibot.output('genInterwiki EXCEPTION %s' % str(e))
             pass
         # print(iw)
-        return (iw)
+        return iw
 
     def generateOtherCountriesTable(self, res, pagename, header, footer):
         """
@@ -2451,7 +2452,7 @@ class BasicBot(
         # test
         if self.opt.testtemplatearg:
             pywikibot.output(f'name:{name}:value:{value}')
-        return (named, name, value)
+        return named, name, value
 
 
 # def main(*args: Tuple[str, ...]) -> None:
