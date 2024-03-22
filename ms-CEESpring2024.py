@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Call:
-    python pwb.py masti/ms-CEESpring2023.py -page:"Szablon:CEE Spring 2023" -outpage:"meta:Wikimedia CEE Spring 2023/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
-    python pwb.py masti/ms-CEESpring2023.py -page:"Szablon:CEE Spring 2023" -outpage:"Wikipedysta:Masti/CEE Spring 2023" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2024.py -page:"Szablon:CEE Spring 2024" -outpage:"meta:Wikimedia CEE Spring 2024/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2024.py -page:"Szablon:CEE Spring 2024" -outpage:"Wikipedysta:Masti/CEE Spring 2024" -summary:"Bot updates statistics" -reset -progress -pt:0
 
 
 Use global -simulate option for test purposes. No changes to live wiki
@@ -70,16 +70,16 @@ SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # c
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 
-CEEtemplates = {'pl': 'Szablon:CEE Spring 2023', 'az': 'Şablon:Vikibahar 2023', 'ba': 'Ҡалып:Вики-яҙ 2023',
-                'be': 'Шаблон:CEE Spring 2023', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2023',
-                'bg': 'Шаблон:CEE Spring 2023', 'de': 'Vorlage:CEE Spring 2023', 'eo': 'Ŝablono:VikiPrintempo COE 2023',
-                'el': 'Πρότυπο:CEE Spring 2023', 'et': 'Mall:CEE Spring 2023', 'hr': 'Predložak:CEE proljeće 2023.',
-                'hu': 'Sablon:CEE Tavasz 2023', 'hy': 'Կաղապար:CEE Spring 2023', 'ka': 'თარგი:ვიკიგაზაფხული 2023',
-                'lv': 'Veidne:CEE Spring 2023', 'lt': 'Šablonas:VRE 2023', 'mk': 'Шаблон:СИЕ Пролет 2023',
-                'myk': 'Шаблон:СИЕ Пролет 2023', 'ro': 'Format:Wikimedia CEE Spring 2023',
-                'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
-                'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
-                'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
+# CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
+#                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
+#                 'bg': 'Шаблон:CEE Spring 2023', 'de': 'Vorlage:CEE Spring 2023', 'eo': 'Ŝablono:VikiPrintempo COE 2023',
+#                 'el': 'Πρότυπο:CEE Spring 2023', 'et': 'Mall:CEE Spring 2023', 'hr': 'Predložak:CEE proljeće 2023.',
+#                 'hu': 'Sablon:CEE Tavasz 2023', 'hy': 'Կաղապար:CEE Spring 2023', 'ka': 'თარგი:ვიკიგაზაფხული 2023',
+#                 'lv': 'Veidne:CEE Spring 2023', 'lt': 'Šablonas:VRE 2023', 'mk': 'Шаблон:СИЕ Пролет 2023',
+#                 'myk': 'Шаблон:СИЕ Пролет 2023', 'ro': 'Format:Wikimedia CEE Spring 2023',
+#                 'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
+#                 'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
+#                 'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
 countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
@@ -1263,7 +1263,7 @@ class BasicBot(
         if self.opt.testpickle:
             pywikibot.output(f'PICKLING LOADED LANGUAGES: {len(result)}')
             pywikibot.output(f'PICKLING RESULT:{result}')
-        return (result)
+        return result
 
     def saveArticleList(self, artList):
         # save list as pickle file
@@ -1277,10 +1277,7 @@ class BasicBot(
         # generate article list
         artList = []
         pywikibot.output(f'GETARTICLELIST artList:{artList}')
-        # use pagegenerator to get articles linking to CEE templates
-        # plwiki = pywikibot.Site('pl',fam='wikipedia')
-        # p = pywikibot.Page( plwiki, "Szablon:CEE Spring 2023" )
-        # while True:
+
         for p in self.generator:
             # p = t.toggleTalkPage()
             pywikibot.output(f'Treating: {p.title()}')
@@ -1485,15 +1482,13 @@ class BasicBot(
             creationDate = art.oldest_revision.timestamp
         except:
             pywikibot.output('EXCEPTION: oldest_revision')
-            return ("'''UNKNOWN USER'''", "'''UNKNOWN DATE'''")
-        # SpringStart = datetime.strptime("2023-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
+            return "'''UNKNOWN USER'''", "'''UNKNOWN DATE'''"
         if self.newArticle(art):
             if self.opt.test3:
                 pywikibot.output('New art creator %s:%s (T:%s)' % (
                     art.title(as_link=True, force_interwiki=True), creator, creationDate))
-            return (creator, creationDate)
+            return creator, creationDate
         else:
-            # for rv in art.revisions(reverse=True,starttime="2017-03-20T12:00:00Z",endtime="2017-06-01T00:00:00Z"):
             for rv in art.revisions(reverse=True, starttime=datetime.strftime(SpringStart, "%Y-%m-%dT%H:%M:%SZ")):
                 if self.opt.test3:
                     pywikibot.output('updated art editor %s:%s (T:%s)' % (
@@ -1502,7 +1497,7 @@ class BasicBot(
                     if self.opt.test3:
                         pywikibot.output('returning art editor %s:%s (T:%s)' % (
                             art.title(as_link=True, force_interwiki=True), rv.user, rv.timestamp))
-                    return (rv.user, rv.timestamp)
+                    return rv.user, rv.timestamp
                 else:
                     if self.opt.test3:
                         pywikibot.output('Skipped returning art editor %s:%s (T:%s)' % (
@@ -1523,10 +1518,8 @@ class BasicBot(
             creationDate = art.oldest_revision.timestamp
         except:
             pywikibot.output(f'EXCEPTION: newArticle: {art.title()}')
-            return (False)
-        # SpringStart = datetime.strptime("2023-03-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-        # SpringEnd = datetime.strptime("2023-06-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-        # return (datetime.strptime(creationDate, "%Y-%m-%dT%H:%M:%SZ") > SpringStart)
+            return False
+
         return creationDate > SpringStart
 
     def userName(self, text):
@@ -1537,7 +1530,7 @@ class BasicBot(
         if '[' in text:
             uName = uNameR.match(text)
             if uName:
-                return (uName.group('username'))
+                return uName.group('username')
             else:
                 return None
         elif not len(text):
