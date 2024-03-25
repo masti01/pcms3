@@ -344,7 +344,7 @@ countryNames = {
            'Grieķija': 'Greece', 'Kazahstāna': 'Kazakhstan', 'Sorbi': 'Sorbia', 'rumāņi': 'Romania and Moldova',
            'Malta': 'Malta', 'sorbi': 'Sorbia', 'Kipra': 'Cyprus', 'veru valoda': 'Võro', 'čigāni': 'Roma',
            'Erzji': 'Erzia', 'Veru valoda': 'Võro', 'tatāri': 'Crimean Tatars', 'Starptautiskā tēma': 'International',
-           'Aromūnu valoda': 'Aromanian', },
+           'Aromūnu valoda': 'Aromanian', 'romi': 'Roma', },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
            'Baltarusija': 'Belarus', 'Bulgarija': 'Bulgaria', 'Armėnija': 'Armenia',
