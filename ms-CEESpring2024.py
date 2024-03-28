@@ -640,6 +640,7 @@ countryNames = {
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
            'Tatarstan': 'Tatarstan', 'Tatársko': 'Tatarstan', 'Sorbia': 'Sorbia', 'Kipru': 'Cyprus',
            'Rumunsko a Moldavsko': 'Romania and Moldova', },
+    # en countries
     'en': {'Montenegro': 'Montenegro', 'Belarus': 'Belarus', 'Erzya': 'Erzia', 'Serbia': 'Serbia', 'Poland': 'Poland',
            'Croatia': 'Croatia', 'Bosnia & Herzegovina': 'Bosnia and Herzegovina', 'Austria': 'Austria',
            'Slovenia': 'Slovenia', 'Turkey': 'Turkey', 'Ukraine': 'Ukraine', 'Czechia': 'Czechia',
@@ -650,6 +651,9 @@ countryNames = {
            'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Romania': 'Romania', 'Estonia': 'Estonia',
            'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus',
            },
+    # uz countries
+    'uz': {
+            },
 
 }
 
@@ -694,15 +698,15 @@ class BasicBot(
                           'crh': [], 'el': [], 'et': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
                           'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
-                          'hu': [], 'fiu-vro': [], 'en': [], }
+                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [] }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
              'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0}
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0 }
     hrights = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0}
+               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0 }
     # local name for coutry parameter
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава',
                 'bs': 'država',
@@ -745,7 +749,7 @@ class BasicBot(
              'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent',
              'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник', 'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user',
              'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user', 'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı',
-             'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', }
+             'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'Foydalanuvchi' }
 
     update_options = {
         'replace': False,  # delete old text and write the new text
