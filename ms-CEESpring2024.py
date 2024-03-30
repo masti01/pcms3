@@ -474,7 +474,8 @@ countryNames = {
            'Кырымтатарлары': 'Crimean Tatars', 'Румыния һәм Молдова': 'Romania and Moldova', 'Дон төбәге': 'Don',
            'Башкортостан': 'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary',
            'Мальта': 'Malta', 'Монтенегро': 'Montenegro', 'Белоруссия': 'Belarus', 'Россия': 'Russia',
-           'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', },
+           'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', 'Татарлар': 'Tatarstan', 'татарлар': 'Tatarstan',
+           'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -652,11 +653,10 @@ countryNames = {
            'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus',
            },
     # uz countries
-    'uz': {
+    'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey',
             },
 
 }
-
 
 class BasicBot(
     # Refer pywikibot.bot for generic bot classes
@@ -715,7 +715,7 @@ class BasicBot(
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
                 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
-                'en': 'country', }
+                'en': 'country', 'uz': 'mamlakat', }
     # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'qadınlar', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
               'bs': 'tema', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
@@ -723,7 +723,7 @@ class BasicBot(
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
               'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
-              'en': 'topic', }
+              'en': 'topic', 'uz': 'mavzu', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
@@ -745,11 +745,11 @@ class BasicBot(
     # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
              'bg': 'потребител', 'bs': 'korisnik', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
-             'hu': 'szerkesztő', 'eo': 'uzanto',
-             'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent',
-             'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник', 'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user',
-             'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user', 'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı',
-             'uk': 'користувач', 'hr': 'suradnik', 'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'Foydalanuvchi' }
+             'hu': 'szerkesztő', 'eo': 'uzanto', 'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas',
+             'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник',
+             'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
+             'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
+             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', }
 
     update_options = {
         'replace': False,  # delete old text and write the new text
