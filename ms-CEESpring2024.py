@@ -475,7 +475,7 @@ countryNames = {
            'Башкортостан': 'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary',
            'Мальта': 'Malta', 'Монтенегро': 'Montenegro', 'Белоруссия': 'Belarus', 'Россия': 'Russia',
            'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', 'Татарлар': 'Tatarstan', 'татарлар': 'Tatarstan',
-           'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', },
+           'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Roma', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
