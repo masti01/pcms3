@@ -199,7 +199,8 @@ countryNames = {
            'Азербайджан‎': 'Azerbaijan', 'лужичаните': 'Sorbia', 'Малта': 'Malta', 'ерзяните': 'Erzia',
            'есперанто': 'Esperanto', 'Кипър': 'Cyprus', 'циганите': 'Roma', 'Въро': 'Võro', 'въру': 'Võro',
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
-           'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', },
+           'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
+           },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
            'Baschkortostan': 'Bashkortostan', 'Weißrussland': 'Belarus', 'Bulgarien': 'Bulgaria', 'Armenien': 'Armenia',
@@ -475,7 +476,8 @@ countryNames = {
            'Башкортостан': 'Bashkortostan', 'Черногория': 'Montenegro', 'Беларусь': 'Belarus', 'Венгрия': 'Hungary',
            'Мальта': 'Malta', 'Монтенегро': 'Montenegro', 'Белоруссия': 'Belarus', 'Россия': 'Russia',
            'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', 'Татарлар': 'Tatarstan', 'татарлар': 'Tatarstan',
-           'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Roma', },
+           'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Roma',
+           'татарла': 'Tatarstan', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -653,9 +655,9 @@ countryNames = {
            'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus',
            },
     # uz countries
-    'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine',
+    'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
+            'Gretsiya': 'Greece',
             },
-
 }
 
 class BasicBot(
