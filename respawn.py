@@ -17,7 +17,7 @@ local_args = pywikibot.handle_args(args)
 for arg in local_args:
     if arg ==  '-force':
         force = True
-    else
+    else:
         force = False
 
 # enable logging
