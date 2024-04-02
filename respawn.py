@@ -40,8 +40,8 @@ def main(*args):
                 pid = None
 
             if force:
-                print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...')
-                logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...\n')
+                print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...respawning...')
+                logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...respawning...\n')
                 os.system(f'kill -9 {pid}')
                 os.system(f'{proceses[pname]}')
             elif pid not in psutil.pids():
