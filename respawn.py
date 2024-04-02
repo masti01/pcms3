@@ -16,11 +16,10 @@ proceses = {
 
 def main(*args):
     local_args = pywikibot.handle_args(args)
+    force = False
     for arg in local_args:
         if arg ==  '-force':
             force = True
-        else:
-            force = False
 
     # enable logging
     with open("masti/pid/respawn.log", "a") as logfile:
