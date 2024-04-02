@@ -43,9 +43,8 @@ def main(*args):
                 print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...')
                 logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) killing...\n')
                 os.system(f'kill -9 {pid}')
-
-            # check if proper process still running
-            if pid not in psutil.pids():
+                os.system(f'{proceses[pname]}')
+            elif pid not in psutil.pids():
                 print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...')
                 logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (PID:{pid}) is dead... respawning...\n')
                 os.system(f'{proceses[pname]}')
