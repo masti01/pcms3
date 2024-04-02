@@ -656,7 +656,7 @@ countryNames = {
            },
     # uz countries
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
-            'Gretsiya': 'Greece',
+            'Gretsiya': 'Greece', 'Belarus' 'Belarus',
             },
 }
 
