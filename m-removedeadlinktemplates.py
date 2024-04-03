@@ -56,6 +56,7 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
+import re
 
 
 # This is required for the text that is shown when you run this script
