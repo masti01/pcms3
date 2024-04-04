@@ -583,6 +583,7 @@ countryNames = {
            'Lužičkih Srba': 'Sorbia', 'Romi': 'Roma', 'Azerbejdžanu': 'Azerbaijan', 'Cipru': 'Cyprus',
            'Esperanta': 'Esperanto', 'Krimu': 'Crimean Tatars', 'Võru': 'Võro', 'Lužici': 'Sorbia', 'Malte': 'Malta',
            'Cipra': 'Cyprus', 'Grčke': 'Greece', 'Romskoj zajednici': 'Roma', 'Zapadnoj Armeniji': 'Western Armenian',
+           'International': 'International',
            },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
@@ -656,7 +657,8 @@ countryNames = {
            },
     # uz countries
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
-            'Gretsiya': 'Greece', 'Belarus': 'Belarus', 'Serbiya': 'Serbia',
+            'Gretsiya': 'Greece', 'Belarus': 'Belarus', 'Serbiya': 'Serbia', 'Avstriya': 'Austria',
+            'Albaniya': 'Albania',
             },
 }
 
