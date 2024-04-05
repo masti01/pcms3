@@ -617,17 +617,15 @@ countryNames = {
            'Rumanija u Moldova': 'Romania and Moldova', 'Sorb': 'Sorbia', 'Tatarstan': 'Tatarstan',
            'Ukrajna': 'Ukraine', 'Federazzjoni Russa': 'Russia', 'Armenja': 'Armenia', 'Ażerbajġan': 'Azerbaijan',
            'Reġjun Don': 'Don', 'Erżja': 'Erzia', 'Repubblika Srpska': 'Republic of Srpska',
-           'Repubblika Ċeka': 'Czechia',
-           'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus', 'Tatari tal-Krimea': 'Crimean Tatars',
-           'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don', 'Georgia': 'Georgia', 'Rom': 'Roma',
-           'Roma': 'Roma', 'Baxkorstostan': 'Bashkortostan', 'Internazzjonali': 'International',
-           "Reġjun ta' Don": 'Don', 'Tatari': 'Crimean Tatars', },
+           'Repubblika Ċeka': 'Czechia', 'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus',
+           'Tatari tal-Krimea': 'Crimean Tatars', 'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don',
+           'Georgia': 'Georgia', 'Rom': 'Roma', 'Roma': 'Roma', 'Baxkorstostan': 'Bashkortostan',
+           'Internazzjonali': 'International', "Reġjun ta' Don": 'Don', 'Tatari': 'Crimean Tatars', },
     # sh countries
     'sh': {'Austriji': 'Austria', 'Albaniji': 'Albania', 'Kosovu': 'Kosovo', 'Hrvatskoj': 'Croatia',
            'Bosni i Hercegovini': 'Bosnia and Herzegovina', 'Grčkoj': 'Greece', 'Rumunjskoj': 'Romania and Moldova',
            'Estoniji': 'Estonia', 'Ukrajini': 'Ukraine', 'Poljskoj': 'Poland', 'Sloveniji': 'Slovenia',
-           'Kipru': 'Cyprus',
-           'Rusiji': 'Russia', 'Češkoj': 'Czechia', 'Gruziji': 'Georgia', 'Hrvatska': 'Croatia',
+           'Kipru': 'Cyprus', 'Rusiji': 'Russia', 'Češkoj': 'Czechia', 'Gruziji': 'Georgia', 'Hrvatska': 'Croatia',
            'Srbiji': 'Serbia', 'Estonija': 'Estonia', 'Bosna i Hercegovina': 'Bosnia and Herzegovina',
            'Srbija': 'Serbia', 'Kosovo': 'Kosovo', 'Litva': 'Lithuania', 'Mađarska': 'Hungary', 'Poljska': 'Poland',
            'Crnoj Gori': 'Montenegro', },
@@ -658,7 +656,8 @@ countryNames = {
     # uz countries
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
             'Gretsiya': 'Greece', 'Belarus': 'Belarus', 'Serbiya': 'Serbia', 'Avstriya': 'Austria',
-            'Albaniya': 'Albania',
+            'Albaniya': 'Albania', 'Ozarbayjon': 'Azerbaijan', 'Aruminlar': 'Aromanian', 'Qozogʻiston': 'Kazakhstan',
+            'Gʻarbiy armanlar': 'Western Armenian',
             },
 }
 
