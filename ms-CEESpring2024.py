@@ -657,7 +657,7 @@ countryNames = {
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
             'Gretsiya': 'Greece', 'Belarus': 'Belarus', 'Serbiya': 'Serbia', 'Avstriya': 'Austria',
             'Albaniya': 'Albania', 'Ozarbayjon': 'Azerbaijan', 'Aruminlar': 'Aromanian', 'Qozogʻiston': 'Kazakhstan',
-            'Gʻarbiy armanlar': 'Western Armenian',
+            'Gʻarbiy armanlar': 'Western Armenian', 'Boshqirdiston': 'Bashkortostan',
             },
 }
 
