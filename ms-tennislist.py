@@ -34,7 +34,7 @@ import pywikibot
 from pywikibot import pagegenerators
 
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    SingleSiteBot, ConfigParserBot, ExistingPageBot,
     AutomaticTWSummaryBot)
 
 
