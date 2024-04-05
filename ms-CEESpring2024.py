@@ -1662,7 +1662,7 @@ class BasicBot(
                     pywikibot.output('gI Site:%s Family:%s' % (spage.site, spage.site.family))
                 if spage.site.family in allowedFamilies:
                     iw.append(spage)
-                print(iw)
+                # print(iw)
         except Exception as e:
             pywikibot.output('genInterwiki EXCEPTION %s' % str(e))
             pass
