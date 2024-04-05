@@ -1057,7 +1057,7 @@ class BasicBot(
 
     def createHrightsTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.opt.test or self.opt.testwomen:
+        if self.opt.test or self.opt.testhrights:
             pywikibot.output('createHRightsTable')
             pywikibot.output(self.hrights)
         artCount = 0
@@ -1137,7 +1137,7 @@ class BasicBot(
 
     def createLengthTable(self, aList):
         # creat dictionary with la:country article counts
-        if self.opt.test or self.opt.testwomen or self.opt.testlength:
+        if self.opt.test or self.opt.testlength:
             pywikibot.output('createLengthTable')
             pywikibot.output(self.lengthTable)
         artCount = 0
@@ -1165,7 +1165,7 @@ class BasicBot(
 
     def createLengthTablePL(self, aList):
         # creat dictionary with la:country article counts
-        if self.opt.test or self.opt.testwomen or self.opt.testlength:
+        if self.opt.test or self.opt.testlength:
             pywikibot.output('createLengthTable')
             pywikibot.output(self.lengthTable)
         artCount = 0
