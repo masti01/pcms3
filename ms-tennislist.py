@@ -30,7 +30,7 @@ import re
 
 import pywikibot
 
-from pywikibot.backports import Tuple
+# from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 
 from pywikibot.bot import (
@@ -222,13 +222,13 @@ class BasicBot(
         #   success = False
         return(success)
 
-def main(*args: Tuple[str, ...]) -> None:
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -244,7 +244,7 @@ def main(*args: Tuple[str, ...]) -> None:
 
     # Parse your own command line arguments
     for arg in local_args:
-        arg, sep, value = arg.partition(':')
+        arg, _, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text', 'outpage', 'maxlines'):
             if not value:
@@ -258,12 +258,12 @@ def main(*args: Tuple[str, ...]) -> None:
     # The preloading option is responsible for downloading multiple
     # pages from the wiki simultaneously.
     gen = gen_factory.getCombinedGenerator(preload=True)
-    if gen:
+
+    # check if further help is needed
+    if not pywikibot.bot.suggest_help(missing_generator=not gen):
         # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
+        bot = BasicBot(generator=gen, **options)
         bot.run()  # guess what it does
-    else:
-        pywikibot.bot.suggest_help(missing_generator=True)
 
 
 if __name__ == '__main__':
