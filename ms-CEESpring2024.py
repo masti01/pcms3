@@ -200,6 +200,7 @@ countryNames = {
            'есперанто': 'Esperanto', 'Кипър': 'Cyprus', 'циганите': 'Roma', 'Въро': 'Võro', 'въру': 'Võro',
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
+           'международни': 'International',
            },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
