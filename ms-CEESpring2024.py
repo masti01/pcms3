@@ -316,7 +316,7 @@ countryNames = {
            'Լեհատան': 'Poland', 'Հունաստամ': 'Greece', 'Ալբանիաիա': 'Albania',
            'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia',
            'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
-           'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', },
+           'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia', },
     # hyw countries
     'hyw': {
     },
@@ -659,6 +659,7 @@ countryNames = {
             'Gretsiya': 'Greece', 'Belarus': 'Belarus', 'Serbiya': 'Serbia', 'Avstriya': 'Austria',
             'Albaniya': 'Albania', 'Ozarbayjon': 'Azerbaijan', 'Aruminlar': 'Aromanian', 'Qozogʻiston': 'Kazakhstan',
             'Gʻarbiy armanlar': 'Western Armenian', 'Boshqirdiston': 'Bashkortostan',
+            'Bosniya va Gersogovina': 'Bosnia and Herzegovina',
             },
 }
 
