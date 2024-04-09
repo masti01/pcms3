@@ -1328,6 +1328,8 @@ class BasicBot(
                     # hack for tt.wiki ел= param: stating year of competition
                     if lang == 'tt':
                         if 'ел=2024' not in re.sub('\s+', '', r.text):
+                            if self.opt.testgetart:
+                                pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{art.title()}')
                             break
                     art = r.toggleTalkPage()
                     if art.exists():
