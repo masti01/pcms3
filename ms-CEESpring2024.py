@@ -1330,7 +1330,7 @@ class BasicBot(
                         if 'ел=2024' not in re.sub('\s+', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
-                            break
+                            continue
                     art = r.toggleTalkPage()
                     if art.exists():
                         countlang += 1
