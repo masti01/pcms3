@@ -1325,6 +1325,10 @@ class BasicBot(
                 countlang = 0
                 for r in i.getReferences(namespaces=1):
                     artParams = {}
+                    # hack for tt.wiki ел= param: stating year of competition
+                    if lang == 'tt':
+                        if 'ел=2024' not in re.sub('\s+', '', r.text):
+                            break
                     art = r.toggleTalkPage()
                     if art.exists():
                         countlang += 1
