@@ -103,7 +103,7 @@ class ArtNoDisp(irc.bot.SingleServerIRCBot):
         match = self.re_edit.match(e.arguments[0])
         matchmove = self.re_move.match(e.arguments[0])
         matchmoveredir = self.re_move_redir.match(e.arguments[0])
-        matchdeleteredir = self.re_delete_redir.match(e.arguments[0])
+        # matchdeleteredir = self.re_delete_redir.match(e.arguments[0])
 
         try:
             if match:
