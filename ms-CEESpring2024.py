@@ -1745,15 +1745,15 @@ class BasicBot(
         # generate table rows
         for wiki in res.keys():
             finalpage += '\n|-'
-            finalpage += '\n| [[' + locpagename + '/Article list#' + wiki + '.wikipedia|' + wiki + ']]'
+            finalpage += f'\n| [[{locpagename}/Article list#{wiki}|{wiki}]]'
             wikiTotal = 0  # get the row total
             newline = ''  # keep info for the table row
             for c in countryList:
                 # newline += ' || '
                 if 'Other' in c:
                     if self.opt.test5:
-                        pywikibot.output('other:%s' % c)
-                        pywikibot.output('res[wiki]:%s' % res[wiki])
+                        pywikibot.output(f'other:{c}')
+                        pywikibot.output(f'res[wiki]:{res[wiki]}')
                     otherCountry = 0  # count other countries
                     for country in res[wiki]:
                         if country not in countryList and not country == '':
