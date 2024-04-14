@@ -200,7 +200,7 @@ countryNames = {
            'есперанто': 'Esperanto', 'Кипър': 'Cyprus', 'циганите': 'Roma', 'Въро': 'Võro', 'въру': 'Võro',
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
-           'международни': 'International',
+           'международни': 'International', 'западноарменците': 'Western Armenian',
            },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
@@ -379,7 +379,7 @@ countryNames = {
            'Казакстан': 'Kazakhstan', 'Виру': 'Võro', 'Роми': 'Roma', 'Донски Регион': 'Don', 'Донски регион': 'Don',
            'Меѓународна статија': 'International', 'Ермениј': 'Armenia', 'Ромска заедница': 'Roma',
            'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian',
-           'БиХ': 'Bosnia and Herzegovina', },
+           'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
