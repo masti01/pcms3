@@ -1808,8 +1808,8 @@ class BasicBot(
                         newline += ' || '
 
             # add row (wiki) total to table
-            finalpage += " || '''" + str(wikiTotal) + "'''" + newline + " || '''" + str(wikiTotal) + "'''"
-            finalpage += ' || [[' + locpagename + '/Article list#' + wiki + '.wikipedia|' + wiki + ']]'
+            finalpage += f" || '''{str(wikiTotal)}'''{newline} || '''{str(wikiTotal)}'''"
+            finalpage += f' || [[{locpagename}/Article list#{wiki}|{wiki}]]'
 
         finalpage += '\n|-'
 
