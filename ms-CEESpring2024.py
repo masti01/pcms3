@@ -603,7 +603,7 @@ countryNames = {
            'Ciper': 'Cyprus', 'Võrumaa': 'Võro', 'Lužiška srbija': 'Sorbia', 'Lužiški Srbi': 'Sorbia',
            'Tatari': 'Crimean Tatars', 'mednarodno': 'International', 'Ruska federacija': 'Russia',
            'Aromuni': 'Aromanian', 'Zahodni Armenci': 'Western Armenian', 'Krimski Tatari': 'Crimean Tatars',
-           'Võro': 'Võro', 'kazahstan': 'Kazakhstan', },
+           'Võro': 'Võro', 'kazahstan': 'Kazakhstan', 'Erzjani': 'Erzia', },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
