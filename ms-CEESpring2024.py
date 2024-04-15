@@ -831,7 +831,13 @@ class BasicBot(
                 if self.opt.testpickle:
                     pywikibot.output(f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}][{count}] SKIPPING: [{a.site.code}:{a.title()}]')
             else:
-                aInfo = self.getArtInfo(a)
+                while True:
+                    try:
+                        aInfo = self.getArtInfo(a)
+                        break
+                    except pywikibot.exceptions.ServerError:
+                        pywikibot.output(f'Server Error while processing [[:{a.site.code}:{a.title()}]]')
+
                 if self.opt.test:
                     pywikibot.output(aInfo)
                 if self.opt.progress and not count % 20:
