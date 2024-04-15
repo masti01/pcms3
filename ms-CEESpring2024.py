@@ -837,8 +837,9 @@ class BasicBot(
                         aInfo = self.getArtInfo(a)
                         break
                     except pywikibot.exceptions.ServerError:
-                        pywikibot.output(f'Server Error while processing [[:{a.site.code}:{a.title()}]]')
-                        sleep(random.randint(3, 8))
+                        w = random.randint(3, 8)
+                        pywikibot.output(f'Server Error while processing [[:{a.site.code}:{a.title()}]] (waiting {w} sec.)')
+                        sleep(w)
 
                 if self.opt.test:
                     pywikibot.output(aInfo)
