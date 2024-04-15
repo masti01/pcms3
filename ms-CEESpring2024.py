@@ -53,6 +53,7 @@ import re
 from pywikibot import textlib
 from datetime import datetime
 import pickle
+import random
 from pywikibot import config
 
 from pywikibot.bot import (
@@ -837,6 +838,7 @@ class BasicBot(
                         break
                     except pywikibot.exceptions.ServerError:
                         pywikibot.output(f'Server Error while processing [[:{a.site.code}:{a.title()}]]')
+                        sleep(random.randint(3, 8))
 
                 if self.opt.test:
                     pywikibot.output(aInfo)
