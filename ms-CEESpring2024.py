@@ -662,7 +662,7 @@ countryNames = {
             'Gʻarbiy armanlar': 'Western Armenian', 'Boshqirdiston': 'Bashkortostan',
             'Bosniya va Gersogovina': 'Bosnia and Herzegovina', 'Belarus Respublikasi': 'Belarus', 'Gruziya': 'Georgia',
             'Bolgariya': 'Bulgaria', 'Malta': 'Malta', 'Estoniya': 'Estonia', 'Polsha': 'Poland', 'Vengriya': 'Hungary',
-            'Võru': 'Võro', 'Sloveniya': 'Slovenia',
+            'Võru': 'Võro', 'Sloveniya': 'Slovenia', 'Kosovo': 'Kosovo',
             },
 }
 
