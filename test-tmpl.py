@@ -109,7 +109,7 @@ class BasicBot(
                 pywikibot.output(f'>>{k}:{v}')
             ml = []
             for k in p.keys():
-                    ml.append(len(k))
+                    ml.append(len(str(k)))
             pywikibot.output(f'Key max len:{max(ml)}')
             pywikibot.output('**************************')
 
