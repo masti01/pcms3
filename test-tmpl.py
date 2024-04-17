@@ -101,7 +101,7 @@ class BasicBot(
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
 
-        pywikibot.output(extract_templates_and_params(text))
+        pywikibot.output(extract_templates_and_params(text, remove_disabled_parts=True, strip=True))
 
 
 def main(*args: str) -> None:
