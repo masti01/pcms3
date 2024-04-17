@@ -318,7 +318,8 @@ countryNames = {
            'Սերբական Հանրապետություն': 'Republic of Srpska', 'Կիպրոս': 'Cyprus', 'էստոնիա': 'Estonia',
            'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
            'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia',
-           'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova', },
+           'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova',
+           'Էրզյա': 'Erzya', },
     # hyw countries
     'hyw': {
     },
@@ -663,7 +664,8 @@ countryNames = {
             'Gʻarbiy armanlar': 'Western Armenian', 'Boshqirdiston': 'Bashkortostan',
             'Bosniya va Gersogovina': 'Bosnia and Herzegovina', 'Belarus Respublikasi': 'Belarus', 'Gruziya': 'Georgia',
             'Bolgariya': 'Bulgaria', 'Malta': 'Malta', 'Estoniya': 'Estonia', 'Polsha': 'Poland', 'Vengriya': 'Hungary',
-            'Võru': 'Võro', 'Sloveniya': 'Slovenia', 'Kosovo': 'Kosovo',
+            'Võru': 'Võro', 'Sloveniya': 'Slovenia', 'Kosovo': 'Kosovo', 'Qrim': 'Crimean Tatars',
+            'Qrim tatarlari': 'Crimean Tatars',
             },
 }
 
