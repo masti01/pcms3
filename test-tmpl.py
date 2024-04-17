@@ -107,7 +107,7 @@ class BasicBot(
             pywikibot.output(f'Template:{t}')
             for k,v in p.items():
                 pywikibot.output(f'>>{k}:{v}')
-            pywikibot.output(f'Key max len:{max(len(k) for k in p.keys())}')
+            pywikibot.output(f'Key max len:{max([len(k)] for k in p.keys())}')
             pywikibot.output('**************************')
 
 def main(*args: str) -> None:
