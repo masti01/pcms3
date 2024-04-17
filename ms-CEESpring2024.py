@@ -665,7 +665,7 @@ countryNames = {
             'Bosniya va Gersogovina': 'Bosnia and Herzegovina', 'Belarus Respublikasi': 'Belarus', 'Gruziya': 'Georgia',
             'Bolgariya': 'Bulgaria', 'Malta': 'Malta', 'Estoniya': 'Estonia', 'Polsha': 'Poland', 'Vengriya': 'Hungary',
             'Võru': 'Võro', 'Sloveniya': 'Slovenia', 'Kosovo': 'Kosovo', 'Qrim': 'Crimean Tatars',
-            'Qrim tatarlari': 'Crimean Tatars',
+            'Qrim tatarlari': 'Crimean Tatars', 'Qrimchaklar': 'Crimean Tatars',
             },
 }
 
