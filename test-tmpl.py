@@ -58,7 +58,7 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-from textlib import extract_templates_and_params, extract_templates_and_params_regex_simple, glue_template_and_params
+from pywikibot.textlib import extract_templates_and_params, extract_templates_and_params_regex_simple, glue_template_and_params
 
 
 # This is required for the text that is shown when you run this script
