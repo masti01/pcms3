@@ -106,7 +106,7 @@ class BasicBot(
         for t,p in templatelist:
             pywikibot.output(f'Template:{t}')
             for k,v in p.items():
-                pywikibot.output(f'>>{k}:{v}')
+                pywikibot.output(f'>>{k}:{v} ({type(k)})')
             pywikibot.output('**************************')
 
 def main(*args: str) -> None:
