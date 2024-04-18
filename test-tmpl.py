@@ -107,7 +107,10 @@ class BasicBot(
             pywikibot.output(f"Template:{t}")
             for k,v in p.items():
                 pywikibot.output(f">>{k}:{v} ({len(k)})")
-            ml = max([len(k) for k in p.keys()])
+            try:
+                ml = max([len(k) for k in p.keys()])
+            except ValueError:
+                ml = 0
             pywikibot.output(f"Max len:{ml}")
             pywikibot.output("**************************")
 
