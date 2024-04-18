@@ -104,10 +104,12 @@ class BasicBot(
         templatelist = extract_templates_and_params(text, remove_disabled_parts=True, strip=True)
         pywikibot.output(templatelist)
         for t,p in templatelist:
-            pywikibot.output(f'Template:{t}')
+            pywikibot.output(f"Template:{t}")
             for k,v in p.items():
-                pywikibot.output(f'>>{k}:{v} ({len(k)})')
-            pywikibot.output('**************************')
+                pywikibot.output(f">>{k}:{v} ({len(k)})")
+            ml = max([len(k) for k in p.keys()])
+            pywikibot.output(f"Max len:{ml}")
+            pywikibot.output("**************************")
 
 def main(*args: str) -> None:
     """
