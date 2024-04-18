@@ -129,7 +129,8 @@ countryNames = {
            'Don regionu': 'Don', 'Sorblar': 'Sorbia', 'Esperanto': 'Esperanto',
            'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr': 'Cyprus', 'Don vilayəti': 'Don',
            'Tatarstan': 'Tatarstan', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
-           'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha', },
+           'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
+           'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
