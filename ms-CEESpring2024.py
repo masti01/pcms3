@@ -669,7 +669,8 @@ countryNames = {
             'Võru': 'Võro', 'Sloveniya': 'Slovenia', 'Kosovo': 'Kosovo', 'Qrim': 'Crimean Tatars',
             'Qrim tatarlari': 'Crimean Tatars', 'Qrimchaklar': 'Crimean Tatars', 'Latviya': 'Latvia',
             'Slovakiya': 'Slovakia', 'Lujichanlar': 'Sorbia', 'Yoqutiston': 'Sakha',
-            'Ruminiya & Moldova': 'Romania and Moldova',
+            'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
+            'Qoratog‘': 'Montenegro',
             },
 }
 
