@@ -68,10 +68,7 @@ class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
     ConfigParserBot,  # A bot which reads options from scripts.ini setting file
-    # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
-    #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
     """
