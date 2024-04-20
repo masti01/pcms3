@@ -53,7 +53,6 @@ from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
     ExistingPageBot,
-    NoRedirectPageBot,
     SingleSiteBot,
 )
 import re
@@ -86,6 +85,7 @@ class BasicBot(
     :type summary_key: str
     """
 
+    use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
     results = {}
     ranges = [(100, '100+'),
