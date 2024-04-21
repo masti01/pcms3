@@ -518,7 +518,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
     update_options = {
         'ignorepdf': False,
         'limit': 0,  # stop after n modified pages
-        'summary': '',
+        'summary': 'Bot: Dodanie tytułów do linków w przypisach (patrz [[Wikipedysta:MastiBot/refLinks|opis]])',
     }
 
     def __init__(self, **kwargs) -> None:
