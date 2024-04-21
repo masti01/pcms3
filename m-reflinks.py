@@ -235,6 +235,23 @@ class RefLink:
                 self.archive['date'] = u'%s-%s-%s' % (match.group('year'), match.group('month'), match.group('day'))
         pywikibot.output(u'ARCHIVED:%s' % archived)
         return archived
+
+    def unknownPublisher(self, link):
+        # check if the site is archive site without original publisher info
+        archR = re.compile(r'(?i)https?://[^/]*(webcitation|archive)\.(org|web|is)')
+        return archR.match(link)
+
+    def refPublication(self, link):
+        """
+        Return serwer name from url
+        """
+        pywikibot.output(u'PUB:%s' % link)
+        # return(re.sub(r'.*:\/\/([^\/ ]*).*',r'\1',link))
+        # return(re.sub(r'.*:\/\/(.*?\.)?([^\.]*?\.[^\.\/]*?)([/\s].*)','\2',link))
+        link = re.sub(r'(?m)(.*:\/\/)([^\.]*?\.)?([^\.]*?\..*?)(\/|$)(.*)', r'\3', link)
+        pywikibot.output(u'RESULT:%s' % link)
+        return link
+
     def refTitle(self) -> str:
         """Return the <ref> with its new title."""
         # return '<ref{r.name}>[{r.link} {r.title}<!-- {r.comment} -->]</ref>' \
