@@ -225,7 +225,7 @@ class BasicBot(
                         except:
                             ident = 0
                             if self.opt.test:
-                                pywikibot.output(f'ERROR: ident is not integer:{ident})
+                                pywikibot.output(f'ERROR: ident is not integer:{ident}')
 
                 if not pnamed or (pnamed and name == sTitle):
                     break
