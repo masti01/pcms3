@@ -309,6 +309,15 @@ class RefLink:
             dead_link = f'<ref{self.name}>{tag}</ref>'
         return dead_link
 
+    def langCheck(self):
+        # lang
+        if not self.lang:
+            return
+        elif self.lang not in self.validlangs:
+            self.lang = None
+
+        return
+
     def transform(self, ispdf: bool = False) -> None:
         """Normalize the title."""
         # convert html entities
@@ -555,6 +564,9 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         self.NON_HTML = re.compile(
             br'(?is)<script[^>]*>.*?</script>|<style[^>]*>.*?</style>|'
             br'<!--.*?-->|<!\[CDATA\[.*?\]\]>')
+        # Extract html language from page
+        self.LANG = re.compile(
+            r'(?i)(<html[^>]*?lang\s*?=\s*?|<meta\s*?HTTP-EQUIV\s*?=\s*?\"Content-Language\"\s*?CONTENT\s*?=\s*?|<meta property\s*?=\s*?\"og:locale\"\s*?content\s*?=\s*?)\"(?P<lang>.*?)[\_\-\"]')
 
         # Authorized mime types for HTML pages
         self.MIME = re.compile(
@@ -762,6 +774,15 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                     ref.transform()
                     if ref.title:
                         break
+
+            # get page language
+            langmatch = self.LANG.search(u)
+            if langmatch:
+                ref.lang = langmatch.group('lang')
+                # pywikibot.output(u'LANGMATCH:%s' % langmatch.group('lang'))
+            # ref.langCheck()
+            pywikibot.output(u'Page lang:%s' % ref.lang)
+            # pywikibot.output(u)
 
             if not ref.title:
                 repl = ref.refLink()
