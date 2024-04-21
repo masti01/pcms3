@@ -796,7 +796,8 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                 pywikibot.info(f'<<lightred>>WARNING<<default>> {ref.link} : '
                                f'Blacklisted title ({ref.title})')
                 continue
-
+            # check title for illegal chars
+            ref.title = re.sub("\|", "{{!}}", ref.title)
             # Truncate long titles. 175 is arbitrary
             ref.title = shorten(ref.title, width=178, placeholder='...')
 
