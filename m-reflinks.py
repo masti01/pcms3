@@ -742,7 +742,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         if page.namespace != 10 and self.norefbot.lacksReferences(new_text):
             new_text = self.norefbot.addReferences(new_text)
 
-        new_text = self.deduplicator.process(new_text)
+        # new_text = self.deduplicator.process(new_text)
         old_text = page.text
 
         if old_text == new_text:
