@@ -283,7 +283,7 @@ class RefLink:
 
         return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.name, urltxt,
                                                                                              self.title,
-                                                                                             self.linkComment,
+                                                                                             self.comment,
                                                                                              pubtxt,
                                                                                              langtxt,
                                                                                              archtxt,
