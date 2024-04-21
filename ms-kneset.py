@@ -30,17 +30,20 @@ The following parameters are supported:
 -summary:         Set the action summary message for the edit.
 """
 #
-# (C) Pywikibot team, 2006-2021
+# (C) Pywikibot team, 2006-2022
 #
 # Distributed under the terms of the MIT license.
 #
+from __future__ import annotations
+
 import pywikibot
-
 from pywikibot import pagegenerators
-
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot,
-    AutomaticTWSummaryBot)
+    AutomaticTWSummaryBot,
+    ConfigParserBot,
+    ExistingPageBot,
+    SingleSiteBot,
+)
 
 import re
 
@@ -58,46 +61,61 @@ class BasicBot(
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
+
     """
     An incomplete sample bot.
 
-    @ivar summary_key: Edit summary message key. The message that should be
+    :ivar summary_key: Edit summary message key. The message that should be
         used is placed on /i18n subdirectory. The file containing these
         messages should have the same name as the caller script (i.e. basic.py
         in this case). Use summary_key to set a default edit summary message.
 
-    @type summary_key: str
+    :type summary_key: str
     """
+
     use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs) -> None:
-        """
-        Initializer.
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'outpage': 'User: mastiBot / test',  # default output page
+        'maxlines': 1000,  # default number of entries per page
+        'testprint': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'test': False,  # test options
+        'progress': False  # test option showing bot progress
+    }
 
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.available_options.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'outpage': 'User:mastiBot/test',  # default output page
-            'maxlines': 1000,  # default number of entries per page
-            'testprint': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-            'test': False,  # test options
-            'progress': False  # test option showing bot progress
-        })
-
-        # call initializer of the super class
-        super().__init__(site=True, **kwargs)
-        # assign the generator to the bot
-        self.generator = generator
+    # def __init__(self, generator, **kwargs) -> None:
+    #     """
+    #     Initializer.
+    #
+    #     @param generator: the page generator that determines on which pages
+    #         to work
+    #     @type generator: generator
+    #     """
+    #     # Add your own options to the bot and set their defaults
+    #     # -always option is predefined by BaseBot class
+    #     self.available_options.update({
+    #         'replace': False,  # delete old text and write the new text
+    #         'summary': None,  # your own bot summary
+    #         'text': 'Test',  # add this text from option. 'Test' is default
+    #         'top': False,  # append text on top of the page
+    #         'outpage': 'User:mastiBot/test',  # default output page
+    #         'maxlines': 1000,  # default number of entries per page
+    #         'testprint': False,  # print testoutput
+    #         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+    #         'test': False,  # test options
+    #         'progress': False  # test option showing bot progress
+    #     })
+    #
+    #     # call initializer of the super class
+    #     super().__init__(site=True, **kwargs)
+    #     # assign the generator to the bot
+    #     self.generator = generator
 
     def run(self):
 
@@ -331,20 +349,21 @@ def main(*args: str) -> None:
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-            # take the remaining options as booleans.
-            # You will get a hint if they aren't pre-defined in your bot class
+        # take the remaining options as booleans.
+        # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-            # The preloading option is responsible for downloading multiple
-            # pages from the wiki simultaneously.
-        gen = gen_factory.getCombinedGenerator(preload=True)
+    # The preloading option is responsible for downloading multiple
+    # pages from the wiki simultaneously.
+    gen = gen_factory.getCombinedGenerator(preload=True)
 
-        # check if further help is needed
-        if not pywikibot.bot.suggest_help(missing_generator=not gen):
-            # pass generator and private options to the bot
-            bot = BasicBot(generator=gen, **options)
-            bot.run()  # guess what it does
+    # check if further help is needed
+    if not pywikibot.bot.suggest_help(missing_generator=not gen):
+        # pass generator and private options to the bot
+        bot = BasicBot(generator=gen, **options)
+        bot.run()  # guess what it does
 
-    if __name__ == '__main__':
-        main()
+
+if __name__ == '__main__':
+    main()
