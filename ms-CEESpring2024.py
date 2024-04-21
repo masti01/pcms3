@@ -382,7 +382,7 @@ countryNames = {
            'Казакстан': 'Kazakhstan', 'Виру': 'Võro', 'Роми': 'Roma', 'Донски Регион': 'Don', 'Донски регион': 'Don',
            'Меѓународна статија': 'International', 'Ермениј': 'Armenia', 'Ромска заедница': 'Roma',
            'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian',
-           'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', },
+           'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -421,7 +421,7 @@ countryNames = {
            'Western Armenian': 'West Armenian', 'Erzya': 'Erzya', 'Western Armenian community': 'Western Armenian',
            'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Crimean tatars',
            'Crimean tatars': 'Crimean tatars', 'Эрзяне': 'Erzia', 'Западноармянская община': 'West Armenian',
-           'аромуны': 'Aromanian', 'Рома': 'Roma', },
+           'аромуны': 'Aromanian', 'Рома': 'Roma', 'Аромуны': 'Aromanian', },
     # sah countries
     'sah': {
     },
