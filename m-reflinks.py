@@ -281,7 +281,7 @@ class RefLink:
             if not self.unknownPublisher(self.link):
                 pubtxt = ' | opublikowany=%s' % self.refPublication(self.link)
 
-        return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.refname, urltxt,
+        return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.name, urltxt,
                                                                                              self.title,
                                                                                              self.linkComment,
                                                                                              pubtxt,
