@@ -182,14 +182,16 @@ badtitles = {
 }
 
 # Regex that match bare references
+# linksInRef = re.compile(
+#     # bracketed URLs
+#     r'(?i)<ref(?P<name>[^>]*)>\s*\[?(?P<url>(?:http|https)://(?:'
+#     # unbracketed with()
+#     r'^\[\]\s<>"]+\([^\[\]\s<>"]+[^\[\]\s\.:;\\,<>\?"]+|'
+#     # unbracketed without ()
+#     r'[^\[\]\s<>"]+[^\[\]\s\)\.:;\\,<>\?"]+|[^\[\]\s<>"]+))'
+#     r'[!?,\s]*\]?\s*</ref>')
 linksInRef = re.compile(
-    # bracketed URLs
-    r'(?i)<ref(?P<name>[^>]*)>\s*\[?(?P<url>(?:http|https)://(?:'
-    # unbracketed with()
-    r'^\[\]\s<>"]+\([^\[\]\s<>"]+[^\[\]\s\.:;\\,<>\?"]+|'
-    # unbracketed without ()
-    r'[^\[\]\s<>"]+[^\[\]\s\)\.:;\\,<>\?"]+|[^\[\]\s<>"]+))'
-    r'[!?,\s]*\]?\s*</ref>')
+    r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(\]|\]\.)?[ \t]*\.?<\/ref>')
 
 # Download this file :
 # http://www.twoevils.org/files/wikipedia/404-links.txt.gz
