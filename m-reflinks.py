@@ -586,7 +586,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
     def treat(self, page) -> None:
         """Process one page."""
         # Load the page's text from the wiki
-        pywikibot.output(f'Treating: {page.title}')
+        pywikibot.output(f'Treating: {page.title()}')
         new_text = page.text
         raw_text = textlib.removeDisabledParts(new_text)
         # for each link to change
