@@ -218,7 +218,7 @@ class RefLink:
         #        .format(r=self)
 
         # pywikibot.output(u'PRETRANSFORM:%s' % self.link)
-        self.transformLink()
+        self.transform()
         # pywikibot.output(u'POST:%s' % self.link)
 
         langtxt = ''
