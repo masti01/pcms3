@@ -217,6 +217,24 @@ class RefLink:
             'link': '',
             'date': ''}
 
+    def archiveLink(self, link) -> bool:
+        # check if the link leads to archive
+        # if yes set archive['link'] & ['date']
+        # return True if archive
+        # treat archive.org, archive.is
+        pywikibot.output(u'ARCH:%s' % link)
+        archived = False
+        archR = re.compile(
+            r'(?i)https?://[^/]*archive\.(org/web|is)/((?P<year>\d{4})\.?(?P<month>\d{2})\.?(?P<day>\d{2})-?(\d{6})?|[^/]*)/(?P<link>.*)')
+
+        match = archR.match(link)
+        if match:
+            archived = True
+            self.archive['link'] = match.group('link')
+            if match.group('year'):
+                self.archive['date'] = u'%s-%s-%s' % (match.group('year'), match.group('month'), match.group('day'))
+        pywikibot.output(u'ARCHIVED:%s' % archived)
+        return archived
     def refTitle(self) -> str:
         """Return the <ref> with its new title."""
         # return '<ref{r.name}>[{r.link} {r.title}<!-- {r.comment} -->]</ref>' \
