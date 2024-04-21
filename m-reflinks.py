@@ -335,13 +335,12 @@ class RefLink:
         self.avoid_uppercase()
         # avoid closing the link before the end
         self.title = self.title.replace(']', '&#93;')
+        # avoid pipe to be included in template
+        self.title = self.title.replace('|', '&#124;')
         # avoid multiple } being interpreted as a template inclusion
         self.title = self.title.replace('}}', '}&#125;')
         # prevent multiple quotes being interpreted as '' or '''
         self.title = self.title.replace("''", "'&#39;")
-
-        # avoid pipe to be included in template
-        self.title = re.sub(r"\|", "{{!}}", self.title)
 
         self.title = string2html(self.title, self.site.encoding())
         # TODO : remove HTML when both opening and closing tags are included
