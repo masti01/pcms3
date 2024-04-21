@@ -72,7 +72,7 @@ from pywikibot.pagegenerators import (
 )
 from pywikibot.textlib import replaceExcept
 from pywikibot.tools.chars import string2html
-from pywikibot.scripts import noreferences
+from scripts import noreferences
 
 
 
