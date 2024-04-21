@@ -1,76 +1,80 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 """
 Fetch and add titles for bare links in references.
 
-This bot will search for references which are only made of a link without title
-(i.e. <ref>[https://www.google.fr/]</ref> or <ref>https://www.google.fr/</ref>)
-and will fetch the html title from the link to use it as the title of the wiki
-link in the reference, i.e.
+This bot will search for references which are only made of a link
+without title (i.e. <ref>[https://www.google.fr/]</ref> or
+<ref>https://www.google.fr/</ref>) and will fetch the html title from
+the link to use it as the title of the wiki link in the reference, i.e.
 <ref>[https://www.google.fr/search?q=test test - Google Search]</ref>
 
-The bot checks every 20 edits a special stop page. If the page has been edited,
-it stops.
+The bot checks every 20 edits a special stop page. If the page has been
+edited, it stops.
 
-Warning: Running this script on German Wikipedia is not allowed anymore.
-
-As it uses it, you need to configure noreferences.py for your wiki, or it will
-not work.
+As it uses it, you need to configure noreferences.py for your wiki, or it
+will not work.
 
 pdfinfo is needed for parsing pdf titles.
 
-&params;
+The following parameters are supported:
 
--limit:n          Stops after n edits
-
--xml:dump.xml     Should be used instead of a simple page fetching method from
-                  pagegenerators.py for performance and load issues
+-xml:dump.xml     Should be used instead of a simple page fetching method
+                  from pagegenerators.py for performance and load issues
 
 -xmlstart         Page to start with when using an XML dump
 
--ignorepdf        Do not handle PDF files (handy if you use Windows and can't
-                  get pdfinfo)
+This script is a :py:obj:`ConfigParserBot <bot.ConfigParserBot>`.
+The following options can be set within a settings file which is scripts.ini
+by default::
 
--summary          Use a custom edit summary. Otherwise it uses the default
-                  one from i18n/reflinks.py
+-always          Doesn't ask every time whether the bot should make the change.
+                 Do it always.
+
+-limit:n          Stops after n edits
+
+-ignorepdf        Do not handle PDF files (handy if you use Windows and
+                  can't get pdfinfo)
+
+-summary          Use a custom edit summary. Otherwise it uses the
+                  default one from translatewiki
+
+The following generators and filters are supported:
+
+&params;
 """
-# (C) Nicolas Dumazet (NicDumZ), 2008
-# (C) Pywikibot team, 2008-2017
+# (C) Pywikibot team, 2008-2023
 #
 # Distributed under the terms of the MIT license.
 #
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import annotations
 
-import codecs
+import http.client as httplib
+import itertools
 import os
 import re
-import socket
 import subprocess
-import sys
 import tempfile
-import datetime
-
+from contextlib import suppress
+from enum import IntEnum
 from functools import partial
+from http import HTTPStatus
+from pathlib import Path
+from textwrap import shorten
 
 import pywikibot
-
-from pywikibot import comms, i18n, pagegenerators, textlib, Bot
-from pywikibot import config2 as config
+from pywikibot import comms, config, i18n, pagegenerators, textlib
+from pywikibot.backports import removeprefix
+from pywikibot.bot import ConfigParserBot, ExistingPageBot, SingleSiteBot
+from pywikibot.comms.http import get_charset_from_content_type
+from pywikibot.exceptions import ServerError
 from pywikibot.pagegenerators import (
     XMLDumpPageGenerator as _XMLDumpPageGenerator,
 )
-from pywikibot.tools.formatter import color_format
+from pywikibot.textlib import replaceExcept
+from pywikibot.tools.chars import string2html
+from pywikibot.scripts import noreferences
 
-import requests
 
-from scripts import noreferences
-
-if sys.version_info[0] > 2:
-    import http.client as httplib
-    from urllib.error import URLError
-else:
-    import httplib
-    from urllib2 import URLError
 
 docuReplacements = {
     '&params;': pagegenerators.parameterHelp
@@ -112,6 +116,7 @@ deadLinkTag = {
     'pl': u'[%s] {{Martwy link}}',
     'ru': u'[%s] {{subst:dead}}',
     'sr': '[%s] {{dead link}}',
+    'ur': '[%s] {{مردہ ربط}}',
 }
 
 soft404 = re.compile(
@@ -119,10 +124,11 @@ soft404 = re.compile(
     re.IGNORECASE)
 # matches an URL at the index of a website
 dirIndex = re.compile(
-    r'^\w+://[^/]+/((default|index)\.(asp|aspx|cgi|htm|html|phtml|mpx|mspx|php|shtml|var))?$',
+    r'\w+://[^/]+/((default|index)\.'
+    r'(asp|aspx|cgi|htm|html|phtml|mpx|mspx|php|shtml|var))?',
     re.IGNORECASE)
 # Extracts the domain name
-domain = re.compile(r'^(\w+)://(?:www.|)([^/]+)')
+domain = re.compile(r'^(\w+)://(?:www\.|)([^/]+)')
 
 globalbadtitles = r"""
 # is
@@ -141,7 +147,9 @@ globalbadtitles = r"""
 # anywhere
     |.*(
             403[ ]forbidden
-            |(404|page|file|information|resource).*not([ ]*be)?[ ]*(available|found)
+            |(404|page|file|information|resource).*not([ ]*be)?[ ]*
+            (available|found)
+            |are[ ](?:.+?[ ])?robot
             |site.*disabled
             |error[ ]404
             |error.+not[ ]found
@@ -168,7 +176,7 @@ badtitles = {
     'fr': '.*(404|page|site).*en +travaux.*',
     'es': '.*sitio.*no +disponible.*',
     'it': '((pagina|sito) (non trovat[ao]|inesistente)|accedi|errore)',
-    'ru': u'.*(Страница|страница).*(не[ ]*найдена|осутствует).*',
+    'ru': '.*([Сс]траница.*(не[ ]*найдена|отсутствует)|Вы.*человек).*',
 }
 
 # Regex that match bare references
