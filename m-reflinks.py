@@ -60,6 +60,7 @@ from functools import partial
 from http import HTTPStatus
 from pathlib import Path
 from textwrap import shorten
+import datetime
 
 import pywikibot
 from pywikibot import comms, config, i18n, pagegenerators, textlib
