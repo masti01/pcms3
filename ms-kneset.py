@@ -120,14 +120,14 @@ class BasicBot(
         for tpage in self.generator:
             licznik += 1
             if self.opt.test:
-                pywikibot.output('Treating #%i: %s' % (licznik, tpage.title()))
+                pywikibot.output(f'Treating #{licznik}:{tpage.title()}')
             refs = self.treat(tpage)  # get (name, id, creator, lastedit)
             if self.opt.test:
                 pywikibot.output(refs)
             reflinks.append(refs)
 
         footer = '\n|}'
-        footer += f'\n\nPrzetworzono {str(licznik)} stron.'
+        footer += f'\n\nPrzetworzono {licznik} stron.'
 
         outputpage = self.opt.outpage
 
