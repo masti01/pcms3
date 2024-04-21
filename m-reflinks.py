@@ -331,8 +331,6 @@ class RefLink:
         # remove extra whitespaces
         # remove leading and trailing ./;/,/-/_/+/ /
         self.title = re.sub(r' +', ' ', self.title.strip(r'=.;,-+_ '))
-        # avoid pipe to be included in template
-        self.title = re.sub(r"\|", "{{!}}", ref.title)
 
         self.avoid_uppercase()
         # avoid closing the link before the end
@@ -343,6 +341,9 @@ class RefLink:
         self.title = self.title.replace("''", "'&#39;")
         self.title = string2html(self.title, self.site.encoding())
         # TODO : remove HTML when both opening and closing tags are included
+
+        # avoid pipe to be included in template
+        self.title = re.sub(r"\|", "{{!}}", self.title)
 
     def avoid_uppercase(self) -> None:
         """
