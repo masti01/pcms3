@@ -514,7 +514,7 @@ class ReferencesRobot(Bot):
             'ignorepdf': False,  # boolean
             'repair': False,  # boolean
             'limit': None,  # int, stop after n modified pages
-            'summary': None,
+            'summary': "Bot: Dodanie tytułów do linków w przypisach (patrz [[Wikipedysta:MastiBot/refLinks|opis]])",
         })
 
         super(ReferencesRobot, self).__init__(**kwargs)
