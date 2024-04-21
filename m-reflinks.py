@@ -211,6 +211,11 @@ class RefLink:
         self.comment = i18n.twtranslate(self.site, 'reflinks-comment')
         self.url = re.sub('#.*', '', self.link)
         self.title = None
+        self.lang = None
+        self.validlangs = ()
+        self.archive = {
+            'link': '',
+            'date': ''}
 
     def refTitle(self) -> str:
         """Return the <ref> with its new title."""
