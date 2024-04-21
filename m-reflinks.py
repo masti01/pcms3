@@ -776,7 +776,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                         break
 
             # get page language
-            langmatch = self.LANG.search(linkedpagetext)
+            langmatch = self.LANG.search(r.text)
             if langmatch:
                 ref.lang = langmatch.group('lang')
                 # pywikibot.output(u'LANGMATCH:%s' % langmatch.group('lang'))
