@@ -43,6 +43,8 @@ from __future__ import absolute_import, unicode_literals
 
 __version__ = '$Id: c1795dd2fb2de670c0b4bddb289ea9d13b1e9b3f $'
 
+import time
+
 #
 
 import pywikibot
@@ -846,7 +848,7 @@ class BasicBot(
                     except pywikibot.exceptions.ServerError:
                         w = random.randint(3, 8)
                         pywikibot.output(f'Server Error while processing [[:{a.site.code}:{a.title()}]] (waiting {w} sec.)')
-                        sleep(w)
+                        time.sleep(w)
 
                 if self.opt.test:
                     pywikibot.output(aInfo)
