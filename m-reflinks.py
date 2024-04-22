@@ -8,6 +8,8 @@ without title (i.e. <ref>[https://www.google.fr/]</ref> or
 the link to use it as the title of the wiki link in the reference, i.e.
 <ref>[https://www.google.fr/search?q=test test - Google Search]</ref>
 
+Call: masti/m-reflinks.py -ns:0 -search:"insource:\<ref[^>]*?\>\s*?\[?https?:/"
+
 The bot checks every 20 edits a special stop page. If the page has been
 edited, it stops.
 
