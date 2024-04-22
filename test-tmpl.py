@@ -126,7 +126,7 @@ class BasicBot(
             pywikibot.output(f'EXTRACT:{tmpl}')
             title, params = tmpl[0]
             pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
-            regentmpl = self.glue_inline(tmpl)
+            regentmpl = self.glue_inline(tmpl[0])
             pywikibot.output(f'REGEN:{regentmpl}')
         # for t,p in templatelist:
         #     pywikibot.output(f"Template:{t}")
