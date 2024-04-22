@@ -50,6 +50,8 @@ cannot be set by settings file:
 #
 from __future__ import annotations
 
+import re
+
 import pywikibot
 from pywikibot import pagegenerators
 from pywikibot.bot import (
@@ -97,12 +99,16 @@ class BasicBot(
         'top': False,  # append text on top of the page
     }
 
+    tmplR = re.compile(r'{{[^{}]*({{[^{}]*({{[^{}]*}}[^{}]*)*}}[^{}]*)*}}')
+
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
 
         templatelist = extract_templates_and_params(text, remove_disabled_parts=True, strip=True)
         pywikibot.output(templatelist)
+        for t in re.finditer(tmplR,text):
+            pywikibot.output(f'TMPL:{t}')
         # for t,p in templatelist:
         #     pywikibot.output(f"Template:{t}")
         #     for k,v in p.items():
