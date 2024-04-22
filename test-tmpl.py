@@ -111,6 +111,7 @@ class BasicBot(
         for t in re.finditer(tmplR,text):
             pywikibot.output(f'TMPL:{t.group(0)}')
             tmpl = extract_templates_and_params(t.group(0), remove_disabled_parts=True, strip=True)
+            pywikibot.output(f'EXTRACT:{tmpl}')
             title, params = tmpl[0]
             pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
         # for t,p in templatelist:
