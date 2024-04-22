@@ -99,10 +99,11 @@ class BasicBot(
         'top': False,  # append text on top of the page
     }
 
-    tmplR = re.compile(r'{{[^{}]*({{[^{}]*({{[^{}]*}}[^{}]*)*}}[^{}]*)*}}')
+
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
+        tmplR = re.compile(r'{{[^{}]*({{[^{}]*({{[^{}]*}}[^{}]*)*}}[^{}]*)*}}')
         text = self.current_page.text
 
         templatelist = extract_templates_and_params(text, remove_disabled_parts=True, strip=True)
