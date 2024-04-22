@@ -384,7 +384,8 @@ countryNames = {
            'Казакстан': 'Kazakhstan', 'Виру': 'Võro', 'Роми': 'Roma', 'Донски Регион': 'Don', 'Донски регион': 'Don',
            'Меѓународна статија': 'International', 'Ермениј': 'Armenia', 'Ромска заедница': 'Roma',
            'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian',
-           'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan', },
+           'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan',
+           'Кримски Караити': 'Crimean Tatars', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -672,7 +673,7 @@ countryNames = {
             'Qrim tatarlari': 'Crimean Tatars', 'Qrimchaklar': 'Crimean Tatars', 'Latviya': 'Latvia',
             'Slovakiya': 'Slovakia', 'Lujichanlar': 'Sorbia', 'Yoqutiston': 'Sakha',
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
-            'Qoratog‘': 'Montenegro',
+            'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska',
             },
 }
 
