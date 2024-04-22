@@ -99,7 +99,19 @@ class BasicBot(
         'top': False,  # append text on top of the page
     }
 
+    def glue_inline(template_and_params) -> str:
+        """Return wiki text of template glued from params.
 
+        You can use items from extract_templates_and_params here to get
+        an equivalent template wiki text (it may happen that the order
+        of the params changes).
+        """
+        template, params = template_and_params
+        text = ''
+        for items in params.items():
+            text += '| {}={} '.format(*items)
+
+        return f'{{{{{template} | {text}}}}}'
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
@@ -114,7 +126,7 @@ class BasicBot(
             pywikibot.output(f'EXTRACT:{tmpl}')
             title, params = tmpl[0]
             pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
-            regentmpl = glue_template_and_params(tmpl[0])
+            regentmpl = self.glue_inline(tmpl[0])
             pywikibot.output(f'REGEN:{regentmpl}')
         # for t,p in templatelist:
         #     pywikibot.output(f"Template:{t}")
