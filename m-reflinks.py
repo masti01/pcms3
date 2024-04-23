@@ -748,10 +748,13 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                 tag = None
                 encodings = [encoding] if encoding else []
                 encodings += list(page.site.encodings())
-                for enc in encodings:
-                    with suppress(UnicodeDecodeError):
-                        tag = meta_content.group().decode(enc)
-                        break
+                try:
+                    for enc in encodings:
+                        with suppress(UnicodeDecodeError):
+                            tag = meta_content.group().decode(enc)
+                            break
+                except LookupError:
+                    pass
 
                 # Prefer the content-type from the HTTP header
                 if not content_type and tag:
