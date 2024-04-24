@@ -105,13 +105,13 @@ class BasicBot(
         header += "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n"
         header += "Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n"
         header += "\n\nBrakujące artykuły"
-        header += "\n<small>"
+        # header += "\n<small>"
         header += "\n*Legenda:"
         header += "\n*:'''#''' - Numer"
         header += "\n*:'''Hasło''' - Tytuł hasła"
         header += "\n*:'''Linki''' - Ilość linków do artykuł"
-        header += "\n</small>\n"
-        header += '{| class="wikitable sortable" style="font-size:85%;"\n|-\n!#\n!Hasło\n!Linki\n'
+        # header += "\n</small>\n"
+        header += '\n{| class="wikitable sortable" style="font-size:85%;"\n|-\n!#\n!Hasło\n!Linki\n'
 
         reflinks = {}
         licznik = 0

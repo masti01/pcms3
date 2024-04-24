@@ -102,12 +102,12 @@ class BasicBot(
         # prepare new page with table
         header = "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~."
         header += "\nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
-        header += "\n<small>"
+        # header += "\n<small>"
         header += "\n*Legenda:"
         header += "\n*:'''Hasło''' - Tytuł hasła"
         header += "\n*:'''Nagrody''' - zawartość pola nagrody"
-        header += "\n</small>\n"
-        header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Nagrody'
+        # header += "\n</small>\n"
+        header += '\n{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Nagrody'
     
         results = {}
     

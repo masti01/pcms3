@@ -103,11 +103,11 @@ class BasicBot(
         header = '{{Wikiprojekt:Strony ujednoznaczniające z linkami/Nagłówek}}\n\n'
         header += ":<small>Pominięto strony z szablonem {{s|Inne znaczenia}}</small>\n\n"
         header += "Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|bota]]. Ostatnia aktualizacja ~~~~~. \nWszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]]."
-        header += "\n<small>"
+        # header += "\n<small>"
         header += "\n*Legenda:"
         header += "\n*:'''Hasło''' - Tytuł hasła"
         header += "\n*:'''Ujednoznacznienia''' - Lista stron ujednoznaczniających"
-        header += "\n</small>\n"
+        # header += "\n</small>\n"
         header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Ujednoznacznienia'
     
         footer = '\n|}\n\n[[Kategoria:Wikiprojekt Strony ujednoznaczniające z linkami]]'
