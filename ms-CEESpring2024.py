@@ -322,7 +322,7 @@ countryNames = {
            'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
            'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia',
            'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova',
-           'Էրզյա': 'Erzya', },
+           'Էրզյա': 'Erzia', },
     # hyw countries
     'hyw': {
     },
@@ -386,7 +386,7 @@ countryNames = {
            'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian',
            'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan',
            'Кримски Караити': 'Crimean Tatars', 'Западна Ерменија': 'West Armenian', 'Ерзјани': 'Erzia',
-           'Власи': 'Aromanian', 'Татари': 'Crimean Tatars', },
+           'Власи': 'Aromanian', 'Татари': 'Crimean Tatars', 'Северо-западен регион на Русија': 'Russia', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -594,7 +594,8 @@ countryNames = {
            'Lužičkih Srba': 'Sorbia', 'Romi': 'Roma', 'Azerbejdžanu': 'Azerbaijan', 'Cipru': 'Cyprus',
            'Esperanta': 'Esperanto', 'Krimu': 'Crimean Tatars', 'Võru': 'Võro', 'Lužici': 'Sorbia', 'Malte': 'Malta',
            'Cipra': 'Cyprus', 'Grčke': 'Greece', 'Romskoj zajednici': 'Roma', 'Zapadnoj Armeniji': 'Western Armenian',
-           'International': 'International',
+           'International': 'International', 'Makedoniji (Aromanian)': 'Aromanian',
+           'Baškiriji (Baškirska)': 'Bashkortostan',
            },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
@@ -675,7 +676,7 @@ countryNames = {
             'Qrim tatarlari': 'Crimean Tatars', 'Qrimchaklar': 'Crimean Tatars', 'Latviya': 'Latvia',
             'Slovakiya': 'Slovakia', 'Lujichanlar': 'Sorbia', 'Yoqutiston': 'Sakha',
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
-            'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska',
+            'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan'
             },
 }
 
