@@ -678,7 +678,7 @@ countryNames = {
             'Slovakiya': 'Slovakia', 'Lujichanlar': 'Sorbia', 'Yoqutiston': 'Sakha',
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
             'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan',
-            'Loʻlilar': 'Roma',
+            'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina',
             },
 }
 
