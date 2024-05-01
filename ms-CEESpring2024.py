@@ -387,7 +387,8 @@ countryNames = {
            'Западноерменски јазик': 'West Armenian', 'Западноерменски': 'West Armenian',
            'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan',
            'Кримски Караити': 'Crimean Tatars', 'Западна Ерменија': 'West Armenian', 'Ерзјани': 'Erzia',
-           'Власи': 'Aromanian', 'Татари': 'Crimean Tatars', 'Северо-западен регион на Русија': 'Russia', },
+           'Власи': 'Aromanian', 'Татари': 'Crimean Tatars', 'Северо-западен регион на Русија': 'Russia',
+           'Лужички Срби': 'Sorbia', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -468,7 +469,7 @@ countryNames = {
            'Лeтoнија': 'Latvia', 'Пољскаа': 'Poland', 'Српска': 'Republic of Srpska', 'Маđарска': 'Hungary',
            'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', 'Руција': 'Russia',
            'Република Србија': 'Serbia', 'Федерација Босне и Херцеговине': 'Bosnia and Herzegovina',
-           'Русијја': 'Russia', },
+           'Русијја': 'Russia', 'Србијја':' Serbia', 'Мађарскаа': 'Hungary', },
     # tt countries
     'tt': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайҗан': 'Azerbaijan', 'Азәрбайҗан': 'Azerbaijan',
            'Башкортстан': 'Bashkortostan', 'Белорусия': 'Belarus', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
