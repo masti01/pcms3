@@ -49,9 +49,9 @@ from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
     ExistingPageBot,
-    NoRedirectPageBot,
     SingleSiteBot,
 )
+import backoff
 
 
 # This is required for the text that is shown when you run this script
@@ -80,7 +80,7 @@ class BasicBot(
 
     :type summary_key: str
     """
-
+    use_redirects = False
     summary_key = 'basic-changing'
 
     update_options = {
@@ -114,7 +114,13 @@ class BasicBot(
         for page in self.generator:
             if self.opt.test:
                 pywikibot.output('# %i (%i) Treating:%s' % (counter, refscounter, page.title(as_link=True)))
+            @backoff.on_exception(
+                backoff.expo,
+                pywikibot.exceptions.ServerError,
+                max_tries=5
+            )
             refs = self.treat(page)
+
             counter += 1
             if refs:
                 refscounter += 1
