@@ -51,7 +51,7 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-
+import backoff
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -90,6 +90,11 @@ class BasicBot(
         'test': False,  # print test messages
     }
 
+    @backoff.on_exception(
+        backoff.expo,
+        pywikibot.exceptions.ServerError,
+        max_tries=5
+    )
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
 
