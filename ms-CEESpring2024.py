@@ -566,7 +566,7 @@ countryNames = {
            'Roma': 'Roma', 'Küpros': 'Cyprus', 'Cyprus': 'Cyprus', 'Crimean Tatars': 'Crimean Tatars', 'Donimaa': 'Don',
            'Don': 'Don', 'sorbid': 'Sorbia', 'Sorbia': 'Sorbia', 'Võro': 'Võro', 'Erzya': 'Erzia',
            'Georgia': 'Georgia', 'Sakha': 'Sakha', 'Sahha': 'Sakha', 'kasahstan': 'Kazakhstan',
-           'Mordva (Ersa)': 'Erzia', },
+           'Mordva (Ersa)': 'Erzia', 'Krimm': 'Crimean Tatars', },
     # hr countries
     'hr': {'Albaniji': 'Albania', 'Albanija': 'Albania', 'Austriji': 'Austria', 'Austrija': 'Austria',
            'Azerbajdžanu': 'Azerbaijan', 'Azerbajdžan': 'Azerbaijan', 'Baškortostanu (Bashkortostan)': 'Bashkortostan',
@@ -679,7 +679,7 @@ countryNames = {
             'Slovakiya': 'Slovakia', 'Lujichanlar': 'Sorbia', 'Yoqutiston': 'Sakha',
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
             'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan',
-            'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina',
+            'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina', 'Saxa': 'Sakha',
             },
 }
 
