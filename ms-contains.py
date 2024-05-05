@@ -60,6 +60,7 @@ from pywikibot.bot import (
 import re
 import datetime
 from pywikibot import textlib
+import backoff
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -312,6 +313,11 @@ class BasicBot(
         #   success = False
         return success
 
+    @backoff.on_exception(
+        backoff.expo,
+        pywikibot.exceptions.ServerError,
+        max_tries=5
+    )
     def treat(self, cpage):
         """
         Returns page title if param 'text' not in page
