@@ -97,7 +97,7 @@ class BasicBot(
     @backoff.on_exception(
         backoff.expo,
         pywikibot.exceptions.ServerError,
-        on_backoff=self.backoff_hdlr,
+        on_backoff=backoff_hdlr,
         max_tries=5
     )
     def treat_page(self) -> None:
