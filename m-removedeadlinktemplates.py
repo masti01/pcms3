@@ -57,6 +57,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 import re
+import backoff
 
 
 # This is required for the text that is shown when you run this script
@@ -107,6 +108,16 @@ class BasicBot(
                 changeCounter += 1
         pywikibot.output(u'Statistics: Processed: %i, Removed: %i' % (counter, changeCounter))
 
+    def backoff_hdlr(details):
+        print("Backing off {wait:0.1f} seconds after {tries} tries "
+              "calling function {target} with args {args} and kwargs "
+              "{kwargs}".format(**details))
+    @backoff.on_exception(
+        backoff.expo,
+        pywikibot.exceptions.ServerError,
+        on_backoff=backoff_hdlr,
+        max_tries=5
+    )
     def treat(self, page):
         """
         Loads the given discussion page, verifies if the links in {{Martwy link dyskusja}}
