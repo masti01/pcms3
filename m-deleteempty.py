@@ -90,9 +90,14 @@ class BasicBot(
         'test': False,  # print test messages
     }
 
+    def backoff_hdlr(details):
+        print("Backing off {wait:0.1f} seconds after {tries} tries "
+              "calling function {target} with args {args} and kwargs "
+              "{kwargs}".format(**details))
     @backoff.on_exception(
         backoff.expo,
         pywikibot.exceptions.ServerError,
+        on_backoff=self.backoff_hdlr,
         max_tries=5
     )
     def treat_page(self) -> None:
