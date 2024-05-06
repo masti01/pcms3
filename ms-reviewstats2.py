@@ -133,9 +133,9 @@ class BasicBot(
 
         # reviews24 = self.countReviews(currtime, 24)
         # reviews168 = self.countReviews(currtime, 168)
-        date_string = '2024-01-01 00:00:00 +0100'
-        dectime = datetime.datetime.strptime(date_string, '%Y-%m-%d %H:%M:%S %z')
-        reviewsDec2023 = self.countReviews(dectime, 31*24)
+        date_string = '2024-01-02'
+        dectime = datetime.datetime.strptime(date_string, '%Y-%m-%d')
+        reviewsDec2023 = self.countReviews(dectime, 33*24)
 
         if self.opt.test:
             # pywikibot.output(u'Results24: %s' % reviews24)
