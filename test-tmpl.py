@@ -108,6 +108,7 @@ class BasicBot(
         """
         template, params = template_and_params
         text = ''
+        pywikibot.output(f'glueT:{template}, glueP:{params}')
         for items in params.items():
             text += '| {}={} '.format(*items)
 
