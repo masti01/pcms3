@@ -177,8 +177,8 @@ class BasicBot(
             initial = 0
             other = 0
             unreview = 0
-        if self.opt.test:
-            pywikibot.output(u'IN:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
+        # if self.opt.test:
+        #     pywikibot.output(u'IN:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
         # distinguish automatic review
         if self.opt.automatic or not action.endswith('a'):
             total += 1
@@ -191,8 +191,8 @@ class BasicBot(
         else:
             if self.opt.test:
                 pywikibot.output(u'Skipped automatic review')
-        if self.opt.test:
-            pywikibot.output(u'OUT:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
+        # if self.opt.test:
+        #     pywikibot.output(u'OUT:%s>>%s>>%i>>%i>>%i>>%i' % (action, user, total, initial, other, unreview))
         return (total, initial, other, unreview)
 
     def mainheader(self):
