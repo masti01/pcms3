@@ -160,7 +160,7 @@ class BasicBot(
             if self.opt.test:
                 #pywikibot.output(le)
                 pywikibot.output('%i>>%s>>%s>>%s>>%s>>%s>>%s' % (count, le.type(), le.logid(),le.timestamp(),le.action(),le.user(),le.page()))
-                print('%i;%s;%s;%s;%s;&s;%s' % (count, le.type(), le.logid(), le.timestamp(), le.action(), le.user(), le.page()))
+                print(f'{count};{le.type()};{le.logid()};{le.timestamp()};{le.action()};{le.user()};{le.page()}')
             r = self.addreview(reviews,le.user(),le.action())
             total, initial, other, unreview = r
             if total != 0:
