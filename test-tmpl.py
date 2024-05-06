@@ -125,8 +125,8 @@ class BasicBot(
             pywikibot.output(f'TMPL:{t.group(0)}')
             tmpl = extract_templates_and_params(t.group(0), remove_disabled_parts=True, strip=True)
             pywikibot.output(f'EXTRACT:{tmpl[0]}')
-            # title, params = tmpl[0]
-            # pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
+            title, params = tmpl[0]
+            pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
             # regentmpl = self.glue_inline(tmpl[0])
             # pywikibot.output(f'REGEN:{regentmpl}')
         # for t,p in templatelist:
