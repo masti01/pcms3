@@ -166,8 +166,8 @@ class BasicBot(
                 [],
                 caseInsensitive=False
             )
-        self.current_page.save()
-
+        # self.current_page.save()
+        pywikibot.output(self.current_page.text)
 
 
 def main(*args: str) -> None:
