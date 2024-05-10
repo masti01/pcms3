@@ -162,7 +162,8 @@ class BasicBot(
             self.current_page.text = replaceExcept(
                 self.current_page.text,
                 t.group(0),
-                self.glue(tmpl[0], inline=False)
+                self.glue(tmpl[0], inline=False),
+                []
             )
         self.current_page.save()
 
