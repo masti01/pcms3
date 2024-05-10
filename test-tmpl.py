@@ -155,7 +155,7 @@ class BasicBot(
             pywikibot.output(f'EXTRACT:{tmpl[0]}')
             title, params = tmpl[0]
             pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
-            regentmpl = self.glue_inline(tmpl[0])
+            # regentmpl = self.glue_inline(tmpl[0])
             # pywikibot.output(f'REGEN:\n{self.glue(tmpl[0])}')
             # pywikibot.output(f'REGEN2:\n{self.glue(tmpl[0], inline=False)}')
             # pywikibot.output(f'REGENINLINE:\n{self.glue(tmpl[0], inline=False, justify=True)}')
@@ -163,7 +163,8 @@ class BasicBot(
                 self.current_page.text,
                 t.group(0),
                 self.glue(tmpl[0], inline=False),
-                []
+                [],
+                caseInsensitive=False
             )
         self.current_page.save()
 
