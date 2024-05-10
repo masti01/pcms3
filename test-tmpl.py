@@ -131,7 +131,7 @@ class BasicBot(
             else:
                 if justify:
                     k,v = items
-                    text += f'| {k:justlen}= {v}'
+                    text += f'| {k:{justlen}}= {v}'
                 else:
                     text += '| {}={}\n '.format(*items)
 
