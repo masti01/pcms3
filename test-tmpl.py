@@ -150,12 +150,12 @@ class BasicBot(
         templatelist = extract_templates_and_params(text, remove_disabled_parts=True, strip=True)
         pywikibot.output(templatelist)
         for t in re.finditer(tmplR, text):
-            pywikibot.output(f'TMPL:{t.group(0)}')
+            # pywikibot.output(f'TMPL:{t.group(0)}')
             tmpltxt = t.group(0)
             tmpl = extract_templates_and_params(t.group(0), remove_disabled_parts=True, strip=True)
-            pywikibot.output(f'EXTRACT:{tmpl[0]}')
+            # pywikibot.output(f'EXTRACT:{tmpl[0]}')
             title, params = tmpl[0]
-            pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
+            # pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
             # regentmpl = self.glue_inline(tmpl[0])
             # pywikibot.output(f'REGEN:\n{self.glue(tmpl[0])}')
             # pywikibot.output(f'REGEN2:\n{self.glue(tmpl[0], inline=False)}')
@@ -168,7 +168,10 @@ class BasicBot(
             #     caseInsensitive=False,
             #     count = 1
             # )
-            self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
+            #self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
+            pywikibot.output(f'pattern:{tmpltxt}')
+            pywikibot.output(f'repl:{self.glue(tmpl[0])}')
+            pywikibot.output(f'page:{self.current_page.text}')
 
         # self.current_page.save()
         pywikibot.output(self.current_page.text)
