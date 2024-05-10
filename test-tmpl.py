@@ -135,7 +135,7 @@ class BasicBot(
                 else:
                     text += '| {}={}\n '.format(*items)
 
-        return f'{{{{{template} | {text}}}}}' if len(text) > 0 else f'{{{{{template}}}}}'
+        return f'{{{{{template} {text}}}}}' if len(text) > 0 else f'{{{{{template}}}}}'
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
