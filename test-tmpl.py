@@ -124,7 +124,7 @@ class BasicBot(
         template, params = template_and_params
         text = ''
         pywikibot.output(f'glueT:{template}, glueP:{params}')
-        justlen = max(params, key=len)
+        justlen = len(max(params, key=len))
         for items in params.items():
             if inline:
                 text += '| {}={} '.format(*items)
