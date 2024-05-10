@@ -172,9 +172,9 @@ class BasicBot(
             pywikibot.output(f'pattern:{tmpltxt}')
             pywikibot.output(f'repl:{self.glue(tmpl[0])}')
             pywikibot.output(f'page:{self.current_page.text}')
-
+re.sub
         # self.current_page.save()
-        pywikibot.output(self.current_page.text)
+        # pywikibot.output(self.current_page.text)
 
 
 def main(*args: str) -> None:
