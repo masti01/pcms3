@@ -169,10 +169,11 @@ class BasicBot(
             #     self.glue(tmpl[0], inline=False),
             #     [],
             # )
-            tmpltxt = re.sub('\|', '\|', tmpltxt)
-            self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
+            # tmpltxt = re.sub('\|', '\|', tmpltxt)
+            # self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
             # pywikibot.output(f'pattern:**************\n{tmpltxt}')
             # pywikibot.output(f'repl:**************\n{self.glue(tmpl[0])}')
+            self.current_page.text = self.current_page.text.replace(tmpltxt, self.glue(tmpl[0], inline=False))
             pywikibot.output(f'FINAL:**************\n{self.current_page.text}')
 
         # self.current_page.save()
