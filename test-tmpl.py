@@ -131,9 +131,9 @@ class BasicBot(
             else:
                 if justify:
                     k,v = items
-                    text += '| {}={}\n '.format(k.ljust(justlen,' '), v)
+                    text += '| {}={}\n'.format(k.ljust(justlen,' '), v)
                 else:
-                    text += '| {}={}\n '.format(*items)
+                    text += '| {}={}\n'.format(*items)
 
         if inline:
             return f'{{{{{template} {text}}}}}' if len(text) > 0 else f'{{{{{template}}}}}'
