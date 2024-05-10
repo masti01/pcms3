@@ -114,6 +114,29 @@ class BasicBot(
 
         return f'{{{{{template} | {text}}}}}' if len(text) > 0 else f'{{{{{template}}}}}'
 
+    def glue(self, template_and_params, inline=True, justify=False) -> str:
+        """Return wiki text of template glued from params.
+
+        You can use items from extract_templates_and_params here to get
+        an equivalent template wiki text (it may happen that the order
+        of the params changes).
+        """
+        template, params = template_and_params
+        text = ''
+        pywikibot.output(f'glueT:{template}, glueP:{params}')
+        justlen = max(params, key=len)
+        for items in params.items():
+            if inline:
+                text += '| {}={} '.format(*items)
+            else:
+                if justify:
+                    k,v = items
+                    text += f'| {k:justlen}= {v}'
+                else:
+                    text += '| {}={}\n '.format(*items)
+
+        return f'{{{{{template} | {text}}}}}' if len(text) > 0 else f'{{{{{template}}}}}'
+
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         # tmplR = re.compile(r'{{[^{}]*({{[^{}]*({{[^{}]*}}[^{}]*)*}}[^{}]*)*}}')
