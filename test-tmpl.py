@@ -164,7 +164,8 @@ class BasicBot(
                 t.group(0),
                 self.glue(tmpl[0], inline=False),
                 [],
-                caseInsensitive=False
+                caseInsensitive=False,
+                count = 1
             )
         # self.current_page.save()
         pywikibot.output(self.current_page.text)
