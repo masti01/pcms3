@@ -60,7 +60,7 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-from pywikibot.textlib import extract_templates_and_params, extract_templates_and_params_regex_simple, glue_template_and_params
+from pywikibot.textlib import extract_templates_and_params, extract_templates_and_params_regex_simple, glue_template_and_params, replaceExcept
 
 
 # This is required for the text that is shown when you run this script
@@ -156,19 +156,17 @@ class BasicBot(
             title, params = tmpl[0]
             pywikibot.output(f'TITLE:{title}, PARAMS COUNT:{len(params)}')
             regentmpl = self.glue_inline(tmpl[0])
-            pywikibot.output(f'REGEN:\n{self.glue(tmpl[0])}')
-            pywikibot.output(f'REGEN2:\n{self.glue(tmpl[0], inline=False)}')
-            pywikibot.output(f'REGENINLINE:\n{self.glue(tmpl[0], inline=False, justify=True)}')
-        # for t,p in templatelist:
-        #     pywikibot.output(f"Template:{t}")
-        #     for k,v in p.items():
-        #         pywikibot.output(f">>{k}:{v} ({len(k)})")
-        #     try:
-        #         ml = max([len(k) for k in p.keys()])
-        #     except ValueError:
-        #         ml = 0
-        #     pywikibot.output(f"Max len:{ml}")
-        #     pywikibot.output("**************************")
+            # pywikibot.output(f'REGEN:\n{self.glue(tmpl[0])}')
+            # pywikibot.output(f'REGEN2:\n{self.glue(tmpl[0], inline=False)}')
+            # pywikibot.output(f'REGENINLINE:\n{self.glue(tmpl[0], inline=False, justify=True)}')
+            self.current_page.text = replaceExcept(
+                self.current_page.text,
+                t.group(0),
+                self.glue(tmpl[0], inline=False)
+            )
+        self.current_page.save()
+
+
 
 def main(*args: str) -> None:
     """
