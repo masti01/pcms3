@@ -167,7 +167,7 @@ class BasicBot(
             #     caseInsensitive=False,
             #     count = 1
             # )
-            self.current_page.text = re.sub(t.group(0), self.glue(tmpl[0], inline=False), self.current_page.text)
+            self.current_page.text = re.sub(t, self.glue(tmpl[0], inline=False), self.current_page.text)
 
         # self.current_page.save()
         pywikibot.output(self.current_page.text)
