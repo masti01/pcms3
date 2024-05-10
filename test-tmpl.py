@@ -160,19 +160,20 @@ class BasicBot(
             # pywikibot.output(f'REGEN:\n{self.glue(tmpl[0])}')
             # pywikibot.output(f'REGEN2:\n{self.glue(tmpl[0], inline=False)}')
             # pywikibot.output(f'REGENINLINE:\n{self.glue(tmpl[0], inline=False, justify=True)}')
-            # self.current_page.text = replaceExcept(
-            #     self.current_page.text,
-            #     t.group(0),
-            #     self.glue(tmpl[0], inline=False),
-            #     [],
-            #     caseInsensitive=False,
-            #     count = 1
-            # )
-            #self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
             pywikibot.output(f'pattern:**************\n{tmpltxt}')
             pywikibot.output(f'repl:**************\n{self.glue(tmpl[0])}')
             pywikibot.output(f'page:**************\n{self.current_page.text}')
-re.sub
+            self.current_page.text = replaceExcept(
+                self.current_page.text,
+                t.group(0),
+                self.glue(tmpl[0], inline=False),
+                [],
+            )
+            #self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
+            # pywikibot.output(f'pattern:**************\n{tmpltxt}')
+            # pywikibot.output(f'repl:**************\n{self.glue(tmpl[0])}')
+            pywikibot.output(f'FINAL:**************\n{self.current_page.text}')
+
         # self.current_page.save()
         # pywikibot.output(self.current_page.text)
 
