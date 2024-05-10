@@ -169,9 +169,9 @@ class BasicBot(
             #     count = 1
             # )
             #self.current_page.text = re.sub(tmpltxt, self.glue(tmpl[0], inline=False), self.current_page.text)
-            pywikibot.output(f'pattern:{tmpltxt}')
-            pywikibot.output(f'repl:{self.glue(tmpl[0])}')
-            pywikibot.output(f'page:{self.current_page.text}')
+            pywikibot.output(f'pattern:**************\n{tmpltxt}')
+            pywikibot.output(f'repl:**************\n{self.glue(tmpl[0])}')
+            pywikibot.output(f'page:**************\n{self.current_page.text}')
 re.sub
         # self.current_page.save()
         # pywikibot.output(self.current_page.text)
