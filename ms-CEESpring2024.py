@@ -1655,7 +1655,7 @@ class BasicBot(
                             pywikibot.output('country:%s:%s:%i' % (name, value, len(value)))
                         if len(value) > 0:
                             countryDef = True
-                            if lang in countryNames.keys() and value in (countryNames[lang].keys()):
+                            if (lang in countryNames.keys() and value in (countryNames[lang].keys())) or (lang=='uk' and '=' not in value):
                                 countryEN = countryNames[lang][value]
                                 if self.opt.test2:
                                     pywikibot.output('countryEN:%s (%s)' % (countryEN, value))
