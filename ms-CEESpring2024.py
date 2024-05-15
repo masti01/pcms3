@@ -240,7 +240,7 @@ countryNames = {
            'Lužički srbi': 'Sorbia', 'Arumuni': 'Aromanian', 'Tatari': 'Crimean Tatars', 'Republika Saha': 'Sakha',
            'Võro (jezik)': 'Võro', 'Võro': 'Võro', 'Zapadnoarmenijski jezik': 'Western Armenian', 'Saha': 'Sakha',
            'Zapadnoarmenski jezik': 'West Armenian', 'Krimski Karaiti': 'Crimean Tatars',
-           'Krim': 'Crimean Tatars', 'Krimčaci': 'Crimean Tatars', 'Čuvašija': 'Russia', },
+           'Krim': 'Crimean Tatars', 'Krimčaci': 'Crimean Tatars', 'Čuvašija': 'Russia', 'esperanto': 'Esperanto', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -427,7 +427,8 @@ countryNames = {
            'Western Armenian': 'West Armenian', 'Erzya': 'Erzya', 'Western Armenian community': 'Western Armenian',
            'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Crimean tatars',
            'Crimean tatars': 'Crimean tatars', 'Эрзяне': 'Erzia', 'Западноармянская община': 'West Armenian',
-           'аромуны': 'Aromanian', 'Рома': 'Roma', 'Аромуны': 'Aromanian', },
+           'аромуны': 'Aromanian', 'Рома': 'Roma', 'Аромуны': 'Aromanian', 'цыгане': 'Roma',
+           'западные армяне': 'Western Armenian', },
     # sah countries
     'sah': {
     },
@@ -507,7 +508,9 @@ countryNames = {
            'Kazakistan': 'Kazakhstan', 'Tataristan': 'Tatarstan', 'Sırbistan Cumhuriyeti': 'Republic of Srpska',
            'Sıbistan': 'Serbia', 'Võro dili': 'Võro', 'Çingeneler': 'Roma', 'Kıbrıs': 'Cyprus', 'Çekya': 'Czechia',
            'Belarus': 'Belarus', 'Kırımçaklar': 'Crimean Tatars', 'Saha Cumhuriyeti': 'Sakha', 'Don bölgesi': 'Don',
-           'Rusya Federasyonu': 'Russia', 'Karaylar': 'Crimean Tatars', 'Erzyanlar': 'Erzia', },
+           'Rusya Federasyonu': 'Russia', 'Karaylar': 'Crimean Tatars', 'Erzyanlar': 'Erzia', 'Arumen': 'Aromanian',
+           'Sorbca': 'Sorbia', 'Tatarlar': 'Tatarstan', 'Võro': 'Võro', 'Batı Ermenicesi': 'Western Armenian',
+           'Saha': 'Sakha', 'Uluslararası': 'International', },
     # uk countries
     'uk': {'Албанія': 'Albania', 'Австрія': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Білорусія': 'Belarus', 'Білорусь': 'Belarus', 'Болгарія': 'Bulgaria', 'Вірменія': 'Armenia',
