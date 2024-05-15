@@ -1651,7 +1651,7 @@ class BasicBot(
                             # self.women[lang] += 1
                             parlist['hrights'] = True
                     # check article about country
-                    if lang in self.countryp.keys() and (name.lower().startswith(self.countryp[lang].lower()) or lang=='uk'):
+                    if lang in self.countryp.keys() and (name.lower().startswith(self.countryp[lang].lower()) or (lang=='uk' and name in ['1', '2', '3', '4', '5'])):
                         if self.opt.test2:
                             pywikibot.output('country:%s:%s:%i' % (name, value, len(value)))
                         if len(value) > 0:
