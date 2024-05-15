@@ -1622,7 +1622,8 @@ class BasicBot(
                     param[name] = value
                     paramcount += 1
                     if self.opt.test2:
-                        pywikibot.output('p:%s' % p)
+                        pywikibot.output(f'p:{p}')
+                        pywikibot.output(f'param[{name}]={value}')
                     # check username in template
                     if lang in self.userp.keys() and name.lower().startswith(self.userp[lang].lower()):
                         if self.opt.test:
