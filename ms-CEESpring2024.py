@@ -1341,7 +1341,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('tt'):  # keep parentheses for list
+                    if lang not in ('uk'):  # keep parentheses for list
                         continue
 
                 self.templatesList[lang] = [i.title()]
