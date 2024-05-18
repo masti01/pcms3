@@ -491,7 +491,7 @@ countryNames = {
            'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', 'Татарлар': 'Tatarstan', 'татарлар': 'Tatarstan',
            'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Roma',
            'татарла': 'Tatarstan', 'башкортлар': 'Bashkortostan', 'чуашлар': 'Russia', 'Татарстан': 'Tatarstan',
-           'Саха (Якутия)': 'Sakha', },
+           'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -510,7 +510,7 @@ countryNames = {
            'Belarus': 'Belarus', 'Kırımçaklar': 'Crimean Tatars', 'Saha Cumhuriyeti': 'Sakha', 'Don bölgesi': 'Don',
            'Rusya Federasyonu': 'Russia', 'Karaylar': 'Crimean Tatars', 'Erzyanlar': 'Erzia', 'Arumen': 'Aromanian',
            'Sorbca': 'Sorbia', 'Tatarlar': 'Tatarstan', 'Võro': 'Võro', 'Batı Ermenicesi': 'Western Armenian',
-           'Saha': 'Sakha', 'Uluslararası': 'International', },
+           'Saha': 'Sakha', 'Uluslararası': 'International', 'Yakutistan': 'Sakha', },
     # uk countries
     'uk': {'Албанія': 'Albania', 'Австрія': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкортостан': 'Bashkortostan',
            'Білорусія': 'Belarus', 'Білорусь': 'Belarus', 'Болгарія': 'Bulgaria', 'Вірменія': 'Armenia',
@@ -684,6 +684,7 @@ countryNames = {
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
             'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan',
             'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina', 'Saxa': 'Sakha',
+            'Don mintaqasi': 'Don',
             },
 }
 
