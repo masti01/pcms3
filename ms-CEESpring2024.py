@@ -132,7 +132,8 @@ countryNames = {
            'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr': 'Cyprus', 'Don vilayəti': 'Don',
            'Tatarstan': 'Tatarstan', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
            'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
-           'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', },
+           'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
+           'Aromun': 'Aromanian', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -684,7 +685,7 @@ countryNames = {
             'Ruminiya & Moldova': 'Romania and Moldova', 'Shimoliy Makedoniya': 'North Macedonia',
             'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan',
             'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina', 'Saxa': 'Sakha',
-            'Don mintaqasi': 'Don',
+            'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska',
             },
 }
 
