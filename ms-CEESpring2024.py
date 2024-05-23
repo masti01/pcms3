@@ -687,6 +687,8 @@ countryNames = {
             'Qoratog‘': 'Montenegro', 'Serb Respublikasi': 'Republic of Srpska', 'Tatarlar': 'Tatarstan',
             'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina', 'Saxa': 'Sakha',
             'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska', 'Chernogoriya': 'Montenegro',
+            'Slovenia': 'Slovenia', 'Erzyan': 'Erzia', 'Litva': 'Lithuania', 'Esperanto':' Esperanto',
+            'Qozog‘iston': 'Kazakhstan',
             },
 }
 
