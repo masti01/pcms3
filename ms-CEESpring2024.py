@@ -429,7 +429,7 @@ countryNames = {
            'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Tatarstan',
            'Crimean tatars': 'Crimean tatars', 'Эрзяне': 'Erzia', 'Западноармянская община': 'West Armenian',
            'аромуны': 'Aromanian', 'Рома': 'Roma', 'Аромуны': 'Aromanian', 'цыгане': 'Roma',
-           'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', },
+           'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', 'Республика Косово': 'Kosovo', },
     # sah countries
     'sah': {
     },
@@ -688,7 +688,7 @@ countryNames = {
             'Loʻlilar': 'Roma', 'Bosniya va Gersegovina': 'Bosnia and Herzegovina', 'Saxa': 'Sakha',
             'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska', 'Chernogoriya': 'Montenegro',
             'Slovenia': 'Slovenia', 'Erzyan': 'Erzia', 'Litva': 'Lithuania', 'Esperanto':' Esperanto',
-            'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha',
+            'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha', 'Rossiya': 'Russia',
             },
 }
 
