@@ -149,6 +149,9 @@ class BasicBot(
             pywikibot.output('***** RESULT *****')
             pywikibot.output(res)
         for i in res:
+            if self.opt.test:
+                pywikibot.output('***** redir *****')
+                pywikibot.output(f'redirlis[i]:{redirlist[i]}')
             count = self.redirCount(redirlist[i])
             l = redirlist[i]['list']
             if self.opt.resprogress:
