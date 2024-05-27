@@ -670,7 +670,7 @@ countryNames = {
            'Lithuania': 'Lithuania', 'Azerbaijan': 'Azerbaijan', 'North Macedonia': 'North Macedonia',
            'Malta': 'Malta', 'Greece': 'Greece', 'Latvia': 'Latvia', 'Slovakia': 'Slovakia',
            'Romania and Moldova': 'Romania and Moldova', 'Bulgaria': 'Bulgaria',
-           'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Romania': 'Romania', 'Estonia': 'Estonia',
+           'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Romania': 'Romania and Moldova', 'Estonia': 'Estonia',
            'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus',
            },
     # uz countries
@@ -689,6 +689,7 @@ countryNames = {
             'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska', 'Chernogoriya': 'Montenegro',
             'Slovenia': 'Slovenia', 'Erzyan': 'Erzia', 'Litva': 'Lithuania', 'Esperanto':' Esperanto',
             'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha', 'Rossiya': 'Russia',
+            'Moldova': 'Romania and Moldova',
             },
 }
 
