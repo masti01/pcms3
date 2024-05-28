@@ -689,7 +689,7 @@ countryNames = {
             'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska', 'Chernogoriya': 'Montenegro',
             'Slovenia': 'Slovenia', 'Erzyan': 'Erzia', 'Litva': 'Lithuania', 'Esperanto':' Esperanto',
             'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha', 'Rossiya': 'Russia',
-            'Moldova': 'Romania and Moldova',
+            'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova',
             },
 }
 
