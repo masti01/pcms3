@@ -148,7 +148,7 @@ class BasicBot(
             pywikibot.output(redirlist)
             pywikibot.output('***** RESULT *****')
             pywikibot.output(res)
-        for i in res:
+        for i, li in res:
             if self.opt.test:
                 pywikibot.output('***** redir *****')
                 pywikibot.output(f'redirlist[i]:{type(i)}:{i}')
