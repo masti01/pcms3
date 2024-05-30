@@ -324,7 +324,7 @@ countryNames = {
            'Գնչուներ': 'Roma', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
            'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia',
            'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova',
-           'Էրզյա': 'Erzia', },
+           'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia',  },
     # hyw countries
     'hyw': {
     },
@@ -407,7 +407,8 @@ countryNames = {
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
            'Cipru': 'Cyprus', 'Romi': 'Roma', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
            'Aromâni': 'Aromanian', 'romi': 'Roma', 'Armenia de Vest': 'West Armenian', 'Iacutia': 'Sakha',
-           'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', },
+           'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', 'tătari crimeeni': 'Crimean tatars',
+           'limba aromână': 'Aromanian', },
     # roa-rup countries
     'roa-rup': {
             },
@@ -492,7 +493,7 @@ countryNames = {
            'Moлдова': 'Moldova', 'Россия Федерациясе': 'Russia', 'Татарлар': 'Tatarstan', 'татарлар': 'Tatarstan',
            'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Roma',
            'татарла': 'Tatarstan', 'башкортлар': 'Bashkortostan', 'чуашлар': 'Russia', 'Татарстан': 'Tatarstan',
-           'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatarstan', },
+           'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatarstan', 'эрзя': 'Erzia',  },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -572,6 +573,7 @@ countryNames = {
            'Don': 'Don', 'sorbid': 'Sorbia', 'Sorbia': 'Sorbia', 'Võro': 'Võro', 'Erzya': 'Erzia',
            'Georgia': 'Georgia', 'Sakha': 'Sakha', 'Sahha': 'Sakha', 'kasahstan': 'Kazakhstan',
            'Mordva (Ersa)': 'Erzia', 'Krimm': 'Crimean Tatars', 'Võrumaa': 'Võro', 'Bosnia': 'Bosnia and Herzegovina',
+           'Mordva (ersa)': 'Erzia',
            },
     # hr countries
     'hr': {'Albaniji': 'Albania', 'Albanija': 'Albania', 'Austriji': 'Austria', 'Austrija': 'Austria',
@@ -689,7 +691,7 @@ countryNames = {
             'Don mintaqasi': 'Don', 'Serbiya respublikasi': 'Republic of Srpska', 'Chernogoriya': 'Montenegro',
             'Slovenia': 'Slovenia', 'Erzyan': 'Erzia', 'Litva': 'Lithuania', 'Esperanto':' Esperanto',
             'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha', 'Rossiya': 'Russia',
-            'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova',
+            'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova', 'Belarusiya': 'Belarus',
             },
 }
 
