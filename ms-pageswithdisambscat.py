@@ -6,6 +6,8 @@ Wikiprojekt:Strony ujednoznaczniające z linkami/Wiele linków z pojedynczych ar
 Call:
     python3 pwb.py masti/ms-pageswithdisambscat.py -cat:'Strony ujednoznaczniające' -summary:"Bot aktualizuje
         stronę" -outpage:'Wikiprojekt:Strony ujednoznaczniające z linkami/Wiele linków z pojedynczych artykułów'
+    python3 pwb.py masti/ms-pageswithdisambscat.py -cat:'Strony ujednoznaczniające' -summary:"Bot aktualizuje stronę"
+        -outpage:'Wikiprojekt:Strony ujednoznaczniające z linkami/Wiele linków z pojedynczych artykułów' -progress -test -resprogress -log -limit:1000
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
