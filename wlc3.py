@@ -3138,6 +3138,7 @@ ignorelist = [
     re.compile('.*[\./@]mujeresbacanas\.com/la-gran-piloto-chilena-margot-duhalde-1920-las/'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]ev-akademie-tutzing\.de/'),  # bot rejected on site (masti, szoltys)
     re.compile('.*[\./@]mariomerola\.it/ricordo\.asp'),  # bot rejected on site (masti, szoltys)
+    re.compile('.*[\./@]salonliteracki\.pl'),  # bot rejected on site (masti, Revsson)
 ]
 
 
