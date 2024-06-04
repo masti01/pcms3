@@ -693,7 +693,7 @@ countryNames = {
             'Qozog‘iston': 'Kazakhstan', 'Yoqutiston (Saxa)': 'Sakha', 'Rossiya': 'Russia',
             'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova', 'Belarusiya': 'Belarus',
             'Xalqaro': 'International', 'Makedoniya': 'North Macedonia', 'Kipr': 'Cyprus', 'Chexiya': 'Czechia',
-            'Belorus': 'Belarus',
+            'Belorus': 'Belarus', 'Tatariston': 'Tatarstan',
             },
 }
 
@@ -778,7 +778,7 @@ class BasicBot(
             'ge': 'ადამიანის უფლებები', 'de': 'Menschenrechte', 'el': 'νθρώπινα δικαιώματα', 'hu': 'Emberi jogok',
             'lv': 'Cilvēktiesības', 'mk': 'Човекови права', 'mt': 'Drittijiet umani',
             'ru': 'Права человека', 'sk': 'Ľudské práva', 'sl': 'Človekove pravice', 'tt': 'Кеше хокуклары',
-            'tr': 'İnsan hakları, '
+            'tr': 'İnsan hakları', 'uz': 'inson huquqlari',
 
     }
     # local name for user parameter
