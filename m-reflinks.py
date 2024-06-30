@@ -300,7 +300,7 @@ class RefLink:
         #                                                                                      archdatatxt,
         #                                                                                      datetime.datetime.now().strftime(
         #                                                                                          "%Y-%m-%d"))
-        linkcomment = f"{self.linkcomment} ({self.title})' if self.linkcomment else f'{self.title}"
+        linkcomment = f"{self.linkcomment} ({self.title})" if self.linkcomment else f"{self.title}"
         return f"<ref{self.name}>{{{{Cytuj{urltxt} | tytuł={linkcomment}<!-- {self.comment} -->{pubtxt}{langtxt}{archtxt}{archdatatxt} | data dostępu={datetime.datetime.now().strftime("%Y-%m-%d")}}}}}</ref>"
     def refLink(self) -> str:
         """No title has been found, return the unbracketed link."""
