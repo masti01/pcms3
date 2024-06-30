@@ -527,6 +527,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         'ignorepdf': False,
         'limit': 0,  # stop after n modified pages
         'summary': 'Bot: Dodanie tytułów do linków w przypisach (patrz [[Wikipedysta:MastiBot/refLinks|opis]])',
+        'commented': False  # include links with title in wikipage
     }
 
     def __init__(self, **kwargs) -> None:
@@ -669,8 +670,11 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
                 continue
-            linkcomment = match['comment'] if match['comment'] else None
-            ref = RefLink(link, match['name'], linkcomment, site=self.site)
+            if self.opt.commented:
+                linkcomment = match['comment'] if match['comment'] else None
+                ref = RefLink(link, match['name'], linkcomment, site=self.site)
+            else:
+                ref = RefLink(link, match['name'], None, site=self.site)
 
             try:
                 r = comms.http.fetch(
