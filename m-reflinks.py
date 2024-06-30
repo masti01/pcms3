@@ -193,10 +193,11 @@ badtitles = {
 #     # unbracketed without ()
 #     r'[^\[\]\s<>"]+[^\[\]\s\)\.:;\\,<>\?"]+|[^\[\]\s<>"]+))'
 #     r'[!?,\s]*\]?\s*</ref>')
-# linksInRef = re.compile(
-#     r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(\]|\]\.)?[ \t]*\.?<\/ref>')
-# include comment from page
+# do nont include links with comment from page
 linksInRef = re.compile(
+    r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(\]|\]\.)?[ \t]*\.?<\/ref>')
+# include comment from page
+linksInRefComment = re.compile(
     r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(?P<comment> +[^]<]*)(\]|\]\.)?[ \t]*\.?<\/ref>')
 
 # Download this file :
