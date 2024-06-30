@@ -670,11 +670,11 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
                 continue
-            if self.opt.commented:
-                linkcomment = match['comment'] if match['comment'] else None
+            if self.opt.commented and match['comment']:
+                continue
+            else
+                linkcomment = match['comment']
                 ref = RefLink(link, match['name'], linkcomment, site=self.site)
-            else:
-                ref = RefLink(link, match['name'], None, site=self.site)
 
             try:
                 r = comms.http.fetch(
