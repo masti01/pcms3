@@ -672,7 +672,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                 continue
             if self.opt.commented and match['comment']:
                 continue
-            else
+            else:
                 linkcomment = match['comment']
                 ref = RefLink(link, match['name'], linkcomment, site=self.site)
 
