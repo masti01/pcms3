@@ -669,7 +669,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
                 continue
-            linkcomment = match['linkcomment'] if match['linkcomment'] else None
+            linkcomment = match['comment'] if match['comment'] else None
             ref = RefLink(link, match['name'], linkcomment, site=self.site)
 
             try:
