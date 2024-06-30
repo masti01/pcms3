@@ -278,18 +278,18 @@ class RefLink:
         pubtxt = ''
 
         if self.lang:
-            langtxt = ' | język=%s' % self.lang
+            langtxt = f' | język={self.lang}'
 
         if self.archiveLink(self.link):
-            urltxt = ' | url=%s' % self.archive['link']
-            archtxt = ' | archiwum=%s' % self.link
-            pubtxt = ' | opublikowany=%s' % self.refPublication(self.archive['link'])
+            urltxt = f' | url={self.archive['link']}'
+            archtxt = f' | archiwum={self.link}'
+            pubtxt = f' | opublikowany={self.refPublication(self.archive['link'])}'
             if self.archive['date']:
-                archdatatxt = ' | zarchiwizowano=%s' % self.archive['date']
+                archdatatxt = f' | zarchiwizowano={self.archive['date']}'
         else:
-            urltxt = ' | url=%s' % self.link
+            urltxt = f' | url={self.link}'
             if not self.unknownPublisher(self.link):
-                pubtxt = ' | opublikowany=%s' % self.refPublication(self.link)
+                pubtxt = f' | opublikowany={self.refPublication(self.link)}'
 
         # return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.name, urltxt,
         #                                                                                      self.title,
@@ -301,7 +301,7 @@ class RefLink:
         #                                                                                      datetime.datetime.now().strftime(
         #                                                                                          "%Y-%m-%d"))
         linkcomment = f'{self.linkcomment} ({self.title})' if self.linkcomment else f'{self.title}'
-        return f'<ref{self.name}>{{Cytuj{urltxt} | tytuł={linkcomment}<!-- {self.comment} -->{pubtxt}{langtxt}{archtxt}{archdatatxt} | data dostępu={datetime.datetime.now().strftime("%Y-%m-%d")}}}</ref>'
+        return f'<ref{self.name}>{{{{Cytuj{urltxt} | tytuł={linkcomment}<!-- {self.comment} -->{pubtxt}{langtxt}{archtxt}{archdatatxt} | data dostępu={datetime.datetime.now().strftime("%Y-%m-%d")}}}}}</ref>'
     def refLink(self) -> str:
         """No title has been found, return the unbracketed link."""
         return '<ref{r.name}>{r.link}</ref>'.format(r=self)
