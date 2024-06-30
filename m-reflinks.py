@@ -212,7 +212,7 @@ class RefLink:
 
     """Container to handle a single bare reference."""
 
-    def __init__(self, link, name, site=None) -> None:
+    def __init__(self, link, name, linkcomment, site=None) -> None:
         """Initializer."""
         self.name = name
         self.link = link
@@ -220,7 +220,7 @@ class RefLink:
         self.comment = i18n.twtranslate(self.site, 'reflinks-comment')
         self.url = re.sub('#.*', '', self.link)
         self.title = None  # from linked webpage
-        self.linkcomment = None  # from ref in wikipedia page
+        self.linkcomment = linkcomment  # from ref in wikipedia page
         self.lang = None
         self.validlangs = ()
         self.archive = {
@@ -669,8 +669,8 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
                 continue
-
-            ref = RefLink(link, match['name'], site=self.site)
+            linkcomment = match['linkcomment'] if match['linkcomment'] else None
+            ref = RefLink(link, match['name'], linkcomment, site=self.site)
 
             try:
                 r = comms.http.fetch(
