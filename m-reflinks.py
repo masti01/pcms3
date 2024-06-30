@@ -193,8 +193,11 @@ badtitles = {
 #     # unbracketed without ()
 #     r'[^\[\]\s<>"]+[^\[\]\s\)\.:;\\,<>\?"]+|[^\[\]\s<>"]+))'
 #     r'[!?,\s]*\]?\s*</ref>')
+# linksInRef = re.compile(
+#     r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(\]|\]\.)?[ \t]*\.?<\/ref>')
+# include comment from page
 linksInRef = re.compile(
-    r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(\]|\]\.)?[ \t]*\.?<\/ref>')
+    r'(?i)<ref(?P<name>[^>]*)>\.?\[?(?P<url>http[s]?:(\/\/[^:\s\?]+?)(\??[^\s<]*?)[^\]\.])(?P<comment> +[^]<]*)(\]|\]\.)?[ \t]*\.?<\/ref>')
 
 # Download this file :
 # http://www.twoevils.org/files/wikipedia/404-links.txt.gz
@@ -216,7 +219,8 @@ class RefLink:
         self.site = site or pywikibot.Site()
         self.comment = i18n.twtranslate(self.site, 'reflinks-comment')
         self.url = re.sub('#.*', '', self.link)
-        self.title = None
+        self.title = None  # from linked webpage
+        self.linkcomment = None  # from ref in wikipedia page
         self.lang = None
         self.validlangs = ()
         self.archive = {
@@ -287,16 +291,17 @@ class RefLink:
             if not self.unknownPublisher(self.link):
                 pubtxt = ' | opublikowany=%s' % self.refPublication(self.link)
 
-        return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.name, urltxt,
-                                                                                             self.title,
-                                                                                             self.comment,
-                                                                                             pubtxt,
-                                                                                             langtxt,
-                                                                                             archtxt,
-                                                                                             archdatatxt,
-                                                                                             datetime.datetime.now().strftime(
-                                                                                                 "%Y-%m-%d"))
-
+        # return '<ref%s>{{Cytuj%s | tytuł=%s<!-- %s -->%s%s%s%s | data dostępu=%s}}</ref>' % (self.name, urltxt,
+        #                                                                                      self.title,
+        #                                                                                      self.comment,
+        #                                                                                      pubtxt,
+        #                                                                                      langtxt,
+        #                                                                                      archtxt,
+        #                                                                                      archdatatxt,
+        #                                                                                      datetime.datetime.now().strftime(
+        #                                                                                          "%Y-%m-%d"))
+        linkcomment = f'{self.linkcomment} ({self.title})' if self.linkcomment else f'{self.title}'
+        return f'<ref{self.name}>{{Cytuj{urltxt} | tytuł={linkcomment}<!-- {self.comment} -->{pubtxt}{langtxt}{archtxt}{archdatatxt} | data dostępu={datetime.datetime.now().strftime("%Y-%m-%d")}}}</ref>'
     def refLink(self) -> str:
         """No title has been found, return the unbracketed link."""
         return '<ref{r.name}>{r.link}</ref>'.format(r=self)
