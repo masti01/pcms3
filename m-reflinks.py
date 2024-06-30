@@ -231,7 +231,7 @@ class RefLink:
         pywikibot.output(u'ARCH:%s' % link)
         archived = False
         archR = re.compile(
-            r'(?i)https?://[^/]*archive\.(org/web|is)/((?P<year>\d{4})\.?(?P<month>\d{2})\.?(?P<day>\d{2})-?(\d{6})?|[^/]*)/(?P<link>.*)')
+            r'(?i)https?://[^/]*archive\.(org/web|is|today)/((?P<year>\d{4})\.?(?P<month>\d{2})\.?(?P<day>\d{2})-?(\d{6})?|[^/]*)/(?P<link>.*)')
 
         match = archR.match(link)
         if match:
@@ -244,7 +244,7 @@ class RefLink:
 
     def unknownPublisher(self, link):
         # check if the site is archive site without original publisher info
-        archR = re.compile(r'(?i)https?://[^/]*(webcitation|archive)\.(org|web|is)')
+        archR = re.compile(r'(?i)https?://[^/]*(webcitation|archive)\.(org|web|is|today)')
         return archR.match(link)
 
     def refPublication(self, link):
