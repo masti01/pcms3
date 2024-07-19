@@ -52,7 +52,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 import datetime
-from pywikibot.exceptions import NoPageError, KeyError
+from pywikibot.exceptions import NoPageError
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
