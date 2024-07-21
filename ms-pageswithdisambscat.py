@@ -88,6 +88,7 @@ class BasicBot(
     """
 
     summary_key = 'basic-changing'
+    use_redirects = False
     results = {}
 
     update_options = {
