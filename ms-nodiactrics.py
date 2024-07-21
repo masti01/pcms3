@@ -52,7 +52,6 @@ from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
     ExistingPageBot,
-    NoRedirectPageBot,
     SingleSiteBot,
 )
 import re
@@ -71,7 +70,6 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
@@ -87,6 +85,7 @@ class BasicBot(
     """
 
     summary_key = 'basic-changing'
+    use_redirects = False
 
     update_options = {
         'replace': False,  # delete old text and write the new text
