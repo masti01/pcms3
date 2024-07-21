@@ -671,7 +671,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
                 continue
-            if not self.opt.commented and match['comment']:
+            if not self.opt.commented:  # and match['comment']:
                 continue
             else:
                 linkcomment = match['comment']
