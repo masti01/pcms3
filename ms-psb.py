@@ -51,7 +51,7 @@ from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    SingleSiteBot, ConfigParserBot, ExistingPageBot,
     AutomaticTWSummaryBot)
 
 
@@ -244,7 +244,6 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 

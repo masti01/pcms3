@@ -49,7 +49,7 @@ import pywikibot
 from pywikibot import pagegenerators
 from pywikibot.backports import Tuple
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    SingleSiteBot, ConfigParserBot, ExistingPageBot,
     AutomaticTWSummaryBot)
 
 # This is required for the text that is shown when you run this script
@@ -64,7 +64,6 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
     """
