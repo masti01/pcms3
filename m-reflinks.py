@@ -528,7 +528,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         'ignorepdf': False,
         'limit': 0,  # stop after n modified pages
         'summary': 'Bot: Dodanie tytułów do linków w przypisach (patrz [[Wikipedysta:MastiBot/refLinks|opis]])',
-        'commented': False  # include links with title in wikipage
+        'commented': False,  # include links with title in wikipage
         'progress': False  # display bot progress
     }
 
