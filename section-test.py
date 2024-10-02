@@ -46,15 +46,20 @@ cannot be set by settings file:
 #
 # Distributed under the terms of the MIT license.
 #
+from __future__ import annotations
+
 import pywikibot
+from pywikibot import pagegenerators
+from pywikibot.bot import (
+    AutomaticTWSummaryBot,
+    ConfigParserBot,
+    ExistingPageBot,
+    SingleSiteBot,
+)
 
 from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 from pywikibot import textlib
-
-from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
-    AutomaticTWSummaryBot)
 
 
 # This is required for the text that is shown when you run this script
