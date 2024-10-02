@@ -57,7 +57,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
-from pywikibot.backports import Tuple
+# from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 from pywikibot import textlib
 
