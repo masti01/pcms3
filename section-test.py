@@ -124,7 +124,7 @@ class BasicBot(
         text = self.current_page.text
         sections = textlib.extract_sections(text)
 
-        pywikibot.output(sections, self.site)
+        pywikibot.output(sections, pywikibot.Site())
 
 
         # if summary option is None, it takes the default i18n summary from
