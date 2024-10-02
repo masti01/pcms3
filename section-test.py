@@ -126,6 +126,8 @@ class BasicBot(
 
         for s in sections.sections:
             pywikibot.output(f"[{s.level}]: {s.heading}")
+            if s.heading == "Bibliografia":
+                pywikibot.output(s.content)
 
 
         # if summary option is None, it takes the default i18n summary from
