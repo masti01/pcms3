@@ -122,9 +122,9 @@ class BasicBot(
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
-        sections = textlib.extract_sections(text)
+        sections = textlib.extract_sections(text, pywikibot.Site())
 
-        pywikibot.output(sections, pywikibot.Site())
+        pywikibot.output(sections)
 
 
         # if summary option is None, it takes the default i18n summary from
