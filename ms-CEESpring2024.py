@@ -756,7 +756,7 @@ class BasicBot(
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
                 'en': 'country', 'uz': 'mamlakat', }
     # local name for topic parameter
-    topicp = {'pl': 'parametr', 'az': 'qadınlar', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
+    topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
               'bs': 'tema', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
               'hu': 'téma', 'ka': 'თემა', 'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
