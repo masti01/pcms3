@@ -57,6 +57,7 @@ from bs4 import BeautifulSoup
 import urllib
 import re
 from datetime import datetime
+from pywikibot import textlib
 
 
 # This is required for the text that is shown when you run this script
@@ -235,8 +236,28 @@ class BasicBot(
     def fixPage(self, page):
         # get page, do replacements, save
         if self.opt.test:
-            pywikibot.output('Fixing page: %s' % page.title(as_link=True))
-        text = page.text
+            pywikibot.output(f'Fixing page:{page.title(as_link=True)}')
+        pagetext = page.text
+
+        # Check if there is section to work on
+        if not textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
+            if self.opt.test:
+                pywikibot.output(f'Section NOT FOUND: %s')
+            return(0)
+
+        # Get only section text to change
+        pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
+        for s in pagesections.sections:
+            if self.opt.test:
+                pywikibot.output(f'Section title:{s.title}')
+                pywikibot.output(f'Section content:{s.content}')
+            if 'Linki zewnętrzne' in s.title:
+                if self.opt.test:
+                    pywikibot.output(f'Found Section content:{s.content}')
+                oldsection = s.content
+                text = s.content
+                break
+
         replCount = 0
         for k in self.WUs.keys():
             if self.WUs[k]['toReplace']:
@@ -253,8 +274,11 @@ class BasicBot(
                 if self.opt.test:
                     pywikibot.output("ERROR: skiping %s due to no replacements for %s" % (page.title(as_link=True), k))
 
-        if page.text != text:
-            page.text = text
+        # replace section content with new text
+        pagetext = re.sub(oldsection, text, pagetext)
+
+        if page.text != pagetext:
+            page.text = pagetext
             try:
                 page.save(summary=self.opt.summary)
             except pywikibot.exceptions.EditConflict:
