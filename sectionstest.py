@@ -154,7 +154,7 @@ class BasicBot(
         self.put_current(text, summary=self.opt.summary)
 
 
-def main(*args: Tuple[str, ...]) -> None:
+def main(*args: tuple[str, ...]) -> None:
     """
     Process command line arguments and invoke bot.
 
