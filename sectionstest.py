@@ -154,13 +154,13 @@ class BasicBot(
         self.put_current(text, summary=self.opt.summary)
 
 
-def main(*args: tuple[str, ...]) -> None:
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -178,7 +178,7 @@ def main(*args: tuple[str, ...]) -> None:
     for arg in local_args:
         arg, sep, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text', 'outpage', 'maxlines'):
+        if option in ('summary', 'text'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
@@ -192,7 +192,7 @@ def main(*args: tuple[str, ...]) -> None:
     gen = gen_factory.getCombinedGenerator(preload=True)
     if gen:
         # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
+        bot = BasicBot(generator=gen, **options)
         bot.run()  # guess what it does
     else:
         pywikibot.bot.suggest_help(missing_generator=True)
