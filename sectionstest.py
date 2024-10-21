@@ -122,8 +122,8 @@ class BasicBot(
             pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
 
             for s in pagesections.sections:
-                ywikibot.output(f'Section title:{s.title}')
-                ywikibot.output(f'Section content:{s.content}')
+                pywikibot.output(f'Section title:{s.title}')
+                pywikibot.output(f'Section content:{s.content}')
                 # if s.title.strip().lower() == 'linki zewnetrzne':
                 #     pywikibot.output(f'Section content:{s.content}')
 
