@@ -157,7 +157,8 @@ class BasicBot(
 
     def getInitialWebPage(self, docNumber):
         # specify the url
-        quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
+        # quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
+        quote_page = f'https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WMP{docNumber}'
         if self.opt.test:
             pywikibot.output('getInitialWebPage:%s' % quote_page)
         webpage =  urllib.request.urlopen(quote_page)
@@ -174,7 +175,8 @@ class BasicBot(
             pywikibot.output('Title:%s' % soup.title.string)
 
         idR = re.compile(r'\/isap\.nsf\/DocDetails\.xsp\?id=WDU(?P<id>.*)')
-        ident = idR.search(soup.find(id="collapse_10").find('a').get('href'))
+        # ident = idR.search(soup.find(id="collapse_10").find('a').get('href'))
+        ident = idR.search(soup.find(id="collapse_1").find('a').get('href'))
 
         if self.opt.test:
             pywikibot.output('ID:%s' % ident.group('id'))
@@ -182,14 +184,16 @@ class BasicBot(
 
     def toReplaceIDs(self, docNumber):
         # yield a list of IDs to be replaced
-        quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
+        # quote_page = 'http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU%s' % docNumber
+        quote_page = f'https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WMP{docNumber}'
         if self.opt.test:
             pywikibot.output('getting target page:%s' % quote_page)
         webpage = urllib.request.urlopen(quote_page)
         soup = BeautifulSoup(webpage, 'html.parser')
         idR = re.compile(r'\/isap\.nsf\/DocDetails\.xsp\?id=WDU(?P<id>.*)')
         first = True
-        for t in soup.find(id="collapse_14").find_all('a'):
+        # for t in soup.find(id="collapse_14").find_all('a'):
+        for t in soup.find(id="collapse_1").find_all('a'):
             if first:
                 first = False
             else:
