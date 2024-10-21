@@ -48,7 +48,6 @@ cannot be set by settings file:
 #
 import pywikibot
 
-from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 from pywikibot import textlib
 
