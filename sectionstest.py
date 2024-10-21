@@ -121,8 +121,8 @@ class BasicBot(
             pywikibot.output(f'Znaleziono sekcję')
             pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
 
-            for s in pagesections:
-                if s.title.strip() == 'Linki zewnetrzne':
+            for s in pagesections.sections:
+                if s.title.strip().lower() == 'linki zewnetrzne':
                     pywikibot.output(f'Section content:{s.content}')
 
         return
