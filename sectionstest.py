@@ -50,6 +50,7 @@ import pywikibot
 
 from pywikibot import pagegenerators
 from pywikibot import textlib
+import re
 
 from pywikibot.bot import (
     SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
@@ -116,6 +117,7 @@ class BasicBot(
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         pagetext = self.current_page.text
+        oldsection = ""
 
         if textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
             pywikibot.output(f'Znaleziono sekcję')
@@ -126,8 +128,9 @@ class BasicBot(
                 pywikibot.output(f'Section content:{s.content}')
                 if 'Linki zewnętrzne' in s.title:
                     pywikibot.output(f'Found Section content:{s.content}')
+                    oldsection = s.content
 
-        return
+        # return
         ################################################################
         # NOTE: Here you can modify the text in whatever way you want. #
         ################################################################
@@ -139,17 +142,19 @@ class BasicBot(
         # Use your own text or use the default 'Test'
         text_to_add = self.opt.text
 
-        if self.opt.replace:
-            # replace the page text
-            text = text_to_add
+        text = re.sub(oldsection, text_to_add)
 
-        elif self.opt.top:
-            # put text on top
-            text = text_to_add + text
-
-        else:
-            # put text on bottom
-            text += text_to_add
+        # if self.opt.replace:
+        #     # replace the page text
+        #     text = text_to_add
+        #
+        # elif self.opt.top:
+        #     # put text on top
+        #     text = text_to_add + text
+        #
+        # else:
+        #     # put text on bottom
+        #     text += text_to_add
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
