@@ -122,7 +122,7 @@ class BasicBot(
             pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
 
             for s in pagesections:
-                if s.title.lower() == 'linki zewnetrzne':
+                if s.title.strip() == 'Linki zewnetrzne':
                     pywikibot.output(f'Section content:{s.content}')
 
         return
