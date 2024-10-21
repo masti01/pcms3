@@ -124,8 +124,8 @@ class BasicBot(
             for s in pagesections.sections:
                 pywikibot.output(f'Section title:{s.title}')
                 pywikibot.output(f'Section content:{s.content}')
-                # if s.title.strip().lower() == 'linki zewnetrzne':
-                #     pywikibot.output(f'Section content:{s.content}')
+                if 'linki zewnetrzne' in s.title.lower():
+                    pywikibot.output(f'Found Section content:{s.content}')
 
         return
         ################################################################
