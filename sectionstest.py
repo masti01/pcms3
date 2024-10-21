@@ -124,7 +124,7 @@ class BasicBot(
             for s in pagesections.sections:
                 pywikibot.output(f'Section title:{s.title}')
                 pywikibot.output(f'Section content:{s.content}')
-                if 'Linki zewnetrzne' in s.title:
+                if 'Linki zewnętrzne' in s.title:
                     pywikibot.output(f'Found Section content:{s.content}')
 
         return
