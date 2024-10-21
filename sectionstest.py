@@ -117,9 +117,9 @@ class BasicBot(
         """Load the given page, do some changes, and save it."""
         pagetext = self.current_page.text
 
-        if does_text_contain_section(pagetext, "Linki zewnętrzne"):
+        if textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
             pywikibot.output(f'Znaleziono sekcję')
-            pagesections = extract_sections(pagetext, pywikibot.Site())
+            pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
 
             for s in pagesections:
                 if s.title.lower() == 'linki zewnetrzne':
