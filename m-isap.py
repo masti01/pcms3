@@ -64,6 +64,8 @@ from pywikibot import textlib
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
+#TODO: move to ELI API https://api.sejm.gov.pl/API_pl.html
+
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
