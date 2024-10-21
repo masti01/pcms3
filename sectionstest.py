@@ -142,6 +142,9 @@ class BasicBot(
         # Use your own text or use the default 'Test'
         text_to_add = self.opt.text
 
+        pywikibot.output(f'oldsection content:{oldsection}')
+        pywikibot.output(f'newsection content:{text_to_add}')
+
         text = re.sub(r'.*', text_to_add, oldsection)
 
         # if self.opt.replace:
