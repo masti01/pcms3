@@ -145,7 +145,7 @@ class BasicBot(
         pywikibot.output(f'oldsection content:{oldsection}')
         pywikibot.output(f'newsection content:{text_to_add}')
 
-        text = re.sub(oldsection, '\n' + text_to_add, oldsection, count=1)
+        text = re.sub(oldsection, '\n' + text_to_add, pagetext, count=1)
 
         # if self.opt.replace:
         #     # replace the page text
