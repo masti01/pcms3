@@ -15,14 +15,32 @@ will be done.
 The following parameters are supported:
 
 -always           The bot won't ask for confirmation when putting a page
-
--text:            Use this text to be added; otherwise 'Test' is used
-
--replace:         Don't add text but replace it
-
--top              Place additional text on top of the page
-
 -summary:         Set the action summary message for the edit.
+-replace	False		delete old text and write the new text
+-summary	None		your own bot summary
+-text		Test		add this text from option. Test is default
+-top		False		append text on top of the page
+-outpage	Wikipedysta:mastiBot/test	default output page
+-maxlines	1000		default number of entries per page
+-negative	False		if True mark pages that DO NOT contain search string
+-test		False		switch on test functionality
+-regex		False		use text as regex. has to contain ctaching group (?P<result>)
+-as_link	False		put links as wikilinks
+-append		False		append results to page
+-section	None		section title
+-title		False		check in title not text
+-multi		False		^ and $ will now match begin and end of each line.
+-flags		None		list of regex flags
+-edit		False		link thru template:edytuj instead of wikilink
+-cite		False		cite search results
+-nowiki		False		put citation in <nowiki> tags
+-count		False		count pages only
+-navi		False		add navigation template
+-progress	False		report progress
+-table		False		present results in a table
+-nonempty	False		show nonempty results only
+-talk		False		check on talk page
+-nodisabled	False		remove disabled parts as per textlib.py
 
 All settings can be made either by giving option with the command line
 or with a settings file which is scripts.ini by default. If you don't
