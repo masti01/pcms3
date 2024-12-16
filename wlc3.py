@@ -134,7 +134,7 @@ from pywikibot.pagegenerators import (
     XMLDumpPageGenerator as _XMLDumpPageGenerator,
 )
 
-from pywikibot.tools.formatter import color_format
+# from pywikibot.tools.formatter import color_format
 from pywikibot.tools.threading import ThreadList
 
 try:
@@ -3532,16 +3532,11 @@ class DeadLinkReportThread(threading.Thread):
                 url, errorReport, containingPage, archiveURL = self.queue[0]
                 self.queue = self.queue[1:]
                 talkPage = containingPage.toggleTalkPage()
-                pywikibot.output(color_format(
-                    '{lightaqua}** Reporting dead link on {}...{default}',
-                    talkPage))
+                pywikibot.output(f' Reporting dead link on {talkPage}...')
                 try:
                     content = talkPage.get() + '\n'
                     if url in content:
-                        pywikibot.output(color_format(
-                            '{lightaqua}** Dead link seems to have '
-                            'already been reported on {}{default}',
-                            talkPage))
+                        pywikibot.output(f'** Dead link seems to have already been reported on {talkPage}')
                         continue
                 except (pywikibot.exceptions.NoPageError, pywikibot.exceptions.IsRedirectPageError):
                     content = ''
@@ -3586,10 +3581,7 @@ class DeadLinkReportThread(threading.Thread):
                 try:
                     talkPage.put(content, comment)
                 except pywikibot.exceptions.SpamblacklistError as error:
-                    pywikibot.output(color_format(
-                        '{lightaqua}** SpamblacklistError while trying to '
-                        'change {0}: {1}{default}',
-                        talkPage, error.url))
+                    pywikibot.output(f'** SpamblacklistError while trying to change {talkPage}: {error.url}')
 
 
 class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
