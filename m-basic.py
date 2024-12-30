@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
-"""
-An incomplete sample script.
+"""An incomplete sample script.
 
 This is not a complete bot; rather, it is a template from which simple
 bots can be made. You can rename it to mybot.py, then edit it in
 whatever way you want.
 
-Use global -simulate option for test purposes. No changes to live wiki
-will be done.
+Use :ref:`global<Global Options>` ``-simulate`` option for test purposes.
+No changes to live wiki will be done.
 
 
 The following parameters are supported:
 
--always           The bot won't ask for confirmation when putting a page
+-always    The bot won't ask for confirmation when putting a page
 
--text:            Use this text to be added; otherwise 'Test' is used
+-text:     Use this text to be added; otherwise 'Test' is used
 
--replace:         Don't add text but replace it
+-replace:  Don't add text but replace it
 
--top              Place additional text on top of the page
+-top       Place additional text on top of the page
 
--summary:         Set the action summary message for the edit.
+-summary:  Set the action summary message for the edit.
 
-This sample script is a
-:py:obj:`ConfigParserBot <bot.ConfigParserBot>`. All settings can be
-made either by giving option with the command line or with a settings file
-which is scripts.ini by default. If you don't want the default values you can
-add any option you want to change to that settings file below the [basic]
-section like:
+This sample script is a :class:`ConfigParserBot <bot.ConfigParserBot>`.
+All settings can be made either by giving option with the command line
+or with a settings file which is scripts.ini by default. If you don't
+want the default values you can add any option you want to change to
+that settings file below the [basic] section like:
+
+.. code:: ini
 
     [basic] ; inline comments starts with colon
     # This is a commend line. Assignments may be done with '=' or ':'
@@ -44,7 +44,7 @@ cannot be set by settings file:
 &params;
 """
 #
-# (C) Pywikibot team, 2006-2022
+# (C) Pywikibot team, 2006-2024
 #
 # Distributed under the terms of the MIT license.
 #
@@ -75,8 +75,7 @@ class BasicBot(
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
-    """
-    An incomplete sample bot.
+    """An incomplete sample bot.
 
     :ivar summary_key: Edit summary message key. The message that should be
         used is placed on /i18n subdirectory. The file containing these
@@ -89,70 +88,32 @@ class BasicBot(
     use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs) -> None:
-        """
-        Initializer.
-
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.available_options.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test',  # default output page
-            'maxlines': 1000,  # default number of entries per page
-            'testprint': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-            'test': False,  # test options
-            'progress': False  # test option showing bot progress
-        })
-
-        # call initializer of the super class
-        super().__init__(site=True, **kwargs)
-        # assign the generator to the bot
-        self.generator = generator
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'outpage': u'User:mastiBot/test',  # default output page
+        'maxlines': 1000,  # default number of entries per page
+        'testprint': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'test': False,  # test options
+        'progress': False  # test option showing bot progress
+    }
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
-
-        pywikibot.output(f'Treating:{self.current_page.title}')
-        ################################################################
-        # NOTE: Here you can modify the text in whatever way you want. #
-        ################################################################
-
-        # If you find out that you do not want to edit this page, just return.
-        # Example: This puts Text on a page.
-
-        # Retrieve your private option
-        # Use your own text or use the default 'Test'
-        text_to_add = self.opt.text
-
-        if self.opt.replace:
-            # replace the page text
-            text = text_to_add
-
-        elif self.opt.top:
-            # put text on top
-            text = text_to_add + text
-
-        else:
-            # put text on bottom
-            text += text_to_add
+        pywikibot.output(f'treating {self.current_page.title()}')
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         self.put_current(text, summary=self.opt.summary)
 
 
+
 def main(*args: str) -> None:
-    """
-    Process command line arguments and invoke bot.
+    """Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
@@ -178,20 +139,21 @@ def main(*args: str) -> None:
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-            # take the remaining options as booleans.
-            # You will get a hint if they aren't pre-defined in your bot class
+        # take the remaining options as booleans.
+        # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-            # The preloading option is responsible for downloading multiple
-            # pages from the wiki simultaneously.
-        gen = gen_factory.getCombinedGenerator(preload=True)
+    # The preloading option is responsible for downloading multiple
+    # pages from the wiki simultaneously.
+    gen = gen_factory.getCombinedGenerator(preload=True)
 
-        # check if further help is needed
-        if not pywikibot.bot.suggest_help(missing_generator=not gen):
-            # pass generator and private options to the bot
-            bot = BasicBot(generator=gen, **options)
-            bot.run()  # guess what it does
+    # check if further help is needed
+    if not pywikibot.bot.suggest_help(missing_generator=not gen):
+        # pass generator and private options to the bot
+        bot = BasicBot(generator=gen, **options)
+        bot.run()  # guess what it does
 
-    if __name__ == '__main__':
-        main()
+
+if __name__ == '__main__':
+    main()
