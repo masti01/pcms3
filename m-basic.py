@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """
 An incomplete sample script.
 
@@ -22,10 +22,12 @@ The following parameters are supported:
 
 -summary:         Set the action summary message for the edit.
 
-All settings can be made either by giving option with the command line
-or with a settings file which is scripts.ini by default. If you don't
-want the default values you can add any option you want to change to
-that settings file below the [basic] section like:
+This sample script is a
+:py:obj:`ConfigParserBot <bot.ConfigParserBot>`. All settings can be
+made either by giving option with the command line or with a settings file
+which is scripts.ini by default. If you don't want the default values you can
+add any option you want to change to that settings file below the [basic]
+section like:
 
     [basic] ; inline comments starts with colon
     # This is a commend line. Assignments may be done with '=' or ':'
@@ -42,18 +44,20 @@ cannot be set by settings file:
 &params;
 """
 #
-# (C) Pywikibot team, 2006-2021
+# (C) Pywikibot team, 2006-2022
 #
 # Distributed under the terms of the MIT license.
 #
+from __future__ import annotations
+
 import pywikibot
-
-from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
-
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
-    AutomaticTWSummaryBot)
+    AutomaticTWSummaryBot,
+    ConfigParserBot,
+    ExistingPageBot,
+    SingleSiteBot,
+)
 
 
 # This is required for the text that is shown when you run this script
@@ -68,21 +72,21 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
     """
     An incomplete sample bot.
 
-    @ivar summary_key: Edit summary message key. The message that should be
+    :ivar summary_key: Edit summary message key. The message that should be
         used is placed on /i18n subdirectory. The file containing these
         messages should have the same name as the caller script (i.e. basic.py
         in this case). Use summary_key to set a default edit summary message.
 
-    @type summary_key: str
+    :type summary_key: str
     """
 
+    use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
 
     def __init__(self, generator, **kwargs) -> None:
@@ -145,13 +149,13 @@ class BasicBot(
         self.put_current(text, summary=self.opt.summary)
 
 
-def main(*args: Tuple[str, ...]) -> None:
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -167,27 +171,26 @@ def main(*args: Tuple[str, ...]) -> None:
 
     # Parse your own command line arguments
     for arg in local_args:
-        arg, sep, value = arg.partition(':')
+        arg, _, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text', 'outpage', 'maxlines'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-        # take the remaining options as booleans.
-        # You will get a hint if they aren't pre-defined in your bot class
+            # take the remaining options as booleans.
+            # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-    # The preloading option is responsible for downloading multiple
-    # pages from the wiki simultaneously.
-    gen = gen_factory.getCombinedGenerator(preload=True)
-    if gen:
-        # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
-        bot.run()  # guess what it does
-    else:
-        pywikibot.bot.suggest_help(missing_generator=True)
+            # The preloading option is responsible for downloading multiple
+            # pages from the wiki simultaneously.
+        gen = gen_factory.getCombinedGenerator(preload=True)
 
+        # check if further help is needed
+        if not pywikibot.bot.suggest_help(missing_generator=not gen):
+            # pass generator and private options to the bot
+            bot = BasicBot(generator=gen, **options)
+            bot.run()  # guess what it does
 
-if __name__ == '__main__':
-    main()
+    if __name__ == '__main__':
+        main()
