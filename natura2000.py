@@ -16,8 +16,6 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
-import mwparserfromhell
-import requests
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -33,6 +31,16 @@ class BasicBot(
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
+
+    """An incomplete sample bot.
+
+    :ivar summary_key: Edit summary message key. The message that should be
+        used is placed on /i18n subdirectory. The file containing these
+        messages should have the same name as the caller script (i.e. basic.py
+        in this case). Use summary_key to set a default edit summary message.
+
+    :type summary_key: str
+    """
 
     use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
@@ -51,25 +59,14 @@ class BasicBot(
     }
 
     def treat_page(self) -> None:
-
+        """Load the given page, do some changes, and save it."""
         text = self.current_page.text
         pywikibot.output(f'treating {self.current_page.title()}')
 
-        pywikibot.output('TREATING')
-        # Initialize Memento Client
-        # mc = MementoClient()
-
-        """Load the given page, do some changes, and save it."""
-        text = self.current_page.text
-        parsed = mwparserfromhell.parse(text)
-
-        for link in parsed.ifilter_external_links():
-            if str(link).startswith('https://natura2000.gdos.gov.pl/files/'):
-                pywikibot.output(link)
-
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        # self.put_current(text, summary=self.opt.summary)
+        self.put_current(text, summary=self.opt.summary)
+
 
 
 def main(*args: str) -> None:
@@ -99,20 +96,21 @@ def main(*args: str) -> None:
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-            # take the remaining options as booleans.
-            # You will get a hint if they aren't pre-defined in your bot class
+        # take the remaining options as booleans.
+        # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-            # The preloading option is responsible for downloading multiple
-            # pages from the wiki simultaneously.
-        gen = gen_factory.getCombinedGenerator(preload=True)
+    # The preloading option is responsible for downloading multiple
+    # pages from the wiki simultaneously.
+    gen = gen_factory.getCombinedGenerator(preload=True)
 
-        # check if further help is needed
-        if not pywikibot.bot.suggest_help(missing_generator=not gen):
-            # pass generator and private options to the bot
-            bot = BasicBot(generator=gen, **options)
-            bot.run()  # guess what it does
+    # check if further help is needed
+    if not pywikibot.bot.suggest_help(missing_generator=not gen):
+        # pass generator and private options to the bot
+        bot = BasicBot(generator=gen, **options)
+        bot.run()  # guess what it does
 
-    if __name__ == '__main__':
-        main()
+
+if __name__ == '__main__':
+    main()
