@@ -67,7 +67,7 @@ class BasicBot(
         for l in parsed.filter_external_links():
             if str(l).startswith('https://natura2000.gdos.gov.pl/files/'):
                 pywikibot.output(f"Link found:{l}")
-                archiveurl = self.getarchiveurl(l):
+                archiveurl = self.getarchiveurl(l)
                 if archiveurl:
                     pywikibot.output(f"Archive link found:{archiveurl}")
 
