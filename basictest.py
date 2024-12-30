@@ -104,7 +104,7 @@ class BasicBot(
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
-        pywikibot.output(f'treating {self.current_page.title}')
+        pywikibot.output(f'treating {self.current_page.title()}')
 
 
 
