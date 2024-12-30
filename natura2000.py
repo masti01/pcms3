@@ -1,48 +1,5 @@
 #!/usr/bin/env python3
-"""An incomplete sample script.
 
-This is not a complete bot; rather, it is a template from which simple
-bots can be made. You can rename it to mybot.py, then edit it in
-whatever way you want.
-
-Use :ref:`global<Global Options>` ``-simulate`` option for test purposes.
-No changes to live wiki will be done.
-
-
-The following parameters are supported:
-
--always    The bot won't ask for confirmation when putting a page
-
--text:     Use this text to be added; otherwise 'Test' is used
-
--replace:  Don't add text but replace it
-
--top       Place additional text on top of the page
-
--summary:  Set the action summary message for the edit.
-
-This sample script is a :class:`ConfigParserBot <bot.ConfigParserBot>`.
-All settings can be made either by giving option with the command line
-or with a settings file which is scripts.ini by default. If you don't
-want the default values you can add any option you want to change to
-that settings file below the [basic] section like:
-
-.. code:: ini
-
-    [basic] ; inline comments starts with colon
-    # This is a commend line. Assignments may be done with '=' or ':'
-    text: A text with line break and
-        continuing on next line to be put
-    replace: yes ; yes/no, on/off, true/false and 1/0 is also valid
-    summary = Bot: My first test edit with pywikibot
-
-Every script has its own section with the script name as header.
-
-In addition the following generators and filters are supported but
-cannot be set by settings file:
-
-&params;
-"""
 #
 # (C) Pywikibot team, 2006-2024
 #
@@ -60,7 +17,7 @@ from pywikibot.bot import (
 )
 
 import mwparserfromhell
-from memento_client import MementoClient
+import requests
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -93,45 +50,7 @@ class BasicBot(
         'progress': False  # test option showing bot progress
     }
 
-    # def __init__(self, generator, **kwargs) -> None:
-    #     """
-    #     Initializer.
-    #
-    #     @param generator: the page generator that determines on which pages
-    #         to work
-    #     @type generator: generator
-    #     """
-    #     # Add your own options to the bot and set their defaults
-    #     # -always option is predefined by BaseBot class
-    #     self.available_options.update({
-    #         'replace': False,  # delete old text and write the new text
-    #         'summary': None,  # your own bot summary
-    #         'text': 'Test',  # add this text from option. 'Test' is default
-    #         'top': False,  # append text on top of the page
-    #         'outpage': u'User:mastiBot/test',  # default output page
-    #         'maxlines': 1000,  # default number of entries per page
-    #         'testprint': False,  # print testoutput
-    #         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-    #         'test': False,  # test options
-    #         'progress': False  # test option showing bot progress
-    #     })
-    #
-    #     # call initializer of the super class
-    #     super().__init__(site=True, **kwargs)
-    #     # assign the generator to the bot
-    #     self.generator = generator
-
-    # Function to get archived URL using Memento Client
-    # def get_memento_url(url):
-    #     try:
-    #         # Request the closest Memento
-    #         memento = mc.get_memento(url)
-    #         return memento.uri if memento else None
-    #     except Exception as e:
-    #         print(f"Error fetching memento for {url}: {e}")
-    #         return None
-
-    def run(self) -> None:
+    def treat_page(self) -> None:
 
         pywikibot.output('TREATING')
         # Initialize Memento Client
@@ -142,7 +61,7 @@ class BasicBot(
         parsed = mwparserfromhell.parse(text)
 
         for link in parsed.ifilter_external_links():
-            if 'natura2000.gdos.gov.pl' in link:
+            if str(link).startswith('https://natura2000.gdos.gov.pl/files/'):
                 pywikibot.output(link)
 
         # if summary option is None, it takes the default i18n summary from
