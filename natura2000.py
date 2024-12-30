@@ -131,7 +131,7 @@ class BasicBot(
     #         print(f"Error fetching memento for {url}: {e}")
     #         return None
 
-    def treat(self) -> None:
+    def run(self) -> None:
 
         pywikibot.output('TREATING')
         # Initialize Memento Client
