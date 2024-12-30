@@ -67,11 +67,23 @@ class BasicBot(
         for l in parsed.filter_external_links():
             if str(l).startswith('https://natura2000.gdos.gov.pl/files/'):
                 pywikibot.output(f"Link found:{l}")
+                archiveurl = self.getarchiveurl(l):
+                if archiveurl:
+                    pywikibot.output(f"Archive link found:{archiveurl}")
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         self.put_current(text, summary=self.opt.summary)
 
+    def getarchiveurl(self, link: string):
+
+        r = requests.get(f'https://archive.org/wayback/available?url={link}')
+        try:
+            archive_url = r.json().get("archived_snapshots").get("closest").get("url")
+            return archive_url
+        except:
+            pywikibot.output(f"archive not found")
+            return None
 
 
 def main(*args: str) -> None:
