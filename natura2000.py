@@ -64,6 +64,9 @@ class BasicBot(
         text = self.current_page.text
         pywikibot.output(f'treating {self.current_page.title()}')
         parsed = mwparserfromhell.parse(text)
+        for l in parsed.filter_external_links():
+            if str(l).startswith('https://natura2000.gdos.gov.pl/files/'):
+                pywikibot.output(f"Link found:{l}")
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
