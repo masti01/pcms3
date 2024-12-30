@@ -70,6 +70,7 @@ class BasicBot(
                 archiveurl = self.getarchiveurl(l)
                 if archiveurl:
                     pywikibot.output(f"Archive link found:{archiveurl}")
+                    parsed.replace(l, archiveurl)
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
