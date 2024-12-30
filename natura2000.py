@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
-"""
-An incomplete sample script.
+"""An incomplete sample script.
 
 This is not a complete bot; rather, it is a template from which simple
 bots can be made. You can rename it to mybot.py, then edit it in
 whatever way you want.
 
-Use global -simulate option for test purposes. No changes to live wiki
-will be done.
+Use :ref:`global<Global Options>` ``-simulate`` option for test purposes.
+No changes to live wiki will be done.
 
 
 The following parameters are supported:
 
--always           The bot won't ask for confirmation when putting a page
+-always    The bot won't ask for confirmation when putting a page
 
--text:            Use this text to be added; otherwise 'Test' is used
+-text:     Use this text to be added; otherwise 'Test' is used
 
--replace:         Don't add text but replace it
+-replace:  Don't add text but replace it
 
--top              Place additional text on top of the page
+-top       Place additional text on top of the page
 
--summary:         Set the action summary message for the edit.
+-summary:  Set the action summary message for the edit.
 
-This sample script is a
-:py:obj:`ConfigParserBot <bot.ConfigParserBot>`. All settings can be
-made either by giving option with the command line or with a settings file
-which is scripts.ini by default. If you don't want the default values you can
-add any option you want to change to that settings file below the [basic]
-section like:
+This sample script is a :class:`ConfigParserBot <bot.ConfigParserBot>`.
+All settings can be made either by giving option with the command line
+or with a settings file which is scripts.ini by default. If you don't
+want the default values you can add any option you want to change to
+that settings file below the [basic] section like:
+
+.. code:: ini
 
     [basic] ; inline comments starts with colon
     # This is a commend line. Assignments may be done with '=' or ':'
@@ -44,7 +44,7 @@ cannot be set by settings file:
 &params;
 """
 #
-# (C) Pywikibot team, 2006-2022
+# (C) Pywikibot team, 2006-2024
 #
 # Distributed under the terms of the MIT license.
 #
@@ -60,10 +60,7 @@ from pywikibot.bot import (
 )
 
 import mwparserfromhell
-import re
 from memento_client import MementoClient
-
-
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -79,17 +76,6 @@ class BasicBot(
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
-
-    """
-    An incomplete sample bot.
-
-    :ivar summary_key: Edit summary message key. The message that should be
-        used is placed on /i18n subdirectory. The file containing these
-        messages should have the same name as the caller script (i.e. basic.py
-        in this case). Use summary_key to set a default edit summary message.
-
-    :type summary_key: str
-    """
 
     use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
@@ -136,14 +122,14 @@ class BasicBot(
     #     self.generator = generator
 
     # Function to get archived URL using Memento Client
-    def get_memento_url(url):
-        try:
-            # Request the closest Memento
-            memento = mc.get_memento(url)
-            return memento.uri if memento else None
-        except Exception as e:
-            print(f"Error fetching memento for {url}: {e}")
-            return None
+    # def get_memento_url(url):
+    #     try:
+    #         # Request the closest Memento
+    #         memento = mc.get_memento(url)
+    #         return memento.uri if memento else None
+    #     except Exception as e:
+    #         print(f"Error fetching memento for {url}: {e}")
+    #         return None
 
     def treat_page(self) -> None:
 
@@ -165,8 +151,7 @@ class BasicBot(
 
 
 def main(*args: str) -> None:
-    """
-    Process command line arguments and invoke bot.
+    """Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
