@@ -121,6 +121,7 @@ class BasicBot(
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
 
+        pywikibot.output(f'Treating:{self.current_page.title}')
         ################################################################
         # NOTE: Here you can modify the text in whatever way you want. #
         ################################################################
