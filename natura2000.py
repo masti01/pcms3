@@ -15,7 +15,8 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-
+import mwparserfromhell
+import requests
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -62,6 +63,7 @@ class BasicBot(
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
         pywikibot.output(f'treating {self.current_page.title()}')
+        parsed = mwparserfromhell.parse(text)
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
