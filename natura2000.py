@@ -52,9 +52,12 @@ class BasicBot(
 
     def treat_page(self) -> None:
 
+        text = self.current_page.text
+        pywikibot.output(f'treating {self.current_page.title()}')
+
         pywikibot.output('TREATING')
         # Initialize Memento Client
-        mc = MementoClient()
+        # mc = MementoClient()
 
         """Load the given page, do some changes, and save it."""
         text = self.current_page.text
