@@ -74,7 +74,7 @@ class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
     ConfigParserBot,  # A bot which reads options from scripts.ini setting file
-    CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
+    # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
@@ -94,33 +94,46 @@ class BasicBot(
     use_redirects = False  # treats non-redirects only
     summary_key = 'basic-changing'
 
-    def __init__(self, generator, **kwargs) -> None:
-        """
-        Initializer.
+    update_options = {
+        'replace': False,  # delete old text and write the new text
+        'summary': None,  # your own bot summary
+        'text': 'Test',  # add this text from option. 'Test' is default
+        'top': False,  # append text on top of the page
+        'outpage': u'User:mastiBot/test',  # default output page
+        'maxlines': 1000,  # default number of entries per page
+        'testprint': False,  # print testoutput
+        'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+        'test': False,  # test options
+        'progress': False  # test option showing bot progress
+    }
 
-        @param generator: the page generator that determines on which pages
-            to work
-        @type generator: generator
-        """
-        # Add your own options to the bot and set their defaults
-        # -always option is predefined by BaseBot class
-        self.available_options.update({
-            'replace': False,  # delete old text and write the new text
-            'summary': None,  # your own bot summary
-            'text': 'Test',  # add this text from option. 'Test' is default
-            'top': False,  # append text on top of the page
-            'outpage': u'User:mastiBot/test',  # default output page
-            'maxlines': 1000,  # default number of entries per page
-            'testprint': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
-            'test': False,  # test options
-            'progress': False  # test option showing bot progress
-        })
-
-        # call initializer of the super class
-        super().__init__(site=True, **kwargs)
-        # assign the generator to the bot
-        self.generator = generator
+    # def __init__(self, generator, **kwargs) -> None:
+    #     """
+    #     Initializer.
+    #
+    #     @param generator: the page generator that determines on which pages
+    #         to work
+    #     @type generator: generator
+    #     """
+    #     # Add your own options to the bot and set their defaults
+    #     # -always option is predefined by BaseBot class
+    #     self.available_options.update({
+    #         'replace': False,  # delete old text and write the new text
+    #         'summary': None,  # your own bot summary
+    #         'text': 'Test',  # add this text from option. 'Test' is default
+    #         'top': False,  # append text on top of the page
+    #         'outpage': u'User:mastiBot/test',  # default output page
+    #         'maxlines': 1000,  # default number of entries per page
+    #         'testprint': False,  # print testoutput
+    #         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
+    #         'test': False,  # test options
+    #         'progress': False  # test option showing bot progress
+    #     })
+    #
+    #     # call initializer of the super class
+    #     super().__init__(site=True, **kwargs)
+    #     # assign the generator to the bot
+    #     self.generator = generator
 
     # Function to get archived URL using Memento Client
     def get_memento_url(url):
