@@ -134,6 +134,7 @@ class BasicBot(
 
     def treat_page(self) -> None:
 
+        pywikibot.output('TREATING')
         # Initialize Memento Client
         mc = MementoClient()
 
