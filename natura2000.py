@@ -82,6 +82,11 @@ class BasicBot(
         r = requests.get(f'https://archive.org/wayback/available?url={link}')
         try:
             archive_url = r.json().get("archived_snapshots").get("closest").get("url")
+
+            # FIXME: Hack for T167463: Use https instead of http for archive.org links
+            if archive_url.startswith('http://web.archive.org'):
+                archive_url = archive_url.replace('http://', 'https://', 1)
+
             return archive_url
         except:
             pywikibot.output(f"archive not found")
