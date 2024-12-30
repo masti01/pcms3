@@ -74,9 +74,9 @@ class BasicBot(
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        self.put_current(text, summary=self.opt.summary)
+        self.put_current(parsed, summary=self.opt.summary)
 
-    def getarchiveurl(self, link: string):
+    def getarchiveurl(self, link):
 
         r = requests.get(f'https://archive.org/wayback/available?url={link}')
         try:
