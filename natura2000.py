@@ -141,7 +141,7 @@ class BasicBot(
         text = self.current_page.text
         parsed = mwparserfromhell.parse(text)
 
-        for link in in parsed.ifilter_external_links():
+        for link in parsed.ifilter_external_links():
             if 'natura2000.gdos.gov.pl' in link:
                 pywikibot.output(link)
 
