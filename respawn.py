@@ -34,7 +34,7 @@ def main(*args):
                 file = open(pidname, "r")
                 pid = int(file.readline())
                 file.close()
-            except FileNotFoundError:
+            except (FileNotFoundError, ValueError) as e:
                 logfile.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {pname} (File:{pidname} NOT FOUND\n')
                 pid = None
 
