@@ -76,7 +76,7 @@ from pywikibot.pagegenerators import (
 from pywikibot.textlib import replaceExcept
 from pywikibot.tools.chars import string2html
 from scripts import noreferences
-import backoff
+# import backoff
 
 
 docuReplacements = {
@@ -654,11 +654,11 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
 
         return False
 
-    @backoff.on_exception(
-        backoff.expo,
-        pywikibot.exceptions.ServerError,
-        max_tries=5
-    )
+    # @backoff.on_exception(
+    #     backoff.expo,
+    #     pywikibot.exceptions.ServerError,
+    #     max_tries=5
+    # )
     def treat(self, page) -> None:
         """Process one page."""
         # Load the page's text from the wiki
