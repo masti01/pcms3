@@ -1178,11 +1178,12 @@ class BasicBot(
 
                 # set respective dict position to True
                 for c in tmpl['country']:
-                    self.crownAuthors[user][c] = True
+                    if c in crowncountries:
+                        self.crownAuthors[user][c] = True
 
         if self.opt.testcrownauthors:
             pywikibot.output('**********')
-            pywikibot.output('self.crownAthors')
+            pywikibot.output('self.crownAuthors')
             pywikibot.output('**********')
             pywikibot.output(self.crownAuthors)
         return
