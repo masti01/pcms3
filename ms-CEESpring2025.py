@@ -1179,7 +1179,7 @@ class BasicBot(
                 for c in tmpl['country']:
                     self.crownAuthors[user][c] = True
 
-        if self.opt.ttestcrownauthors:
+        if self.opt.testcrownauthors:
             pywikibot.output('**********')
             pywikibot.output('self.crownAthors')
             pywikibot.output('**********')
