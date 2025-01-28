@@ -833,6 +833,7 @@ class BasicBot(
         'testhrightsauthors': False,
         'testhrights': False,
         'testcrownauthors': False,  # tesprint for users with articles about all countries
+        'testallcountries': False,  # tesprint for users with articles about all countries
 
     }
 
