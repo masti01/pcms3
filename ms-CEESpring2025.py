@@ -72,6 +72,7 @@ SpringStart = datetime.strptime("2024-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
+crowncountries = ['Poland', 'Austria', 'Estonia', 'Malta']  #TODO update list after tests
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
@@ -733,6 +734,7 @@ class BasicBot(
     lengthTablePL = {}
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
+    crownAuthors = {}  # authors with articles about all countries
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
                           'crh': [], 'el': [], 'et': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
@@ -830,7 +832,7 @@ class BasicBot(
         'testde': False,  # testprint for de.wiki stats
         'testhrightsauthors': False,
         'testhrights': False,
-        'testallcountries': False,  # tesprint for users with articles about all countries
+        'testcrownauthors': False,  # tesprint for users with articles about all countries
 
     }
 
@@ -908,6 +910,7 @@ class BasicBot(
         self.createWomenAuthorsTable(self.springList)  # generate results for pages about women
         self.createHrightsTable(self.springList)  # generate results for pages about human rights
         self.createHrightsAuthorsTable(self.springList)  # generate results for pages about human rights
+        self.createCrownAuthorsTable(self.springList)  # generate results for pages about all countries
         self.createLengthTable(self.springList)  # generate results for pages length
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
@@ -1145,10 +1148,48 @@ class BasicBot(
             pywikibot.output(self.hrights)
         return
 
+    def createCrownAuthorsTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testcrownauthors:
+            pywikibot.output('createHRightsAuthorsTable')
+            # pywikibot.output(self.hrightsAuthors)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+
+                if self.opt.testcrownauthors:
+                    pywikibot.output('article:%s' % a)
+
+                lang = a['lang']  # source language
+                fam = a['family']
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                newart = a['newarticle']
+
+                user = a['creator']
+                if user not in self.crownAuthors.keys():
+                    #  create empty countries dict
+                    self.crownAuthors[user] = {}
+                    for c in crowncountries:
+                           self.crownAuthors[user][c] = False
+
+                # set respective dict position to True
+                for c in tmpl['country']:
+                    self.crownAuthors[user][c] = True
+
+        if self.opt.ttestcrownauthors:
+            pywikibot.output('**********')
+            pywikibot.output('self.crownAthors')
+            pywikibot.output('**********')
+            pywikibot.output(self.crownAuthors)
+        return
+
     def createHrightsAuthorsTable(self, aList):
         # creat dictionary with la:country article counts
         if self.opt.test or self.opt.testhrightsauthors:
-            pywikibot.output('createHRightsAuthorsTable')
+            pywikibot.output('createHrightsAuthorsTable')
             pywikibot.output(self.hrightsAuthors)
         artCount = 0
         countryCount = 0
@@ -1184,7 +1225,7 @@ class BasicBot(
 
         if self.opt.testhrightsauthors:
             pywikibot.output('**********')
-            pywikibot.output('self.hrights.authors')
+            pywikibot.output('createCrownAuthorsTable')
             pywikibot.output('**********')
             pywikibot.output(self.hrightsAuthors)
         return
