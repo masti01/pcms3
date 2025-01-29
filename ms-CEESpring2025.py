@@ -2394,7 +2394,7 @@ class BasicBot(
 
         # generate table rows
         for author in res.keys():
-            full = False
+            full = True
             for v in res[author].values():
                 full = full and v
             if full:
