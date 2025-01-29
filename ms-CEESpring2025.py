@@ -927,7 +927,8 @@ class BasicBot(
         self.generateResultCountryTable(self.countryTable, self.opt.outpage, header, footer)
         self.generateResultArticleList(self.springList, self.opt.outpage + '/Article list', header, footer)
         self.generateResultAuthorsPage(self.authors, self.opt.outpage + '/Authors list', header, footer)
-        self.generateResultAuthorsPageAllCountries(self.authorsArticles, self.opt.outpage + '/Authors list all countries', header, footer)
+        self.generateResultCrownAuthors(self.crownAuthors,
+                                                   self.opt.outpage + '/Authors list all countries', header, footer)
         self.generateAuthorsCountryTable(self.authorsArticles, self.opt.outpage + '/Authors list/per wiki',
                                          header, footer)
         self.generateResultWomenPage(self.women, self.opt.outpage + '/Articles about women', header, footer)
@@ -2370,7 +2371,7 @@ class BasicBot(
         outpage.save(summary=self.opt.summary)
         return
 
-    def generateResultAuthorsPageAllCountries(self, res, pagename, header, footer):
+    def generateResultCrownAuthors(self, res, pagename, header, footer):
         """
         Generates results page from res
         Starting with header, ending with footer
@@ -2380,60 +2381,32 @@ class BasicBot(
 
         finalpage = header
 
-        pywikibot.output('***************************')
-        pywikibot.output('generateResultAuthorsPageAllCountries')
-        pywikibot.output('***************************')
+        if self.opt.testcrownauthors:
+            pywikibot.output('***************************')
+            pywikibot.output('generateResultCrownAuthors')
+            pywikibot.output('***************************')
 
-        # total counters
-        wikiTotals = {}
-        wikiList = list(self.otherCountriesList.keys())
-        for a in wikiList:
-            wikiTotals[a] = 0
-
+        finalpage += f'Users that created articles about all of the following countries: {crowncountries}\n\n'
         # generate table header
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
-        finalpage += '\n! author/wiki'
-        finalpage += ' !! Total'
-        for w in wikiList:
-            finalpage += f' !! {w}'
-        finalpage += ' !! Total'
+        finalpage += '\n! author'
 
         # generate table rows
         for author in res.keys():
-            finalpage += '\n|-'
-            finalpage += f'\n| [[user:{author}|{author}]]'
-            authorTotal = 0  # get the row total
-            newline = ''  # keep info for the table row
-            for w in wikiList:
-                newline += ' || '
-                if w in res[author].keys():
-                    if res[author][w]:
-                        newline += str(res[author][w]['count'])
-                        authorTotal += res[author][w]['count']  # add to author total (horizontal)
-                        wikiTotals[w] += res[author][w]['count']  # add to wiki total {verical)
+            full = False
+            for v in res[author].values():
+                full = full and v
+            if full:
+                finalpage += '\n|-'
+                finalpage += f'\n| [[user:{author}|{author}]]'
 
-            # add row (wiki) total to table
-            finalpage += f" || '''{str(authorTotal)}'''{newline} || '''{str(authorTotal)}'''"
-            # finalpage += " || '''" + str(authorTotal) + "'''" + newline + " || '''" + str(authorTotal) + "'''"
-
-        finalpage += '\n|-'
-
-        # generate totals
-        totalTotal = 0
-        finalpage += f"\n! Total: !! '''{str(totalTotal)}'''"
-        for w in wikiList:
-            finalpage += f' !! {str(wikiTotals[w])}'
-            totalTotal += wikiTotals[w]
-        finalpage += f" || '''{str(totalTotal)}'''"
         # generate table footer
         finalpage += '\n|}'
 
-        finalpage += "\n\n'''NOTE:''' the table counts all articles per author: both new and updated"
-
         finalpage += footer
 
-        if self.opt.testallcountries:
+        if self.opt.testcrownauthors:
             pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
