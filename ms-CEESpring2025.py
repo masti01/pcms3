@@ -2394,10 +2394,7 @@ class BasicBot(
 
         # generate table rows
         for author in res.keys():
-            full = True
-            for v in res[author].values():
-                full = full and v
-            if full:
+            if all(res[author].values()):
                 finalpage += '\n|-'
                 finalpage += f'\n| [[user:{author}|{author}]]'
 
