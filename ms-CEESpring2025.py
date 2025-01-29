@@ -2386,7 +2386,7 @@ class BasicBot(
             pywikibot.output('generateResultCrownAuthors')
             pywikibot.output('***************************')
 
-        finalpage += f'Users that created articles about all of the following countries: {crowncountries}\n\n'
+        finalpage += f'Users that created articles about all of the following countries: {','.join(crowncountries)}\n\n'
         # generate table header
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
