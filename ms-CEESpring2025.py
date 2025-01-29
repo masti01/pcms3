@@ -72,7 +72,12 @@ SpringStart = datetime.strptime("2024-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
-crowncountries = ['Poland', 'Austria', 'Estonia', 'Malta']  #TODO update list after tests
+crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
+               'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
+               'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
+               'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
+               'Romania and Moldova', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
+               'Turkey', 'Ukraine', 'Võro', 'Western Armenian']  #TODO update list after tests
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
@@ -928,7 +933,7 @@ class BasicBot(
         self.generateResultArticleList(self.springList, self.opt.outpage + '/Article list', header, footer)
         self.generateResultAuthorsPage(self.authors, self.opt.outpage + '/Authors list', header, footer)
         self.generateResultCrownAuthors(self.crownAuthors,
-                                                   self.opt.outpage + '/Authors list all countries', header, footer)
+                                                   self.opt.outpage + '/Authors Hall of Fame', header, footer)
         self.generateAuthorsCountryTable(self.authorsArticles, self.opt.outpage + '/Authors list/per wiki',
                                          header, footer)
         self.generateResultWomenPage(self.women, self.opt.outpage + '/Articles about women', header, footer)
@@ -1410,7 +1415,8 @@ class BasicBot(
 
                 self.templatesList[lang] = [i.title()]
                 pywikibot.output(f'Getting template redirs to {i.title(as_link=True, force_interwiki=True)} Lang:{lang}')
-                for r in i.getReferences(namespaces=10, filter_redirects=True):
+                # for r in i.getReferences(namespaces=[10,4], filter_redirects=True):
+                for r in i.getReferences(filter_redirects=True):
                     self.templatesList[lang].append(r.title())
                     if self.opt.test2:
                         pywikibot.output(f'REDIR TEMPLATE:{r.title(as_link=True, force_interwiki=True)}')
