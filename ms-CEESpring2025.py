@@ -73,9 +73,9 @@ SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # c
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 crowncountries = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus',
-               'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia',
-               'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
-               'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
+               'Bosnia and Herzegovina', 'Bulgaria','Croatia', 'Cyprus', 'Czechia',
+               'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
+               'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland',
                'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia',
                'Turkey', 'Ukraine']  #TODO update list after tests
 
