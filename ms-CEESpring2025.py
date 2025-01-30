@@ -72,12 +72,12 @@ SpringStart = datetime.strptime("2024-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2024-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2023-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
-crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
-               'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia', 'Don', 'Erzia',
+crowncountries = ['Albania', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus',
+               'Bosnia and Herzegovina', 'Bulgaria', 'Crimean Tatars', 'Croatia', 'Cyprus', 'Czechia',
                'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan', 'Kosovo', 'Latvia',
                'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Poland', 'Republic of Srpska', 'Roma',
-               'Romania and Moldova', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tatarstan',
-               'Turkey', 'Ukraine', 'Võro', 'Western Armenian']  #TODO update list after tests
+               'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia',
+               'Turkey', 'Ukraine']  #TODO update list after tests
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
@@ -2392,7 +2392,7 @@ class BasicBot(
             pywikibot.output('generateResultCrownAuthors')
             pywikibot.output('***************************')
 
-        finalpage += f"Users that created articles about all of the following countries: {','.join(crowncountries)}\n\n"
+        finalpage += f"Users that created articles about all of the following countries: {', '.join(crowncountries)}\n\n"
         # generate table header
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
