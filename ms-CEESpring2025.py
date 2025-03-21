@@ -416,7 +416,7 @@ countryNames = {
            'Cipru': 'Cyprus', 'Romi': 'Romani', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
            'Aromâni': 'Aromanian', 'romi': 'Romani', 'Armenia de Vest': 'West Armenian', 'Iacutia': 'Sakha',
            'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', 'tătari crimeeni': 'Crimean tatars',
-           'limba aromână': 'Aromanian', },
+           'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', },
     # roa-rup countries
     'roa-rup': {
             },
@@ -438,7 +438,8 @@ countryNames = {
            'Cyprus': 'Cyprus', 'Kazakhstan': 'Kazakhstan', 'Якутия': 'Sakha', 'Татары': 'Tatars',
            'Crimean tatars': 'Crimean tatars', 'Эрзяне': 'Erzia', 'Западноармянская община': 'West Armenian',
            'аромуны': 'Aromanian', 'Рома': 'Romani', 'Аромуны': 'Aromanian', 'цыгане': 'Romani',
-           'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', 'Республика Косово': 'Kosovo', },
+           'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', 'Республика Косово': 'Kosovo',
+           'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', },
     # sah countries
     'sah': {
     },
