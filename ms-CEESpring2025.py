@@ -332,7 +332,7 @@ countryNames = {
            'Գնչուներ': 'Romani', 'Վիրուերեն': 'Võro', 'Լուժիկերեն': 'Sorbia', 'Առումիներեն': 'Armenia', 'Սախա': 'Sakha',
            'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia',
            'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova',
-           'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia',  },
+           'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia', 'Նովգորոդյան երկիր':'Novgorodian',  },
     # hyw countries
     'hyw': {
     },
