@@ -953,10 +953,10 @@ class BasicBot(
                                              header, footer)
 
         # special needs
-        if 'de' in self.springList.keys():
-            self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
-            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2025/Punktestand',
-                                             '', '')
+        # if 'de' in self.springList.keys():
+        #     self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
+        #     self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2025/Punktestand',
+        #                                      '', '')
 
         return
 
