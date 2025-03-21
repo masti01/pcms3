@@ -923,8 +923,8 @@ class BasicBot(
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
 
-        header = '{{TNT|Wikimedia CEE Spring 2024 navbar}}\n\n'
-        header += '{{Wikimedia CEE Spring 2024/Statistics/Header}}\n\n'
+        header = '{{TNT|Wikimedia CEE Spring 2025 navbar}}\n\n'
+        header += '{{Wikimedia CEE Spring 2025/Statistics/Header}}\n\n'
         # header += "Last update: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}} UTC</onlyinclude>'''.\n\n"
         header += f"Last update: '''{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} CEST'''.\n\n"
         footer = ''
@@ -2394,7 +2394,7 @@ class BasicBot(
             pywikibot.output('generateResultCrownAuthors')
             pywikibot.output('***************************')
 
-        finalpage += f"Users that created articles about all of the following countries: {', '.join(crowncountries)}\n\n"
+        finalpage += f"Users that created articles about all of the following countries:\n*{', '.join(crowncountries)}\n\n"
         # generate table header
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
