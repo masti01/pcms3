@@ -952,7 +952,7 @@ class BasicBot(
         self.generateResultLengthAuthorsPage(self.lengthTablePL, self.opt.outpage + '/Authors list over 2kB/Poland',
                                              header, footer)
 
-        special needs
+        # special needs
         if 'de' in self.springList.keys():
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
             self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2025/Punktestand',
