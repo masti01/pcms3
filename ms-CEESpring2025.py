@@ -73,11 +73,9 @@ SpringEnd = datetime.strptime("2025-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # c
 newbieLimit = datetime.strptime("2024-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage']
 crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
-                  'Bosnia and Herzegovina', 'Bulgaria', 'Chuvasz', 'Crimean Karaites', 'Crimean Tatars', 'Croatia',
-                  'Cyprus', 'Czechia', 'Erzia', 'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Kazakhstan',
-                  'Kosovo', 'Krymchaks', 'Latvia', 'Lithuania', 'Malta', 'Montenegro', 'North Macedonia', 'Novgorodian',
-                  'Poland', 'Republic of Srpska', 'Romania and Moldova', 'Romani', 'Russia', 'Serbia', 'Slovakia',
-                  'Slovenia', 'Sorbia', 'Tatars', 'Turkey', 'Ukraine', 'Võro', 'Western Armenian']
+                  'Chuvasz', 'Crimean Tatars', 'Croatia', 'Greece', 'Hungary', 'Kazakhstan',
+                  'Latvia', 'Lithuania', 'Malta', 'North Macedonia', 'Poland', 'Republic of Srpska',
+                  'Romania and Moldova', 'Serbia', 'Slovakia', 'Slovenia', 'Tatars', 'Ukraine']
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
