@@ -1698,9 +1698,9 @@ class BasicBot(
                     named = True
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
-                        value = re.sub(r"\'*\{\{Масторкоцт *\| *([^\}]*)[^\n]*", r'\1', str(value))
+                        value = re.sub(r"\'*\{\{Масторкоцт *\| *([^\}]*)[^\n]*", r'\1', value)
                     else:
-                        value = re.sub(r"\'*\[*([^\]\|\']*).*", r'\1', str(value))
+                        value = re.sub(r"\'*\[*([^\]\|\']*).*", r'\1', value)
                     if not named:
                         name = str(paramcount)
                     param[name] = value
