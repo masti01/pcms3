@@ -706,6 +706,10 @@ countryNames = {
             'Xalqaro': 'International', 'Makedoniya': 'North Macedonia', 'Kipr': 'Cyprus', 'Chexiya': 'Czechia',
             'Belorus': 'Belarus', 'Tatariston': 'Tatars', 'Qirgʻiziston': 'Kyrgyzstan', "Oʻzbekiston": 'Uzbekistan',
             },
+# fa countries
+    'fa': {
+            'بلغارستان': 'Bulgaria', 'روسیه': 'Russia', 'لهستان': 'Poland', 'اوکراین': 'Ukraine',
+    }
 }
 
 class BasicBot(
