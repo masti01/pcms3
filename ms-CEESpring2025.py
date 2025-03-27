@@ -1680,7 +1680,8 @@ class BasicBot(
             tt = re.sub(r'\[\[.*?:(.*?)\]\]', r'\1', title.title())
             if self.opt.test2:
                 pywikibot.output('tml:%s * %s * %s' % (title, tt, template))
-            if tt in template:
+            # if tt in template:
+            if title in template:
                 paramcount = 1
                 countryDef = False  # check if country defintion exists
                 parlist['woman'] = False
