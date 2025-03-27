@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Call:
-    python pwb.py masti/ms-CEESpring2024.py -page:"SWikipedia:CEE Spring 2025/info" -outpage:"meta:Wikimedia CEE Spring 2025/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
-    python pwb.py masti/ms-CEESpring2024.py -page:"Wikipedia:CEE Spring 2025/info" -outpage:"Wikipedysta:Masti/CEE Spring 2025" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2025.py -page:"SWikipedia:CEE Spring 2025/info" -outpage:"meta:Wikimedia CEE Spring 2025/Statistics" -summary:"Bot updates statistics" -reset -progress -pt:0
+    python pwb.py masti/ms-CEESpring2025.py -page:"Wikipedia:CEE Spring 2025/info" -outpage:"Wikipedysta:Masti/CEE Spring 2025" -summary:"Bot updates statistics" -reset -progress -pt:0
 
 
 Use global -simulate option for test purposes. No changes to live wiki
@@ -57,6 +57,7 @@ from datetime import datetime
 import pickle
 import random
 from pywikibot import config
+import mwparserfromhell
 
 from pywikibot.bot import (
     Bot, MultipleSitesBot, ConfigParserBot, ExistingPageBot,
@@ -1370,7 +1371,7 @@ class BasicBot(
             if self.opt.testpickle:
                 pywikibot.output(f'PICKLING LOAD at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
             try:
-                with open('masti/CEESpring2024.dat', 'rb') as datfile:
+                with open('masti/CEESpring2025.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
@@ -1386,7 +1387,7 @@ class BasicBot(
         # save list as pickle file
         if self.opt.testpickle:
             pywikibot.output(f'PICKLING SAVE at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ARTICLE count {len(artList)}')
-        with open('masti/CEESpring2024.dat', 'wb') as f:
+        with open('masti/CEESpring2025.dat', 'wb') as f:
             pickle.dump(artList, f, protocol=config.pickle_protocol)
 
     @property
@@ -1413,7 +1414,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('bg','bs'):  # keep parentheses for list
+                    if lang not in ('pl'):  # keep parentheses for list
                         continue
 
                 self.templatesList[lang] = [i.title()]
@@ -1432,7 +1433,7 @@ class BasicBot(
                     artParams = {}
                     # hack for tt.wiki ел= param: stating year of competition
                     if lang == 'tt':
-                        if 'ел=2024' not in re.sub('\s+', '', r.text):
+                        if 'ел=2025' not in re.sub('\s+', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
                             continue
@@ -1669,8 +1670,11 @@ class BasicBot(
         if self.opt.test2:
             pywikibot.output('page:%s' % page.text)
         # return dictionary with template params
-        for t in page.templatesWithParams():
-            title, params = t
+        parsedText = mwparserfromhell.parse(page.text)
+        # for t in page.templatesWithParams():
+        for t in parsedText.filter_templates():
+            # title, params = t
+            title = t.name
             # print(title)
             # print(params)
             tt = re.sub(r'\[\[.*?:(.*?)\]\]', r'\1', title.title())
@@ -1683,7 +1687,8 @@ class BasicBot(
                 parlist['hrights'] = False
                 parlist['country'] = []
                 parlist['user'] = None
-                for p in params:
+                # for p in params:
+                for p in t.params:
                     named, name, value = self.templateArg(p)
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
