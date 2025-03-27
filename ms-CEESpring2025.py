@@ -843,6 +843,7 @@ class BasicBot(
         'testhrights': False,
         'testcrownauthors': False,  # tesprint for users with articles about all countries
         'testallcountries': False,  # tesprint for users with articles about all countries
+        'node': False,  # skip generation of de tables
 
     }
 
@@ -955,7 +956,7 @@ class BasicBot(
                                              header, footer)
 
         # special needs
-        if 'de' in self.springList.keys():
+        if 'de' in self.springList.keys() and not self.opt.node:
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
             self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2025/Punktestand',
                                              '', '')
