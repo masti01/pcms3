@@ -1414,7 +1414,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in ('pl'):  # keep parentheses for list
+                    if lang not in ('hu'):  # keep parentheses for list
                         continue
 
                 if i.namespace() == 10:
@@ -1677,12 +1677,12 @@ class BasicBot(
         # for t in page.templatesWithParams():
         for t in parsedText.filter_templates():
             # title, params = t
-            title = t.name
+            title = t.name.strip()
             # print(title)
             # print(params)
             tt = re.sub(r'\[\[.*?:(.*?)\]\]', r'\1', title.title())
             if self.opt.test2:
-                pywikibot.output('tml:%s * %s * %s' % (title, tt, template))
+                pywikibot.output('tml:%s*%s*%s' % (title, tt, template))
             # if tt in template:
             if title in template:
                 paramcount = 1
