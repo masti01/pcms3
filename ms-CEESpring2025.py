@@ -1693,8 +1693,8 @@ class BasicBot(
                     if self.opt.test2:
                         pywikibot.output(f'testing param:{p}')
                     # named, name, value = self.templateArg(p)
-                    name = str(p.name)
-                    value = str(p.value)
+                    name = str(p.name).strip()
+                    value = str(p.value).strip()
                     named = True
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
