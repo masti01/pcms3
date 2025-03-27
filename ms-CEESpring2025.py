@@ -104,7 +104,8 @@ languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg'
                    'hr': ['Croatia'], 'de': ['Germany'], 'hu': ['Hungary'], 'kk': ['Kazakhstan'], 'sr': ['Serbia'],
                    'sq': ['Albania'], 'mk': ['North Macedonia'], 'sk': ['Slovakia'], 'mt': ['Malta'],
                    'be-tarask': ['Belarus'], 'uk': ['Ukraine'], 'sl': ['Slovenia'],
-                   'bs': ['Bosnia and Herzegovina', 'Republic of Srpska'], 'fiu-vro': ['Võro'], }
+                   'bs': ['Bosnia and Herzegovina', 'Republic of Srpska'], 'fiu-vro': ['Võro'],
+                   'fa': ['Iran'], }
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
@@ -745,26 +746,26 @@ class BasicBot(
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     crownAuthors = {}  # authors with articles about all countries
     otherCountriesList = {'pl': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
-                          'crh': [], 'el': [], 'et': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
+                          'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
                           'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
                           'hu': [], 'fiu-vro': [], 'en': [], 'uz': [] }
     women = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
              'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0 }
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, }
     hrights = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0 }
+               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, }
     youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0,
-               'et': 0,
+               'et': 0, 'fa':0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
                'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz': 0}
     # local name for coutry parameter
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава',
-                'bs': 'država',
+                'bs': 'država', 'fa': 'کشور',
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
@@ -807,7 +808,7 @@ class BasicBot(
              'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник',
              'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
              'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
-             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', }
+             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1', }
 
     update_options = {
         'replace': False,  # delete old text and write the new text
@@ -1697,12 +1698,14 @@ class BasicBot(
                     if self.opt.test2:
                         pywikibot.output(f'testing param:{p}')
                     # named, name, value = self.templateArg(p)
-                    if lang = 'fa':
-                        name = str(p.value).strip()
-                        value = str(p.name).strip()
-                    else:
-                        name = str(p.name).strip()
-                        value = str(p.value).strip()
+                    name = str(p.name).strip()
+                    value = str(p.value).strip()
+                    # if lang = 'fa':
+                    #     name = str(p.value).strip()
+                    #     value = str(p.name).strip()
+                    # else:
+                    #     name = str(p.name).strip()
+                    #     value = str(p.value).strip()
                     named = True
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
