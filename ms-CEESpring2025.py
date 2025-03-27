@@ -278,7 +278,7 @@ countryNames = {
            'Latvia': 'Latvia',
            'Βόρου': 'Võro', 'Επαρχία Βόρου': 'Võro', 'Ρουμανία και Μολδαβία': 'Romania and Moldova', 'Ρομά': 'Romani',
            'γλώσσα Εσπεράντο': 'Esperanto', 'Τάταροι της Κριμαίας': 'Crimean Tatars', 'Έρζια': 'Erzia',
-           'Ογγαρία': 'Hungary', 'Ρωσική ομοσπονδία': 'Russia', 'Κυπριακή Δημοκρατία': 'Cyprus', },
+           'Ογγαρία': 'Hungary', 'Ρωσική ομοσπονδία': 'Russia', 'Κυπριακή Δημοκρατία': 'Cyprus' },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
             'Азербайджан Республикась': 'Azerbaijan', 'Азербайджан': 'Azerbaijan',
@@ -439,7 +439,7 @@ countryNames = {
            'Crimean tatars': 'Crimean tatars', 'Эрзяне': 'Erzia', 'Западноармянская община': 'West Armenian',
            'аромуны': 'Aromanian', 'Рома': 'Romani', 'Аромуны': 'Aromanian', 'цыгане': 'Romani',
            'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', 'Республика Косово': 'Kosovo',
-           'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', 'Марокко': 'Morocco',  },
+           'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', 'Марокко': 'Morocco'  },
     # sah countries
     'sah': {
     },
