@@ -1852,6 +1852,7 @@ class BasicBot(
             countryTotals[c] = 0
 
         # generate table header
+        finalpage += '\n<div style="width:auto; overflow:scroll">'
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
         finalpage += '\n! {{Vert header|stp=1|Wiki / Country}}'
@@ -1929,7 +1930,7 @@ class BasicBot(
             totalTotal += countryTotals[c]
         finalpage += "\n! Total: !! '''" + str(totalTotal) + "'''" + lastRow + " || '''" + str(totalTotal) + "'''"
         # generate table footer
-        finalpage += '\n|}'
+        finalpage += '\n|}\n</div>'
 
         finalpage += "\n\n'''NOTE:''' the table counts references to respective countries. Article can reference more than 1 country"
 
@@ -1967,6 +1968,7 @@ class BasicBot(
             wikiTotals[a] = 0
 
         # generate table header
+        finalpage += '\n<div style="width:auto; overflow:scroll">'
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
         finalpage += '\n! author/wiki'
@@ -2002,7 +2004,7 @@ class BasicBot(
             totalTotal += wikiTotals[w]
         finalpage += " || '''" + str(totalTotal) + "'''"
         # generate table footer
-        finalpage += '\n|}'
+        finalpage += '\n|}\n</div>'
 
         finalpage += "\n\n'''NOTE:''' the table counts all articles per author: both new and updated"
 
