@@ -1689,6 +1689,8 @@ class BasicBot(
                 parlist['user'] = None
                 # for p in params:
                 for p in t.params:
+                    if self.opt.test2:
+                        pywikibot.output(f'testing param:{p}')
                     named, name, value = self.templateArg(p)
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
