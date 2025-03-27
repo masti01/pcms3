@@ -122,7 +122,7 @@ countryNames = {
            'język Võro': 'Võro', 'Język voro': 'Võro', 'Võro': 'Võro', 'Tatarzy Krymscy': 'Crimean Tatars',
            'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
-           'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro',  },
+           'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars'  },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
