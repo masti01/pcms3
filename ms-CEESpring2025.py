@@ -712,6 +712,7 @@ countryNames = {
             },
 # ary countries
     'ary': {
+            'بلغاريا': 'Bulgaria', 'پولونيا': 'Poland', 'إسطونيا': 'Estonia',
     },
 }
 
@@ -778,7 +779,8 @@ class BasicBot(
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
                 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
-                'en': 'country', 'uz': 'mamlakat', }
+                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد',
+                }
     # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
               'bs': 'tema', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
@@ -786,7 +788,7 @@ class BasicBot(
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
               'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
-              'en': 'topic', 'uz': 'mavzu', }
+              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
@@ -815,7 +817,8 @@ class BasicBot(
              'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник',
              'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
              'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
-             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1', }
+             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1', 'ary': 'خدايمي',
+             }
 
     update_options = {
         'replace': False,  # delete old text and write the new text
