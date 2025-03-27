@@ -1433,7 +1433,7 @@ class BasicBot(
                     artParams = {}
                     # hack for tt.wiki ел= param: stating year of competition
                     if lang == 'tt':
-                        if 'ел=2025' not in re.sub('\s+', '', r.text):
+                        if 'ел=2025' not in re.sub('\s', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
                             continue
