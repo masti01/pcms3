@@ -1417,7 +1417,10 @@ class BasicBot(
                     if lang not in ('pl'):  # keep parentheses for list
                         continue
 
-                self.templatesList[lang] = [i.title()]
+                if i.namespace() == 10:
+                    self.templatesList[lang] = [i.title(with_ns=False)]
+                else:
+                    self.templatesList[lang] = [i.title()]
                 pywikibot.output(f'Getting template redirs to {i.title(as_link=True, force_interwiki=True)} Lang:{lang}')
                 # for r in i.getReferences(namespaces=[10,4], filter_redirects=True):
                 for r in i.getReferences(filter_redirects=True):
