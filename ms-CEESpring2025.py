@@ -714,6 +714,10 @@ countryNames = {
     'ary': {
             'بلغاريا': 'Bulgaria', 'پولونيا': 'Poland', 'إسطونيا': 'Estonia',
     },
+# zgh countries
+    'zgh': {
+            'ⵔⵓⵙⵢⴰ': 'Russia', 'ⴱⵓⵍⵓⵏⵢⴰ': 'Poland', 'ⵉⵙⵜⵓⵏⵢⴰ': 'Estonia',
+    }
 }
 
 class BasicBot(
@@ -757,17 +761,17 @@ class BasicBot(
                           'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
                           'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
-                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [] }
+                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [], 'zgh':[], }
     women = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
              'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, }
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
     hrights = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, }
+               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
     youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0,
-               'et': 0, 'fa':0, 'ary': 0,
+               'et': 0, 'fa':0, 'ary': 0, 'zgh': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
                'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz': 0}
@@ -779,7 +783,7 @@ class BasicBot(
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
                 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
-                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد',
+                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد', 'zgh': 'ⵜⴰⵎⵓⵔⵜ',
                 }
     # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
@@ -788,14 +792,14 @@ class BasicBot(
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
               'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
-              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', }
+              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
               'lv': 'Sievietes',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
-              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar'}
+              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ', }
     # local name for parameter value for: human rights
     hrightsp = {
             'pl': 'Prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'insan hüquqları',
@@ -818,6 +822,7 @@ class BasicBot(
              'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
              'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
              'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1', 'ary': 'خدايمي',
+             'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ',
              }
 
     update_options = {
