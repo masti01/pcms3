@@ -333,7 +333,7 @@ countryNames = {
            'Ղրիմ': 'Crimean Tatars', 'Միջազգային': 'International', 'Էստոնիո': 'Estonia',
            'Մոլդովա և Ռումինիա': 'Romania and Moldova', 'Առոմաներեն': 'Romania and Moldova',
            'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia', 'Նովգորոդյան երկիր':'Novgorodian',
-           'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan',
+           'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            },
     # hyw countries
     'hyw': {
