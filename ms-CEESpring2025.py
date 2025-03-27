@@ -1692,7 +1692,9 @@ class BasicBot(
                 for p in t.params:
                     if self.opt.test2:
                         pywikibot.output(f'testing param:{p}')
-                    named, name, value = self.templateArg(p)
+                    # named, name, value = self.templateArg(p)
+                    name = p.name
+                    value = p.value
                     # strip square brackets from value
                     if lang == 'myv' and name.startswith(self.countryp['myv']):
                         value = re.sub(r"\'*\{\{Масторкоцт *\| *([^\}]*)[^\n]*", r'\1', value)
