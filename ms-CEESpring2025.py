@@ -418,7 +418,7 @@ countryNames = {
            'Cipru': 'Cyprus', 'Romi': 'Romani', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
            'Aromâni': 'Aromanian', 'romi': 'Romani', 'Armenia de Vest': 'West Armenian', 'Iacutia': 'Sakha',
            'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', 'tătari crimeeni': 'Crimean tatars',
-           'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', },
+           'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',  },
     # roa-rup countries
     'roa-rup': {
             },
@@ -616,7 +616,8 @@ countryNames = {
            'Esperanta': 'Esperanto', 'Krimu': 'Crimean Tatars', 'Võru': 'Võro', 'Lužici': 'Sorbia', 'Malte': 'Malta',
            'Cipra': 'Cyprus', 'Grčke': 'Greece', 'Romskoj zajednici': 'Romani', 'Zapadnoj Armeniji': 'Western Armenian',
            'International': 'International', 'Makedoniji (Aromanian)': 'Aromanian',
-           'Baškiriji (Baškirska)': 'Bashkortostan', 'Crnoj Gori (Montenegro)': 'Montenegro', 'Rumunskoj': 'Romania and Moldova',
+           'Baškiriji (Baškirska)': 'Bashkortostan', 'Crnoj Gori (Montenegro)': 'Montenegro',
+           'Rumunskoj': 'Romania and Moldova', 'Võrou': 'Võro',
            },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
