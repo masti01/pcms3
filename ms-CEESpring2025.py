@@ -618,7 +618,7 @@ countryNames = {
            'Cipra': 'Cyprus', 'Grčke': 'Greece', 'Romskoj zajednici': 'Romani', 'Zapadnoj Armeniji': 'Western Armenian',
            'International': 'International', 'Makedoniji (Aromanian)': 'Aromanian',
            'Baškiriji (Baškirska)': 'Bashkortostan', 'Crnoj Gori (Montenegro)': 'Montenegro',
-           'Rumunskoj': 'Romania and Moldova', 'Võrou': 'Võro',
+           'Rumunskoj': 'Romania and Moldova', 'Võrou': 'Võro', 'Roma': 'Romani', 'Uzbekistanu': 'Uzbekistan',
            },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
