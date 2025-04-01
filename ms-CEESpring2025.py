@@ -282,7 +282,7 @@ countryNames = {
            'γλώσσα Εσπεράντο': 'Esperanto', 'Τάταροι της Κριμαίας': 'Crimean Tatars', 'Έρζια': 'Erzia',
            'Ογγαρία': 'Hungary', 'Ρωσική ομοσπονδία': 'Russia', 'Κυπριακή Δημοκρατία': 'Cyprus',
            'Τσουβάς': 'Chuvasz', 'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Βόρο': 'Võro',
-           'Βλάχοι': 'Aromanian',},
+           'Βλάχοι': 'Aromanian', 'Τάταροι': 'Tatars', },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
             'Азербайджан Республикась': 'Azerbaijan', 'Азербайджан': 'Azerbaijan',
