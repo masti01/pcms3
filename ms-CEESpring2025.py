@@ -282,7 +282,7 @@ countryNames = {
            'γλώσσα Εσπεράντο': 'Esperanto', 'Τάταροι της Κριμαίας': 'Crimean Tatars', 'Έρζια': 'Erzia',
            'Ογγαρία': 'Hungary', 'Ρωσική ομοσπονδία': 'Russia', 'Κυπριακή Δημοκρατία': 'Cyprus',
            'Τσουβάς': 'Chuvasz', 'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Βόρο': 'Võro',
-           'Βλάχοι': 'Aromanian', 'Τάταροι': 'Tatars', },
+           'Βλάχοι': 'Aromanian', 'Τάταροι': 'Tatars', 'Τατζικιστάν': 'Tajikistan', },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
             'Азербайджан Республикась': 'Azerbaijan', 'Азербайджан': 'Azerbaijan',
@@ -416,7 +416,7 @@ countryNames = {
            'Serbia': 'Serbia', 'Slovacia': 'Slovakia', 'Slovenia': 'Slovenia', 'Tatars': 'Tatars',
            'Turcia': 'Turkey', 'Ucraina': 'Ukraine', 'Grecia': 'Greece', 'Kazahstan': 'Kazakhstan', 'Erzia': 'Erzia',
            'Malta': 'Malta', 'Tătari crimeeni': 'Crimean tatars', 'Tătarii din Crimeea': 'Crimean tatars',
-           'sorabi': 'Sorbia',
+           'sorabi': 'Sorbia', 'Bosnia': 'Bosnia and Herzegovina',
            'Tătarii crimeeni': 'Crimean Tatars', 'Republica Cehă': 'Czechia', 'Mișcarea esperantistă': 'Esperanto',
            'Cipru': 'Cyprus', 'Romi': 'Romani', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
            'Aromâni': 'Aromanian', 'romi': 'Romani', 'Armenia de Vest': 'West Armenian', 'Iacutia': 'Sakha',
@@ -713,6 +713,7 @@ countryNames = {
 # fa countries
     'fa': {
             'بلغارستان': 'Bulgaria', 'روسیه': 'Russia', 'لهستان': 'Poland', 'اوکراین': 'Ukraine',
+            'استونی': 'Estonia', 'صربستان': 'Serbia', 'اسلواکی': 'Slovakia', 'کرواسی': 'Croatia', 'مجارستان': 'Hungary',
             },
 # ary countries
     'ary': {
