@@ -105,7 +105,7 @@ languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg'
                    'sq': ['Albania'], 'mk': ['North Macedonia'], 'sk': ['Slovakia'], 'mt': ['Malta'],
                    'be-tarask': ['Belarus'], 'uk': ['Ukraine'], 'sl': ['Slovenia'],
                    'bs': ['Bosnia and Herzegovina', 'Republic of Srpska'], 'fiu-vro': ['Võro'],
-                   'fa': ['Iran'], }
+                   'fa': ['Iran'], 'zgh': ['Morocco'] }
 countryNames = {
     # pl countries
     'pl': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbejdżan': 'Azerbaijan', 'Baszkortostan': 'Bashkortostan',
