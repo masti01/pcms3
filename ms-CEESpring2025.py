@@ -97,11 +97,11 @@ countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bash
                'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian', 'International', 'Other', 'Empty']
 
 languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'],
-                   'et': ['Estonia', 'Võro'],
+                   'et': ['Estonia', 'Võro'], 'de': ['Austria', 'Germany'],
                    'az': ['Azerbaijan'], 'ru': ['Russia', 'Don'], 'tt': ['Tatarstan'], 'tr': ['Turkey'],
-                   'lv': ['Latvia'],
+                   'lv': ['Latvia'], 'ka': ['Georgia'], 'uz': ['Uzbekistan'],
                    'ro': ['Romania and Moldova'], 'pl': ['Poland'], 'hy': ['Armenia'], 'ba': ['Bashkortostan'],
-                   'hr': ['Croatia'], 'de': ['Germany'], 'hu': ['Hungary'], 'kk': ['Kazakhstan'], 'sr': ['Serbia'],
+                   'hr': ['Croatia'], 'hu': ['Hungary'], 'kk': ['Kazakhstan'], 'sr': ['Serbia'],
                    'sq': ['Albania'], 'mk': ['North Macedonia'], 'sk': ['Slovakia'], 'mt': ['Malta'],
                    'be-tarask': ['Belarus'], 'uk': ['Ukraine'], 'sl': ['Slovenia'],
                    'bs': ['Bosnia and Herzegovina', 'Republic of Srpska'], 'fiu-vro': ['Võro'],
