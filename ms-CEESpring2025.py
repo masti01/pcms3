@@ -716,6 +716,7 @@ countryNames = {
     'fa': {
             'بلغارستان': 'Bulgaria', 'روسیه': 'Russia', 'لهستان': 'Poland', 'اوکراین': 'Ukraine',
             'استونی': 'Estonia', 'صربستان': 'Serbia', 'اسلواکی': 'Slovakia', 'کرواسی': 'Croatia', 'مجارستان': 'Hungary',
+            'مولداوی': 'Romania and Moldova', 'رومانی': 'Romania and Moldova',
             },
 # ary countries
     'ary': {
