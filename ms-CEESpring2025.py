@@ -230,7 +230,8 @@ countryNames = {
            'Kasachstan': 'Kazakhstan', 'Malta': 'Malta', 'Sorbisches Siedlungsgebiet': 'Sorbia',
            'Nordmazedonien': 'North Macedonia', 'Tatars': 'Tatars', 'Zypern': 'Cyprus',
            'die Republik Moldau': 'Romania and Moldova', 'die Türkei': 'Turkey', 'Sorbisch': 'Sorbia',
-           'Sorben': 'Sorbia', 'Belarus': 'Belarus', 'Roma und Sinti': 'Romani', 'Ersjanisch': 'Erzia', },
+           'Sorben': 'Sorbia', 'Belarus': 'Belarus', 'Roma und Sinti': 'Romani', 'Ersjanisch': 'Erzia',
+           'Iran': 'Iran', },
     # bs countries
     'bs': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbejdžan': 'Azerbaijan', 'Baškortostan': 'Bashkortostan',
            'Bjelorusija': 'Belarus', 'Bosna i Hercegovina': 'Bosnia and Herzegovina', 'Bugarska': 'Bulgaria',
@@ -426,7 +427,8 @@ countryNames = {
            'Cipru': 'Cyprus', 'Romi': 'Romani', 'Võro': 'Võro', 'Federația Rusă': 'Russia', 'aromâni': 'Aromanian',
            'Aromâni': 'Aromanian', 'romi': 'Romani', 'Armenia de Vest': 'West Armenian', 'Iacutia': 'Sakha',
            'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', 'tătari crimeeni': 'Crimean tatars',
-           'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',  },
+           'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',
+           'Ziua Internațională a Romilor': 'Romani', },
     # roa-rup countries
     'roa-rup': {
             },
