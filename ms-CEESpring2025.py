@@ -286,7 +286,8 @@ countryNames = {
            'Τσουβάς': 'Chuvasz', 'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Βόρο': 'Võro',
            'Βλάχοι': 'Aromanian', 'Τάταροι': 'Tatars', 'Τατζικιστάν': 'Tajikistan', 'Νόβγκοροντ': 'Novgorodian',
            'Βορειοδυτική Ρωσία': 'Russia', 'Κιργιστάν': 'Kyrgyzstan', 'Σαχά': 'Sakha', 'Ιράν': 'Iran',
-           'Σόρβοι': 'Sorbia', 'Τατάροι της Κριμαίας': 'Crimean Tatars', 'Κριμαίοι Καραΐτες': 'Crimean Karaites', },
+           'Σόρβοι': 'Sorbia', 'Τατάροι της Κριμαίας': 'Crimean Tatars', 'Κριμαίοι Καραΐτες': 'Crimean Karaites',
+           'Κριμτσάκοι': 'Krymchaks', 'Ουζμπεκιστάν': 'Uzbekistan', },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
             'Азербайджан Республикась': 'Azerbaijan', 'Азербайджан': 'Azerbaijan',
@@ -409,7 +410,7 @@ countryNames = {
            'БиХ': 'Bosnia and Herzegovina', 'Северна Македонија': 'North Macedonia', 'Азербјџан': 'Azerbaijan',
            'Кримски Караити': 'Crimean Tatars', 'Западна Ерменија': 'West Armenian', 'Ерзјани': 'Erzia',
            'Власи': 'Aromanian', 'Татари': 'Tatars', 'Северо-западен регион на Русија': 'Russia',
-           'Лужички Срби': 'Sorbia', 'Турцоја': 'Turkey', },
+           'Лужички Срби': 'Sorbia', 'Турцоја': 'Turkey', 'Чувашија': 'Chuvasz', 'Киргистан': 'Kyrgyzstan', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
