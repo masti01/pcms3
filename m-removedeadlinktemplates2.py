@@ -177,7 +177,7 @@ class BasicBot(
 
         result = {}
         for l in parsedarticle.filter_external_links():
-            ul = unquote(l.url)  # unquoted link
+            ul = unquote(str(l.url))  # unquoted link
             if str(ul) not in result.keys():
                 result[str(ul)] = False
             if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, ul):
