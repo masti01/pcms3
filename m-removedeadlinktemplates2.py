@@ -97,7 +97,8 @@ class BasicBot(
         'top': False,  # append text on top of the page
         'test': False,  # switch on test functionality
         'testtmplname': False,  # switch on test functionality
-        'testtmpllink': False,  # switch on test functionality
+        'testtmpllink': False,  # switch on test functionality - check link with archive
+        'testcheck': False,  # switch on test functionality - check links on page
         'nodelete': False,  # do not delete empty pages
     }
 
@@ -192,7 +193,9 @@ class BasicBot(
             if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, l.url):
                 result[str(ul)] = True
 
-        pywikibot.output(f'RESULT:{result}')
+        if self.opt.testcheck:
+            pywikibot.output(f'RESULT:{result}')
+            pywikibot.output(f'Links found:{len(result)}')
         return result
 
 
