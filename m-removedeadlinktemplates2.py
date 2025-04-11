@@ -180,7 +180,7 @@ class BasicBot(
             ul = unquote(str(l.url))  # unquoted link
             if str(ul) not in result.keys():
                 result[str(ul)] = False
-            if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, str(l.url)):
+            if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, l.url):
                 result[str(ul)] = True
 
         pywikibot.output(f'RESULT:{result}')
@@ -205,7 +205,7 @@ class BasicBot(
         if self.opt.testtmpllink:
             pywikibot.output(f'LINK TYPE:{type(link)}')
 
-        parent2 = wcode.get_ancestors(link)[-2]
+        parent2 = wcode.get_ancestors(link)[-1]
         if self.opt.testtmpllink:
             pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
         if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
