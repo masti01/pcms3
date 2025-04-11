@@ -648,7 +648,8 @@ countryNames = {
            'Ciper': 'Cyprus', 'Võrumaa': 'Võro', 'Lužiška srbija': 'Sorbia', 'Lužiški Srbi': 'Sorbia',
            'Tatari': 'Tatars', 'mednarodno': 'International', 'Ruska federacija': 'Russia',
            'Aromuni': 'Aromanian', 'Zahodni Armenci': 'Western Armenian', 'Krimski Tatari': 'Crimean Tatars',
-           'Võro': 'Võro', 'kazahstan': 'Kazakhstan', 'Erzjani': 'Erzia', 'Republika Srbska': 'Republic of Srpska', },
+           'Võro': 'Võro', 'kazahstan': 'Kazakhstan', 'Erzjani': 'Erzia', 'Republika Srbska': 'Republic of Srpska',
+           'Čuvašija': 'Chuvasz', },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
@@ -728,7 +729,8 @@ countryNames = {
             'مولداوی': 'Romania and Moldova', 'رومانی': 'Romania and Moldova', 'Albania': 'Albania', 'Armenia': 'Armenia',
             'Austria': 'Austria', 'Belarus': 'Belarus', 'Bosnia and Herzegovina': 'Bosnia and Herzegovina',
             'Romania': 'Romania', 'Bulgaria': 'Bulgaria', 'Poland': 'Poland', 'Estonia': 'Estonia', 'Cyprus': 'Cyprus',
-            'Georgia': 'Georgia', 'Greece': 'Greece', 'Kazakhstan': 'Kazakhstan',
+            'Georgia': 'Georgia', 'Greece': 'Greece', 'Kazakhstan': 'Kazakhstan', 'Kyrgyzstan': 'Kyrgyzstan',
+            'Latvia': 'Latvia', 'Czech Republic': 'Czechia',
             },
 # ary countries
     'ary': {
