@@ -205,7 +205,7 @@ class BasicBot(
         if self.opt.testtmpllink:
             pywikibot.output(f'LINK TYPE:{type(link)}')
 
-        parent2 = wcode.get_ancestors(link)[-1]
+        parent2 = wcode.get_ancestors(link)[-2]
         if self.opt.testtmpllink:
             pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
         if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
