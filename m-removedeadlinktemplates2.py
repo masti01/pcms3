@@ -162,6 +162,8 @@ class BasicBot(
                     parsedtalk.remove(tmpl)
                     changed = True
                     tmplremoved += 1
+                    if self.opt.test:
+                        pywikibot.output(f'Template removed:{tmpl["link"]}')
 
         if changed:
             page.text = str(parsedtalk)
