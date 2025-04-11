@@ -224,7 +224,8 @@ class BasicBot(
             if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
                 return False
 
-            pywikibot.output(f'NAME:{parent2.name}')
+            if self.opt.testtmpllink:
+                pywikibot.output(f'NAME:{parent2.name}')
             if parent2.name.lower().startswith("cytuj"):
                 if self.opt.testtmpllink:
                     pywikibot.output(f'CITE:{parent2}')
