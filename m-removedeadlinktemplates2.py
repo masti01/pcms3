@@ -101,14 +101,14 @@ class BasicBot(
     }
 
     def run(self):
-        counter = 1
+        counter = 0
         changeCounter = 0
         for page in self.generator:
             pywikibot.output(u'Processing #%i (%i changed):%s' % (counter, changeCounter, page.title(as_link=True)))
             counter += 1
             if self.treat(page):
                 changeCounter += 1
-        pywikibot.output(u'Statistics: Processed: %i, Removed: %i' % (counter, changeCounter))
+        pywikibot.output(u'Statistics: Processed: %i, Changed: %i' % (counter, changeCounter))
 
     def treat(self, page):
         """
@@ -145,7 +145,10 @@ class BasicBot(
 
         # find dead link templates
         changed = False
+        tmplcount = 0
+        tmplremoved = 0
         for tmpl in templates:
+            tmplcount += 1
             if self.opt.testtmplname:
                 pywikibot.output(f'Title:{tmpl.name}')
             if tmpl.name.matches("Martwy link dyskusja") and tmpl.has("link"):
@@ -157,11 +160,13 @@ class BasicBot(
                 if linklink in articlelinks.keys() and articlelinks[linklink]:
                     parsedtalk.remove(tmpl)
                     changed = True
+                    tmplremoved += 1
 
         if changed:
             page.text = str(parsedtalk)
             if self.opt.test:
                 pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
+                pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
             page.save(summary=self.opt.summary)
             return True
         return False
