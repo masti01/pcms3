@@ -166,12 +166,15 @@ class BasicBot(
                     if self.opt.test:
                         pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
 
+        if self.opt.test:
+            pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
+
         if changed:
             page.text = str(parsedtalk)
             if self.opt.test:
                 # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
                 pywikibot.output(f'DIFF:\n{str(difflib.ndiff(talktext, page.text))}')
-                pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
+
             page.save(summary=self.opt.summary)
             return True
         return False
