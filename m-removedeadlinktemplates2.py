@@ -170,7 +170,7 @@ class BasicBot(
             page.text = str(parsedtalk)
             if self.opt.test:
                 # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
-                pywikibot.output(f'DIFF:\n{difflib.ndiff(talktext, page.text)}')
+                pywikibot.output(f'DIFF:\n{str(difflib.ndiff(talktext, page.text))}')
                 pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
             page.save(summary=self.opt.summary)
             return True
