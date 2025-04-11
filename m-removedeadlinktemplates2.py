@@ -59,6 +59,7 @@ from pywikibot.bot import (
 
 from urllib.parse import unquote
 import mwparserfromhell
+import difflib
 
 
 # This is required for the text that is shown when you run this script
@@ -165,7 +166,8 @@ class BasicBot(
         if changed:
             page.text = str(parsedtalk)
             if self.opt.test:
-                pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
+                # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
+                pywikibot.output(f'DIFF:\n{difflib.ndiff(talktext, page.text)}')
                 pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
             page.save(summary=self.opt.summary)
             return True
