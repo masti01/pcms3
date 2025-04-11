@@ -58,6 +58,7 @@ from pywikibot.bot import (
 )
 import re
 import backoff
+from urllib.parse import unquote
 
 
 # This is required for the text that is shown when you run this script
@@ -194,8 +195,11 @@ class BasicBot(
         """
         link = re.sub("\.", "\.", link)
         link = re.sub("\?", "\?", link)
-        linkR = re.compile(f'web\.archive\.org/web/\d*/{link}')
-        return linkR.search(text)
+        # linkR = re.compile(f'web\.archive\.org/web/\d*/{link}')
+        # return linkR.search(text)
+        linkR = re.compile(f'web\.archive\.org/web/\d*/{unquote((link))}')
+        return linkR.search(unquote(text))
+
     def removelinktemplate(self, link, text):
         """
         check if link is within {{cytuj...}} template with filled archiwum= field or within this field
