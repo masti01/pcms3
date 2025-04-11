@@ -207,8 +207,8 @@ class BasicBot(
         link in url/tytuł field + archiwum not empty
         link in archiwum field
         """
-        citetempR = re.compile(r'(?P<citetemplate>\{\{[cC]ytuj.*?\|[^}]*?\}\})')
-        urlfieldR = re.compile(r'(url|tytuł)\s*?=(?P<url>[^\|\}]*)')
+        citetempR = re.compile(r'(?i)(?P<citetemplate>\{\{cytuj.*?\|[^}]*?\}\})')
+        urlfieldR = re.compile(r'url\s*?=(?P<url>[^\|\}]*)')
         archfieldR = re.compile(r'archiwum\s*?=\s*?(?P<arch>[^\|\}]*)')
         result = False
     
