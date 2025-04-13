@@ -208,7 +208,7 @@ class BasicBot(
         :param link: string
         :return: Bool
         """
-        return "archive.org" in link or "archive.is" in link
+        return "web.archive.org" in link or "archive.is" in link
 
     def islinkwitharchive(self, wcode, link):
         """
