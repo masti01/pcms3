@@ -3574,7 +3574,7 @@ class DeadLinkReportThread(threading.Thread):
                                      'weblinkchecker-summary'))
                 """
                 # new code: use polish template
-                content += u'{{Martwy link dyskusja\n | link=' + errorReport + u'\n | IA=' + archiveMsg + u'\n}}'
+                content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
 
                 comment = u'[[%s]] Robot zgłasza niedostępny link zewnętrzny: %s' % \
                           (talkPage.title(), url)
