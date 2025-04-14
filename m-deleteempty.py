@@ -44,6 +44,7 @@ cannot be set by settings file:
 # Distributed under the terms of the MIT license.
 #
 import pywikibot
+from pywikibot import textlib
 from pywikibot import pagegenerators
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
@@ -106,8 +107,11 @@ class BasicBot(
         # if len(self.current_page.text) < 4 :
         #    if self.site.user() is None:
         #       self.site.login()
-        szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in self.current_page.text
-        martwyEK = '{{ek|nieaktualna' in self.current_page.text
+        talktext = textlib.removeDisabledParts(self.current_page.text)
+        talktext = talktext.replace(' ', '')  # remove spaces
+        talktext = talktext.replace('\n', '')  # remove newlines
+        szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in talktext
+        martwyEK = '{{ek|nieaktualna' in talktext
         if len(self.current_page.text) < 4 or szoltysEK or martwyEK:
             try:
                 if szoltysEK:
