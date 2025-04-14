@@ -125,7 +125,7 @@ class BasicBot(
                                              not self.opt.always,
                                              self.opt.always)
                 else:
-                    self.current_page.delete(f'{self.opt.summary} ({len(talktext)})',
+                    self.current_page.delete(f'{self.opt.summary} ({len(self.current_page.text)})',
                                              not self.opt.always,
                                              self.opt.always)
             except pywikibot.exceptions.Error:
