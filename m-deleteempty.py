@@ -121,11 +121,11 @@ class BasicBot(
                                          not self.opt.always,
                                          self.opt.always)
                 if martwyEK:
-                    self.current_page.delete(f'{self.opt.summary} (nieaktualna informacja o martwym linku)',
+                    self.current_page.delete(f'{self.opt.summary} (EK:nieaktualna informacja o martwym linku)',
                                              not self.opt.always,
                                              self.opt.always)
                 else:
-                    self.current_page.delete(self.opt.summary,
+                    self.current_page.delete(f'{self.opt.summary} ({len(talktext)})',
                                              not self.opt.always,
                                              self.opt.always)
             except pywikibot.exceptions.Error:
