@@ -112,7 +112,7 @@ class BasicBot(
         talktext = talktext.replace('\n', '')  # remove newlines
         szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in talktext
         martwyEK = '{{ek|nieaktualna' in talktext
-        if len(self.current_page.text) < 4 or szoltysEK or martwyEK:
+        if len(talktext) < 4 or szoltysEK or martwyEK:
             try:
                 if self.opt.test:
                     pywikibot.output(f'>>>{talktext}<<<')
