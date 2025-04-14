@@ -3213,7 +3213,6 @@ def citeArchivedLink(link, text):
 
     for (t, p) in temppars:
         if t.lower().startswith("cytuj"):
-            # pywikibot.output(u'T:%s\nP:%s' % (t,p))
             arch = False
             urlin = False
             if 'archiwum' in p.keys():
@@ -3547,37 +3546,11 @@ class DeadLinkReportThread(threading.Thread):
                 else:
                     archiveMsg = ''
 
-                # The caption will default to "Dead link". But if there
-                # is already such a caption, we'll use "Dead link 2",
-                # "Dead link 3", etc.
-                # caption = i18n.twtranslate(containingPage.site,
-                #                           'weblinkchecker-caption')
-                caption = u'Martwy link'
-                i = 1
-                count = ''
-                """
-                # Check if there is already such a caption on
-                # the talk page.
-                while re.search('= *{0}{1} *='
-                                .format(caption, count), content) is not None:
-                    i += 1
-                    count = ' ' + str(i)
-                caption += count
-                content += '== {0} ==\n\n{3}\n\n{1}{2}\n--~~~~'.format(
-                    caption, errorReport, archiveMsg,
-                    i18n.twtranslate(containingPage.site,
-                                     'weblinkchecker-report'))
-
-                comment = '[[{0}#{1}|→]] {2}'.format(
-                    talkPage.title(), caption,
-                    i18n.twtranslate(containingPage.site,
-                                     'weblinkchecker-summary'))
-                """
                 # new code: use polish template
-                content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
+                # content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
+                content += f'{{{{Martwy link dyskusja\n | link={errorReport} | IA={archiveMsg}\n}}}}'
 
-                comment = u'[[%s]] Robot zgłasza niedostępny link zewnętrzny: %s' % \
-                          (talkPage.title(), url)
+                comment = f'[[{talkPage.title()}]] Robot zgłasza niedostępny link zewnętrzny: {url}'
 
                 try:
                     talkPage.put(content, comment)
@@ -3618,7 +3591,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
         page = self.current_page
         """report  page.title and time"""
         try:
-            pywikibot.output(u'P:%s >>>%s' % (page.title(), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+            pywikibot.output(f'P:{page.title()} >>>{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'
             with open("masti/pid/wlclast.log", "w") as logfile:
                 logfile.write(page.title())
         except:
