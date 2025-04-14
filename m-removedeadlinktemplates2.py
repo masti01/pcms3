@@ -167,7 +167,7 @@ class BasicBot(
                         if self.opt.test:
                             pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
                 except IndexError:
-                    pywikibot.output(f'Link ERROR:{tmpl['link'].value.filter_external_links()}')
+                    pywikibot.output(f"Link ERROR:{tmpl['link'].value.filter_external_links()}")
 
         if self.opt.test:
             pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
