@@ -3591,7 +3591,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
         page = self.current_page
         """report  page.title and time"""
         try:
-            pywikibot.output(f'P:{page.title()} >>>{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'
+            pywikibot.output(f'P:{page.title()} >>>{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
             with open("masti/pid/wlclast.log", "w") as logfile:
                 logfile.write(page.title())
         except:
