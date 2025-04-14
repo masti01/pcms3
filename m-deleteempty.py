@@ -114,6 +114,8 @@ class BasicBot(
         martwyEK = '{{ek|nieaktualna' in talktext
         if len(self.current_page.text) < 4 or szoltysEK or martwyEK:
             try:
+                if self.opt.test:
+                    pywikibot.output(talktext)
                 if szoltysEK:
                     self.current_page.delete(f'{self.opt.summary} (Szoltys-bot/EK)',
                                          not self.opt.always,
