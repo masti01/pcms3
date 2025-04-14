@@ -155,16 +155,19 @@ class BasicBot(
                 pywikibot.output(f'Title:{tmpl.name}')
             if tmpl.name.matches("Martwy link dyskusja") and tmpl.has("link"):
                 # pywikibot.output(f"Matched:{tmpl['link']}")
-                linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
-                pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
+                try:
+                    linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
+                    pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
 
-                # find linklink in article unquoted content
-                if linklink in articlelinks.keys() and articlelinks[linklink]:
-                    parsedtalk.remove(tmpl)
-                    changed = True
-                    tmplremoved += 1
-                    if self.opt.test:
-                        pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
+                    # find linklink in article unquoted content
+                    if linklink in articlelinks.keys() and articlelinks[linklink]:
+                        parsedtalk.remove(tmpl)
+                        changed = True
+                        tmplremoved += 1
+                        if self.opt.test:
+                            pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
+                except IndexError:
+                    pywikibot.output(f'Link ERROR:{tmpl['link'].value.filter_external_links()}')
 
         if self.opt.test:
             pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
