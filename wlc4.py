@@ -1616,14 +1616,14 @@ ignorelist = [
     re.compile(r'.*[\./@]zso\.bystrzyca\.eu'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]zulawy\.infopl\.info/index\.php/pndg/gstegna/drewnica'),  # bot rejected on site (masti, szoltys)
     re.compile(r'.*[\./@]zwierzyniec\.e-biuletyn\.pl/index\.php?id=131'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]assaeroporti\.com/statistiche'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]en\.jerusalem-patriarchate\.info/apostolic-succession'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]geonames\.nga\.mil/gns/html'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]iwf\.net/results/athletes/?athlete=artykov-izzat-1993-09-08&id=2770'),  # bot rejected on site (masti, BrakPomysłuNaNazwę)
-    re.compile(r'\.*[\./@]lizakowski-photo\.art\.pl'),  # bot rejected on site (masti, Cloefor)
-    re.compile(r'\.*[\./@]s2\.fbcdn\.pl/5/clubs/40695/data/docs/pomorzanka-statystyka-1955-2011\.pdf'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]stat\.gov\.pl/spisy-powszechne/nsp-2011/nsp-2011-wyniki/ludnosc-w-miejscowosciach-statystycznych-wedlug-ekonomicznych-grup-wieku-stan-w-dniu-31-03-2011-r-,21,1\.html'),  # bot rejected on site (masti, szoltys)
-    re.compile(r'\.*[\./@]www\.biuletyn\.net/nt-bin/start\.asp\\?podmiot=zaklikow/&strona=14&typ=podmenu&typmenu=14&menu=7&id=31&str=1'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]assaeroporti\.com/statistiche'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]en\.jerusalem-patriarchate\.info/apostolic-succession'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]geonames\.nga\.mil/gns/html'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]iwf\.net/results/athletes/?athlete=artykov-izzat-1993-09-08&id=2770'),  # bot rejected on site (masti, BrakPomysłuNaNazwę)
+    re.compile(r'.*[\./@]lizakowski-photo\.art\.pl'),  # bot rejected on site (masti, Cloefor)
+    re.compile(r'.*[\./@]s2\.fbcdn\.pl/5/clubs/40695/data/docs/pomorzanka-statystyka-1955-2011\.pdf'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]stat\.gov\.pl/spisy-powszechne/nsp-2011/nsp-2011-wyniki/ludnosc-w-miejscowosciach-statystycznych-wedlug-ekonomicznych-grup-wieku-stan-w-dniu-31-03-2011-r-,21,1\.html'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]www\.biuletyn\.net/nt-bin/start\.asp\\?podmiot=zaklikow/&strona=14&typ=podmenu&typmenu=14&menu=7&id=31&str=1'),  # bot rejected on site (masti, szoltys)
     re.compile(r'.*[\./@]kpbc\.umk\.pl'),  # bot rejected on site (masti, Four\.mg)
     re.compile(r'.*[\./@]friedensfahrt-museum\.de'),  # bot rejected on site (masti, Four\.mg)
     re.compile(r'.*[\./@]opera\.lv'),  # bot rejected on site (masti, Four\.mg)
@@ -3327,7 +3327,7 @@ class History:
         #     'deadlinks', 'deadlinks-{0}-{1}.dat'.format(self.site.family.name,
         #                                                 self.site.code))
         self.datfilename = pywikibot.config.datafilepath(
-            'deadlinks', f'wlc4.deadlinks-{self.site.family.name}-{self.site.code}.dat')
+            'deadlinks', f'deadlinks-{self.site.family.name}-{self.site.code}.dat')
         # Count the number of logged links, so that we can insert captions
         # from time to time
         self.logCount = 0
@@ -3482,7 +3482,7 @@ class DeadLinkReportThread(threading.Thread):
                 # content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
                 content += f'{{{{Martwy link dyskusja\n | link={errorReport} | IA={archiveMsg}\n}}}}'
 
-                comment = f'[[{talkPage.title()}]] Robot zgłasza niedostępny link zewnętrzny: {url}'
+                comment = f'Robot zgłasza niedostępny link zewnętrzny: {url}'
 
                 try:
                     talkPage.put(content, comment)
