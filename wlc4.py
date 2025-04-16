@@ -3144,8 +3144,8 @@ ignorelist = [
     re.compile('.*[\./@]jeuxvideo\.com'),  # bot rejected on site (masti, Revsson)
     re.compile('.*[\./@]audio\.art\.pl/2013/index.php'),  # bot rejected on site (masti, Revsson)
     re.compile('.*[\./@]bfm\.ru'),  # bot rejected on site (masti, NiktWażny)
-    re.compile('.*[\./@]lccn\.loc\.gov'),  # bot rejected on site (masti, Revsson)
-    re.compile('.*[\./@]svs\.stat\.gov\.pl'),  # bot rejected on site (masti)
+    re.compile('.*[./@]lccn.loc.gov'),  # bot rejected on site (masti, Revsson)
+    re.compile('.*[./@]svs.stat.gov.pl'),  # bot rejected on site (masti)
 ]
 
 
