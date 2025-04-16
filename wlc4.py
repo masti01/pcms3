@@ -3632,7 +3632,8 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
                 thread = LinkCheckThread(page, url, self.history,
                                          self.HTTPignore, self.day)
                 # thread dies when program terminates
-                thread.setDaemon(True)
+                # thread.setDaemon(True)
+                thread.daemon = True
                 self.threads.append(thread)
             else:
                 pywikibot.output(f'Link [{url}]: ignored')
