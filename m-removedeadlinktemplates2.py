@@ -159,14 +159,14 @@ class BasicBot(
                 try:
                     linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
                     pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
-                    pywikibot.output(f"rticlelinks.keys:{articlelinks.keys()}")
+                    pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
                     try:
                         pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
                     except KeyError:
-                        pywikibot.output(f"articlelinks[linklink]: DO NOT EXISTS")
+                        pywikibot.output(f"articlelinks[{linklink.url}]: DO NOT EXISTS")
 
                     # find linklink in article unquoted content
-                    if linklink in articlelinks.keys() and articlelinks[linklink]:
+                    if (linklink in articlelinks.keys() and articlelinks[linklink]) or (linklink not in articlelinks.keys()):
                         parsedtalk.remove(tmpl)
                         changed = True
                         tmplremoved += 1
