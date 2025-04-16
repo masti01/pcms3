@@ -163,7 +163,7 @@ class BasicBot(
                     try:
                         pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
                     except KeyError:
-                        pywikibot.output(f"articlelinks[{linklink.url}]: DO NOT EXISTS")
+                        pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
 
                     # find linklink in article unquoted content
                     if (linklink in articlelinks.keys() and articlelinks[linklink]) or (linklink not in articlelinks.keys()):
