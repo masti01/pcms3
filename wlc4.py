@@ -3638,7 +3638,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
                 thread.daemon = True
                 self.threads.append(thread)
             else:
-                pywikibot.output(f'Link [{url}]: ignored')
+                pywikibot.output(f'Link [{url}]: ignored from excption list')
 
 def RepeatPageGenerator():
     """Generator for pages in History."""
