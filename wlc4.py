@@ -3220,6 +3220,8 @@ def isarchivedlink(link):
         'archive.vn',
         'webcitation.org'
     ]
+
+    pywikibot.output(f"isarchivedlink looking for {link.lower()}")
     for arch in archiveservices:
         if arch in link.lower():
             return True
