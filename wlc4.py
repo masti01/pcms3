@@ -3204,34 +3204,47 @@ def get_archive_url(url):
         archive = archive.replace('http://', 'https://', 1)
     return archive
 
+def isarchivedlink(link):
+    """
+    if link is internet archive link
+    :param link: string
+    :return: Bool
+    """
+    archiveservices = [
+        'archive.today',
+        'archive.fo',
+        'archive.is',
+        'archive.li',
+        'archive.md',
+        'archive.ph',
+        'archive.vn',
+        'webcitation.org'
+    ]
+    for arch in archiveservices:
+        if arch in link.lower():
+            return True
+    return False
 
-def citeArchivedLink(link, text):
-    # look if link is in cite template with non empty archive param
+def citeArchivedLink(link, wcode):
+    # look if link is in cite template with non empty archive param within parsedtext (wcode)
     # or link itself is an archive
     # return True in this cases
+    pywikibot.output(f"citeArchivedLink looking for {link}")
+    # wcode = mwparserfromhell.parse(text)
 
-    temppars = textlib.extract_templates_and_params(text, remove_disabled_parts=True, strip=True)
+    try:
+        parent2 = wcode.get_ancestors(link)[-2]
 
-    for (t, p) in temppars:
-        if t.lower().startswith("cytuj"):
-            arch = False
-            urlin = False
-            if 'archiwum' in p.keys():
-                if p['archiwum'].startswith(link):
-                    # skip archive links
-                    pywikibot.output('[%s] citeArchivedLink is archive:%s' % (
-                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), link))
-                    return (True)
-                arch = len(p['archiwum'])
+        if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
+            return False
 
-            if 'url' in p.keys():
-                urlin = p['url'].startswith(link)
-            if arch and urlin:
-                pywikibot.output('[%s] citeArchivedLink link archived:%s' % (
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), link))
-                return (True)
-    return (False)
+        if parent2.name.lower().startswith("cytuj"):
+            return parent2.has("archiwum", ignore_empty=True)
 
+    except IndexError:
+        return False
+
+    return False
 
 def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     """
@@ -3242,7 +3255,8 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     text = textlib.removeDisabledParts(text)
     parsed = mwparserfromhell.parse(text)
     for link in parsed.ifilter_external_links():
-        yield str(link.url)
+        if not citeArchivedLink(link, parsed) or not isarchivedlink(link):  # check if link is archived
+            yield str(link.url)
 
     """
     # Ignore links in fullurl template
