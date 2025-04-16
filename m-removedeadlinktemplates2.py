@@ -100,6 +100,7 @@ class BasicBot(
         'testtmplname': False,  # switch on test functionality
         'testtmpllink': False,  # switch on test functionality - check link with archive
         'testcheck': False,  # switch on test functionality - check links on page
+        'testremove': False,  # switch on test functionality - show removed templates
         'nodelete': False,  # do not delete empty pages
     }
 
@@ -170,7 +171,7 @@ class BasicBot(
                         parsedtalk.remove(tmpl)
                         changed = True
                         tmplremoved += 1
-                        if self.opt.test:
+                        if self.opt.testremove:
                             pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
                 except IndexError:
                     pywikibot.output(f"Link ERROR:{tmpl['link'].value.filter_external_links()}")
