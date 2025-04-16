@@ -3257,7 +3257,7 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     text = textlib.removeDisabledParts(text)
     parsed = mwparserfromhell.parse(text)
     for link in parsed.ifilter_external_links():
-        if not citeArchivedLink(link, parsed) or not isarchivedlink(link):  # check if link is archived
+        if not isarchivedlink(link) and not citeArchivedLink(link, parsed):  # check if link is archived
             yield str(link.url)
 
     """
