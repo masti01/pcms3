@@ -3342,21 +3342,18 @@ class History:
 
     def log(self, url, error, containingPage, archiveURL):
         """Log an error report to a text file in the deadlinks subdirectory."""
-        if archiveURL:
-            errorReport = '* {0} ([{1} archiwum])\n'.format(url, archiveURL)
-        else:
-            errorReport = '* {0}\n'.format(url)
+        # version with a link startting with * and archive URL in link param
+        # if archiveURL:
+        #     errorReport = '* {0} ([{1} archiwum])\n'.format(url, archiveURL)
+        # else:
+        #     errorReport = '* {0}\n'.format(url)
+        errorReport = f'{url}\n'
         for (pageTitle, date, error) in self.historyDict[url]:
             # ISO 8601 formulation
             isoDate = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(date))
-            errorReport += '** In [[{0}]] on {1}, {2}\n'.format(
-                pageTitle, isoDate, error)
+            errorReport += f'** In [[{pageTitle}]] on {isoDate}, {error}\n'
         pywikibot.output('** Logging link for deletion.')
-        txtfilename = pywikibot.config.datafilepath('deadlinks',
-                                                    'results-{0}-{1}.txt'
-                                                    .format(
-                                                        self.site.family.name,
-                                                        self.site.lang))
+        txtfilename = pywikibot.config.datafilepath('deadlinks', f'results-{self.site.family.name}-{self.site.lang}.txt')
         with codecs.open(txtfilename, 'a', 'utf-8') as txtfile:
             self.logCount += 1
             if self.logCount % 30 == 0:
