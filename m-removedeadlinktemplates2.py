@@ -159,7 +159,7 @@ class BasicBot(
                 try:
                     linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
                     pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
-                    pywikibot.output(f"rticlelinks.keys:{rticlelinks.keys()}")
+                    pywikibot.output(f"rticlelinks.keys:{articlelinks.keys()}")
                     pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
 
                     # find linklink in article unquoted content
