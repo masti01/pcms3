@@ -3236,7 +3236,7 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     """
     Yield web links from text.
 
-    TODO: move to textlib
+    TODO: move to mwparserfromhell
     """
     text = textlib.removeDisabledParts(text)
 
