@@ -211,14 +211,26 @@ class BasicBot(
             pywikibot.output(f'Links found:{len(result)}')
         return result
 
-
     def isarchivedlink(self, link):
         """
         if link is internet archive link
         :param link: string
         :return: Bool
         """
-        return "web.archive.org" in link or "archive.is" in link
+        archiveservices = [
+            'archive.today',
+            'archive.fo',
+            'archive.is',
+            'archive.li',
+            'archive.md',
+            'archive.ph',
+            'archive.vn',
+            'webcitation.org'
+        ]
+        for arch in archiveservices:
+            if arch in link.lower():
+                return True
+        return False
 
     def islinkwitharchive(self, wcode, link):
         """
@@ -232,9 +244,13 @@ class BasicBot(
 
         try:
             parent2 = wcode.get_ancestors(link)[-2]
+            parent = wcode.get_ancestors(link)[-1]
             if self.opt.testtmpllink:
+                parent = wcode.get_ancestors(link)[-1]
+                pywikibot.output(f'PARENT LINK TYPE:{type(parent)}')
                 pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
             if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
+                pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
                 return False
 
             if self.opt.testtmpllink:
