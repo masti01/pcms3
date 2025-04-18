@@ -3144,9 +3144,12 @@ def citeArchivedLink(link, wcode):
         parent2 = wcode.get_ancestors(link)[-2]
 
         if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
+            pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
             return False
-
+        pywikibot.output(f"citeArchivedLink grandparent is template:{str(parent2)}")
         if parent2.name.lower().startswith("cytuj"):
+            if parent2.has("archiwum", ignore_empty=True):
+                pywikibot.output(f"citeArchivedLink grandparent has  archiwum={str(parent2["archiwum"])}")
             return parent2.has("archiwum", ignore_empty=True)
 
     except IndexError:
