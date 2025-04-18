@@ -160,7 +160,8 @@ class BasicBot(
                 try:
                     linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
                     pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
-                    pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
+                    # pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
+                    pywikibot.output(f"articlelinks:{articlelinks}")
                     try:
                         pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
                     except KeyError:
