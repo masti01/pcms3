@@ -57,7 +57,7 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse
 import mwparserfromhell
 import difflib
 import re
@@ -233,8 +233,9 @@ class BasicBot(
             'archive.vn',
             'webcitation.org'
         ]
+        netloc = urlparse(link).netloc
         for arch in archiveservices:
-            if arch in link.lower():
+            if arch in netloc.lower():
                 return True
         return False
 
