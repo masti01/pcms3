@@ -3129,7 +3129,7 @@ def isarchivedlink(link):
     ]
 
     # pywikibot.output(f"isarchivedlink looking for {link.lower()}")
-    netloc = urlparse(link).netloc
+    netloc = urlparse(str(link)).netloc
     for arch in archiveservices:
         return arch in netloc.lower()
 
