@@ -167,12 +167,17 @@ class BasicBot(
                         pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
 
                     # find linklink in article unquoted content
-                    if (linklink in articlelinks.keys() and articlelinks[linklink]) or (linklink not in articlelinks.keys()):
-                        parsedtalk.remove(tmpl)
-                        changed = True
-                        tmplremoved += 1
-                        if self.opt.testremove:
-                            pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
+                    if linklink in articlelinks.keys():  # link is in article
+                        if not articlelinks[linklink]:  # link is not archived
+                            break  # keep template, skip to next template
+
+                    # remove template
+                    parsedtalk.remove(tmpl)
+                    changed = True
+                    tmplremoved += 1
+                    if self.opt.testremove:
+                        pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
+
                 except IndexError:
                     pywikibot.output(f"Link ERROR:{tmpl['link'].value.filter_external_links()}")
 
