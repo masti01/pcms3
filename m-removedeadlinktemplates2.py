@@ -234,7 +234,7 @@ class BasicBot(
             'webcitation.org'
         ]
 
-        netloc = urlparse(link).netloc
+        netloc = urlparse(str(link)).netloc
         if self.opt.testremove:
             pywikibot.output(f"isarchivedlink looking for link {link.lower()}")
             pywikibot.output(f"isarchivedlink looking for netloc {netloc.lower()}")
