@@ -3137,7 +3137,7 @@ def citeArchivedLink(link, wcode):
     # look if link is in cite template with non empty archive param within parsedtext (wcode)
     # or link itself is an archive
     # return True in this cases
-    pywikibot.output(f"citeArchivedLink looking for {link}")
+    # pywikibot.output(f"citeArchivedLink looking for {link}")
     # wcode = mwparserfromhell.parse(text)
 
     try:
@@ -3174,48 +3174,8 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     parsed = mwparserfromhell.parse(text)
     for link in parsed.ifilter_external_links():
         if not isarchivedlink(link.url) and not citeArchivedLink(link, parsed):  # check if link is archived
+            pywikibot.output(f"weblinksIn yielded:{str(link.url)}")
             yield str(link.url)
-
-    """
-    # Ignore links in fullurl template
-    text = re.sub(r'{{\s?fullurl:.[^}]*}}', '', text)
-
-    # MediaWiki parses templates before parsing external links. Thus, there
-    # might be a | or a } directly after a URL which does not belong to
-    # the URL itself.
-
-    # First, remove the curly braces of inner templates:
-    nestedTemplateR = re.compile(r'{{([^}]*?){{(.*?)}}(.*?)}}')
-    while nestedTemplateR.search(text):
-        text = nestedTemplateR.sub(r'{{\1 \2 \3}}', text)
-
-    # Then blow up the templates with spaces so that the | and }} will not
-    # be regarded as part of the link:.
-    templateWithParamsR = re.compile(r'{{([^}]*?[^ ])\|([^ ][^}]*?)}}',
-                                     re.DOTALL)
-    while templateWithParamsR.search(text):
-        text = templateWithParamsR.sub(r'{{ \1 | \2 }}', text)
-
-    # Add <blank> at the end of a template
-    # URL as last param of multiline template would not be correct
-    text = text.replace('}}', ' }}')
-
-    # Remove HTML comments in URLs as well as URLs in HTML comments.
-    # Also remove text inside nowiki links etc.
-    text = textlib.removeDisabledParts(text)
-    linkR = textlib.compileLinkR(withoutBracketed, onlyBracketed)
-    for m in linkR.finditer(text):
-        if m.group('url'):
-            # pywikibot.output('URL to YIELD:%s' % m.group('url'))
-            if not citeArchivedLink(m.group('url'), text):
-                yield m.group('url')
-            else:
-                # test output
-                # pywikibot.output('[%s] WebLinksIn: link skipped:%s' % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),m.group('url')))
-                pass
-        else:
-            yield m.group('urlb')
-    """
 
 
 XmlDumpPageGenerator = partial(
