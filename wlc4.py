@@ -3153,7 +3153,7 @@ def citeArchivedLink(link, wcode):
         if not isinstance(parent, mwparserfromhell.nodes.template.Template):
             # pywikibot.output(f"citeArchivedLink parent is not template:{str(parent)}")
             return False
-        pywikibot.output(f"citeArchivedLink parent is template:{str(parent)}")
+        # pywikibot.output(f"citeArchivedLink parent is template:{str(parent)}")
         if parent.name.lower().startswith("cytuj"):
             # if parent.has("archiwum", ignore_empty=True):
             #     pywikibot.output(f"citeArchivedLink grandparent has archiwum={str(parent["archiwum"])}")
