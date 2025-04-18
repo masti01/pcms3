@@ -3141,7 +3141,11 @@ def citeArchivedLink(link, wcode):
     # wcode = mwparserfromhell.parse(text)
 
     try:
+        parent = wcode.get_ancestors(link)[-1]
         parent2 = wcode.get_ancestors(link)[-2]
+
+        pywikibot.output(f"Parent tye:{type(parent)}")
+        pywikibot.output(f"Parent2 tye:{type(parent2)}")
 
         if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
             pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
