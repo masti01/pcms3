@@ -673,7 +673,7 @@ countryNames = {
            'Repubblika Ċeka': 'Czechia', 'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus',
            'Tatari tal-Krimea': 'Crimean Tatars', 'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don',
            'Georgia': 'Georgia', 'Rom': 'Romani', 'Romani': 'Romani', 'Baxkorstostan': 'Bashkortostan',
-           'Internazzjonali': 'International', "Reġjun ta' Don": 'Don', 'Tatari': 'Tatars', },
+           'Internazzjonali': 'International', "Reġjun ta' Don": 'Don', 'Tatari': 'Tatars', 'Marokk': 'Morocco',  },
     # sh countries
     'sh': {'Austriji': 'Austria', 'Albaniji': 'Albania', 'Kosovu': 'Kosovo', 'Hrvatskoj': 'Croatia',
            'Bosni i Hercegovini': 'Bosnia and Herzegovina', 'Grčkoj': 'Greece', 'Rumunjskoj': 'Romania and Moldova',
