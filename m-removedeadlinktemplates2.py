@@ -270,7 +270,7 @@ class BasicBot(
                 if self.opt.testtmpllink:
                     pywikibot.output(f'CITE:{parent2}')
                 if self.opt.testremove:
-                    pywikibot.output(f"Archiwum? {parent2.has("archiwum", ignore_empty=True)}")
+                    pywikibot.output(f'Archiwum? {parent2.has("archiwum", ignore_empty=True)}')
                 return parent2.has("archiwum", ignore_empty=True)
         except IndexError:
             pass
