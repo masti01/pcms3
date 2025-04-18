@@ -124,6 +124,7 @@ from functools import partial
 
 import mwparserfromhell
 import requests
+from urllib.parse import urlparse
 
 import pywikibot
 
@@ -3128,9 +3129,10 @@ def isarchivedlink(link):
     ]
 
     # pywikibot.output(f"isarchivedlink looking for {link.lower()}")
+    netloc = urlparse(link).netloc
     for arch in archiveservices:
-        if arch in link.lower():
-            return True
+        return arch in netloc.lower()
+
     return False
 
 def citeArchivedLink(link, wcode):
