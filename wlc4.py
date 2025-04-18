@@ -3127,7 +3127,7 @@ def isarchivedlink(link):
         'webcitation.org'
     ]
 
-    pywikibot.output(f"isarchivedlink looking for {link.lower()}")
+    # pywikibot.output(f"isarchivedlink looking for {link.lower()}")
     for arch in archiveservices:
         if arch in link.lower():
             return True
@@ -3142,21 +3142,21 @@ def citeArchivedLink(link, wcode):
 
     try:
         parent = wcode.get_ancestors(link)[-1]
-        parent2 = wcode.get_ancestors(link)[-2]
+        # parent2 = wcode.get_ancestors(link)[-2]
 
-        pywikibot.output(f"Parent tye:{type(parent)}")
-        pywikibot.output(f"Parent2 tye:{type(parent2)}")
+        # pywikibot.output(f"Parent tye:{type(parent)}")
+        # pywikibot.output(f"Parent2 tye:{type(parent2)}")
 
         # if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
         #     pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
         #     return False
         if not isinstance(parent, mwparserfromhell.nodes.template.Template):
-            pywikibot.output(f"citeArchivedLink parent is not template:{str(parent)}")
+            # pywikibot.output(f"citeArchivedLink parent is not template:{str(parent)}")
             return False
         pywikibot.output(f"citeArchivedLink parent is template:{str(parent)}")
         if parent.name.lower().startswith("cytuj"):
-            if parent.has("archiwum", ignore_empty=True):
-                pywikibot.output(f"citeArchivedLink grandparent has  archiwum={str(parent["archiwum"])}")
+            # if parent.has("archiwum", ignore_empty=True):
+            #     pywikibot.output(f"citeArchivedLink grandparent has archiwum={str(parent["archiwum"])}")
             return parent.has("archiwum", ignore_empty=True)
 
     except IndexError:
