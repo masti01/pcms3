@@ -239,10 +239,8 @@ class BasicBot(
             pywikibot.output(f"isarchivedlink looking for link {link.lower()}")
             pywikibot.output(f"isarchivedlink looking for netloc {netloc.lower()}")
         for arch in archiveservices:
-            if arch in netloc.lower():
-                if self.opt.testremove:
-                    pywikibot.output(f"isarchivedlink confirmed netloc {netloc.lower()}")
-                return True
+            return arch in netloc.lower()
+
         return False
 
     def islinkwitharchive(self, wcode, link):
