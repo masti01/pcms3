@@ -188,9 +188,12 @@ class BasicBot(
 
         # add history= param
         for t in parsed.filter_templates():
-            t.add('link', t.get('link').value.strip() + '\n ')
-            t.add('IA', str(t.get('IA').value).strip() + '\n ')
-            t.add('history', '\n')
+            link = str(t.get('link').value).strip()
+            IA = str(t.get('IA').value).strip()
+            history = '\n'
+            t.add('link', link)
+            t.add('IA', IA)
+            t.add('history', history)
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
