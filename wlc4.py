@@ -3053,6 +3053,7 @@ ignorelist = [
     re.compile(r'.*[\./@]bfm\.ru'),  # bot rejected on site (masti, NiktWażny)
     re.compile(r'.*[\./@]lccn\.loc\.gov'),  # bot rejected on site (masti, Revsson)
     re.compile(r'.*[\./@]svs\.stat\.gov\.pl'),  # bot rejected on site (masti)
+    re.compile(r'.*[\./@]opg\.optica\.org'),  # bot rejected on site (masti)
 ]
 
 
