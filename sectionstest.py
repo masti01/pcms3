@@ -191,6 +191,8 @@ class BasicBot(
             link = str(t.get('link').value).strip()
             IA = str(t.get('IA').value).strip()
             history = '\n'
+            t.remove('link')
+            t.remove('IA')
             t.add('link', link)
             t.add('IA', IA)
             t.add('history', history)
