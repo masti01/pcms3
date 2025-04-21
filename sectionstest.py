@@ -195,7 +195,7 @@ class BasicBot(
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        # self.put_current(str(parsed), summary='test')
+        self.put_current(str(parsed), summary='test')
         pywikibot.output(f'New page:\n{str(parsed)}')
 
 def main(*args: str) -> None:
