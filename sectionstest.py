@@ -189,7 +189,7 @@ class BasicBot(
         # add history= param
         for t in parsed.filter_templates():
             t.add('link', re.sub(r'\n*$', '', str(t.get('link').value), flags=re.MULTILINE), preserve_spacing=False)
-            t.add('IA', re.sub(r'\n*$', '', str(t.get('IA').value), flags=re.MULTILINE), preserve_spacing=False)
+            t.add('IA', re.sub(r'\n*$', '', str(t.get('IA').value), flags=re.MULTILINE)+'\n', preserve_spacing=False)
             t.add('history', '', preserve_spacing=False)
 
         # self.current_page.text = str(parsed)
