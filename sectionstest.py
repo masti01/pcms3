@@ -51,9 +51,10 @@ import pywikibot
 from pywikibot import pagegenerators
 from pywikibot import textlib
 import re
+import mwparserfromhell
 
 from pywikibot.bot import (
-    SingleSiteBot, ConfigParserBot, ExistingPageBot, NoRedirectPageBot,
+    SingleSiteBot, ConfigParserBot, ExistingPageBot,
     AutomaticTWSummaryBot)
 
 
@@ -69,7 +70,7 @@ class BasicBot(
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
-    NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
+    # NoRedirectPageBot,  # CurrentPageBot which only treats non-redirects
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
@@ -114,55 +115,88 @@ class BasicBot(
         # assign the generator to the bot
         self.generator = generator
 
+    # def treat_page(self) -> None:
+    #     """Load the given page, do some changes, and save it."""
+    #     pagetext = self.current_page.text
+    #     oldsection = "@@@@@"
+    #
+    #     if textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
+    #         pywikibot.output(f'Znaleziono sekcję')
+    #         pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
+    #
+    #         for s in pagesections.sections:
+    #             pywikibot.output(f'Section title:{s.title}')
+    #             pywikibot.output(f'Section content:{s.content}')
+    #             if 'Linki zewnętrzne' in s.title:
+    #                 pywikibot.output(f'Found Section content:{s.content}')
+    #                 oldsection = s.content
+    #
+    #     # return
+    #     ################################################################
+    #     # NOTE: Here you can modify the text in whatever way you want. #
+    #     ################################################################
+    #
+    #     # If you find out that you do not want to edit this page, just return.
+    #     # Example: This puts Text on a page.
+    #
+    #     # Retrieve your private option
+    #     # Use your own text or use the default 'Test'
+    #     text_to_add = self.opt.text
+    #
+    #     pywikibot.output(f'oldsection content:{oldsection}')
+    #     pywikibot.output(f'newsection content:{text_to_add}')
+    #
+    #     text = re.sub(oldsection, '\n' + text_to_add, pagetext, count=1)
+    #
+    #     # if self.opt.replace:
+    #     #     # replace the page text
+    #     #     text = text_to_add
+    #     #
+    #     # elif self.opt.top:
+    #     #     # put text on top
+    #     #     text = text_to_add + text
+    #     #
+    #     # else:
+    #     #     # put text on bottom
+    #     #     text += text_to_add
+    #
+    #     # if summary option is None, it takes the default i18n summary from
+    #     # i18n subdirectory with summary_key as summary key.
+    #     self.put_current(text, summary=self.opt.summary)
+
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         pagetext = self.current_page.text
-        oldsection = "@@@@@"
+        parsed = mwparserfromhell.parse(pagetext)
 
-        if textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
-            pywikibot.output(f'Znaleziono sekcję')
-            pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
+        # pywikibot.output(parsed.nodes)
+        # for n in parsed.nodes:
+        #     pywikibot.output(n)
 
-            for s in pagesections.sections:
-                pywikibot.output(f'Section title:{s.title}')
-                pywikibot.output(f'Section content:{s.content}')
-                if 'Linki zewnętrzne' in s.title:
-                    pywikibot.output(f'Found Section content:{s.content}')
-                    oldsection = s.content
+        lastnode = parsed.nodes[-1]
+        # pywikibot.output(f'LASTNODE: {lastnode}')
 
-        # return
-        ################################################################
-        # NOTE: Here you can modify the text in whatever way you want. #
-        ################################################################
+        firstnode = parsed.nodes[0]
+        # pywikibot.output(f'page Tree:\n {[parsed.get_tree()]}')
 
-        # If you find out that you do not want to edit this page, just return.
-        # Example: This puts Text on a page.
+        # check for templates - move them to the end
+        for t in parsed.filter_templates():
+            parsed.append('\n')
+            parsed.append(t)
+            parsed.remove(t)
+            # pywikibot.output(parsed.nodes)
 
-        # Retrieve your private option
-        # Use your own text or use the default 'Test'
-        text_to_add = self.opt.text
+        # add history= param
+        for t in parsed.filter_templates():
+            t.add('link', re.sub(r'\n*$', '', str(t.get('link').value), flags=re.MULTILINE), preserve_spacing=False)
+            t.add('IA', re.sub(r'\n*$', '', str(t.get('IA').value), flags=re.MULTILINE), preserve_spacing=False)
+            t.add('history', '', preserve_spacing=False)
 
-        pywikibot.output(f'oldsection content:{oldsection}')
-        pywikibot.output(f'newsection content:{text_to_add}')
-
-        text = re.sub(oldsection, '\n' + text_to_add, pagetext, count=1)
-
-        # if self.opt.replace:
-        #     # replace the page text
-        #     text = text_to_add
-        #
-        # elif self.opt.top:
-        #     # put text on top
-        #     text = text_to_add + text
-        #
-        # else:
-        #     # put text on bottom
-        #     text += text_to_add
-
+        # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        self.put_current(text, summary=self.opt.summary)
-
+        # self.put_current(str(parsed), summary='test')
+        pywikibot.output(f'New page:\n{str(parsed)}')
 
 def main(*args: str) -> None:
     """
