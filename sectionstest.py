@@ -188,8 +188,8 @@ class BasicBot(
 
         # add history= param
         for t in parsed.filter_templates():
-            link = str(t.get('link').value).strip()
-            IA = str(t.get('IA').value).strip()
+            link = str(t.get('link').value).strip() + '\n'
+            IA = str(t.get('IA').value).strip() + '\n'
             history = '\n'
             t.remove('link')
             t.remove('IA')
