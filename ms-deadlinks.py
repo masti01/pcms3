@@ -297,7 +297,7 @@ class BasicBot(
         res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
         itemcount = 0
         pywikibot.output('res length:%i' % len(res))
-        for i in res:
+        for i in res[:int(self.opt.maxlines)]:
             # use only links with -includes if specified
             if self.opt.includes:
                 if not (self.opt.includes in i):
@@ -324,9 +324,9 @@ class BasicBot(
                 #     count) + ' ' + suffix + ']'
                 finalpage += f'\n|-\n| {str(itemcount)} || {self.shortenlink(i)} || style="width: 20%; align="center" | [{{{{fullurl:Specjalna:Wyszukiwarka linków/|target={i}}}}} {str(count)} {suffix}]'
             finalpage += f' || {redirlistuse[i]} {linksuffix}'
-            if itemcount >= maxlines:
-                pywikibot.output('*** Breaking output loop ***')
-                break
+            # if itemcount >= maxlines:
+            #     pywikibot.output('*** Breaking output loop ***')
+            #     break
 
         finalpage += '\n|}\n'
         finalpage += footer
