@@ -413,7 +413,7 @@ countryNames = {
            'Кримски Караити': 'Crimean Tatars', 'Западна Ерменија': 'West Armenian', 'Ерзјани': 'Erzia',
            'Власи': 'Aromanian', 'Татари': 'Tatars', 'Северо-западен регион на Русија': 'Russia',
            'Лужички Срби': 'Sorbia', 'Турцоја': 'Turkey', 'Чувашија': 'Chuvasz', 'Киргистан': 'Kyrgyzstan',
-           'Узбекистан': 'Uzbekistan', 'Чуваши': 'Chuvasz',  },
+           'Узбекистан': 'Uzbekistan', 'Чуваши': 'Chuvasz', 'Иран': 'Iran', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
