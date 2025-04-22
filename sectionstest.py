@@ -192,12 +192,14 @@ class BasicBot(
             link = str(t.get('link').value).rstrip() + '\n'
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
-            t.remove('link')
-            t.remove('IA')
-            t.add('link', link)
-            t.add('IA', IA)
-            t.add('history', history)
+            t2 = f'{{{{Martwy link dyskusja\n| link = {link}\n| IA = {IA}\n| historia = \n}}}}'
+            # t.remove('link')
+            # t.remove('IA')
+            # t.add('link', link)
+            # t.add('IA', IA)
+            # t.add('history', history)
+            parsed.remove(t)
+            parsed.append(t2)
 
             # cleanup page
             text = str(parsed)
