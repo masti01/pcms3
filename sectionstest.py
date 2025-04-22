@@ -197,7 +197,7 @@ class BasicBot(
             history = m.group('history')
             historyR = re.compile(r'\**\s*In\s*?(?P<wikilink>\[\[.*\]\]) on (?P<date>[^,]*),\s*(?P<error>.*)')
             newhistory = '\n'
-            for h in historyR.findall(history):
+            for h in historyR.finditer(history):
                 wikilink = h.group('wikilink')
                 date = h.group('date')
                 error = h.group('error')
