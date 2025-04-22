@@ -197,7 +197,7 @@ class BasicBot(
 
             # page cleanup
             text = str(parsed)
-            text = re.sub('\n\n', '\n', text)
+            text = text.replace('\n\n', '\n')
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
