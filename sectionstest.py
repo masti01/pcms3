@@ -188,14 +188,12 @@ class BasicBot(
 
         # add history= param
         for t in parsed.filter_templates():
+            pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t.remove('link')
-            t.remove('IA')
-            t.add('link', link)
-            t.add('IA', IA)
-            t.add('history', history)
+            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}}'
+            t = str(t2)
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
