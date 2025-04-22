@@ -180,13 +180,14 @@ class BasicBot(
         # pywikibot.output(f'page Tree:\n {[parsed.get_tree()]}')
 
         # check for templates - move them to the end
-        for t in parsed.filter_templates():
-            parsed.append('\n')
-            parsed.append(t)
-            parsed.remove(t)
+        # for t in parsed.filter_templates():
+        #     parsed.append('\n')
+        #     parsed.append(t)
+        #     parsed.remove(t)
             # pywikibot.output(parsed.nodes)
 
         # add history= param
+        parsed.append('\n')
         for t in parsed.filter_templates():
             pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
