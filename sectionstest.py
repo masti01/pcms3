@@ -191,6 +191,7 @@ class BasicBot(
             pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
             linkR = re.compile(r'(?si)\*\s*?(?P<link>h[^\s]*?)\s*(?P<archiwum>\(\[.*?\]\))?\n(?P<history>\s*\*\*.*?\n)*')
+            pywikibot.output(link)
             m = re.search(linkR, link)
             newlink = m.group('link')
             history = m.group('history')
