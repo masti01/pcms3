@@ -274,7 +274,7 @@ class BasicBot(
     def shortenlink(self,link):
         # if link longer than 150 chars
         if len(link) > 150:
-            return f'[link {link[:50]}...{link[-50:]}'
+            return f'[{link[:50]} ... {link[-50:]}]'
         else:
             return link
 
