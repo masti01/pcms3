@@ -192,12 +192,16 @@ class BasicBot(
             link = str(t.get('link').value).rstrip() + '\n'
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
-            t.value = str(t2)
+            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}}'
+            t.remove('link')
+            t.remove('IA')
+            t.add('link', link)
+            t.add('IA', IA)
+            t.add('history', history)
 
-            # page cleanup
+            # cleanup page
             text = str(parsed)
-            text = text.replace('\n\n', '\n')
+            text = re.sub(r'\n{2,}', '\n', text)
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
