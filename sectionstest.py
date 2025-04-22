@@ -195,8 +195,15 @@ class BasicBot(
             m = re.search(linkR, link)
             newlink = m.group('link')
             history = m.group('history')
+            historyR = re.compile(r'\**\s*In\s*?(?P<wikilink>\[\[.*\]\]) on (?P<date>[^,]*),\s*(?P<error>.*)')
+            newhistory = '\n'
+            for h in historyR.findall(history):
+                wikilink = h.group('wikilink')
+                date = h.group('date')
+                error = h.group('error')
+                newhistory += f'{wikilink} - {date} - {error}'
             IA = str(t.get('IA').value).rstrip()
-            t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia =\n{history}\n}}}}'
+            t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}\n}}}}'
             # t.remove('link')
             # t.remove('IA')
             # t.add('link', link)
