@@ -193,7 +193,7 @@ class BasicBot(
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
             t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
-            t = str(t2)
+            t.value = str(t2)
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
