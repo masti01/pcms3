@@ -192,7 +192,7 @@ class BasicBot(
             link = str(t.get('link').value).rstrip() + '\n'
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}}'
+            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
             t.remove('link')
             t.remove('IA')
             t.add('link', link)
