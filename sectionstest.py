@@ -187,20 +187,24 @@ class BasicBot(
             # pywikibot.output(parsed.nodes)
 
         # add history= param
-        parsed.append('\n')
         for t in parsed.filter_templates():
             pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
+            linkR = re.compile(r'\*\s*?(?P<link>h[^\s]*?)\s*(?P<archiwum>\(\[.*?\]\))?\n(?P<history>\s*\*\*.*?\n)*')
+            m = linkR.match(link)
+            newlink = m.group('link')
+            history = m.group('history')
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t2 = f'{{{{Martwy link dyskusja\n| link = {link}\n| IA = {IA}\n| historia = \n}}}}'
+            t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia = {history}\n}}}}'
             # t.remove('link')
             # t.remove('IA')
             # t.add('link', link)
             # t.add('IA', IA)
             # t.add('history', history)
-            parsed.remove(t)
-            parsed.append(t2)
+            parsed.remove(t)  # remove old template
+            parsed.append('\n')  # add newline between templates
+            parsed.append(t2)  # append new version of template
 
             # cleanup page
             text = str(parsed)
