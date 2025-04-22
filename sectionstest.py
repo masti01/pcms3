@@ -196,7 +196,7 @@ class BasicBot(
             newlink = m.group('link')
             history = m.group('history')
             IA = str(t.get('IA').value).rstrip()
-            t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia = {history}\n}}}}'
+            t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia =\n{history}\n}}}}'
             # t.remove('link')
             # t.remove('IA')
             # t.add('link', link)
