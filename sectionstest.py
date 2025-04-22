@@ -192,7 +192,7 @@ class BasicBot(
             link = str(t.get('link').value).rstrip() + '\n'
             IA = str(t.get('IA').value).rstrip()
             history = '\n'
-            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}}'
+            t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
             t = str(t2)
 
         # self.current_page.text = str(parsed)
