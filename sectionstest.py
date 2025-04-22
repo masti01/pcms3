@@ -191,11 +191,10 @@ class BasicBot(
             pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
             linkR = re.compile(r'\*\s*?(?P<link>h[^\s]*?)\s*(?P<archiwum>\(\[.*?\]\))?\n(?P<history>\s*\*\*.*?\n)*')
-            m = linkR.match(link)
+            m = linkR.search(link)
             newlink = m.group('link')
             history = m.group('history')
             IA = str(t.get('IA').value).rstrip()
-            history = '\n'
             t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia = {history}\n}}}}'
             # t.remove('link')
             # t.remove('IA')
