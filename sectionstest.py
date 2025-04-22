@@ -195,11 +195,15 @@ class BasicBot(
             t2 = f'{{{{Martwy link dyskusja\n|link = {link}\n| IA = {IA}\n| historia = \n}}}}'
             t.value = str(t2)
 
+            # page cleanup
+            text = str(parsed)
+            text = re.sub('\n\n', '\n', text)
+
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        self.put_current(str(parsed), summary='test')
-        pywikibot.output(f'New page:\n{str(parsed)}')
+        self.put_current(text, summary='test')
+        pywikibot.output(f'New page:\n{text}')
 
 def main(*args: str) -> None:
     """
