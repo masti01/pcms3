@@ -58,7 +58,7 @@ from pywikibot.bot import (
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
-counter = 0
+pagecounter = 0
 tmplcounter = 0
 errorcounter = 0
 
@@ -116,7 +116,7 @@ class BasicBot(
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
-        counter += 1
+        pagecounter += 1
         if self.opt.progress:
             pywikibot.output(f'Processing page #{counter} (tmpl: #{tmplcounter}, errors:{errorcounter}): {self.current_page.title(as_link=True)}')
 
