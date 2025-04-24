@@ -137,7 +137,8 @@ class BasicBot(
             else:
                 link = str(t.get('link').value).rstrip() + '\n'
                 linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( [^\n]*)?\n(?P<history>.*)')
-                pywikibot.output(f'LINK:{link}')
+                if self.opt.test:
+                    pywikibot.output(f'LINK:{link}')
                 m = re.search(linkR, link)
                 try:
                     newlink = m.group('link')
