@@ -138,7 +138,7 @@ class BasicBot(
                     newlink = m.group('link')
                 except AttributeError:
                     newlink = ''
-                    pywikibot.output(f'ERORR: no link in template on page:{self.current_page.title(as_link=True)}')
+                    pywikibot.output(f'ERROR (MLD): no link in template on page:{self.current_page.title(as_link=True)}')
 
                 if t.has('historia'):
                     pywikibot.output(f'historia= param found')
@@ -157,13 +157,13 @@ class BasicBot(
                             newhistory += f'* {wikilink} - {date} - {error}\n'
                     except AttributeError:
                         newhistory = ''
-                        pywikibot.output(f'ERORR: no history in template on page:{self.current_page.title(as_link=True)}')
+                        pywikibot.output(f'ERROR (MLD): no history in template on page:{self.current_page.title(as_link=True)}')
 
                 try:
                     IA = str(t.get('IA').value).rstrip()
                 except ValueError:
                     IA = ''
-                    pywikibot.output(f'ERORR: no IA param in template on page:{self.current_page.title(as_link=True)}')
+                    pywikibot.output(f'ERROR (MLD): no IA param in template on page:{self.current_page.title(as_link=True)}')
                 # generate new template version
                 # if self.opt.test:
                 #     t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
@@ -181,7 +181,7 @@ class BasicBot(
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         if self.opt.test:
-            pywikibot.output(f'Page {self.current_page.title(as_link=True)} processed:\n{text}')
+            pywikibot.output(f'Page processed: {self.current_page.title(as_link=True)}\n{text}')
         self.put_current(text, summary=self.opt.summary)
 
 
