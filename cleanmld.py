@@ -135,6 +135,8 @@ class BasicBot(
             if t.has('historia'):
                 # no action on template itself. Just move to the end.
                 t2 = t
+                if self.opt.test:
+                    t2.name = 'Wikipedysta:Masti/mld'
             else:
                 link = str(t.get('link').value).rstrip() + '\n'
                 linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( [^\n]*)?\n(?P<history>.*)')
@@ -167,8 +169,11 @@ class BasicBot(
                     IA = str(t.get('IA').value).rstrip()
                 except ValueError:
                     IA = ''
-                # generate new templaet version
-                t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
+                # generate new template version
+                if self.opt.test:
+                    t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
+                else:
+                    t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
 
             parsed.remove(t)  # remove old template
             parsed.append('\n')  # add newline between templates
