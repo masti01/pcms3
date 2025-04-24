@@ -117,7 +117,7 @@ class BasicBot(
         """Load the given page, do some changes, and save it."""
         self.opt.pagecounter += 1
         if self.opt.progress:
-            pywikibot.output(f'Processing page #{self.opt.counter} (tmpl: #{self.opt.tmplcounter}, errors:{self.opt.errorcounter}): {self.current_page.title(as_link=True)}')
+            pywikibot.output(f'Processing page #{self.opt.pagecounter} (tmpl: #{self.opt.tmplcounter}, errors:{self.opt.errorcounter}): {self.current_page.title(as_link=True)}')
 
         pagetext = self.current_page.text
         parsed = mwparserfromhell.parse(pagetext)
