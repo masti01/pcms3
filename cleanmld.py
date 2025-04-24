@@ -136,7 +136,7 @@ class BasicBot(
                 # no action on template itself. Just move to the end.
                 t2 = t
                 if self.opt.test:
-                    t2.name = 'Wikipedysta:Masti/mld'
+                    t2.name = 'Wikipedysta:Masti/mld\n'
             else:
                 link = str(t.get('link').value).rstrip() + '\n'
                 linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( [^\n]*)?\n(?P<history>.*)')
