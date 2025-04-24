@@ -190,7 +190,7 @@ class BasicBot(
         for t in parsed.filter_templates():
             pywikibot.output(str(t))
             link = str(t.get('link').value).rstrip() + '\n'
-            linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( .*?)\n(?P<history>.*)')
+            linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( [^\n]*)?\n(?P<history>.*)')
             pywikibot.output(f'LINK:{link}')
             m = re.search(linkR, link)
             try:
