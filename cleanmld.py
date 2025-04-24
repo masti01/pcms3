@@ -58,10 +58,6 @@ from pywikibot.bot import (
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
-pagecounter = 0
-tmplcounter = 0
-errorcounter = 0
-
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
@@ -105,6 +101,9 @@ class BasicBot(
             'maxlines': 1000,  # default number of entries per page
             'test': False,  # test options
             'progress': False  # test option showing bot progress
+            'pagecounter': 0,
+            'tmplcounter': 0,
+            'errorcounter': 0,
         })
 
 
@@ -116,9 +115,9 @@ class BasicBot(
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
-        pagecounter += 1
+        self.opt.pagecounter += 1
         if self.opt.progress:
-            pywikibot.output(f'Processing page #{counter} (tmpl: #{tmplcounter}, errors:{errorcounter}): {self.current_page.title(as_link=True)}')
+            pywikibot.output(f'Processing page #{self.opt.counter} (tmpl: #{self.opt.tmplcounter}, errors:{self.opt.errorcounter}): {self.current_page.title(as_link=True)}')
 
         pagetext = self.current_page.text
         parsed = mwparserfromhell.parse(pagetext)
@@ -143,8 +142,8 @@ class BasicBot(
                     newlink = m.group('link')
                 except AttributeError:
                     newlink = ''
-                    errorcounter += 1
-                    pywikibot.output(f'ERROR (MLD) #{errorcounter}: no link in template on page:{self.current_page.title(as_link=True)}')
+                    self.opt.errorcounter += 1
+                    pywikibot.output(f'ERROR (MLD) #{self.opt.errorcounter}: no link in template on page:{self.current_page.title(as_link=True)}')
 
                 if t.has('historia'):
                     pywikibot.output(f'historia= param found')
@@ -163,15 +162,15 @@ class BasicBot(
                             newhistory += f'* {wikilink} - {date} - {error}\n'
                     except AttributeError:
                         newhistory = ''
-                        errorcounter += 1
-                        pywikibot.output(f'ERROR (MLD) #{errorcounter}: no history in template on page:{self.current_page.title(as_link=True)}')
+                        self.opt.errorcounter += 1
+                        pywikibot.output(f'ERROR (MLD) #{self.opt.errorcounter}: no history in template on page:{self.current_page.title(as_link=True)}')
 
                 try:
                     IA = str(t.get('IA').value).rstrip()
                 except ValueError:
                     IA = ''
-                    errorcounter += 1
-                    pywikibot.output(f'ERROR (MLD) #{errorcounter}: no IA param in template on page:{self.current_page.title(as_link=True)}')
+                    self.opt.errorcounter += 1
+                    pywikibot.output(f'ERROR (MLD) #{self.opt.errorcounter}: no IA param in template on page:{self.current_page.title(as_link=True)}')
                 # generate new template version
                 # if self.opt.test:
                 #     t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
