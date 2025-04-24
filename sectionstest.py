@@ -193,19 +193,28 @@ class BasicBot(
             linkR = re.compile(r'(?si)\*?\s*?(?P<link>h[^\s]*?)\s*(?P<archiwum>\(\[.*?\]\))?\n(?P<history>.*)')
             pywikibot.output(f'LINK:{link}')
             m = re.search(linkR, link)
-            newlink = m.group('link')
-            history = m.group('history')
-            historyR = re.compile(r'\**\s*In\s*?(?P<wikilink>\[\[.*\]\]) on (?P<date>[^,]*),\s*(?P<error>.*)')
-            newhistory = '\n'
-            for h in historyR.finditer(history):
-                wikilink = h.group('wikilink')
-                date = h.group('date')
-                error = h.group('error')
-                newhistory += f'* {wikilink} - {date} - {error}\n'
+            try:
+                newlink = m.group('link')
+            except AttributeError:
+                newlink = ''
+
+            try:
+                history = m.group('history')
+                historyR = re.compile(r'\**\s*In\s*?(?P<wikilink>\[\[.*\]\]) on (?P<date>[^,]*),\s*(?P<error>.*)')
+                newhistory = '\n'
+                for h in historyR.finditer(history):
+                    wikilink = h.group('wikilink')
+                    date = h.group('date')
+                    error = h.group('error')
+                    newhistory += f'* {wikilink} - {date} - {error}\n'
+            except AttributeError:
+                newhistory = ''
+
             try:
                 IA = str(t.get('IA').value).rstrip()
             except ValueError:
                 IA = ''
+
             t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
             # t.remove('link')
             # t.remove('IA')
