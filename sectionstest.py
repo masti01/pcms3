@@ -202,7 +202,10 @@ class BasicBot(
                 date = h.group('date')
                 error = h.group('error')
                 newhistory += f'* {wikilink} - {date} - {error}\n'
-            IA = str(t.get('IA').value).rstrip()
+            try:
+                IA = str(t.get('IA').value).rstrip()
+            except ValueError:
+                IA = ''
             t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
             # t.remove('link')
             # t.remove('IA')
