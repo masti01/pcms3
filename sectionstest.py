@@ -201,6 +201,8 @@ class BasicBot(
             if t.has('historia'):
                 pywikibot.output(f'historia= param found')
                 newhistory = str(t.get('historia').value).rstrip()
+                if newhistory[-1] != '\n':
+                    newhistory += '\n'
             else:
                 try:
                     history = m.group('history')
