@@ -199,6 +199,7 @@ class BasicBot(
                 newlink = ''
 
             if t.has('history'):
+                pywikibot.output(f'history= param found')
                 newhistory = str(t.get('historia').value).rstrip()
             else:
                 try:
