@@ -123,9 +123,10 @@ class BasicBot(
         parsed = mwparserfromhell.parse(pagetext)
 
         # add historia= param
-        for t in parsed.filter_templates(matches=r'Martwy link dyskusja|Wikipedysta:Masti/mld'):
+        for t in parsed.filter_templates(matches=r'Martwy link dyskusja'):
             if self.opt.test:
                 pywikibot.output(str(t))
+            self.opt.tmplcounter += 1
 
             # if template has historia= param it is assumed new template version
             if t.has('historia'):
