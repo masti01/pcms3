@@ -58,6 +58,9 @@ from pywikibot.bot import (
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
+counter = 0
+tmplcounter = 0
+errorcounter = 0
 
 class BasicBot(
     # Refer pywikobot.bot for generic bot classes
@@ -103,9 +106,7 @@ class BasicBot(
             'test': False,  # test options
             'progress': False  # test option showing bot progress
         })
-        counter = 0
-        tmplcounter = 0
-        errorcounter = 0
+
 
         # call initializer of the super class
         super().__init__(site=True, **kwargs)
