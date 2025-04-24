@@ -3,10 +3,6 @@
 The script to clean and move old versions of {{Martwy link dyskusja after template structure change
 Script will separate link and history from old link= template putting it into link= and historia= respectively
 
-This is not a complete bot; rather, it is a template from which simple
-bots can be made. You can rename it to mybot.py, then edit it in
-whatever way you want.
-
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
 
@@ -50,7 +46,6 @@ cannot be set by settings file:
 import pywikibot
 
 from pywikibot import pagegenerators
-from pywikibot import textlib
 import re
 import mwparserfromhell
 
@@ -105,8 +100,6 @@ class BasicBot(
             'top': False,  # append text on top of the page
             'outpage': u'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
-            'testprint': False,  # print testoutput
-            'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
             'test': False,  # test options
             'progress': False  # test option showing bot progress
         })
@@ -119,14 +112,13 @@ class BasicBot(
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
+        if self.opt.progress:
+            pywikibot.output(f'Processing page: {self.current_page.title(as_link=True)}')
+
         pagetext = self.current_page.text
         parsed = mwparserfromhell.parse(pagetext)
 
-        # pywikibot.output(parsed.nodes)
-        # for n in parsed.nodes:
-        #     pywikibot.output(n)
-
-        # add history= param
+        # add historia= param
         for t in parsed.filter_templates(matches=r'Martwy link dyskusja|Wikipedysta:Masti/mld'):
             if self.opt.test:
                 pywikibot.output(str(t))
@@ -146,6 +138,7 @@ class BasicBot(
                     newlink = m.group('link')
                 except AttributeError:
                     newlink = ''
+                    pywikibot.output(f'ERORR: no link in template on page:{self.current_page.title(as_link=True)}')
 
                 if t.has('historia'):
                     pywikibot.output(f'historia= param found')
@@ -164,16 +157,19 @@ class BasicBot(
                             newhistory += f'* {wikilink} - {date} - {error}\n'
                     except AttributeError:
                         newhistory = ''
+                        pywikibot.output(f'ERORR: no history in template on page:{self.current_page.title(as_link=True)}')
 
                 try:
                     IA = str(t.get('IA').value).rstrip()
                 except ValueError:
                     IA = ''
+                    pywikibot.output(f'ERORR: no IA param in template on page:{self.current_page.title(as_link=True)}')
                 # generate new template version
-                if self.opt.test:
-                    t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
-                else:
-                    t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
+                # if self.opt.test:
+                #     t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
+                # else:
+                #     t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
+                t2 = f'{{{{Martwy link dyskusja\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
 
             parsed.remove(t)  # remove old template
             parsed.append('\n')  # add newline between templates
@@ -182,12 +178,11 @@ class BasicBot(
             # cleanup page
             text = re.sub(r'\n{2,}', '\n', str(parsed))
 
-        # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         if self.opt.test:
-            pywikibot.output(f'New page:\n{text}')
-        self.put_current(text, summary='test')
+            pywikibot.output(f'Page {self.current_page.title(as_link=True)} processed:\n{text}')
+        self.put_current(text, summary=self.opt.summary)
 
 
 def main(*args: str) -> None:
