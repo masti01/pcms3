@@ -3456,7 +3456,7 @@ class DeadLinkReportThread(threading.Thread):
                 # content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
                 # content += f'{{{{Martwy link dyskusja\n | link={errorReport} | IA={archiveMsg}\n}}}}'
                 # new version of template
-                content += f'{{{{Martwy link dyskusja\n| link = {url} \n| IA = {archiveMsg}\n| historia =\n{errorReport}\n}}}}'
+                content += f'{{{{Martwy link dyskusja\n| link = {url} \n| IA = {archiveMsg}\n| historia ={errorReport}}}}}'
                 comment = f'Robot zgłasza niedostępny link zewnętrzny: {url}'
 
                 try:
