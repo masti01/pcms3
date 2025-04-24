@@ -198,8 +198,8 @@ class BasicBot(
             except AttributeError:
                 newlink = ''
 
-            if t.has('history'):
-                pywikibot.output(f'history= param found')
+            if t.has('historia'):
+                pywikibot.output(f'historia= param found')
                 newhistory = str(t.get('historia').value).rstrip()
             else:
                 try:
