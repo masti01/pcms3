@@ -3320,15 +3320,15 @@ class History:
         #     errorReport = '* {0} ([{1} archiwum])\n'.format(url, archiveURL)
         # else:
         #     errorReport = '* {0}\n'.format(url)
-        errorReport = f'{url}\n'
+        # errorReport = f'{url}\n'
         # new version of template
-        # errorReport = '\n'
+        errorReport = '\n'
         for (pageTitle, date, error) in self.historyDict[url]:
             # ISO 8601 formulation
             isoDate = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(date))
-            errorReport += f'** In [[{pageTitle}]] on {isoDate}, {error}\n'
+            # errorReport += f'** In [[{pageTitle}]] on {isoDate}, {error}\n'
             # new version of template
-            # errorReport += f'* [[{pageTitle}]] - {isoDate} - {error}\n'
+            errorReport += f'* [[{pageTitle}]] - {isoDate} - {error}\n'
         pywikibot.output('** Logging link for deletion.')
         txtfilename = pywikibot.config.datafilepath('deadlinks', f'results-{self.site.family.name}-{self.site.lang}.txt')
         with codecs.open(txtfilename, 'a', 'utf-8') as txtfile:
@@ -3337,7 +3337,7 @@ class History:
                 # insert a caption
                 txtfile.write('=== {} ===\n'
                               .format(containingPage.title()[:3]))
-            txtfile.write(errorReport)
+            txtfile.write(f'{url}\n{errorReport}')
 
         if self.reportThread and not containingPage.isTalkPage():
             self.reportThread.report(url, errorReport, containingPage,
@@ -3454,9 +3454,9 @@ class DeadLinkReportThread(threading.Thread):
 
                 # new code: use polish template
                 # content += u'{{Martwy link dyskusja\n | link=' + errorReport + u' | IA=' + archiveMsg + u'\n}}'
-                content += f'{{{{Martwy link dyskusja\n | link={errorReport} | IA={archiveMsg}\n}}}}'
+                # content += f'{{{{Martwy link dyskusja\n | link={errorReport} | IA={archiveMsg}\n}}}}'
                 # new version of template
-                # content += f'{{{{Martwy link dyskusja\n| link = {url} \n| IA = {archiveMsg}\n| historia = {errorReport}\n}}}}'
+                content += f'{{{{Martwy link dyskusja\n| link = {url} \n| IA = {archiveMsg}\n| historia =\n{errorReport}\n}}}}'
                 comment = f'Robot zgłasza niedostępny link zewnętrzny: {url}'
 
                 try:
