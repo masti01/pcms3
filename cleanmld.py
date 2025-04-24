@@ -100,7 +100,7 @@ class BasicBot(
             'outpage': u'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
             'test': False,  # test options
-            'progress': False  # test option showing bot progress
+            'progress': False,  # test option showing bot progress
             'pagecounter': 0,
             'tmplcounter': 0,
             'errorcounter': 0,
