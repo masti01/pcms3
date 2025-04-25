@@ -138,7 +138,7 @@ class BasicBot(
                     if self.opt.testtmpllink:
                         pywikibot.output(f'PARENT LINK TYPE:{type(parent)}')
                         pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
-                    if not isinstance(parent1, mwparserfromhell.nodes.template.Template):
+                    if not isinstance(parent, mwparserfromhell.nodes.template.Template):
                         pywikibot.output(f"citeArchivedLink parent is not template:{str(parent2)}")
                         return False
 
