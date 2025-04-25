@@ -52,6 +52,7 @@ from pywikibot import pagegenerators
 from pywikibot import textlib
 import re
 import mwparserfromhell
+from urllib.parse import unquote, urlparse
 
 from pywikibot.bot import (
     SingleSiteBot, ConfigParserBot, ExistingPageBot,
@@ -105,9 +106,13 @@ class BasicBot(
             'outpage': u'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
             'testprint': False,  # print testoutput
+            'testtmpllink': False  # test for link in template
             'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
             'test': False,  # test options
-            'progress': False  # test option showing bot progress
+            'progress': False,  # test option showing bot progress
+            'link': '',  # link to search for
+            'archivelink': '',  # link to add
+            'archivedate': '',  # archive date
         })
 
         # call initializer of the super class
@@ -115,59 +120,39 @@ class BasicBot(
         # assign the generator to the bot
         self.generator = generator
 
-    # def treat_page(self) -> None:
-    #     """Load the given page, do some changes, and save it."""
-    #     pagetext = self.current_page.text
-    #     oldsection = "@@@@@"
-    #
-    #     if textlib.does_text_contain_section(pagetext, "Linki zewnętrzne"):
-    #         pywikibot.output(f'Znaleziono sekcję')
-    #         pagesections = textlib.extract_sections(pagetext, pywikibot.Site())
-    #
-    #         for s in pagesections.sections:
-    #             pywikibot.output(f'Section title:{s.title}')
-    #             pywikibot.output(f'Section content:{s.content}')
-    #             if 'Linki zewnętrzne' in s.title:
-    #                 pywikibot.output(f'Found Section content:{s.content}')
-    #                 oldsection = s.content
-    #
-    #     # return
-    #     ################################################################
-    #     # NOTE: Here you can modify the text in whatever way you want. #
-    #     ################################################################
-    #
-    #     # If you find out that you do not want to edit this page, just return.
-    #     # Example: This puts Text on a page.
-    #
-    #     # Retrieve your private option
-    #     # Use your own text or use the default 'Test'
-    #     text_to_add = self.opt.text
-    #
-    #     pywikibot.output(f'oldsection content:{oldsection}')
-    #     pywikibot.output(f'newsection content:{text_to_add}')
-    #
-    #     text = re.sub(oldsection, '\n' + text_to_add, pagetext, count=1)
-    #
-    #     # if self.opt.replace:
-    #     #     # replace the page text
-    #     #     text = text_to_add
-    #     #
-    #     # elif self.opt.top:
-    #     #     # put text on top
-    #     #     text = text_to_add + text
-    #     #
-    #     # else:
-    #     #     # put text on bottom
-    #     #     text += text_to_add
-    #
-    #     # if summary option is None, it takes the default i18n summary from
-    #     # i18n subdirectory with summary_key as summary key.
-    #     self.put_current(text, summary=self.opt.summary)
+
 
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         pagetext = self.current_page.text
         parsed = mwparserfromhell.parse(pagetext)
+
+        # search for link
+        for link in parsed.filter_external_links():
+            if link.url == self.opt.link:
+                if self.opt.test:
+                    pywikibot.output(f'link found:{self.opt.link}')
+                try:
+                    parent2 = wcode.get_ancestors(link)[-2]
+                    parent = wcode.get_ancestors(link)[-1]
+                    if self.opt.testtmpllink:
+                        parent = wcode.get_ancestors(link)[-1]
+                        pywikibot.output(f'PARENT LINK TYPE:{type(parent)}')
+                        pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
+                    if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
+                        pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
+                        return False
+
+                    if self.opt.testtmpllink:
+                        pywikibot.output(f'NAME:{parent2.name}')
+                    if parent2.name.lower().startswith("cytuj"):
+                        if self.opt.testtmpllink:
+                            pywikibot.output(f'CITE:{parent2}')
+                        if self.opt.testremove:
+                            pywikibot.output(f'Archiwum? {parent2.has("archiwum", ignore_empty=True)}')
+                        return parent2.has("archiwum", ignore_empty=True)
+                except IndexError:
+                    pass
 
         # pywikibot.output(parsed.nodes)
         # for n in parsed.nodes:
@@ -265,7 +250,7 @@ def main(*args: str) -> None:
     for arg in local_args:
         arg, sep, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text'):
+        if option in ('summary', 'text', 'link', 'archivelink', 'archivedate'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
