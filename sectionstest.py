@@ -147,7 +147,6 @@ class BasicBot(
                     if parent.name.lower().startswith("cytuj"):
                         if self.opt.testtmpllink:
                             pywikibot.output(f'CITE:{parent}')
-                        if self.opt.testremove:
                             pywikibot.output(f'Archiwum? {parent.has("archiwum", ignore_empty=True)}')
                         return parent.has("archiwum", ignore_empty=True)
                 except IndexError:
