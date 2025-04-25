@@ -189,9 +189,13 @@ class BasicBot(
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        if self.opt.test:
-            pywikibot.output(f'Page processed: {self.current_page.title(as_link=True)}\n{text}')
-        self.put_current(text, summary=self.opt.summary)
+        try:
+            if self.opt.test:
+                pywikibot.output(f'Page processed: {self.current_page.title(as_link=True)}\n{text}')
+            self.put_current(text, summary=self.opt.summary)
+        except UnboundLocalError:
+            self.opt.errorcounter += 1
+            pywikibot.output(f'ERROR (MLD) #{self.opt.errorcounter}: general error on page:{self.current_page.title(as_link=True)}')
 
 
 def main(*args: str) -> None:
