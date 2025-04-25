@@ -148,82 +148,18 @@ class BasicBot(
                         if self.opt.testtmpllink:
                             pywikibot.output(f'CITE:{parent}')
                             pywikibot.output(f'Archiwum? {parent.has("archiwum", ignore_empty=True)}')
-                        return parent.has("archiwum", ignore_empty=True)
+                        # return parent.has("archiwum", ignore_empty=True)
+                        parent.add('archiwum', self.opt.archivelink)
+                        parent.add('zarchiwizowano', self.opt.archivedate)
                 except IndexError:
                     pass
-
-        return
-        # pywikibot.output(parsed.nodes)
-        # for n in parsed.nodes:
-        #     pywikibot.output(n)
-
-        # lastnode = wc.nodes[-1]
-        # pywikibot.output(f'LASTNODE: {lastnode}')
-
-        # firstnode = parsed.nodes[0]
-        # pywikibot.output(f'page Tree:\n {[parsed.get_tree()]}')
-
-        # check for templates - move them to the end
-        # for t in parsed.filter_templates():
-        #     parsed.append('\n')
-        #     parsed.append(t)
-        #     parsed.remove(t)
-            # pywikibot.output(parsed.nodes)
-
-        # add history= param
-        for t in parsed.filter_templates():
-            pywikibot.output(str(t))
-            link = str(t.get('link').value).rstrip() + '\n'
-            linkR = re.compile(r'(?si)\*?\s*?(?P<link>http[^\s]*?)( [^\n]*)?\n(?P<history>.*)')
-            pywikibot.output(f'LINK:{link}')
-            m = re.search(linkR, link)
-            try:
-                newlink = m.group('link')
-            except AttributeError:
-                newlink = ''
-
-            if t.has('historia'):
-                pywikibot.output(f'historia= param found')
-                newhistory = str(t.get('historia').value).rstrip()
-                if newhistory[-1] != '\n':
-                    newhistory += '\n'
-            else:
-                try:
-                    history = m.group('history')
-                    historyR = re.compile(r'\**\s*In\s*?(?P<wikilink>\[\[.*\]\]) on (?P<date>[^,]*),\s*(?P<error>.*)')
-                    newhistory = '\n'
-                    for h in historyR.finditer(history):
-                        wikilink = h.group('wikilink')
-                        date = h.group('date')
-                        error = h.group('error')
-                        newhistory += f'* {wikilink} - {date} - {error}\n'
-                except AttributeError:
-                    newhistory = ''
-
-            try:
-                IA = str(t.get('IA').value).rstrip()
-            except ValueError:
-                IA = ''
-
-            t2 = f'{{{{Wikipedysta:Masti/mld\n| link = {newlink}\n| IA = {IA}\n| historia ={newhistory}}}}}'
-            # t.remove('link')
-            # t.remove('IA')
-            # t.add('link', link)
-            # t.add('IA', IA)
-            # t.add('history', history)
-            parsed.remove(t)  # remove old template
-            parsed.append('\n')  # add newline between templates
-            parsed.append(t2)  # append new version of template
-
-            # cleanup page
-            text = str(parsed)
-            text = re.sub(r'\n{2,}', '\n', text)
 
         # self.current_page.text = str(parsed)
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
-        self.put_current(text, summary='test')
-        pywikibot.output(f'New page:\n{text}')
+        self.put_current(str(wcode), summary=self.opt.summary)
+        pywikibot.output(f'New page:\n{str(wcode)}')
+        return None
 
 def main(*args: str) -> None:
     """
