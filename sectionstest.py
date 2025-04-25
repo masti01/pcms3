@@ -136,21 +136,20 @@ class BasicBot(
                     parent2 = wcode.get_ancestors(link)[-2]
                     parent = wcode.get_ancestors(link)[-1]
                     if self.opt.testtmpllink:
-                        parent = wcode.get_ancestors(link)[-1]
                         pywikibot.output(f'PARENT LINK TYPE:{type(parent)}')
                         pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
-                    if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
-                        pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
+                    if not isinstance(parent1, mwparserfromhell.nodes.template.Template):
+                        pywikibot.output(f"citeArchivedLink parent is not template:{str(parent2)}")
                         return False
 
                     if self.opt.testtmpllink:
-                        pywikibot.output(f'NAME:{parent2.name}')
-                    if parent2.name.lower().startswith("cytuj"):
+                        pywikibot.output(f'NAME:{parent.name}')
+                    if parent.name.lower().startswith("cytuj"):
                         if self.opt.testtmpllink:
-                            pywikibot.output(f'CITE:{parent2}')
+                            pywikibot.output(f'CITE:{parent}')
                         if self.opt.testremove:
-                            pywikibot.output(f'Archiwum? {parent2.has("archiwum", ignore_empty=True)}')
-                        return parent2.has("archiwum", ignore_empty=True)
+                            pywikibot.output(f'Archiwum? {parent.has("archiwum", ignore_empty=True)}')
+                        return parent.has("archiwum", ignore_empty=True)
                 except IndexError:
                     pass
 
