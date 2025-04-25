@@ -106,7 +106,7 @@ class BasicBot(
             'outpage': u'User:mastiBot/test',  # default output page
             'maxlines': 1000,  # default number of entries per page
             'testprint': False,  # print testoutput
-            'testtmpllink': False  # test for link in template
+            'testtmpllink': False,  # test for link in template
             'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
             'test': False,  # test options
             'progress': False,  # test option showing bot progress
@@ -125,10 +125,10 @@ class BasicBot(
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
         pagetext = self.current_page.text
-        parsed = mwparserfromhell.parse(pagetext)
+        wcode = mwparserfromhell.parse(pagetext)
 
         # search for link
-        for link in parsed.filter_external_links():
+        for link in wcode.filter_external_links():
             if link.url == self.opt.link:
                 if self.opt.test:
                     pywikibot.output(f'link found:{self.opt.link}')
@@ -154,14 +154,15 @@ class BasicBot(
                 except IndexError:
                     pass
 
+        return
         # pywikibot.output(parsed.nodes)
         # for n in parsed.nodes:
         #     pywikibot.output(n)
 
-        lastnode = parsed.nodes[-1]
+        # lastnode = wc.nodes[-1]
         # pywikibot.output(f'LASTNODE: {lastnode}')
 
-        firstnode = parsed.nodes[0]
+        # firstnode = parsed.nodes[0]
         # pywikibot.output(f'page Tree:\n {[parsed.get_tree()]}')
 
         # check for templates - move them to the end
