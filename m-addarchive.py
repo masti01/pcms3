@@ -133,11 +133,11 @@ class BasicBot(
             if link.url == self.opt.link:
 
                 try:
-                    parent2 = wcode.get_ancestors(link)[-2]
+                    # parent2 = wcode.get_ancestors(link)[-2]
                     parent = wcode.get_ancestors(link)[-1]
                     if self.opt.testtmpllink:
                         pywikibot.output(f'PARENT LINK TYPE:{type(parent)}')
-                        pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
+                        # pywikibot.output(f'PARENT2 LINK TYPE:{type(parent2)}')
                     if not isinstance(parent, mwparserfromhell.nodes.template.Template):
                         pywikibot.output(f"ERROR (ADD) citeArchivedLink parent is not template:{str(parent)}")
                         return False
@@ -152,6 +152,7 @@ class BasicBot(
                         parent.add('archiwum', self.opt.archivelink)
                         parent.add('zarchiwizowano', self.opt.archivedate)
                 except IndexError:
+                    pywikibot.output(f'Index Error')
                     pass
 
         # self.current_page.text = str(parsed)
