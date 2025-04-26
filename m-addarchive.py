@@ -157,7 +157,8 @@ class BasicBot(
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
         self.put_current(str(wcode), summary=self.opt.summary)
-        pywikibot.output(f'New page:\n{str(wcode)}')
+        if self.opt.test:
+            pywikibot.output(f'New page:\n{str(wcode)}')
         return None
 
 def main(*args: str) -> None:
