@@ -101,6 +101,7 @@ class BasicBot(
             'maxlines': 1000,  # default number of entries per page
             'test': False,  # test options
             'progress': False,  # test option showing bot progress
+            'noclenup': False,  # do not attempt to clean page
             'pagecounter': 0,
             'tmplcounter': 0,
             'errorcounter': 0,
@@ -184,8 +185,9 @@ class BasicBot(
             parsed.append('\n')  # add newline between templates
             parsed.append(t2)  # append new version of template
 
-            # cleanup page
-            text = re.sub(r'\n{2,}', '\n', str(parsed))
+            if not self.opt.noclenup:
+                # cleanup page
+                text = re.sub(r'\n{2,}', '\n', str(parsed))
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
