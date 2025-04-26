@@ -128,9 +128,10 @@ class BasicBot(
 
         # search for link
         for link in wcode.filter_external_links():
+            if self.opt.test:
+                pywikibot.output(f'link found:{self.opt.link}')
             if link.url == self.opt.link:
-                if self.opt.test:
-                    pywikibot.output(f'link found:{self.opt.link}')
+
                 try:
                     parent2 = wcode.get_ancestors(link)[-2]
                     parent = wcode.get_ancestors(link)[-1]
