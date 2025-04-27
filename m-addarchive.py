@@ -5,7 +5,7 @@ python pwb.py masti/m-addarchive.py \
 -weblink:"http://www.nid.pl/pl/Informacje_ogolne/Zabytki_w_Polsce/rejestr-zabytkow/zestawienia-zabytkow-nieruchomych/WLK-rej.pdf" \
 -link:"http://www.nid.pl/pl/Informacje_ogolne/Zabytki_w_Polsce/rejestr-zabytkow/zestawienia-zabytkow-nieruchomych/WLK-rej.pdf" \
 -archivelink:"https://web.archive.org/web/20210830220337/http://www.nid.pl/pl/Informacje_ogolne/Zabytki_w_Polsce/rejestr-zabytkow/zestawienia-zabytkow-nieruchomych/WLK-rej.pdf" \
--archivedate:"2021-08-30" -progress -pt:0 -always
+-archivedate:"2021-08-30" -progress -ns:0 -pt:0 -always -summary:"Bot dodaje link do archiwum"
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
