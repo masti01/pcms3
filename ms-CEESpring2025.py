@@ -784,6 +784,7 @@ class BasicBot(
     lengthTablePL = {}
     womenAuthors = {}  # authors of articles about women k:author v; (count,[list])
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
+    youthAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     crownAuthors = {}  # authors with articles about all countries
     otherCountriesList = {'pl': [], 'ary':[], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
                           'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
@@ -885,6 +886,8 @@ class BasicBot(
         'testde': False,  # testprint for de.wiki stats
         'testhrightsauthors': False,
         'testhrights': False,
+        'testyouthauthors': False,
+        'testyouth': False,
         'testcrownauthors': False,  # tesprint for users with articles about all countries
         'testallcountries': False,  # tesprint for users with articles about all countries
         'node': False,  # skip generation of de tables
@@ -965,6 +968,8 @@ class BasicBot(
         self.createWomenAuthorsTable(self.springList)  # generate results for pages about women
         self.createHrightsTable(self.springList)  # generate results for pages about human rights
         self.createHrightsAuthorsTable(self.springList)  # generate results for pages about human rights
+        self.createYouthTable(self.springList)  # generate results for pages about human rights
+        self.createYouthAuthorsTable(self.springList)  # generate results for pages about human rights
         self.createCrownAuthorsTable(self.springList)  # generate results for pages about all countries
         self.createLengthTable(self.springList)  # generate results for pages length
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
@@ -993,6 +998,10 @@ class BasicBot(
         self.generateResultHrightsAuthorsTable(self.hrightsAuthors,
                                              self.opt.outpage + '/Articles about Human Rights/Authors', header,
                                              footer)  # generate results for pages about women
+        self.generateResultYouthPage(self.youth, self.opt.outpage + '/Articles about Youth', header, footer)
+        self.generateResultYouthAuthorsTable(self.youthAuthors,
+                                               self.opt.outpage + '/Articles about Youth/Authors', header,
+                                               footer)  # generate results for pages about women
         self.generateResultLengthPage(self.lengthTable, self.opt.outpage + '/Article length', header, footer)
         self.generateResultLengthAuthorsPage(self.lengthTable, self.opt.outpage + '/Authors list over 2kB',
                                              header, footer)
@@ -1168,42 +1177,6 @@ class BasicBot(
             pywikibot.output(self.womenAuthors)
         return
 
-    def createHrightsTable(self, aList):
-        # creat dictionary with la:country article counts
-        if self.opt.test or self.opt.testhrights:
-            pywikibot.output('createHRightsTable')
-            pywikibot.output(self.hrights)
-        artCount = 0
-        countryCount = 0
-        for l in aList.keys():
-            for a in aList[l]:
-                # print a
-                artCount += 1
-                lang = a['lang']  # source language
-                tmpl = a['template']  # template data {country:[clist], women:T/F}
-                if 'hrights' in tmpl.keys():
-                    if not tmpl['hrights']:
-                        continue
-                else:
-                    continue
-                if self.opt.testhrights:
-                    pywikibot.output(f'tmpl:{tmpl}')
-                if lang not in self.hrights.keys():
-                    self.hrights[lang] = 1
-                else:
-                    self.hrights[lang] += 1
-                if self.opt.testhrights:
-                    pywikibot.output(f'self.hrights[{lang}]:{self.hrights[lang]}')
-                countryCount += 1
-                if self.opt.test or self.opt.testhrights:
-                    pywikibot.output(f"art:{artCount} HRights:True [[{lang}:{a['title']}]]")
-        if self.opt.testhrights:
-            pywikibot.output('**********')
-            pywikibot.output('self.hrights')
-            pywikibot.output('**********')
-            pywikibot.output(self.hrights)
-        return
-
     def createCrownAuthorsTable(self, aList):
         # creat dictionary with la:country article counts
         if self.opt.test or self.opt.testcrownauthors:
@@ -1241,6 +1214,42 @@ class BasicBot(
             pywikibot.output('self.crownAuthors')
             pywikibot.output('**********')
             pywikibot.output(self.crownAuthors)
+        return
+
+    def createHrightsTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testhrights:
+            pywikibot.output('createHRightsTable')
+            pywikibot.output(self.hrights)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+                lang = a['lang']  # source language
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                if 'hrights' in tmpl.keys():
+                    if not tmpl['hrights']:
+                        continue
+                else:
+                    continue
+                if self.opt.testhrights:
+                    pywikibot.output(f'tmpl:{tmpl}')
+                if lang not in self.hrights.keys():
+                    self.hrights[lang] = 1
+                else:
+                    self.hrights[lang] += 1
+                if self.opt.testhrights:
+                    pywikibot.output(f'self.hrights[{lang}]:{self.hrights[lang]}')
+                countryCount += 1
+                if self.opt.test or self.opt.testhrights:
+                    pywikibot.output(f"art:{artCount} HRights:True [[{lang}:{a['title']}]]")
+        if self.opt.testhrights:
+            pywikibot.output('**********')
+            pywikibot.output('self.hrights')
+            pywikibot.output('**********')
+            pywikibot.output(self.hrights)
         return
 
     def createHrightsAuthorsTable(self, aList):
@@ -1282,9 +1291,89 @@ class BasicBot(
 
         if self.opt.testhrightsauthors:
             pywikibot.output('**********')
-            pywikibot.output('createCrownAuthorsTable')
+            pywikibot.output('createHRightsAuthorsTable')
             pywikibot.output('**********')
             pywikibot.output(self.hrightsAuthors)
+        return
+
+    def createYouthTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testyouth:
+            pywikibot.output('createYouthTable')
+            pywikibot.output(self.youth)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+                lang = a['lang']  # source language
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                if 'youth' in tmpl.keys():
+                    if not tmpl['youth']:
+                        continue
+                else:
+                    continue
+                if self.opt.testyouth:
+                    pywikibot.output(f'tmpl:{tmpl}')
+                if lang not in self.youth.keys():
+                    self.youth[lang] = 1
+                else:
+                    self.youth[lang] += 1
+                if self.opt.testyouth:
+                    pywikibot.output(f'self.youth[{lang}]:{self.youth[lang]}')
+                countryCount += 1
+                if self.opt.test or self.opt.testyouth:
+                    pywikibot.output(f"art:{artCount} youth:True [[{lang}:{a['title']}]]")
+        if self.opt.testhyouth:
+            pywikibot.output('**********')
+            pywikibot.output('self.youth')
+            pywikibot.output('**********')
+            pywikibot.output(self.youth)
+        return
+
+    def createYouthAuthorsTable(self, aList):
+        # creat dictionary with la:country article counts
+        if self.opt.test or self.opt.testyouthauthors:
+            pywikibot.output('createYouthAuthorsTable')
+            pywikibot.output(self.youthAuthors)
+        artCount = 0
+        countryCount = 0
+        for l in aList.keys():
+            for a in aList[l]:
+                # print a
+                artCount += 1
+
+                if self.opt.testyouthauthors:
+                    pywikibot.output('article:%s' % a)
+
+                lang = a['lang']  # source language
+                fam = a['family']
+                tmpl = a['template']  # template data {country:[clist], women:T/F}
+                newart = a['newarticle']
+                youthart = tmpl['youth']
+                if not newart:
+                    if self.opt.test or self.opt.testyouthauthors:
+                        pywikibot.output(f"Skipping updated [{artCount}]: [[{lang}:{a['title']}]]")
+                    continue
+                if not youthart:
+                    if self.opt.test or self.opt.testyouthauthors:
+                        pywikibot.output(f"Skipping NOT youth [{artCount}]: [[{lang}:{a['title']}]]")
+                    continue
+                user = a['creator']
+                if user in self.youthAuthors.keys():
+                    self.youthAuthors[user]['count'] += 1
+                    self.youthAuthors[user]['list'].append(
+                        (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title'])
+                else:
+                    self.youthAuthors[user] = {'count': 1, 'list': [
+                        (fam + ':' if fam != 'wikipedia' else '') + lang + ':' + a['title']]}
+
+        if self.opt.testyouthauthors:
+            pywikibot.output('**********')
+            pywikibot.output('createyouthAuthorsTable')
+            pywikibot.output('**********')
+            pywikibot.output(self.youthAuthors)
         return
 
     def createLengthTable(self, aList):
@@ -2262,6 +2351,103 @@ class BasicBot(
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         if self.opt.testwomenauthors:
             pywikibot.output('WomenAuthorsPage:%s' % outpage.title())
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+        return
+
+    def generateResultYouthPage(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        finalpage = header
+        itemcount = 0
+        artcount = 0
+        finalpage += '\n== Articles about Youth ==\n'
+
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n!#'
+        finalpage += '\n!Wikipedia'
+        finalpage += '\n!Articles'
+
+        # ath = sorted(self.authors, reverse=True)
+        ath = sorted(res, key=res.__getitem__, reverse=True)
+        for a in ath:
+            itemcount += 1
+            finalpage += '\n|-\n| %i. || %s || %i' % (itemcount, a, res[a])
+            artcount += res[a]
+        # generate totals
+        finalpage += '\n|-\n! !! Total: !! %i' % artcount
+
+        finalpage += '\n|}'
+
+        finalpage += '\n\nTotal number of articles: ' + str(artcount)
+
+        finalpage += "\n\n'''NOTE:''' page counts all articles - new and updated"
+
+        finalpage += footer
+
+        # pywikibot.output(finalpage)
+
+        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        if self.opt.test:
+            pywikibot.output('YouthPage:%s' % outpage.title())
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+        return
+
+    def generateResultYouthAuthorsTable(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        if self.opt.testyouthauthors:
+            pywikibot.output(res)
+
+        finalpage = header
+        itemcount = 0
+        artcount = 0
+        finalpage += '\n== Articles about Youth authors ==\n'
+
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n!#'
+        finalpage += '\n!Author'
+        finalpage += '\n!Count'
+        finalpage += '\n!Articles'
+
+        # ath = sorted(self.authors, reverse=True)
+        ath = sorted(res, key=lambda x: (res[x]['count']), reverse=True)
+        # ath = sorted(res, key=res.__getitem__, reverse=True)
+        for a in ath:
+            if not a or 'UNKNOWN USER' in a or a == '':
+                author = "'''unknown'''"
+            else:
+                author = a
+            itemcount += 1
+            finalpage += '\n|-\n| %i. || %s || %s || %s' % (
+                itemcount, author, res[a]['count'], '[[:' + ']], [[:'.join(res[a]['list']) + ']]')
+            artcount += res[a]['count']
+        # generate totals
+        finalpage += '\n|-\n! !! Total: !! %i !!' % artcount
+
+        finalpage += '\n|}'
+
+        finalpage += '\n\nTotal number of articles: ' + str(artcount)
+        finalpage += "\n\n'''NOTE:''' page counts only newly created articles"
+        finalpage += footer
+
+        if self.opt.testwomenauthors:
+            pywikibot.output(finalpage)
+
+        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        if self.opt.testyouthauthors:
+            pywikibot.output('YouthAuthorsPage:%s' % outpage.title())
         outpage.text = finalpage
         outpage.save(summary=self.opt.summary)
         return
