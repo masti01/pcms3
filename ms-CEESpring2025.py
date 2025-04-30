@@ -1825,6 +1825,7 @@ class BasicBot(
                 parlist['hrights'] = False
                 parlist['country'] = []
                 parlist['user'] = None
+                parlist['youth'] = None
                 # for p in params:
                 for p in t.params:
                     if self.opt.test2:
@@ -1877,6 +1878,14 @@ class BasicBot(
                         if lang in self.hrightsp.keys() and value.lower().startswith(self.hrightsp[lang].lower()):
                             # self.women[lang] += 1
                             parlist['hrights'] = True
+                    # check article about youth
+                    if lang in self.topicp.keys() and name.lower().startswith(self.topicp[lang].lower()):
+                        if self.opt.test2:
+                            pywikibot.output('topic:%s:%s' % (name, value))
+                        if lang in self.youthp.keys() and value.lower().startswith(
+                                self.youthp[lang].lower()):
+                            # self.women[lang] += 1
+                            parlist['youth'] = True
                     # check article about country
                     if lang in self.countryp.keys() and (name.lower().startswith(self.countryp[lang].lower()) or (lang=='uk' and name in ['1', '2', '3', '4', '5'])):
                         if self.opt.test2:
