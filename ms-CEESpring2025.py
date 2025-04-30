@@ -1325,7 +1325,7 @@ class BasicBot(
                 countryCount += 1
                 if self.opt.test or self.opt.testyouth:
                     pywikibot.output(f"art:{artCount} youth:True [[{lang}:{a['title']}]]")
-        if self.opt.testhyouth:
+        if self.opt.testyouth:
             pywikibot.output('**********')
             pywikibot.output('self.youth')
             pywikibot.output('**********')
