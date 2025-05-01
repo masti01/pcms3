@@ -458,7 +458,7 @@ countryNames = {
            'западные армяне': 'Western Armenian', 'республика Сербская': 'Serbia', 'Республика Косово': 'Kosovo',
            'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', 'Марокко': 'Morocco',
            'International': 'International', 'Киргизия': 'Kyrgyzstan', 'Общеевропейская': 'International',
-           'международная': 'International',
+           'международная': 'International', 'Узбекистан': 'Uzbekistan',
            },
     # sah countries
     'sah': {
