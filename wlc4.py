@@ -3054,6 +3054,7 @@ ignorelist = [
     re.compile(r'.*[\./@]lccn\.loc\.gov'),  # bot rejected on site (masti, Revsson)
     re.compile(r'.*[\./@]svs\.stat\.gov\.pl'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]opg\.optica\.org'),  # bot rejected on site (masti)
+    re.compile(r'.*[\./@]linkedin\.com'),  # bot rejected on site error 999 (masti)
 ]
 
 
