@@ -1665,6 +1665,7 @@ class BasicBot(
             woman = self.checkWomen(art)
             # woman = False
             hrights = False
+            youth = False
             artParams['title'] = art.title()
             artParams['lang'] = lang
             artParams['family'] = fam
