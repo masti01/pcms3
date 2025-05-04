@@ -459,6 +459,7 @@ countryNames = {
            'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', 'Марокко': 'Morocco',
            'International': 'International', 'Киргизия': 'Kyrgyzstan', 'Общеевропейская': 'International',
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
+           'Румыния и Молдова': 'Romania and Moldova',
            },
     # sah countries
     'sah': {
