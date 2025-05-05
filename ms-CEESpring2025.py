@@ -379,6 +379,7 @@ countryNames = {
            'Rumānija un Moldova': 'Romania and Moldova', 'Uzbekistāna': 'Uzbekistan',
            'starptautiski': 'International', 'Maroka': 'Morocco', 'Kirgizstāna': 'Kyrgyzstan',
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
+           'rietumarmēņu valoda': 'Western Armenian',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -460,7 +461,7 @@ countryNames = {
            'Кыргызстан': 'Kyrgyzstan', 'Северо-Запад России':'Novgorodian', 'Марокко': 'Morocco',
            'International': 'International', 'Киргизия': 'Kyrgyzstan', 'Общеевропейская': 'International',
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
-           'Румыния и Молдова': 'Romania and Moldova',
+           'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz',
            },
     # sah countries
     'sah': {
