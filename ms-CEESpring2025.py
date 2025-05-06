@@ -288,7 +288,7 @@ countryNames = {
            'Βορειοδυτική Ρωσία': 'Russia', 'Κιργιστάν': 'Kyrgyzstan', 'Σαχά': 'Sakha', 'Ιράν': 'Iran',
            'Σόρβοι': 'Sorbia', 'Τατάροι της Κριμαίας': 'Crimean Tatars', 'Κριμαίοι Καραΐτες': 'Crimean Karaites',
            'Κριμτσάκοι': 'Krymchaks', 'Ουζμπεκιστάν': 'Uzbekistan', 'Δυτική Αρμενία': 'Western Armenian',
-           'Μαρόκο':'Morocco', 'διεθνές': 'International', },
+           'Μαρόκο':'Morocco', 'διεθνές': 'International', 'Κροατί': 'Croatia', },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
             'Азербайджан Республикась': 'Azerbaijan', 'Азербайджан': 'Azerbaijan',
