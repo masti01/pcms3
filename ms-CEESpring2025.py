@@ -1960,7 +1960,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}</noinclude>'
 
         if self.opt.test:
             pywikibot.output('**************************')
@@ -1994,7 +1994,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}</noinclude>'
 
         if self.opt.test:
             pywikibot.output('**************************')
@@ -2110,7 +2110,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}</noiclude>'
 
         pywikibot.output('***************************')
         pywikibot.output('generateAuthorsCountryTable')
@@ -2184,10 +2184,10 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about women ==\n'
+        finalpage += '\n== Articles about women ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2231,10 +2231,10 @@ class BasicBot(
         if self.opt.testwomenauthors:
             pywikibot.output(res)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about women authors ==\n'
+        finalpage += '\n== Articles about women authors ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2281,10 +2281,10 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about Human Rights ==\n'
+        finalpage += '\n== Articles about Human Rights ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2328,10 +2328,10 @@ class BasicBot(
         if self.opt.testwomenauthors:
             pywikibot.output(res)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about Human Rights authors ==\n'
+        finalpage += '\n== Articles about Human Rights authors ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2378,10 +2378,10 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about Youth ==\n'
+        finalpage += '\n== Articles about Youth ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2425,10 +2425,10 @@ class BasicBot(
         if self.opt.testyouthauthors:
             pywikibot.output(res)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         artcount = 0
-        finalpage += '\n== Articles about Youth authors ==\n'
+        finalpage += '\n== Articles about Youth authors ==\n</noinclude>'
 
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
@@ -2476,10 +2476,10 @@ class BasicBot(
         locpagename = re.sub(r'.*:', '', pagename)
 
         csvpage = '<pre>'
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         finalpage += '\n\nLength of new articles excluding disabled parts in text. Word count approximated.'
-        finalpage += '\n== Article length ==\n'
+        finalpage += '\n== Article length ==\n</noinclude>'
         # ath = sorted(self.authors, reverse=True)
         if self.opt.testlength:
             pywikibot.output('LengthPage:%s' % res)
@@ -2542,10 +2542,10 @@ class BasicBot(
             pagecounter[auth]['count'] += 1
             pagecounter[auth]['articles'].append(p)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         finalpage += '\n\nList of authors of articles longer than 2kB - excluding disabled parts in text.'
-        finalpage += '\n== Article count per author ==\n'
+        finalpage += '\n== Article count per author ==\n</noinclude>'
         # ath = sorted(self.authors, reverse=True)
         # ath = sorted(pagecounter, key=pagecounter.__getitem__, reverse=True)
         ath = sorted(pagecounter, key=lambda x: (pagecounter[x]['count']), reverse=True)
@@ -2591,12 +2591,12 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}'
         itemcount = 0
         anon = 0
         women = 0
         newbies = 0
-        finalpage += '\n== Authors ==\n'
+        finalpage += '\n== Authors ==\n</noinclude>'
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n!#'
         finalpage += '\n!User'
@@ -2656,7 +2656,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}</noinclude>'
 
         if self.opt.testcrownauthors:
             pywikibot.output('***************************')
@@ -2699,7 +2699,7 @@ class BasicBot(
         """
         locpagename = re.sub(r'.*:', '', pagename)
 
-        finalpage = header
+        finalpage = f'<noinclude>{header}</noinclude>'
         # @@@@@
         itemcount = 0
         newartscount = 0
