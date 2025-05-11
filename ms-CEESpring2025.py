@@ -1682,7 +1682,7 @@ class BasicBot(
             if self.opt.test2:
                 pywikibot.output('artParams[ArtInfo]:%s' % artParams)
 
-            artParams['template'] = {'country': [], 'user': creator, 'woman': woman, 'hrights': hrights, 'youth': youth, 'nocountry': False}
+            artParams['template'] = {'country': [], 'user': creator, 'woman': woman, 'hrights': hrights, 'youth': False, 'nocountry': False}
 
             if lang in self.templatesList.keys() and talk.exists():
                 TmplInfo = self.getTemplateInfo(talk, self.templatesList[lang], lang)
