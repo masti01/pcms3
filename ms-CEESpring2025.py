@@ -1692,7 +1692,6 @@ class BasicBot(
             if not artParams['template']['hrights']:
                 artParams['template']['hrights'] = hrights
             if not artParams['template']['youth']:
-                    artParams['template']['youth'] = youth
                 artParams['template']['youth'] = youth
             if not len(artParams['template']['country']):
                 artParams['template']['nocountry'] = True
