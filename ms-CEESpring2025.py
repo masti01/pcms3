@@ -1692,6 +1692,7 @@ class BasicBot(
             if not artParams['template']['hrights']:
                 artParams['template']['hrights'] = hrights
             if not artParams['template']['youth']:
+                    artParams['template']['youth'] = youth
                 artParams['template']['youth'] = youth
             if not len(artParams['template']['country']):
                 artParams['template']['nocountry'] = True
@@ -1810,7 +1811,7 @@ class BasicBot(
     def getTemplateInfo(self, page, template, lang):
         param = {}
         # author, creationDate = self.getUpdater(page)
-        parlist = {'country': [], 'user': None, 'woman': False, 'hrights': False, 'nocountry': False}
+        parlist = {'country': [], 'user': None, 'woman': False, 'youth': False, 'hrights': False, 'nocountry': False}
         if self.opt.test2:
             pywikibot.output('page:%s' % page.text)
         # return dictionary with template params
@@ -1830,9 +1831,10 @@ class BasicBot(
                 countryDef = False  # check if country defintion exists
                 parlist['woman'] = False
                 parlist['hrights'] = False
+                parlist['youth'] = False
                 parlist['country'] = []
                 parlist['user'] = None
-                parlist['youth'] = None
+
                 # for p in params:
                 for p in t.params:
                     if self.opt.test2:
