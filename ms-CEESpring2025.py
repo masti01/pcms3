@@ -591,7 +591,9 @@ countryNames = {
            'Қырым татарлары': 'Crimean Tatars', 'Литва': 'Lithuania', 'Латвия': 'Latvia', 'Мажарстан': 'Hungary',
            'Македония': 'North Macedonia', 'Молдова': 'Romania and Moldova', 'Польша': 'Poland', 'Ресей': 'Russia',
            'Румыния': 'Romania and Moldova', 'Сербия': 'Serbia', 'Словакия': 'Slovakia', 'Түркия': 'Turkey',
-           'Украина': 'Ukraine', 'Грекия': 'Greece', 'Қазақстан': 'Kazakhstan', 'Татарстан': 'Tatars', },
+           'Украина': 'Ukraine', 'Грекия': 'Greece', 'Қазақстан': 'Kazakhstan', 'Татарстан': 'Tatars',
+           'Қырғызстан': 'Kyrgyzstan', 'Әзербайжан': 'Azerbaijan', 'эрзяндар': 'Erzia', 'Өзбекстан': 'Uzbekistan',
+           'Тәжікстан': 'Tajikistan', },
     # et countries
     'et': {'Albaania': 'Albania', 'Austria': 'Austria', 'Aserbaidžaan': 'Azerbaijan', 'Baškortostanu': 'Bashkortostan',
            'Baškortostan': 'Bashkortostan', 'Valgevene': 'Belarus', 'Bulgaaria': 'Bulgaria', 'Armeenia': 'Armenia',
