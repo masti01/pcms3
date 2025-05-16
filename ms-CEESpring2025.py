@@ -72,7 +72,7 @@ docuReplacements = {
 SpringStart = datetime.strptime("2025-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2025-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2024-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
-allowedFamilies = ['wikipedia', 'wikivoyage']
+allowedFamilies = ['wikipedia', 'wikivoyage', 'wikiquote']
 crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                   'Bosnia and Herzegovina', 'Chuvasz', 'Crimean Tatars', 'Croatia', 'Greece', 'Hungary', 'Kazakhstan',
                   'Kosovo', 'Latvia', 'Lithuania', 'Malta', 'North Macedonia', 'Novgorodian', 'Poland',
