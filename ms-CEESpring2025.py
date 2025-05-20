@@ -648,7 +648,7 @@ countryNames = {
            'Rumunskoj': 'Romania and Moldova', 'Võrou': 'Võro', 'Roma': 'Romani', 'Uzbekistanu': 'Uzbekistan',
            'Krimčaka': 'Krymchaks', 'Sahi': 'Sakha', 'Čuvašiji': 'Chuvasz', 'Karaima': 'Crimean Karaites',
            'Kirgistanu': 'Kyrgyzstan', 'Maroku': 'Morocco', 'Iranu': 'Iran', 'Tadžikistanu': 'Tajikistan',
-           'Baškiriji': 'Bashkortostan', 'Kosovi': 'Kosovo', },
+           'Baškiriji': 'Bashkortostan', 'Kosovi': 'Kosovo', 'international': 'International', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -751,7 +751,7 @@ countryNames = {
 # ary countries
     'ary': {
             'بلغاريا': 'Bulgaria', 'پولونيا': 'Poland', 'إسطونيا': 'Estonia', 'أزيربيدجان': 'Azerbaijan',
-            'كرواتيا': 'Croatia', 'بيلاروسيا': 'Belarus',
+            'كرواتيا': 'Croatia', 'بيلاروسيا': 'Belarus', 'مواضيع عالمية': 'International',
     },
 # zgh countries
     'zgh': {
