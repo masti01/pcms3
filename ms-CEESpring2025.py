@@ -852,8 +852,8 @@ class BasicBot(
             'tr': 'İnsan hakları', 'uz': 'inson huquqlari',
     }
     youthp = {
-           'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar',
-
+           'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar', 'ru': 'молодёжь', 'sl': 'Mladi',
+            'ro': 'Tineret',
     }
     # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
