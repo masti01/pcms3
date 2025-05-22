@@ -165,7 +165,7 @@ countryNames = {
            'Румыния һәм Молдавия': 'Romania and Moldova', 'Саха республикаһы': 'Sakha', 'Косово Республикаһы': 'Kosovo',
            'Кипр Республикаһы': 'Cyprus', 'Черногорияла': 'Montenegro', 'Лужица': 'Sorbia', 'Татарҙар': 'Tatars',
            'Себер татарҙары': 'Tatars', 'татарҙар': 'Tatars', 'Эрзәндәр': 'Erzia',
-           'Башҡортостан Республикаһы': 'Bashkortostan', },
+           'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -263,7 +263,7 @@ countryNames = {
             'Makedoniya': 'North Macedonia', 'Moldova': 'Romania and Moldova', 'Lehistan': 'Poland', 'Rusiye': 'Russia',
             'Romaniya': 'Romania and Moldova', 'Sırb Cumhuriyeti': 'Republic of Srpska', 'Sırbistan': 'Serbia',
             'Slovakiya': 'Slovakia', 'Türkiye': 'Turkey', 'Ukraina': 'Ukraine', 'Yunanistan': 'Greece',
-            'Qazahistan': 'Kazakhstan', },
+            'Qazahistan': 'Kazakhstan', 'Qıbrıs': 'Cyprus', 'Tatarlar': 'Tatars', },
     # el countries
     'el': {'Αλβανία': 'Albania', 'Αυστρία': 'Austria', 'Αζερμπαϊτζάν': 'Azerbaijan', 'Μπασκορτοστάν': 'Bashkortostan',
            'Λευκορωσία': 'Belarus', 'Βουλγαρία': 'Bulgaria', 'Αρμενία': 'Armenia', 'Βοσνία': 'Bosnia and Herzegovina',
@@ -345,6 +345,7 @@ countryNames = {
            'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia', 'Նովգորոդյան երկիր':'Novgorodian',
            'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
+           'Ուկրաինաա': 'Ukraine',
            },
     # hyw countries
     'hyw': {
@@ -838,7 +839,7 @@ class BasicBot(
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
               'lv': 'Sievietes',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
-              'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
+              'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Ayollar', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ', }
     # local name for parameter value for: human rights
     hrightsp = {
@@ -851,7 +852,7 @@ class BasicBot(
             'tr': 'İnsan hakları', 'uz': 'inson huquqlari',
     }
     youthp = {
-           'hr': 'mladi', 'az': 'gənclər'
+           'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar',
 
     }
     # local name for user parameter
