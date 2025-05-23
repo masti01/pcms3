@@ -839,8 +839,9 @@ class BasicBot(
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
               'lv': 'Sievietes',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
-              'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Ayollar', 'uk': 'жінки',
-              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ', }
+              'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
+              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
+              'uz': 'Ayollar', }
     # local name for parameter value for: human rights
     hrightsp = {
             'pl': 'Prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'insan hüquqları',
@@ -853,7 +854,7 @@ class BasicBot(
     }
     youthp = {
            'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar', 'ru': 'молодёжь', 'sl': 'Mladi',
-            'ro': 'Tineret',
+            'ro': 'Tineret', 'uz': 'Yoshlar',
     }
     # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
@@ -1560,7 +1561,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in (['tr']):  # keep parentheses for list
+                    if lang not in (['uz']):  # keep parentheses for list
                         continue
 
                 if i.namespace() == 10:
