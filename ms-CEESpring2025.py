@@ -1560,7 +1560,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in (['fa']):  # keep parentheses for list
+                    if lang not in (['tr']):  # keep parentheses for list
                         continue
 
                 if i.namespace() == 10:
