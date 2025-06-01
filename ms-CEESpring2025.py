@@ -857,11 +857,11 @@ class BasicBot(
             'ge': 'ადამიანის უფლებები', 'de': 'Menschenrechte', 'el': 'νθρώπινα δικαιώματα', 'hu': 'Emberi jogok',
             'lv': 'Cilvēktiesības', 'mk': 'Човекови права', 'mt': 'Drittijiet umani',
             'ru': 'Права человека', 'sk': 'Ľudské práva', 'sl': 'Človekove pravice', 'tt': 'Кеше хокуклары',
-            'tr': 'İnsan hakları', 'uz': 'inson huquqlari',
+            'tr': 'İnsan hakları', 'uz': 'inson huquqlari', 'ary': 'حقوق بنادم',
     }
     youthp = {
            'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar', 'ru': 'молодёжь', 'sl': 'Mladi',
-            'ro': 'Tineret', 'uz': 'Yoshlar',
+            'ro': 'Tineret', 'uz': 'Yoshlar', 'hy': 'Երիտասարդություն'
     }
     # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
