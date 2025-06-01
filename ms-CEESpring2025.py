@@ -123,7 +123,8 @@ countryNames = {
            'język Võro': 'Võro', 'Język voro': 'Võro', 'Võro': 'Võro', 'Tatarzy Krymscy': 'Crimean Tatars',
            'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
-           'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars'  },
+           'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
+           'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -165,7 +166,9 @@ countryNames = {
            'Румыния һәм Молдавия': 'Romania and Moldova', 'Саха республикаһы': 'Sakha', 'Косово Республикаһы': 'Kosovo',
            'Кипр Республикаһы': 'Cyprus', 'Черногорияла': 'Montenegro', 'Лужица': 'Sorbia', 'Татарҙар': 'Tatars',
            'Себер татарҙары': 'Tatars', 'татарҙар': 'Tatars', 'Эрзәндәр': 'Erzia',
-           'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars', },
+           'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars',
+           'Мари Республикаһы': 'Novgorodian', 'Гөрҗөстан': 'Georgia', 'Тажикстан': 'Tajikistan',
+           'Үзбәкстан': 'Uzbekistan', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -233,7 +236,7 @@ countryNames = {
            'Nordmazedonien': 'North Macedonia', 'Tatars': 'Tatars', 'Zypern': 'Cyprus',
            'die Republik Moldau': 'Romania and Moldova', 'die Türkei': 'Turkey', 'Sorbisch': 'Sorbia',
            'Sorben': 'Sorbia', 'Belarus': 'Belarus', 'Roma und Sinti': 'Romani', 'Ersjanisch': 'Erzia',
-           'Iran': 'Iran', 'Usbekistan': 'Uzbekistan', },
+           'Iran': 'Iran', 'Usbekistan': 'Uzbekistan', 'Kirgistan': 'Kyrgyzstan', },
     # bs countries
     'bs': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbejdžan': 'Azerbaijan', 'Baškortostan': 'Bashkortostan',
            'Bjelorusija': 'Belarus', 'Bosna i Hercegovina': 'Bosnia and Herzegovina', 'Bugarska': 'Bulgaria',
@@ -253,7 +256,8 @@ countryNames = {
            'Võro (jezik)': 'Võro', 'Võro': 'Võro', 'Zapadnoarmenijski jezik': 'Western Armenian', 'Saha': 'Sakha',
            'Zapadnoarmenski jezik': 'West Armenian', 'Krimski Karaiti': 'Crimean Karaites',
            'Krim': 'Crimean Tatars', 'Krimčaci': 'Krymchaks', 'Čuvašija': 'Chuvasz', 'esperanto': 'Esperanto',
-           'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian', },
+           'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian',
+           'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -382,7 +386,7 @@ countryNames = {
            'Rumānija un Moldova': 'Romania and Moldova', 'Uzbekistāna': 'Uzbekistan',
            'starptautiski': 'International', 'Maroka': 'Morocco', 'Kirgizstāna': 'Kyrgyzstan',
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
-           'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha',
+           'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -439,7 +443,8 @@ countryNames = {
            'caraiți crimeeni': 'Crimean tatars', 'crimceaci': 'Crimean tatars', 'tătari crimeeni': 'Crimean tatars',
            'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',
            'Ziua Internațională a Romilor': 'Romani', 'Ciuvașia': 'Chuvasz', 'karaiți crimeeni': 'Crimean Karaites',
-           'Republica Bașchiria': 'Bashkortostan', },
+           'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
+           'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', },
     # roa-rup countries
     'roa-rup': {
             },
@@ -509,7 +514,7 @@ countryNames = {
            'Лeтoнија': 'Latvia', 'Пољскаа': 'Poland', 'Српска': 'Republic of Srpska', 'Маđарска': 'Hungary',
            'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', 'Руција': 'Russia',
            'Република Србија': 'Serbia', 'Федерација Босне и Херцеговине': 'Bosnia and Herzegovina',
-           'Русијја': 'Russia', 'Србијја':' Serbia', 'Мађарскаа': 'Hungary', },
+           'Русијја': 'Russia', 'Србијја':' Serbia', 'Мађарскаа': 'Hungary', 'СФРЈ Македонија': 'North Macedonia', },
     # tt countries
     'tt': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайҗан': 'Azerbaijan', 'Азәрбайҗан': 'Azerbaijan',
            'Башкортстан': 'Bashkortostan', 'Белорусия': 'Belarus', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
@@ -649,7 +654,7 @@ countryNames = {
            'Rumunskoj': 'Romania and Moldova', 'Võrou': 'Võro', 'Roma': 'Romani', 'Uzbekistanu': 'Uzbekistan',
            'Krimčaka': 'Krymchaks', 'Sahi': 'Sakha', 'Čuvašiji': 'Chuvasz', 'Karaima': 'Crimean Karaites',
            'Kirgistanu': 'Kyrgyzstan', 'Maroku': 'Morocco', 'Iranu': 'Iran', 'Tadžikistanu': 'Tajikistan',
-           'Baškiriji': 'Bashkortostan', 'Kosovi': 'Kosovo', 'international': 'International', },
+           'Baškiriji': 'Bashkortostan', 'Kosovi': 'Kosovo', 'international': 'International', 'Tatari': 'Tatars', },
     # sl countries
     'sl': {'Albanija': 'Albania', 'Armenija': 'Armenia', 'Avstrija': 'Austria', 'Azerbajdžan': 'Azerbaijan',
            'Baškortostan': 'Bashkortostan', 'Belorusija': 'Belarus', 'Bolgarija': 'Bulgaria',
@@ -738,7 +743,8 @@ countryNames = {
             'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova', 'Belarusiya': 'Belarus',
             'Xalqaro': 'International', 'Makedoniya': 'North Macedonia', 'Kipr': 'Cyprus', 'Chexiya': 'Czechia',
             'Belorus': 'Belarus', 'Tatariston': 'Tatars', 'Qirgʻiziston': 'Kyrgyzstan', "Oʻzbekiston": 'Uzbekistan',
-            'Qozog': 'Kazakhstan',  },
+            'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', ' OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
+            'Asvtriya': 'Austria', },
 # fa countries
     'fa': {
             'بلغارستان': 'Bulgaria', 'روسیه': 'Russia', 'لهستان': 'Poland', 'اوکراین': 'Ukraine',
@@ -747,12 +753,13 @@ countryNames = {
             'Austria': 'Austria', 'Belarus': 'Belarus', 'Bosnia and Herzegovina': 'Bosnia and Herzegovina',
             'Romania': 'Romania', 'Bulgaria': 'Bulgaria', 'Poland': 'Poland', 'Estonia': 'Estonia', 'Cyprus': 'Cyprus',
             'Georgia': 'Georgia', 'Greece': 'Greece', 'Kazakhstan': 'Kazakhstan', 'Kyrgyzstan': 'Kyrgyzstan',
-            'Latvia': 'Latvia', 'Czech Republic': 'Czechia',
+            'Latvia': 'Latvia', 'Czech Republic': 'Czechia', 'Kosovo': 'Kosovo',
             },
 # ary countries
     'ary': {
             'بلغاريا': 'Bulgaria', 'پولونيا': 'Poland', 'إسطونيا': 'Estonia', 'أزيربيدجان': 'Azerbaijan',
-            'كرواتيا': 'Croatia', 'بيلاروسيا': 'Belarus', 'مواضيع عالمية': 'International',
+            'كرواتيا': 'Croatia', 'بيلاروسيا': 'Belarus', 'مواضيع عالمية': 'International', 'مالطا': 'Malta',
+            'تركيا': 'Turkey', 'لوطريش': 'Austria',
     },
 # zgh countries
     'zgh': {
