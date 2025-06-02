@@ -839,7 +839,7 @@ class BasicBot(
               'hu': 'téma', 'ka': 'თემა', 'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
-              'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'Թուրքիա|թեմա', 'kk': 'тақырып',
+              'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'թեմա', 'kk': 'тақырып',
               'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
@@ -1568,7 +1568,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in (['uz']):  # keep parentheses for list
+                    if lang not in (['hy']):  # keep parentheses for list
                         continue
 
                 if i.namespace() == 10:
