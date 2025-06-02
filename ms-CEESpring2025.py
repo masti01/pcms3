@@ -724,6 +724,19 @@ countryNames = {
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
            'Tatars': 'Tatars', 'Tatársko': 'Tatars', 'Sorbia': 'Sorbia', 'Kipru': 'Cyprus',
            'Rumunsko a Moldavsko': 'Romania and Moldova', },
+    # tyv countries
+    'tyv': {
+            'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армения': 'Armenia',
+            'Башкортостан': 'Bashkortostan', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
+            'Босния и Герцеговина': 'Bosnia and Herzegovina', 'вырулар': 'Võro', 'Грузия': 'Georgia',
+            'Греция': 'Greece', 'Казахстан': 'Kazakhstan', 'Кипр': 'Cyprus', 'Косово': 'Kosovo',
+            'Кырым татарлары': 'Crimean Tatars', 'Латвия': 'Latvia', 'Литва': 'Lithuania', 'Мальта': 'Malta',
+            'Венгрия': 'Hungary', 'Польша': 'Poland', 'Республика Серпска': 'Republic of Srpska',
+            'Румыния и Молдова': 'Romania and Moldova', 'Сербия': 'Serbia', 'Словакия': 'Slovakia',
+            'Словения': 'Slovenia', 'сорблар': 'Sorbia', 'Македония': 'North Macedonia', 'Түркия': 'Turkey',
+            'Украина': 'Ukraine', 'Хорватия': 'Croatia', 'цыгане': 'Romani', 'Черногория': 'Montenegro',
+            'Чехия': 'Czechia', 'эрзялар': 'Erzia', 'эсперанто': 'Esperanto', 'Эстония': 'Estonia',
+    },
     # en countries
     'en': {'Montenegro': 'Montenegro', 'Belarus': 'Belarus', 'Erzya': 'Erzia', 'Serbia': 'Serbia', 'Poland': 'Poland',
            'Croatia': 'Croatia', 'Bosnia & Herzegovina': 'Bosnia and Herzegovina', 'Austria': 'Austria',
@@ -842,7 +855,7 @@ class BasicBot(
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
                 'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
                 'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
-                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد', 'zgh': 'ⵜⴰⵎⵓⵔⵜ',
+                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد', 'zgh': 'ⵜⴰⵎⵓⵔⵜ', 'tyv': 'чурт',
                 }
     # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
@@ -851,7 +864,7 @@ class BasicBot(
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
               'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'թեմա', 'kk': 'тақырып',
-              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', }
+              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', 'tyv': 'тема', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'crh': 'qadınlar', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
@@ -859,7 +872,7 @@ class BasicBot(
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
-              'uz': 'Ayollar', 'kk': 'әйелдер', 'lt': 'moterys', }
+              'uz': 'Ayollar', 'kk': 'әйелдер', 'lt': 'moterys', 'tyv': 'женщины', }
     # local name for parameter value for: human rights
     hrightsp = {
             'pl': 'Prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'insan hüquqları',
@@ -883,7 +896,7 @@ class BasicBot(
              'ro': 'utilizator', 'roa-rup': 'корисник',  'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
              'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
              'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1',
-             'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ',
+             'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ', 'tyv': 'ажыглакчы',
              }
 
     update_options = {
