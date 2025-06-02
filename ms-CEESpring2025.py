@@ -829,75 +829,84 @@ class BasicBot(
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     youthAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     crownAuthors = {}  # authors with articles about all countries
-    otherCountriesList = {'pl': [], 'ary':[], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'cv': [], 'de': [],
-                          'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
-                          'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
-                          'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
-                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [], 'zgh':[], 'tyv':[], }
-    women = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
-             'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
-             'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, 'tyv': 0, }
-    hrights = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
-               'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
-               'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, 'tyv': 0, }
-    youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0,
-               'et': 0, 'fa':0, 'ary': 0, 'zgh': 0, 'tyv': 0,
-               'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
-               'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz': 0}
+    otherCountriesList = {
+        'ary': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'crh': [], 'cv': [], 'de': [],
+        'el': [], 'en': [], 'eo': [], 'et': [], 'fa': [], 'fiu-vro': [], 'hr': [], 'hu': [], 'hy': [], 'hyv': [],
+        'ka': [], 'kk': [], 'lt': [], 'lv': [], 'mk': [], 'mt': [], 'myv': [], 'pl': [], 'ro': [], 'roa-rup': [],
+        'ru': [], 'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tr': [], 'tt': [], 'tyv': [], 'uk': [],
+        'uz': [], 'zgh': [],
+    }
+    women = {
+        'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
+        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
+        'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
+    }
+    hrights = {
+        'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
+        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
+        'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
+    }
+    youth = {
+        'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
+        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
+        'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
+    }
     # local name for coutry parameter
-    countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава',
-                'bs': 'država', 'fa': 'کشور', 'cv': 'ҫӗршыв',
-                'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
-                'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
-                'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
-                'sl': 'država', 'sk': 'Krajina', 'sq': 'country',
-                'sr': 'држава', 'tt': 'ил', 'tr': 'ülke', 'uk': 'країна', 'hr': 'zemlja', 'hy': 'երկիր', 'kk': 'ел',
-                'en': 'country', 'uz': 'mamlakat', 'ary': 'بلاد', 'zgh': 'ⵜⴰⵎⵓⵔⵜ', 'tyv': 'чурт',
-                }
+    countryp = {
+        'ary': 'بلاد', 'az': 'ölkə', 'ba': 'ил', 'be-tarask': 'краіна', 'be': 'краіна', 'bg': 'държава', 'bs': 'država',
+        'crh': 'memleket', 'cv': 'ҫӗршыв', 'de': 'land', 'el': 'country', 'en': 'country', 'eo': 'lando', 'et': 'maa',
+        'fa': 'کشور', 'hr': 'zemlja', 'hu': 'ország', 'hy': 'երկիր', 'ka': 'ქვეყანა', 'kk': 'ел', 'lt': 'šalis',
+        'lv': 'valsts', 'mk': 'земја', 'mt': 'pajjiż', 'myv': 'мастор', 'pl': 'kraj', 'roa-rup': 'земја', 'ro': 'țară',
+        'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja', 'sk': 'Krajina', 'sl': 'država', 'sq': 'country',
+        'sr': 'држава', 'tr': 'ülke', 'tt': 'ил', 'tyv': 'чурт', 'uk': 'країна', 'uz': 'mamlakat', 'zgh': 'ⵜⴰⵎⵓⵔⵜ',
+    }
     # local name for topic parameter
-    topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
-              'bs': 'tema', 'cv': 'тема', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
-              'hu': 'téma', 'ka': 'თემა', 'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
-              'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
-              'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
-              'tt': 'тема', 'tr': 'konu', 'uk': 'тема', 'hr': 'tema', 'hy': 'թեմա', 'kk': 'тақырып',
-              'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', 'tyv': 'тема', }
+    topicp = {
+        'ary': 'موضوع', 'az': 'mövzu', 'ba': 'тема', 'be-tarask': 'тэма', 'be': 'тэма', 'bg': 'тема', 'bs': 'tema',
+        'crh': 'mevzu', 'cv': 'тема', 'de': 'thema', 'el': 'topic', 'en': 'topic', 'eo': 'temo', 'et': 'teema',
+        'hr': 'tema', 'hu': 'téma', 'hy': 'թեմա', 'ka': 'თემა', 'kk': 'тақырып', 'lt': 'tema', 'lv': 'tēma',
+        'mk': 'тема', 'myv': 'тема', 'pl': 'parametr', 'roa-rup': 'тема', 'ro': 'secțiune', 'ru': 'тема',
+        'sah': 'тиэмэ', 'sh': 'tema', 'sk': 'Parameter', 'sl': 'tema', 'sq': 'topic', 'sr': 'тема', 'tr': 'konu',
+        'tt': 'тема', 'tyv': 'тема', 'uk': 'тема', 'uz': 'mavzu', 'zgh': 'ⵉⵎⵔⵙⵉ',
+    }
     # local name for parameter value for: women
-    womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
-              'bg': 'жени', 'bs': 'žena', 'crh': 'qadınlar', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
-              'lv': 'Sievietes', 'cv': 'хӗрарӑмсем',
-              'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
-              'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
-              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
-              'uz': 'Ayollar', 'kk': 'әйелдер', 'lt': 'moterys', 'tyv': 'женщины', }
+    womenp = {
+        'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be-tarask': 'жанчыны', 'be': 'Жанчыны', 'bg': 'жени', 'bs': 'žena',
+        'crh': 'qadınlar', 'cv': 'хӗрарӑмсем', 'de': 'Frauen', 'el': 'γυναίκες', 'en': 'Women', 'et': 'naised',
+        'hr': 'Žene', 'hu': 'nők', 'hy': 'Կանայք', 'ka': 'ქალები', 'kk': 'әйелдер', 'lt': 'moterys', 'lv': 'Sievietes',
+        'mk': 'Жени', 'mt': 'nisa', 'pl': 'kobiety', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sk': 'Žena',
+        'sl': 'Ženske', 'sq': 'Gratë', 'sr': 'Жене', 'tr': 'Kadın', 'tt': 'Хатын-кызлар', 'tyv': 'женщины',
+        'uk': 'жінки', 'uz': 'Ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
+    }
     # local name for parameter value for: human rights
     hrightsp = {
-            'pl': 'Prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'insan hüquqları',
-            'ba': 'Кеше хоҡуҡтары', 'be': 'Правы чалавека', 'be-tarask': 'Правы чалавека', 'sh': 'Ljudska prava',
-            'bs': 'Ljudska prava', 'hr': 'Ljudska prava', 'sr': 'Људска права', 'myv': 'Ломанень прават', 'et': 'Inimõigused',
-            'ge': 'ადამიანის უფლებები', 'de': 'Menschenrechte', 'el': 'νθρώπινα δικαιώματα', 'hu': 'Emberi jogok',
-            'lv': 'Cilvēktiesības', 'mk': 'Човекови права', 'mt': 'Drittijiet umani',
-            'ru': 'Права человека', 'sk': 'Ľudské práva', 'sl': 'Človekove pravice', 'tt': 'Кеше хокуклары',
-            'tr': 'İnsan hakları', 'uz': 'inson huquqlari', 'ary': 'حقوق بنادم', 'crh': 'insan aqları',
-            'kk': 'адам құқықтары', 'ro': 'Drepturile omului',
+        'ary': 'حقوق بنادم', 'az': 'insan hüquqları', 'ba': 'Кеше хоҡуҡтары', 'be-tarask': 'Правы чалавека',
+        'be': 'Правы чалавека', 'bs': 'Ljudska prava', 'crh': 'insan aqları', 'de': 'Menschenrechte',
+        'el': 'νθρώπινα δικαιώματα', 'et': 'Inimõigused', 'hr': 'Ljudska prava', 'hu': 'Emberi jogok',
+        'hy': 'Մարդու իրավունքներ', 'ka': 'ადამიანის უფლებები', 'kk': 'адам құқықтары', 'lv': 'Cilvēktiesības',
+        'mk': 'Човекови права', 'mt': 'Drittijiet umani', 'myv': 'Ломанень прават', 'pl': 'Prawa człowieka',
+        'ro': 'Drepturile omului', 'ru': 'Права человека', 'sh': 'Ljudska prava', 'sk': 'Ľudské práva',
+        'sl': 'Človekove pravice', 'sq': 'Të drejtat e njeriut', 'sr': 'Људска права', 'tr': 'İnsan hakları',
+        'tt': 'Кеше хокуклары', 'uz': 'inson huquqlari',
     }
     youthp = {
-            'az': 'gənclər', 'be': 'моладзь', 'hr': 'mladi', 'hy': 'Երիտասարդություն', 'pl': 'młodzież', 'ro': 'Tineret',
-            'ru': 'молодёжь', 'sl': 'Mladi', 'tr': 'Yoshlar', 'uz': 'Yoshlar',
+        'az': 'gənclər', 'be': 'моладзь', 'hr': 'mladi', 'hy': 'Երիտասարդություն', 'pl': 'młodzież', 'ro': 'Tineret',
+        'ru': 'молодёжь', 'sl': 'Mladi', 'tr': 'Yoshlar', 'uz': 'Yoshlar',
     }
     # local name for user parameter
-    userp = {'pl': 'autor',  'ary': 'خدايمي', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
-             'bg': 'потребител', 'bs': 'korisnik', 'cv': 'хутшăнакан', 'de': 'benutzer', 'crh': 'qullanıcı',
-             'el': 'user', 'et': 'kasutaja', 'hu': 'szerkesztő', 'eo': 'uzanto', 'ka': 'მომხმარებელი',
-             'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця',
-             'ro': 'utilizator', 'roa-rup': 'корисник',  'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
-             'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
-             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1',
-             'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ', 'tyv': 'ажыглакчы',
-             }
+    userp = {
+        'ary': 'خدايمي', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be-tarask': 'удзельнік', 'be': 'удзельнік',
+        'bg': 'потребител', 'bs': 'korisnik', 'crh': 'qullanıcı', 'cv': 'хутшăнакан', 'de': 'benutzer', 'el': 'user',
+        'en': 'user', 'eo': 'uzanto', 'et': 'kasutaja', 'fa': '1', 'hr': 'suradnik', 'hu': 'szerkesztő',
+        'hy': 'մասնակից', 'ka': 'მომხმარებელი', 'kk': 'қатысушы', 'lt': 'naudotojas', 'lv': 'dalībnieks',
+        'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'pl': 'autor', 'roa-rup': 'корисник', 'ro': 'utilizator',
+        'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sk': 'Redaktor', 'sl': 'uporabnik', 'sq': 'user',
+        'sr': 'корисник', 'tr': 'kullanıcı', 'tt': 'кулланучы', 'tyv': 'ажыглакчы', 'uk': 'користувач',
+        'uz': 'foydalanuvchi', 'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ',
+    }
 
     update_options = {
         'replace': False,  # delete old text and write the new text
