@@ -168,7 +168,7 @@ countryNames = {
            'Себер татарҙары': 'Tatars', 'татарҙар': 'Tatars', 'Эрзәндәр': 'Erzia',
            'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars',
            'Мари Республикаһы': 'Novgorodian', 'Гөрҗөстан': 'Georgia', 'Тажикстан': 'Tajikistan',
-           'Үзбәкстан': 'Uzbekistan', },
+           'Үзбәкстан': 'Uzbekistan', 'Сыуашстан': 'Chuvasz', },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -547,7 +547,7 @@ countryNames = {
            'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Romani',
            'татарла': 'Tatars', 'башкортлар': 'Bashkortostan', 'чуашлар': 'Russia', 'Татарстан': 'Tatars',
            'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatars', 'эрзя': 'Erzia',
-           'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', },
+           'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', 'Таҗикстан': 'Tajikistan', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -767,8 +767,9 @@ countryNames = {
             'Moldova': 'Romania and Moldova', 'Ruminiya': 'Romania and Moldova', 'Belarusiya': 'Belarus',
             'Xalqaro': 'International', 'Makedoniya': 'North Macedonia', 'Kipr': 'Cyprus', 'Chexiya': 'Czechia',
             'Belorus': 'Belarus', 'Tatariston': 'Tatars', 'Qirgʻiziston': 'Kyrgyzstan', "Oʻzbekiston": 'Uzbekistan',
-            'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', ' OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
-            'Asvtriya': 'Austria', },
+            'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', 'OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
+            'Asvtriya': 'Austria', 'xalqaro': 'International', 'ALbaniya': 'Albania', 'Bosniya': 'Bosnia and Herzegovina',
+        },
 # fa countries
     'fa': {
             'بلغارستان': 'Bulgaria', 'روسیه': 'Russia', 'لهستان': 'Poland', 'اوکراین': 'Ukraine',
