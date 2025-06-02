@@ -96,7 +96,7 @@ countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bash
                'Romani', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tajikistan', 'Tatars',
                'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian', 'International', 'Other', 'Empty']
 
-languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'],
+languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'], 'cv': ['Chuvasz'],
                    'et': ['Estonia', 'Võro'], 'de': ['Austria', 'Germany'],
                    'az': ['Azerbaijan'], 'ru': ['Russia', 'Don'], 'tt': ['Tatarstan'], 'tr': ['Turkey'],
                    'lv': ['Latvia'], 'ka': ['Georgia'], 'uz': ['Uzbekistan'],
@@ -221,6 +221,17 @@ countryNames = {
            'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
            'Чувашия': 'Russia',
            },
+    # cv countries
+    'cv': { 'Албани': 'Albania', 'Австри': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армени': 'Armenia',
+            'Беларуç': 'Belarus', 'Болгари': 'Bulgaria', 'Боснипа Герцеговина': 'Bosnia and Herzegovina',
+            'выру': 'Võro', 'Грузи': 'Georgia', 'Греци': 'Greece', 'Казахстан': 'Kazakhstan', 'Косово': 'Kosovo',
+            'Крым тутарсем': 'Crimean Tatars', 'Латви': 'Latvia', 'Литва': 'Lithuania', 'Мальта': 'Malta',
+            'Венгри': 'Hungary', 'Польша': 'Poland', 'Республика Серпска': 'Republic of Srpska',
+            'Румынипа Молдова': 'Romania and Moldova', 'Серби': 'Serbia', 'Словаки': 'Slovakia', 'Словени': 'Slovenia',
+            'сорблар': 'Sorbia', 'Македони': 'North Macedonia', 'Турци': 'Turkey', 'Украина': 'Ukraine',
+            'Хорвати': 'Croatia', 'цыгансем': 'Romani', 'Черногори': 'Montenegro', 'Чехи': 'Czechia',
+            'Эсперанто': 'Esperanto', 'Эстони': 'Estonia',
+    },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
            'Baschkortostan': 'Bashkortostan', 'Weißrussland': 'Belarus', 'Bulgarien': 'Bulgaria', 'Armenien': 'Armenia',
@@ -805,27 +816,27 @@ class BasicBot(
     hrightsAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     youthAuthors = {}  # authors of articles about Human Rights k:author v; (count,[list])
     crownAuthors = {}  # authors with articles about all countries
-    otherCountriesList = {'pl': [], 'ary':[], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'de': [],
+    otherCountriesList = {'pl': [], 'ary':[], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'cv': [], 'de': [],
                           'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
                           'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
                           'hu': [], 'fiu-vro': [], 'en': [], 'uz': [], 'zgh':[], }
-    women = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
+    women = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
              'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
              'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
-    hrights = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
+    hrights = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
                'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
-    youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'de': 0, 'crh': 0, 'el': 0,
+    youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0,
                'et': 0, 'fa':0, 'ary': 0, 'zgh': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
                'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz': 0}
     # local name for coutry parameter
     countryp = {'pl': 'kraj', 'az': 'ölkə', 'ba': 'ил', 'be': 'краіна', 'be-tarask': 'краіна', 'bg': 'държава',
-                'bs': 'država', 'fa': 'کشور',
+                'bs': 'država', 'fa': 'کشور', 'cv': 'ҫӗршыв',
                 'de': 'land', 'crh': 'memleket', 'eo': 'lando', 'el': 'country', 'et': 'maa', 'hu': 'ország',
                 'ka': 'ქვეყანა', 'lv': 'valsts', 'lt': 'šalis', 'mk': 'земја', 'mt': 'pajjiż',
                 'myv': 'мастор', 'ro': 'țară', 'roa-rup': 'земја', 'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja',
@@ -835,7 +846,7 @@ class BasicBot(
                 }
     # local name for topic parameter
     topicp = {'pl': 'parametr', 'az': 'mövzu', 'ba': 'тема', 'be': 'тэма', 'be-tarask': 'тэма', 'bg': 'тема',
-              'bs': 'tema', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
+              'bs': 'tema', 'cv': 'тема', 'de': 'thema', 'crh': 'mevzu', 'el': 'topic', 'et': 'teema', 'eo': 'temo',
               'hu': 'téma', 'ka': 'თემა', 'lv': 'tēma', 'lt': 'tema', 'mk': 'тема', 'myv': 'тема',
               'ro': 'secțiune', 'roa-rup': 'тема', 'ru': 'тема', 'sah': 'тиэмэ', 'sh': 'tema', 'sl': 'tema',
               'sk': 'Parameter', 'sq': 'topic', 'sr': 'тема',
@@ -844,7 +855,7 @@ class BasicBot(
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
               'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
-              'lv': 'Sievietes',
+              'lv': 'Sievietes', 'cv': 'хӗрарӑмсем',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
               'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
@@ -865,7 +876,7 @@ class BasicBot(
     }
     # local name for user parameter
     userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
-             'bg': 'потребител', 'bs': 'korisnik', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
+             'bg': 'потребител', 'bs': 'korisnik', 'cv': 'хутшăнакан', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
              'hu': 'szerkesztő', 'eo': 'uzanto', 'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas',
              'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник',
              'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
