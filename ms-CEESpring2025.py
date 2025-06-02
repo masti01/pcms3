@@ -820,17 +820,17 @@ class BasicBot(
                           'crh': [], 'el': [], 'et': [], 'fa': [], 'hyv': [], 'myv': [], 'eo': [], 'hr': [], 'hy': [], 'ka': [],
                           'kk': [], 'lv': [], 'lt': [], 'mk': [], 'mt': [], 'ro': [], 'roa-rup': [], 'ru': [],
                           'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tt': [], 'tr': [], 'uk': [],
-                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [], 'zgh':[], }
+                          'hu': [], 'fiu-vro': [], 'en': [], 'uz': [], 'zgh':[], 'tyv':[], }
     women = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
              'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
              'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
+             'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, 'tyv': 0, }
     hrights = {'pl': 0, 'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0, 'et': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
-               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, }
+               'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz':0, 'fa':0, 'zgh': 0, 'tyv': 0, }
     youth = {'pl': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'cv':0, 'de': 0, 'crh': 0, 'el': 0,
-               'et': 0, 'fa':0, 'ary': 0, 'zgh': 0,
+               'et': 0, 'fa':0, 'ary': 0, 'zgh': 0, 'tyv': 0,
                'myv': 0, 'eo': 0, 'hr': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0, 'lv': 0, 'lt': 0, 'mk': 0, 'mt': 0,
                'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0, 'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tt': 0, 'tr': 0,
                'uk': 0, 'hu': 0, 'fiu-vro': 0, 'en': 0, 'uz': 0}
@@ -854,12 +854,12 @@ class BasicBot(
               'en': 'topic', 'uz': 'mavzu', 'ary': 'موضوع', 'zgh': 'ⵉⵎⵔⵙⵉ', }
     # local name for parameter value for: women
     womenp = {'pl': 'kobiety', 'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be': 'Жанчыны', 'be-tarask': 'жанчыны',
-              'bg': 'жени', 'bs': 'žena', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
+              'bg': 'жени', 'bs': 'žena', 'crh': 'qadınlar', 'de': 'Frauen', 'el': 'γυναίκες', 'et': 'naised', 'ka': 'ქალები',
               'lv': 'Sievietes', 'cv': 'хӗрарӑмсем',
               'mk': 'Жени', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sl': 'Ženske', 'mt': 'nisa',
               'sk': 'Žena', 'sq': 'Gratë', 'sr': 'Жене', 'tt': 'Хатын-кызлар', 'tr': 'Kadın', 'uk': 'жінки',
-              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'uz':'ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
-              'uz': 'Ayollar', }
+              'hu': 'nők', 'hr': 'Žene', 'hy': 'Կանայք', 'en': 'Women', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
+              'uz': 'Ayollar', 'kk': 'әйелдер', 'lt': 'moterys', }
     # local name for parameter value for: human rights
     hrightsp = {
             'pl': 'Prawa człowieka', 'sq': 'Të drejtat e njeriut', 'hy': 'Մարդու իրավունքներ', 'az': 'insan hüquqları',
@@ -868,20 +868,21 @@ class BasicBot(
             'ge': 'ადამიანის უფლებები', 'de': 'Menschenrechte', 'el': 'νθρώπινα δικαιώματα', 'hu': 'Emberi jogok',
             'lv': 'Cilvēktiesības', 'mk': 'Човекови права', 'mt': 'Drittijiet umani',
             'ru': 'Права человека', 'sk': 'Ľudské práva', 'sl': 'Človekove pravice', 'tt': 'Кеше хокуклары',
-            'tr': 'İnsan hakları', 'uz': 'inson huquqlari', 'ary': 'حقوق بنادم',
+            'tr': 'İnsan hakları', 'uz': 'inson huquqlari', 'ary': 'حقوق بنادم', 'crh': 'insan aqları',
+            'kk': 'адам құқықтары', 'ro': 'Drepturile omului',
     }
     youthp = {
-            'hr': 'mladi', 'az': 'gənclər', 'pl': 'młodzież', 'tr': 'Yoshlar', 'ru': 'молодёжь', 'sl': 'Mladi',
-            'ro': 'Tineret', 'uz': 'Yoshlar', 'hy': 'Երիտասարդություն',
+            'az': 'gənclər', 'be': 'моладзь', 'hr': 'mladi', 'hy': 'Երիտասարդություն', 'pl': 'młodzież', 'ro': 'Tineret',
+            'ru': 'молодёжь', 'sl': 'Mladi', 'tr': 'Yoshlar', 'uz': 'Yoshlar',
     }
     # local name for user parameter
-    userp = {'pl': 'autor', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
-             'bg': 'потребител', 'bs': 'korisnik', 'cv': 'хутшăнакан', 'de': 'benutzer', 'crh': 'qullanıcı', 'el': 'user', 'et': 'kasutaja',
-             'hu': 'szerkesztő', 'eo': 'uzanto', 'ka': 'მომხმარებელი', 'lv': 'dalībnieks', 'lt': 'naudotojas',
-             'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'ro': 'utilizator', 'roa-rup': 'корисник',
-             'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
+    userp = {'pl': 'autor',  'ary': 'خدايمي', 'az': 'istifadəçi', 'ba': 'ҡатнашыусы', 'be': 'удзельнік', 'be-tarask': 'удзельнік',
+             'bg': 'потребител', 'bs': 'korisnik', 'cv': 'хутшăнакан', 'de': 'benutzer', 'crh': 'qullanıcı',
+             'el': 'user', 'et': 'kasutaja', 'hu': 'szerkesztő', 'eo': 'uzanto', 'ka': 'მომხმარებელი',
+             'lv': 'dalībnieks', 'lt': 'naudotojas', 'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця',
+             'ro': 'utilizator', 'roa-rup': 'корисник',  'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sl': 'uporabnik', 'sk': 'Redaktor', 'sq': 'user',
              'sr': 'корисник', 'tt': 'кулланучы', 'tr': 'kullanıcı', 'uk': 'користувач', 'hr': 'suradnik',
-             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1', 'ary': 'خدايمي',
+             'hy': 'մասնակից', 'kk': 'қатысушы', 'en': 'user', 'uz': 'foydalanuvchi', 'fa': '1',
              'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ',
              }
 
@@ -1602,6 +1603,12 @@ class BasicBot(
                     # hack for tt.wiki ел= param: stating year of competition
                     if lang == 'tt':
                         if 'ел=2025' not in re.sub(' ', '', r.text):
+                            if self.opt.testgetart:
+                                pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
+                            continue
+                    # hack for eo.wiki jaro= param: stating year of competition
+                    if lang == 'eo':
+                        if 'jaro=2025' not in re.sub(' ', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
                             continue
