@@ -230,7 +230,8 @@ countryNames = {
             'Румынипа Молдова': 'Romania and Moldova', 'Серби': 'Serbia', 'Словаки': 'Slovakia', 'Словени': 'Slovenia',
             'сорблар': 'Sorbia', 'Македони': 'North Macedonia', 'Турци': 'Turkey', 'Украина': 'Ukraine',
             'Хорвати': 'Croatia', 'цыгансем': 'Romani', 'Черногори': 'Montenegro', 'Чехи': 'Czechia',
-            'Эсперанто': 'Esperanto', 'Эстони': 'Estonia',
+            'Эсперанто': 'Esperanto', 'Эстони': 'Estonia', 'тутарсем': 'Tatars', 'Раççей Федерацийĕ': 'Russia',
+            'Чӑвашсем': 'Chuvasz', 'чӑвашсем': 'Chuvasz', 'Венгрия': 'Hungary', 'Раççей': 'Russia',
     },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
@@ -784,7 +785,7 @@ countryNames = {
     'ary': {
             'بلغاريا': 'Bulgaria', 'پولونيا': 'Poland', 'إسطونيا': 'Estonia', 'أزيربيدجان': 'Azerbaijan',
             'كرواتيا': 'Croatia', 'بيلاروسيا': 'Belarus', 'مواضيع عالمية': 'International', 'مالطا': 'Malta',
-            'تركيا': 'Turkey', 'لوطريش': 'Austria',
+            'تركيا': 'Turkey', 'لوطريش': 'Austria', 'كازاخيستان': 'Kazakhstan', 'روسيا': 'Russia', 'صلوڤاكيا': 'Slovakia',
     },
 # zgh countries
     'zgh': {
