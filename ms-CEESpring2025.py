@@ -1044,6 +1044,8 @@ class BasicBot(
         self.generateResultAuthorsPage(self.authors, self.opt.outpage + '/Authors list', header, footer)
         self.generateResultCrownAuthors(self.crownAuthors,
                                                    self.opt.outpage + '/Authors Hall of Fame', header, footer)
+        self.generateResultCrownAuthorsCountries(self.crownAuthors,
+                                       self.opt.outpage + '/Authors Hall of Fame/countries', header, footer)
         self.generateAuthorsCountryTable(self.authorsArticles, self.opt.outpage + '/Authors list/per wiki',
                                          header, footer)
         self.generateResultWomenPage(self.women, self.opt.outpage + '/Articles about women', header, footer)
@@ -2741,6 +2743,57 @@ class BasicBot(
         finalpage += footer
 
         if self.opt.testcrownauthors:
+            pywikibot.output(finalpage)
+
+        outpage = pywikibot.Page(pywikibot.Site(), pagename)
+        if self.opt.testallcountries:
+            pywikibot.output('authorListperWiki:%s' % outpage.title())
+        outpage.text = finalpage
+        outpage.save(summary=self.opt.summary)
+
+        return
+
+    def generateResultCrownAuthorsCountries(self, res, pagename, header, footer):
+        """
+        Generates results page from res
+        Starting with header, ending with footer
+        Output page is pagename
+        """
+        locpagename = re.sub(r'.*:', '', pagename)
+
+        finalpage = f'<noinclude>{header}</noinclude>'
+
+        if self.opt.testcrownauthors:
+            pywikibot.output('***************************')
+            pywikibot.output('generateResultCrownAuthorsCountries')
+            pywikibot.output('***************************')
+
+        finalpage += f"Users that created articles about all of the following countries:\n*{', '.join(crowncountries)}\n\n"
+        finalpage += f"Countries in '''bold''' are counted\n\n"
+        # generate table header
+        finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
+        finalpage += '\n|-'
+        finalpage += '\n! author !! coutries'
+
+        # generate table rows
+        for author in res.keys():
+            finalpage += '\n|-'
+            # finalpage += f'\n| [[user:{author}|{author}]] | '
+            ctrylist = []
+            for ctry in res[author].keys():
+                if res[author][ctry]:
+                    ctrylist.append(f"'''{ctry}'''")
+                else:
+                    ctrylist.append(f"{ctry}")
+            finalpage += f'\n| [[user:{author}|{author}]] | {','.join(ctrylist)}'
+
+        # generate table footer
+        finalpage += '\n|}'
+
+        finalpage += footer
+
+        if self.opt.testcrownauthors:
+            pywikibot.output('********  countrylist ********')
             pywikibot.output(finalpage)
 
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
