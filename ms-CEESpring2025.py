@@ -76,7 +76,7 @@ allowedFamilies = ['wikipedia', 'wikivoyage', 'wikiquote']
 crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
                   'Bosnia and Herzegovina', 'Chuvasz', 'Crimean Tatars', 'Croatia', 'Greece', 'Hungary', 'Kazakhstan',
                   'Kosovo', 'Latvia', 'Lithuania', 'Malta', 'North Macedonia', 'Novgorodian', 'Poland',
-                  'Republic of Srpska', 'Romania and Moldova', 'Serbia', 'Slovakia', 'Slovenia', 'Tatars', 'Ukraine']
+                  'Romania and Moldova', 'Serbia', 'Slovakia', 'Slovenia', 'Tatars', 'Ukraine']
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
