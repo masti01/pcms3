@@ -2788,7 +2788,7 @@ class BasicBot(
                     count += 1
                 else:
                     ctrylist.append(f"{ctry}")
-            finalpage += f'\n| [[user:{author}|{author}]] || {count} || {', '.join(ctrylist)}'
+            finalpage += f"\n| [[user:{author}|{author}]] || {count} || {', '.join(ctrylist)}"
 
         # generate table footer
         finalpage += '\n|}'
