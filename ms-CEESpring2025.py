@@ -2773,19 +2773,21 @@ class BasicBot(
         # generate table header
         finalpage += '\n{| class="wikitable sortable" style="text-align: center;"'
         finalpage += '\n|-'
-        finalpage += '\n! author !! coutries'
+        finalpage += '\n! author !! counted !! coutries'
 
         # generate table rows
         for author in res.keys():
             finalpage += '\n|-'
             # finalpage += f'\n| [[user:{author}|{author}]] | '
             ctrylist = []
+            count = 0
             for ctry in res[author].keys():
                 if res[author][ctry]:
                     ctrylist.append(f"'''{ctry}'''")
+                    count += 1
                 else:
                     ctrylist.append(f"{ctry}")
-            finalpage += f'\n| [[user:{author}|{author}]] | {','.join(ctrylist)}'
+            finalpage += f'\n| [[user:{author}|{author}]] || {count} || {','.join(ctrylist)}'
 
         # generate table footer
         finalpage += '\n|}'
