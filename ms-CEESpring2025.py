@@ -232,6 +232,7 @@ countryNames = {
             'Хорвати': 'Croatia', 'цыгансем': 'Romani', 'Черногори': 'Montenegro', 'Чехи': 'Czechia',
             'Эсперанто': 'Esperanto', 'Эстони': 'Estonia', 'тутарсем': 'Tatars', 'Раççей Федерацийĕ': 'Russia',
             'Чӑвашсем': 'Chuvasz', 'чӑвашсем': 'Chuvasz', 'Венгрия': 'Hungary', 'Раççей': 'Russia',
+            'Крым тутарĕсем': 'Crimean Tatars',
     },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
