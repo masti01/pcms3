@@ -3055,6 +3055,10 @@ ignorelist = [
     re.compile(r'.*[\./@]svs\.stat\.gov\.pl'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]opg\.optica\.org'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]linkedin\.com'),  # bot rejected on site error 999 (masti)
+    re.compile(r'.*[\./@]altonabbey\.com'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]dahlenburg\.de/home\.aspx'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]aerlingus\.com/html/en-PL/home\.htm'),  # bot rejected on site (masti, szoltys)
+    re.compile(r'.*[\./@]cyklotrasy\.cz/encyklopedie/objekty1\.phtml?id=90385'),  # bot rejected on site (masti, szoltys)
 ]
 
 
