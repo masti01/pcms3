@@ -58,6 +58,7 @@ from pywikibot.bot import (
     ConfigParserBot,
     ExistingPageBot,
     SingleSiteBot,
+    Bot,
 )
 
 
@@ -67,9 +68,10 @@ docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
 class BasicBot(
-    # Refer pywikobot.bot for generic bot classes
-    SingleSiteBot,  # A bot only working on one site
-    ConfigParserBot,  # A bot which reads options from scripts.ini setting file
+    # Refer pywikibot.bot for generic bot classes
+    # SingleSiteBot,  # A bot only working on one site
+    Bot,
+    # MultipleSitesBot,  # A bot class working on multiple sites
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
