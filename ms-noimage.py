@@ -102,6 +102,7 @@ class BasicBot(
     }
 
     def run(self):
+        pywikibot.output("Running")
         header = f'Ta strona jest okresowo uaktualniana przez [[Wikipedysta:MastiBot|MastiBota]]. Ostatnia aktualizacja ~~~~~. \n'
         header += f'Wszelkie uwagi proszę zgłaszać w [[Dyskusja_Wikipedysty:Masti|dyskusji operatora]].\n\n'
         header += f'{self.opt.text}\n\n'
