@@ -44,6 +44,13 @@ cannot be set by settings file:
 #
 # Distributed under the terms of the MIT license.
 #
+#
+# (C) Pywikibot team, 2006-2024
+#
+# Distributed under the terms of the MIT license.
+#
+from __future__ import annotations
+
 import pywikibot
 from pywikibot import pagegenerators
 from pywikibot.bot import (
@@ -172,8 +179,7 @@ class BasicBot(
 
 
 def main(*args: str) -> None:
-    """
-    Process command line arguments and invoke bot.
+    """Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
@@ -199,21 +205,20 @@ def main(*args: str) -> None:
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-        # take the remaining options as booleans.
-        # You will get a hint if they aren't pre-defined in your bot class
+            # take the remaining options as booleans.
+            # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-    # The preloading option is responsible for downloading multiple
-    # pages from the wiki simultaneously.
-    gen = gen_factory.getCombinedGenerator(preload=True)
+            # The preloading option is responsible for downloading multiple
+            # pages from the wiki simultaneously.
+        gen = gen_factory.getCombinedGenerator(preload=True)
 
-    # check if further help is needed
-    if not pywikibot.bot.suggest_help(missing_generator=not gen):
-        # pass generator and private options to the bot
-        bot = BasicBot(generator=gen, **options)
-        bot.run()  # guess what it does
+        # check if further help is needed
+        if not pywikibot.bot.suggest_help(missing_generator=not gen):
+            # pass generator and private options to the bot
+            bot = BasicBot(generator=gen, **options)
+            bot.run()  # guess what it does
 
-
-if __name__ == '__main__':
-    main()
+    if __name__ == '__main__':
+        main()
