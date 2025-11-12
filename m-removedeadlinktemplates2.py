@@ -3,6 +3,8 @@
 This is a bot to remove {{Martwy link dyskusja}} templates from discussion pages if the link reported no longer exists in the article.
 Call:
    python pwb.py masti/m-removedeadlinktemplates2.py -cat:"Niezweryfikowane martwe linki" -ns:1 -summary:"Nieaktualna informacja o martwym linku zewnętrznym" -pt:0
+Remove link only:
+   python3 pwb.py masti/m-removedeadlinktemplates2.py -weblink:"https://dataverse.harvard.edu/dataset.xhtml" -ns:1  -remove -removelink:"https://dataverse.harvard.edu/dataset.xhtml" -summary:"Nieaktualna informacja o martwym linku zewnętrznym" -pt:0 -nodelete
 
 Use global -simulate option for test purposes. No changes to live wiki
 will be done.
