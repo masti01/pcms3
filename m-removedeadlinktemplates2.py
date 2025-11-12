@@ -174,7 +174,7 @@ class BasicBot(
                             break  # keep template, skip to next template
 
                     #TODO: remove link passed as param remove
-                    if linklink != self.opt.remove:  # link to be removed
+                    if not linklink.startswith(self.opt.remove):  # link to be removed
                         break  # keep template, skip to next template
 
                     # remove template
