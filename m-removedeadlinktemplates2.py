@@ -102,7 +102,8 @@ class BasicBot(
         'testcheck': False,  # switch on test functionality - check links on page
         'testremove': False,  # switch on test functionality - show removed templates
         'nodelete': False,  # do not delete empty pages
-        'remove': 'Test',  # specify link to be removed together with template
+        'remove': False,  # only remove templates with given link
+        'removelink': 'Test',  # specify link to be removed together with template
     }
 
     def run(self):
@@ -168,14 +169,15 @@ class BasicBot(
                     except KeyError:
                         pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
 
-                    # find linklink in article unquoted content
-                    if linklink in articlelinks.keys():  # link is in article
-                        if not articlelinks[linklink]:  # link is not archived
+                    if not self.opt.remove:
+                        # find linklink in article unquoted content
+                        if linklink in articlelinks.keys():  # link is in article
+                            if not articlelinks[linklink]:  # link is not archived
+                                break  # keep template, skip to next template
+                    else:
+                        # remove link passed as param remove
+                        if not linklink.startswith(self.opt.removelink):  # link to be removed
                             break  # keep template, skip to next template
-
-                    #TODO: remove link passed as param remove
-                    if not linklink.startswith(self.opt.remove):  # link to be removed
-                        break  # keep template, skip to next template
 
                     # remove template
                     parsedtalk.remove(tmpl)
@@ -306,7 +308,7 @@ def main(*args: str) -> None:
     for arg in local_args:
         arg, _, value = arg.partition(':')
         option = arg[1:]
-        if option in ('summary', 'text', 'remove'):
+        if option in ('summary', 'text', 'removelink'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
