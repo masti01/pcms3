@@ -136,6 +136,9 @@ class BasicBot(
         elif self.current_page.isDisambig():
             pywikibot.output(u'Page %s is DISAMBIG!' % self.current_page.title())
             return
+        elif "{{ek" in self.current_page.text.lower():
+            pywikibot.output(u'Page %s is to be DELETED!' % self.current_page.title())
+            return
         else:
             if self.opt.test:
                 pywikibot.output(u'Title:%s' % self.current_page.title())
