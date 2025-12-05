@@ -3488,6 +3488,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
             reportThread = DeadLinkReportThread()
             # thread dies when program terminates
             # reportThread.setDaemon(True)
+            reportThread.daemon = True
             reportThread.start()
         else:
             reportThread = None
