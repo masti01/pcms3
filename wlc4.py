@@ -3247,7 +3247,7 @@ class LinkCheckThread(threading.Thread):
         except requests.exceptions.Timeout:
             exception = True
             message = 'Timeout while connecting.'
-            pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Timeout while processing URL {self.url} in page [[{self.page.title()}]]'
+            pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Timeout while processing URL {self.url} in page [[{self.page.title()}]]')
         except (pywikibot.exceptions.FatalServerError, requests.exceptions.ConnectionError, requests.exceptions.SSLError, pywikibot.exceptions.ServerError, Exception):
             exception = True
             message = 'Exception while connecting.'
