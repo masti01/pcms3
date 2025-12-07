@@ -196,9 +196,9 @@ class BasicBot(
                 if not links['cat']:
                     p['kategoria'] = datestr
                     summary.append('kategorie')
-                # if not links['refs']:
-                #    p['przypisy'] = datestr
-                #    summary.append('przypisy')
+                if not links['refs']:
+                   p['przypisy'] = datestr
+                   summary.append('przypisy')
             cleanupTmpl = (t, p)
 
             if not p:
