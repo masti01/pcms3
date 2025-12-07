@@ -3238,7 +3238,7 @@ class LinkCheckThread(threading.Thread):
             header = self.header
             r = comms.http.fetch(
                 self.url, headers=header,
-                use_fake_user_agent=self._use_fake_user_agent, timeout=11)
+                use_fake_user_agent=self._use_fake_user_agent)
         except requests.exceptions.InvalidURL:
             exception = True
             message = i18n.twtranslate(self.page.site,
