@@ -3063,6 +3063,8 @@ ignorelist = [
     re.compile(r'.*[\./@]dataverse\.harvard\.edu/dataset\.xhtml'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]motor1\.com'),  # bot rejected on site (Revsson, masti)
     re.compile(r'.*[\./@]autoguide\.com'),  # bot rejected on site (Revsson, masti)
+    re.compile(r'.*[\./@]f1wm\.pl/news'),  # bot rejected on site (Szoltys, masti)
+    re.compile(r'.*[\./@]finance\.yahoo\.com/news'),  # bot rejected on site (Revsson, masti)
 ]
 
 
