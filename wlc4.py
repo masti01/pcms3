@@ -3065,6 +3065,7 @@ ignorelist = [
     re.compile(r'.*[\./@]autoguide\.com'),  # bot rejected on site (Revsson, masti)
     re.compile(r'.*[\./@]f1wm\.pl/news'),  # bot rejected on site (Szoltys, masti)
     re.compile(r'.*[\./@]finance\.yahoo\.com/news'),  # bot rejected on site (Revsson, masti)
+    re.compile(r'.*[\./@]worldbirdnames\.org'),  # HTTP465 on site (Pikador, masti)
 ]
 
 
