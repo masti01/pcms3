@@ -1032,8 +1032,8 @@ class BasicBot(
         self.createLengthTablePL(self.springList)  # generate results for pages length pl.wiki
         self.createAuthorsArticles(self.springList)  # generate list of articles per author/wiki
 
-        header = '{{TNT|Wikimedia CEE Spring 2025 navbar}}\n\n'
-        header += '{{Wikimedia CEE Spring 2025/Statistics/Header}}\n\n'
+        header = '{{TNT|Wikimedia CEE Spring 2026 navbar}}\n\n'
+        header += '{{Wikimedia CEE Spring 2026/Statistics/Header}}\n\n'
         # header += "Last update: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}} UTC</onlyinclude>'''.\n\n"
         header += f"Last update: '''{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} CEST'''.\n\n"
         footer = ''
@@ -1070,7 +1070,7 @@ class BasicBot(
         # special needs
         if 'de' in self.springList.keys() and not self.opt.node:
             self.createStatsDe(self.springList['de'])  # generate list for stats on de.wiki
-            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2025/Punktestand',
+            self.generateResultAuthorsPageDE(self.authorsArticlesDE, 'Wikipedia:Wikimedia CEE Spring 2026/Punktestand',
                                              '', '')
 
         return
@@ -1564,7 +1564,7 @@ class BasicBot(
             if self.opt.testpickle:
                 pywikibot.output(f'PICKLING LOAD at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
             try:
-                with open('masti/CEESpring2025.dat', 'rb') as datfile:
+                with open('masti/CEESpring2026.dat', 'rb') as datfile:
                     result = pickle.load(datfile)
             except (IOError, EOFError):
                 # no saved history exists yet, or history dump broken
@@ -1580,7 +1580,7 @@ class BasicBot(
         # save list as pickle file
         if self.opt.testpickle:
             pywikibot.output(f'PICKLING SAVE at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ARTICLE count {len(artList)}')
-        with open('masti/CEESpring2025.dat', 'wb') as f:
+        with open('masti/CEESpring2026.dat', 'wb') as f:
             pickle.dump(artList, f, protocol=config.pickle_protocol)
 
     @property
@@ -1629,13 +1629,13 @@ class BasicBot(
                     artParams = {}
                     # hack for tt.wiki ел= param: stating year of competition
                     if lang == 'tt':
-                        if 'ел=2025' not in re.sub(' ', '', r.text):
+                        if 'ел=2026' not in re.sub(' ', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
                             continue
                     # hack for eo.wiki jaro= param: stating year of competition
                     if lang == 'eo':
-                        if 'jaro=2025' not in re.sub(' ', '', r.text):
+                        if 'jaro=2026' not in re.sub(' ', '', r.text):
                             if self.opt.testgetart:
                                 pywikibot.output(f'getArticleList SKIPPING: {fam}:{lang}:{r.title()}')
                             continue
