@@ -1035,7 +1035,7 @@ class BasicBot(
         header = '{{TNT|Wikimedia CEE Spring 2026 navbar}}\n\n'
         header += '{{Wikimedia CEE Spring 2026/Statistics/Header}}\n\n'
         # header += "Last update: '''<onlyinclude>{{#time: Y-m-d H:i|{{REVISIONTIMESTAMP}}}} UTC</onlyinclude>'''.\n\n"
-        header += f"Last update: '''{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} CEST'''.\n\n"
+        header += f"Last update: '''{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} CET'''.\n\n"
         footer = ''
 
         self.generateOtherCountriesTable(self.otherCountriesList, self.opt.outpage + '/Other countries',
