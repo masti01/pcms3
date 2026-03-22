@@ -362,7 +362,7 @@ countryNames = {
            'Էրզյա': 'Erzia', 'Վրասաստան': 'Georgia', 'Նովգորոդյան երկիր':'Novgorodian',
            'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
-           'Ուկրաինաա': 'Ukraine',
+           'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan',
            },
     # hyw countries
     'hyw': {
@@ -484,7 +484,7 @@ countryNames = {
            'International': 'International', 'Киргизия': 'Kyrgyzstan', 'Общеевропейская': 'International',
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
-           'крымские татары': 'Crimean Tatars',
+           'крымские татары': 'Crimean Tatars', 'выру': 'Võro',
            },
     # sah countries
     'sah': {
