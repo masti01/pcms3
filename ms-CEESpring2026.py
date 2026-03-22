@@ -863,7 +863,7 @@ class BasicBot(
         'crh': 'memleket', 'cv': 'ҫӗршыв', 'de': 'land', 'el': 'country', 'en': 'country', 'eo': 'lando', 'et': 'maa',
         'fa': 'کشور', 'hr': 'zemlja', 'hu': 'ország', 'hy': 'երկիր', 'ka': 'ქვეყანა', 'kk': 'ел', 'lt': 'šalis',
         'lv': 'valsts', 'mk': 'земја', 'mt': 'pajjiż', 'myv': 'мастор', 'pl': 'kraj', 'roa-rup': 'земја', 'ro': 'țară',
-        'ru': 'страна', 'sah': 'дойду', 'sh': 'zemlja', 'sk': 'Krajina', 'sl': 'država', 'sq': 'country',
+        'ru': 'страна', 'sah': 'дойду', 'sh': 'država', 'sk': 'Krajina', 'sl': 'država', 'sq': 'country',
         'sr': 'држава', 'tr': 'ülke', 'tt': 'ил', 'tyv': 'чурт', 'uk': 'країна', 'uz': 'mamlakat', 'zgh': 'ⵜⴰⵎⵓⵔⵜ',
     }
     # local name for topic parameter
@@ -880,7 +880,7 @@ class BasicBot(
         'az': 'qadınlar', 'ba': 'Ҡатын-ҡыҙҙар', 'be-tarask': 'жанчыны', 'be': 'Жанчыны', 'bg': 'жени', 'bs': 'žena',
         'crh': 'qadınlar', 'cv': 'хӗрарӑмсем', 'de': 'Frauen', 'el': 'γυναίκες', 'en': 'Women', 'et': 'naised',
         'hr': 'Žene', 'hu': 'nők', 'hy': 'Կանայք', 'ka': 'ქალები', 'kk': 'әйелдер', 'lt': 'moterys', 'lv': 'Sievietes',
-        'mk': 'Жени', 'mt': 'nisa', 'pl': 'kobiety', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'Žene', 'sk': 'Žena',
+        'mk': 'Жени', 'mt': 'nisa', 'pl': 'kobiety', 'ro': 'Femei', 'ru': 'женщины', 'sh': 'žena', 'sk': 'Žena',
         'sl': 'Ženske', 'sq': 'Gratë', 'sr': 'Жене', 'tr': 'Kadın', 'tt': 'Хатын-кызлар', 'tyv': 'женщины',
         'uk': 'жінки', 'uz': 'Ayollar', 'zgh': 'ⵜⵉⵡⵜⵎⵉⵏ',
     }
