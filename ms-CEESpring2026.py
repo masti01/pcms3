@@ -449,7 +449,7 @@ countryNames = {
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
-           'Bosnia și Herțegovina': 'Bosnia and Herzegovina', 'tătarii crimeeni': 'Crimean tatars',
+           'Bosnia și Herțegovina': 'Bosnia and Herzegovina', 'tătarii crimeeni': 'Crimean Tatars',
            'Regiunea Donului': 'Don', 'Don': 'Don', 'Esperanto': 'Esperanto', 'Estonia': 'Estonia',
            'Georgia': 'Georgia', 'Cehia': 'Czechia', 'Croația': 'Croatia', 'Kosovo': 'Kosovo',
            'Crimeea': 'Crimean Tatars', 'Lituania': 'Lithuania', 'Letonia': 'Latvia', 'Ungaria': 'Hungary',
