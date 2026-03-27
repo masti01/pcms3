@@ -267,7 +267,7 @@ countryNames = {
            'Međunarodne teme': 'International', 'Međunarodni': 'International', 'Krimski tatari': 'Crimean Tatars',
            'Lužički srbi': 'Sorbia', 'Arumuni': 'Aromanian', 'Tatari': 'Tatars', 'Republika Saha': 'Sakha',
            'Võro (jezik)': 'Võro', 'Võro': 'Võro', 'Zapadnoarmenijski jezik': 'Western Armenian', 'Saha': 'Sakha',
-           'Zapadnoarmenski jezik': 'West Armenian', 'Krimski Karaiti': 'Crimean Karaites',
+           'Zapadnoarmenski jezik': 'Western Armenian', 'Krimski Karaiti': 'Crimean Karaites',
            'Krim': 'Crimean Tatars', 'Krimčaci': 'Krymchaks', 'Čuvašija': 'Chuvasz', 'esperanto': 'Esperanto',
            'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian',
            'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', 'Vöro': 'Vöro',
