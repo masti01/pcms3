@@ -553,7 +553,7 @@ countryNames = {
            'Сахалар':'Sakha', 'Эрзәләр': 'Erzia', 'Россиянең Төньяк-Көнбатышы': 'Russia', 'Чегәннәр': 'Romani',
            'татарла': 'Tatars', 'башкортлар': 'Bashkortostan', 'чуашлар': 'Russia', 'Татарстан': 'Tatars',
            'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatars', 'эрзя': 'Erzia',
-           'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', 'Таҗикстан': 'Tajikistan', },
+           'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', 'Таҗикстан': 'Tajikistan', 'Иран': 'Iran', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
