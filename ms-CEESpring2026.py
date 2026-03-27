@@ -271,7 +271,8 @@ countryNames = {
            'Krim': 'Crimean Tatars', 'Krimčaci': 'Krymchaks', 'Čuvašija': 'Chuvasz', 'esperanto': 'Esperanto',
            'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian',
            'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', 'Vöro': 'Vöro',
-           'Lužičkosrpski jezik': 'Sorbia', 'Krimski Karajiti': 'Crimean Karaites', 'Iran':'Iran', },
+           'Lužičkosrpski jezik': 'Sorbia', 'Krimski Karajiti': 'Crimean Karaites', 'Iran':'Iran',
+           'Internacionalizam': 'International', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
@@ -716,7 +717,7 @@ countryNames = {
            'Kipru': 'Cyprus', 'Rusiji': 'Russia', 'Češkoj': 'Czechia', 'Gruziji': 'Georgia', 'Hrvatska': 'Croatia',
            'Srbiji': 'Serbia', 'Estonija': 'Estonia', 'Bosna i Hercegovina': 'Bosnia and Herzegovina',
            'Srbija': 'Serbia', 'Kosovo': 'Kosovo', 'Litva': 'Lithuania', 'Mađarska': 'Hungary', 'Poljska': 'Poland',
-           'Crnoj Gori': 'Montenegro', 'Albanija': 'A;bania', },
+           'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
