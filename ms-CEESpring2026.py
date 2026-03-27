@@ -73,10 +73,9 @@ SpringStart = datetime.strptime("2026-03-21T00:59:59Z", "%Y-%m-%dT%H:%M:%SZ")
 SpringEnd = datetime.strptime("2026-06-01T01:00:00Z", "%Y-%m-%dT%H:%M:%SZ")  # change to 20.06.2023 for Malta
 newbieLimit = datetime.strptime("2025-12-20T12:00:00Z", "%Y-%m-%dT%H:%M:%SZ")
 allowedFamilies = ['wikipedia', 'wikivoyage', 'wikiquote']
-crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
-                  'Bosnia and Herzegovina', 'Chuvasz', 'Crimean Tatars', 'Croatia', 'Greece', 'Hungary', 'Kazakhstan',
-                  'Kosovo', 'Latvia', 'Lithuania', 'Malta', 'North Macedonia', 'Novgorodian', 'Poland',
-                  'Romania and Moldova', 'Serbia', 'Slovakia', 'Slovenia', 'Tatars', 'Ukraine']
+crowncountries = ['Albania', 'Armenia', 'Azerbaijan', 'Bosnia and Herzegovina', 'Croatia', 'Chuvasz', 'Greece',
+                  'Hungary', 'Kazakhstan', 'Latvia', 'Malta', 'North Macedonia', 'North Caucasus', 'Poland',
+                  'Romania and Moldova', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Tatars', 'Ukraine']
 
 # CEEtemplates = {'pl': 'Szablon:CEE Spring 2024', 'az': 'Şablon:Vikibahar 2024', 'ba': 'Ҡалып:Вики-яҙ 2024',
 #                 'be': 'Шаблон:CEE Spring 2024', 'be-tarask': 'Шаблён:Артыкул ВікіВясны-2024',
@@ -88,13 +87,21 @@ crowncountries = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'B
 #                 'roa-rup': 'Format:EMD Primveara 2023', 'ru': 'Шаблон:Вики-весна 2023',
 #                 'sah': 'Халыып:Биики-саас 2023', 'sr': 'Шаблон:ЦЕЕ пролеће 2023', 'tr': 'Şablon:Vikibahar 2023',
 #                 'uk': 'Шаблон:CEE Spring 2023', 'en': 'Template:CEE Spring 2023'}
+# countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
+#                'Bosnia and Herzegovina', 'Bulgaria', 'Chuvasz', 'Crimean Karaites', 'Crimean Tatars', 'Croatia',
+#                'Cyprus', 'Czechia', 'Erzia', 'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Iran',
+#                'Kazakhstan', 'Kosovo', 'Krymchaks', 'Kyrgyzstan', 'Latvia', 'Lithuania', 'Malta', 'Montenegro',
+#                'Morocco', 'North Macedonia', 'Novgorodian', 'Poland', 'Republic of Srpska', 'Romania and Moldova',
+#                'Romani', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tajikistan', 'Tatars',
+#                'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian', 'International', 'Other', 'Empty']
 countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bashkortostan', 'Belarus',
-               'Bosnia and Herzegovina', 'Bulgaria', 'Chuvasz', 'Crimean Karaites', 'Crimean Tatars', 'Croatia',
-               'Cyprus', 'Czechia', 'Erzia', 'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Iran',
+               'Bosnia and Herzegovina', 'Bulgaria', 'Chuvasz', 'Crimea', 'Crimean Karaites', 'Crimean Tatars', 'Croatia',
+               'Cyprus', 'Czechia', 'Don', 'Erzia', 'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Iran',
                'Kazakhstan', 'Kosovo', 'Krymchaks', 'Kyrgyzstan', 'Latvia', 'Lithuania', 'Malta', 'Montenegro',
-               'Morocco', 'North Macedonia', 'Novgorodian', 'Poland', 'Republic of Srpska', 'Romania and Moldova',
-               'Romani', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia', 'Tajikistan', 'Tatars',
-               'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian', 'International', 'Other', 'Empty']
+               'North Caucasus', 'Morocco', 'North Macedonia', 'Novgorodian', 'Poland', 'Republic of Srpska',
+               'Romania and Moldova', 'Romani', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia',
+               'Tajikistan', 'Tatars', 'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian',
+               'International', 'Other', 'Empty']
 
 languageCountry = {'el': ['Greece'], 'eo': ['Esperanto'], 'myv': ['Erzia'], 'bg': ['Bulgaria'], 'cv': ['Chuvasz'],
                    'et': ['Estonia', 'Võro'], 'de': ['Austria', 'Germany'],
