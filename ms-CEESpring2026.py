@@ -270,7 +270,7 @@ countryNames = {
            'Zapadnoarmenski jezik': 'Western Armenian', 'Krimski Karaiti': 'Crimean Karaites',
            'Krim': 'Crimean Tatars', 'Krimčaci': 'Krymchaks', 'Čuvašija': 'Chuvasz', 'esperanto': 'Esperanto',
            'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian',
-           'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', 'Vöro': 'Vöro',
+           'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', 'Vöro': 'Võro',
            'Lužičkosrpski jezik': 'Sorbia', 'Krimski Karajiti': 'Crimean Karaites', 'Iran':'Iran',
            'Internacionalizam': 'International', },
     # crh countries
@@ -491,6 +491,7 @@ countryNames = {
            },
     # sah countries
     'sah': {
+            'Саха': 'Sakha',
     },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
