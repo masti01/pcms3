@@ -494,7 +494,7 @@ countryNames = {
            'International': 'International', 'Киргизия': 'Kyrgyzstan', 'Общеевропейская': 'International',
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
-           'крымские татары': 'Crimean Tatars', 'выру': 'Võro',
+           'крымские татары': 'Crimean Tatars', 'выру': 'Võro', 'Северный Кавказ': 'North Caucasus',
            },
     # sah countries
     'sah': {
@@ -614,7 +614,7 @@ countryNames = {
            'Ukrajna': 'Ukraine', 'Görögország': 'Greece', 'Kazahsztán': 'Kazakhstan', 'Málta': 'Malta',
            'Szorbok': 'Sorbia', 'Belarusz': 'Belarus', 'Ciprusi Köztársaság': 'Cyprus', 'Ciprus': 'Cyprus',
            'cigány': 'Romani', 'Cigányok': 'Romani', 'Võro': 'Võro', 'Arománok': 'Aromanian', 'Erza nyelv': 'Erzya',
-           'Jakutföld': 'Sakha', },
+           'Jakutföld': 'Sakha', 'Krím': 'Crimea', },
     # kk countries
     'kk': {'Албания': 'Albania', 'Аустрия': 'Austria', 'Әзірбайжан': 'Azerbaijan', 'Башқұртстан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
