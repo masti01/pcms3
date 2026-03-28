@@ -131,7 +131,7 @@ countryNames = {
            'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
-           'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', },
+           'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -279,7 +279,7 @@ countryNames = {
            'Kirgistan': 'Kyrgyzstan', 'Sjeverna Makedonij': 'North Macedonia', 'Novgorodska zemlja': 'Novgorodian',
            'Uzbekistan': 'Uzbekistan', 'Tadžikistan': 'Tajikistan', 'Maroko': 'Morocco', 'Vöro': 'Võro',
            'Lužičkosrpski jezik': 'Sorbia', 'Krimski Karajiti': 'Crimean Karaites', 'Iran':'Iran',
-           'Internacionalizam': 'International', },
+           'Internacionalizam': 'International', 'Sjeverni Kavkaz': 'North Caucasus', 'Donska regija': 'Don', },
     # crh countries
     'crh': {'Arnavutlıq': 'Albania', 'Avstriya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başqırtistan': 'Bashkortostan',
             'Belarus': 'Belarus', 'Bulğaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
