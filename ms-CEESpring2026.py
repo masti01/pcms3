@@ -912,8 +912,8 @@ class BasicBot(
         'tt': 'Кеше хокуклары', 'uz': 'inson huquqlari',
     }
     youthp = {
-        'az': 'gənclər', 'be': 'моладзь', 'hr': 'mladi', 'hy': 'Երիտասարդություն', 'pl': 'młodzież', 'ro': 'Tineret',
-        'ru': 'молодёжь', 'sl': 'Mladi', 'tr': 'Yoshlar', 'uz': 'Yoshlar',
+        'az': 'gənclər', 'be': 'моладзь', 'bs': 'mladi', 'hr': 'mladi', 'hy': 'Երիտասարդություն', 'lv': 'jaunieši',
+        'pl': 'młodzież', 'ro': 'Tineret', 'ru': 'молодёжь', 'sl': 'Mladi', 'tr': 'Yoshlar', 'uz': 'Yoshlar',
     }
     # local name for user parameter
     userp = {
