@@ -98,7 +98,7 @@ countryList = ['Albania', 'Armenia', 'Aromanian', 'Austria', 'Azerbaijan', 'Bash
                'Bosnia and Herzegovina', 'Bulgaria', 'Chuvasz', 'Crimea', 'Crimean Karaites', 'Crimean Tatars', 'Croatia',
                'Cyprus', 'Czechia', 'Don', 'Erzia', 'Esperanto', 'Estonia', 'Georgia', 'Greece', 'Hungary', 'Iran',
                'Kazakhstan', 'Kosovo', 'Krymchaks', 'Kyrgyzstan', 'Latvia', 'Lithuania', 'Malta', 'Montenegro',
-               'North Caucasus', 'Morocco', 'North Macedonia', 'Novgorodian', 'Poland', 'Republic of Srpska',
+               'Morocco', 'North Caucasus', 'North Macedonia', 'Novgorodian', 'Poland', 'Republic of Srpska',
                'Romania and Moldova', 'Romani', 'Russia', 'Sakha', 'Serbia', 'Slovakia', 'Slovenia', 'Sorbia',
                'Tajikistan', 'Tatars', 'Turkey', 'Ukraine', 'Uzbekistan', 'Võro', 'Western Armenian',
                'International', 'Other', 'Empty']
@@ -410,6 +410,7 @@ countryNames = {
            'starptautiski': 'International', 'Maroka': 'Morocco', 'Kirgizstāna': 'Kyrgyzstan',
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
+           'Čečenija': 'North Caucasus',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -467,7 +468,7 @@ countryNames = {
            'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',
            'Ziua Internațională a Romilor': 'Romani', 'Ciuvașia': 'Chuvasz', 'karaiți crimeeni': 'Crimean Karaites',
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
-           'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', },
+           'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus', },
     # roa-rup countries
     'roa-rup': {
             },
@@ -697,7 +698,8 @@ countryNames = {
            'Tatari': 'Tatars', 'mednarodno': 'International', 'Ruska federacija': 'Russia',
            'Aromuni': 'Aromanian', 'Zahodni Armenci': 'Western Armenian', 'Krimski Tatari': 'Crimean Tatars',
            'Võro': 'Võro', 'kazahstan': 'Kazakhstan', 'Erzjani': 'Erzia', 'Republika Srbska': 'Republic of Srpska',
-           'Čuvašija': 'Chuvasz', 'Slovenija': 'Slovenia', 'Mednarodno': 'International', 'Tatarstan': 'Tatars', },
+           'Čuvašija': 'Chuvasz', 'Slovenija': 'Slovenia', 'Mednarodno': 'International', 'Tatarstan': 'Tatars',
+           'Čečenija': 'North Caucasus', },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
