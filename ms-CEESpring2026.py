@@ -131,7 +131,8 @@ countryNames = {
            'Języki łużyckie': 'Sorbia', 'Region Donu': 'Don', 'Międzynarodowy': 'International',
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
-           'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', },
+           'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
+           'Uzbekistan': 'Uzbekistan', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
