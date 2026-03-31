@@ -411,7 +411,7 @@ countryNames = {
            'starptautiski': 'International', 'Maroka': 'Morocco', 'Kirgizstāna': 'Kyrgyzstan',
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
-           'Čečenija': 'North Caucasus',
+           'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -469,7 +469,9 @@ countryNames = {
            'limba aromână': 'Aromanian', 'Tatarstan': 'Tatars', 'ciuvași': 'Chuvasz',
            'Ziua Internațională a Romilor': 'Romani', 'Ciuvașia': 'Chuvasz', 'karaiți crimeeni': 'Crimean Karaites',
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
-           'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus', },
+           'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
+           'România și Republica Moldova': 'Romania and Moldova',
+},
     # roa-rup countries
     'roa-rup': {
             },
