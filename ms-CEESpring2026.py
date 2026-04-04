@@ -176,7 +176,7 @@ countryNames = {
            'Себер татарҙары': 'Tatars', 'татарҙар': 'Tatars', 'Эрзәндәр': 'Erzia',
            'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars',
            'Мари Республикаһы': 'Novgorodian', 'Гөрҗөстан': 'Georgia', 'Тажикстан': 'Tajikistan',
-           'Үзбәкстан': 'Uzbekistan', 'Сыуашстан': 'Chuvasz', },
+           'Үзбәкстан': 'Uzbekistan', 'Сыуашстан': 'Chuvasz', 'Башҡорттар':'Bashkortostan',  },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -796,7 +796,8 @@ countryNames = {
             'Belorus': 'Belarus', 'Tatariston': 'Tatars', 'Qirgʻiziston': 'Kyrgyzstan', "Oʻzbekiston": 'Uzbekistan',
             'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', 'OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
             'Asvtriya': 'Austria', 'xalqaro': 'International', 'ALbaniya': 'Albania', 'Bosniya': 'Bosnia and Herzegovina',
-            'Marokash': 'Morocco', 'Eron': 'Iran', 'Rumiya': 'Romania and Moldova',
+            'Marokash': 'Morocco', 'Eron': 'Iran', 'Rumiya': 'Romania and Moldova', 'Shimoliy Kavkaz': 'North Caucasus',
+            'Chuvashlar'; 'Chuvasz',
         },
 # fa countries
     'fa': {
