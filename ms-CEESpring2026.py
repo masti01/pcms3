@@ -132,7 +132,7 @@ countryNames = {
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
-           'Uzbekistan': 'Uzbekistan', },
+           'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -227,7 +227,7 @@ countryNames = {
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
            'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
-           'Чувашия': 'Russia',
+           'Чувашия': 'Russia', 'караитите': 'Crimean Karaites',
            },
     # cv countries
     'cv': { 'Албани': 'Albania', 'Австри': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армени': 'Armenia',
@@ -319,7 +319,8 @@ countryNames = {
            'Σόρβοι': 'Sorbia', 'Τατάροι της Κριμαίας': 'Crimean Tatars', 'Κριμαίοι Καραΐτες': 'Crimean Karaites',
            'Κριμτσάκοι': 'Krymchaks', 'Ουζμπεκιστάν': 'Uzbekistan', 'Δυτική Αρμενία': 'Western Armenian',
            'Μαρόκο':'Morocco', 'διεθνές': 'International', 'Κροατί': 'Croatia', 'Δυτική Γεωργία': 'Georgia',
-           'Κριμαία': 'Crimea',
+           'Κριμαία': 'Crimea', 'North Caucasus': 'North Caucasus', 'Russia': 'Russia', 'Chuvasz': 'Chuvasz',
+           'North Macedonia': 'North Macedonia',
            },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
@@ -376,6 +377,7 @@ countryNames = {
            'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
            'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan', 'Թաթարներ': 'Tatars', 'միջազգային': 'International',
+           'Նովգորդյան երկիր': 'Novgorodian',
            },
     # hyw countries
     'hyw': {
@@ -413,7 +415,7 @@ countryNames = {
            'starptautiski': 'International', 'Maroka': 'Morocco', 'Kirgizstāna': 'Kyrgyzstan',
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
-           'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus',
+           'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus', 'tatarstāna': 'Tatars',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -501,10 +503,11 @@ countryNames = {
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
            'крымские татары': 'Crimean Tatars', 'выру': 'Võro', 'Северный Кавказ': 'North Caucasus',
+           'Молдова': 'Romania and Moldova',
            },
     # sah countries
     'sah': {
-            'Саха': 'Sakha',
+            'Саха': 'Sakha', 'Арассыыйа': 'Russia', 'Казахстаан': 'Kazakhstan', 'Иран': 'Iran',
     },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
@@ -568,7 +571,7 @@ countryNames = {
            'татарла': 'Tatars', 'башкортлар': 'Bashkortostan', 'чуашлар': 'Russia', 'Татарстан': 'Tatars',
            'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatars', 'эрзя': 'Erzia',
            'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', 'Таҗикстан': 'Tajikistan', 'Иран': 'Iran',
-           'Чуашлар': 'Chuvasz', },
+           'Чуашлар': 'Chuvasz', 'кырым татарлары': 'Crimean Tatars', },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
            'Beyaz Rusya': 'Belarus', 'Bulgaristan': 'Bulgaria', 'Ermenistan': 'Armenia',
