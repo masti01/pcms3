@@ -797,7 +797,7 @@ countryNames = {
             'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', 'OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
             'Asvtriya': 'Austria', 'xalqaro': 'International', 'ALbaniya': 'Albania', 'Bosniya': 'Bosnia and Herzegovina',
             'Marokash': 'Morocco', 'Eron': 'Iran', 'Rumiya': 'Romania and Moldova', 'Shimoliy Kavkaz': 'North Caucasus',
-            'Chuvashlar'; 'Chuvasz',
+            'Chuvashlar': 'Chuvasz',
         },
 # fa countries
     'fa': {
