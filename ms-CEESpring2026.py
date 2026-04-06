@@ -508,7 +508,8 @@ countryNames = {
            },
     # sah countries
     'sah': {
-            'Саха': 'Sakha', 'Арассыыйа': 'Russia', 'Казахстаан': 'Kazakhstan', 'Иран': 'Iran',
+            'Саха': 'Sakha', 'Арассыыйа': 'Russia', 'Казахстаан': 'Kazakhstan', 'Иран': 'Iran', 'Украина': 'Ukraine',
+            'Беларусь': 'Belarus', 
     },
     # sq countries
     'sq': {'Shqipëria': 'Albania', 'Shqipërisë': 'Albania', 'Armenia': 'Armenia',
