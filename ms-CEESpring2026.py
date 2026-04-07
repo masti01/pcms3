@@ -132,7 +132,7 @@ countryNames = {
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
-           'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', },
+           'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -550,7 +550,7 @@ countryNames = {
            'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', 'Руција': 'Russia',
            'Република Србија': 'Serbia', 'Федерација Босне и Херцеговине': 'Bosnia and Herzegovina',
            'Русијја': 'Russia', 'Србијја':' Serbia', 'Мађарскаа': 'Hungary', 'СФРЈ Македонија': 'North Macedonia',
-           'Узбекистан': 'Uzbekistan', },
+           'Узбекистан': 'Uzbekistan', 'Austrija': 'Austria', },
     # tt countries
     'tt': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайҗан': 'Azerbaijan', 'Азәрбайҗан': 'Azerbaijan',
            'Башкортстан': 'Bashkortostan', 'Белорусия': 'Belarus', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
@@ -812,7 +812,8 @@ countryNames = {
             'Romania': 'Romania', 'Bulgaria': 'Bulgaria', 'Poland': 'Poland', 'Estonia': 'Estonia', 'Cyprus': 'Cyprus',
             'Georgia': 'Georgia', 'Greece': 'Greece', 'Kazakhstan': 'Kazakhstan', 'Kyrgyzstan': 'Kyrgyzstan',
             'Latvia': 'Latvia', 'Czech Republic': 'Czechia', 'Kosovo': 'Kosovo', 'مالت': 'Malta', 'آلبانی': 'Albania',
-            'ارمنستان': 'Armenia', 'آذربایجان': 'Azerbaijan',
+            'ارمنستان': 'Armenia', 'آذربایجان': 'Azerbaijan', 'آرومانی': 'Aromanian', 'یونان': 'Greece',
+            'مقدونیهٔ شمالی': 'North Macedonia', 'اتریش': 'Austria',
             },
 # ary countries
     'ary': {
