@@ -1050,7 +1050,7 @@ class BasicBot(
         self.printArtInfo(self.springList)
 
         # save list for the future
-        self.saveArticleList(self.springList)
+        # self.saveArticleList(self.springList)
 
         self.createCountryTable(self.springList)  # generate results for pages about countries
         self.createWomenTable(self.springList)  # generate results for pages about women
