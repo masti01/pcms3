@@ -754,7 +754,7 @@ countryNames = {
            'Republika Srpska': 'Republic of Srpska', 'Donský región': 'Don', 'Krymskí Tatári': 'Crimean Tatars',
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
            'Tatars': 'Tatars', 'Tatársko': 'Tatars', 'Sorbia': 'Sorbia', 'Kipru': 'Cyprus',
-           'Rumunsko a Moldavsko': 'Romania and Moldova', },
+           'Rumunsko a Moldavsko': 'Romania and Moldova', 'International': 'International' },
     # tyv countries
     'tyv': {
             'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армения': 'Armenia',
