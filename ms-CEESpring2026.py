@@ -132,7 +132,8 @@ countryNames = {
            'International': 'International', 'Arumuni': 'Aromanian', 'Jakucja': 'Sakha',
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
-           'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks', },
+           'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks',
+           'Karaimi': 'Crimean Karaites', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
