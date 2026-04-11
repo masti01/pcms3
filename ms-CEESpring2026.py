@@ -133,7 +133,7 @@ countryNames = {
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
            'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks',
-           'Karaimi': 'Crimean Karaites', },
+           'Karaimi': 'Crimean Karaites', 'Kirgistan': 'Kyrgyzstan', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
@@ -418,6 +418,7 @@ countryNames = {
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
            'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus', 'tatarstāna': 'Tatars',
+           'Rietumarmēņu valoda': 'Western Armenian',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
@@ -505,7 +506,7 @@ countryNames = {
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
            'крымские татары': 'Crimean Tatars', 'выру': 'Võro', 'Северный Кавказ': 'North Caucasus',
-           'Молдова': 'Romania and Moldova',
+           'Молдова': 'Romania and Moldova', 'татары': 'Tatars',
            },
     # sah countries
     'sah': {
@@ -778,7 +779,8 @@ countryNames = {
            'Malta': 'Malta', 'Greece': 'Greece', 'Latvia': 'Latvia', 'Slovakia': 'Slovakia',
            'Romania and Moldova': 'Romania and Moldova', 'Bulgaria': 'Bulgaria',
            'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Romania': 'Romania and Moldova', 'Estonia': 'Estonia',
-           'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus',
+           'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus', 'Kosovo': 'Kosovo',
+           'Kazakhstan': 'Kazakhstan', 'Crimea': 'Crimea', 'Võro': 'Võro',
            },
     # uz countries
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
