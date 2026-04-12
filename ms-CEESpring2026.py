@@ -133,7 +133,7 @@ countryNames = {
            'język zachodnioormiański': 'Western Armenian', 'język võru': 'Võro', 'Tatarstan': 'Tatars',
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
            'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks',
-           'Karaimi': 'Crimean Karaites', 'Kirgistan': 'Kyrgyzstan', },
+           'Karaimi': 'Crimean Karaites', 'Kirgistan': 'Kyrgyzstan', 'J. zachodnioormiański': 'Western Armenian', },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
