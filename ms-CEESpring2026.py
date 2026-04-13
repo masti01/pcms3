@@ -146,7 +146,7 @@ countryNames = {
            'Rumıniya': 'Romania and Moldova', 'Serb Respublikası': 'Republic of Srpska', 'Serbiya': 'Serbia',
            'Slovakiya': 'Slovakia', 'Sloveniya': 'Slovenia', 'Tatarıstan': 'Tatars', 'Türkiyə': 'Turkey',
            'Ukrayna': 'Ukraine', 'Yunanıstan': 'Greece', 'Qazaxıstan': 'Kazakhstan', 'Krım-tatarlar': 'Crimean Tatars',
-           'Don regionu': 'Don', 'Sorblar': 'Sorbia', 'Esperanto': 'Esperanto',
+           'Don regionu': 'Don', 'Sorblar': 'Sorshbia', 'Esperanto': 'Esperanto',
            'Rumıniya və Moldova': 'Romania and Moldova', 'Kipr': 'Cyprus', 'Don vilayəti': 'Don',
            'Tatars': 'Tatars', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
            'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
@@ -506,7 +506,7 @@ countryNames = {
            'международная': 'International', 'Узбекистан': 'Uzbekistan', 'Иран': 'Iran',
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
            'крымские татары': 'Crimean Tatars', 'выру': 'Võro', 'Северный Кавказ': 'North Caucasus',
-           'Молдова': 'Romania and Moldova', 'татары': 'Tatars',
+           'Молдова': 'Romania and Moldova', 'татары': 'Tatars', 'Bulgaria': 'Bulgaria',
            },
     # sah countries
     'sah': {
@@ -743,7 +743,7 @@ countryNames = {
            'Srbiji': 'Serbia', 'Estonija': 'Estonia', 'Bosna i Hercegovina': 'Bosnia and Herzegovina',
            'Srbija': 'Serbia', 'Kosovo': 'Kosovo', 'Litva': 'Lithuania', 'Mađarska': 'Hungary', 'Poljska': 'Poland',
            'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', 'Aromunski jezik': 'Aromanian',
-           'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', },
+           'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia',  },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
