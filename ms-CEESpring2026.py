@@ -229,6 +229,7 @@ countryNames = {
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
            'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
            'Чувашия': 'Russia', 'караитите': 'Crimean Karaites', "Иран": 'Iran', 'Мароко': 'Morocco',
+           'Северен Кавказ': 'North Caucasus',
            },
     # cv countries
     'cv': { 'Албани': 'Albania', 'Австри': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армени': 'Armenia',
