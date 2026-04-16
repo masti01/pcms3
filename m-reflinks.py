@@ -66,7 +66,7 @@ import datetime
 
 import pywikibot
 from pywikibot import comms, config, i18n, pagegenerators, textlib
-from pywikibot.backports import removeprefix
+# from pywikibot.backports import removeprefix
 from pywikibot.bot import ConfigParserBot, ExistingPageBot, SingleSiteBot
 from pywikibot.comms.http import get_charset_from_content_type
 from pywikibot.exceptions import ServerError
