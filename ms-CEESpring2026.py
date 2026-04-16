@@ -323,7 +323,7 @@ countryNames = {
            'Μαρόκο':'Morocco', 'διεθνές': 'International', 'Κροατί': 'Croatia', 'Δυτική Γεωργία': 'Georgia',
            'Κριμαία': 'Crimea', 'North Caucasus': 'North Caucasus', 'Russia': 'Russia', 'Chuvasz': 'Chuvasz',
            'North Macedonia': 'North Macedonia', 'Romania': 'Romania and Moldova', 'Crimean Tatars': 'Crimean Tatars',
-           'Tatars': 'Tatars',
+           'Tatars': 'Tatars', 'Βόρειος Καύκασος': 'North Caucasus',
            },
     # myv countries
     'myv': {'Албания': 'Albania', 'Албания Мастор': 'Albania', 'Австрия Мастор': 'Austria', 'Австрия': 'Austria',
@@ -744,7 +744,7 @@ countryNames = {
            'Srbiji': 'Serbia', 'Estonija': 'Estonia', 'Bosna i Hercegovina': 'Bosnia and Herzegovina',
            'Srbija': 'Serbia', 'Kosovo': 'Kosovo', 'Litva': 'Lithuania', 'Mađarska': 'Hungary', 'Poljska': 'Poland',
            'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', 'Aromunski jezik': 'Aromanian',
-           'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia',  },
+           'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia', 'Austrija': 'Austria', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
