@@ -75,7 +75,7 @@ from pywikibot.pagegenerators import (
 )
 from pywikibot.textlib import replaceExcept
 from pywikibot.tools.chars import string2html
-from scripts import noreferences
+# from scripts import noreferences
 # import backoff
 
 
@@ -559,7 +559,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             bad = globalbadtitles
 
         self.titleBlackList = re.compile(bad, re.I | re.S | re.X)
-        self.norefbot = noreferences.NoReferencesBot(verbose=False)
+        self.norefbot = NoReferencesBot(verbose=False)
         # self.deduplicator = DuplicateReferences(self.site)
 
         self.site_stop_page = i18n.translate(self.site, stop_page)
