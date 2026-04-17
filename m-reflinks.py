@@ -663,7 +663,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
     def treat_page(self) -> None:
         """Process one page."""
         # Load the page's text from the wiki
-        page = current_page
+        page = self.current_page
         if self.opt.progress:
             pywikibot.output(f'Treating: {page.title()}')
         new_text = page.text
