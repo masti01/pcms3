@@ -75,7 +75,7 @@ from pywikibot.pagegenerators import (
 )
 from pywikibot.textlib import replaceExcept
 from pywikibot.tools.chars import string2html
-# from scripts import noreferences
+from scripts.noreferences import NoReferencesBot
 # import backoff
 
 
