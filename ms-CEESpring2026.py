@@ -577,6 +577,7 @@ countryNames = {
            'Саха (Якутия)': 'Sakha', 'Саха': 'Sakha', 'Татарстан Республикасы': 'Tatars', 'эрзя': 'Erzia',
            'Югары Лужица': 'Sorbia', 'Үзбәкстан': 'Uzbekistan', 'Таҗикстан': 'Tajikistan', 'Иран': 'Iran',
            'Чуашлар': 'Chuvasz', 'кырым татарлары': 'Crimean Tatars', 'Чуашстан': 'Chuvasz',
+           'Кыргызстан': 'Kyrgyzstan',
            },
     # tr countries
     'tr': {'Arnavutluk': 'Albania', 'Avusturya': 'Austria', 'Azerbaycan': 'Azerbaijan', 'Başkurdistan': 'Bashkortostan',
