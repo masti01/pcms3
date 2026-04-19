@@ -1910,6 +1910,9 @@ class BasicBot(
     def getTemplateInfo(self, page, template, lang):
         param = {}
         # author, creationDate = self.getUpdater(page)
+        # dirty hack for template redirect in sl.wiki
+        if lang == 'sl':
+            page.text = re.sub('CEE Spring 2026', 'CEE Pomlad 2026', page.text)
         parlist = {'country': [], 'user': None, 'woman': False, 'youth': False, 'hrights': False, 'nocountry': False}
         if self.opt.test2:
             pywikibot.output(f'page [[{page.title}]]:{page.text}')
