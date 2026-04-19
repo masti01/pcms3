@@ -1912,12 +1912,14 @@ class BasicBot(
         # author, creationDate = self.getUpdater(page)
         parlist = {'country': [], 'user': None, 'woman': False, 'youth': False, 'hrights': False, 'nocountry': False}
         if self.opt.test2:
-            pywikibot.output('page:%s' % page.text)
+            pywikibot.output(f'page [[{page.title}]]:{page.text}')
         # return dictionary with template params
         parsedText = mwparserfromhell.parse(page.text)
         # for t in page.templatesWithParams():
         for t in parsedText.filter_templates():
             # title, params = t
+            if self.opt.test2:
+                pywikibot.output(f'template: {t}')
             title = t.name.strip()
             # print(title)
             # print(params)
