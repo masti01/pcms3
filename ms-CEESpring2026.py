@@ -380,7 +380,7 @@ countryNames = {
            'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
            'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan', 'Թաթարներ': 'Tatars', 'միջազգային': 'International',
-           'Նովգորդյան երկիր': 'Novgorodian',
+           'Նովգորդյան երկիր': 'Novgorodian', 'Չուվաշիա': 'Chuvasz', 
            },
     # hyw countries
     'hyw': {
