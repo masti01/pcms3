@@ -1646,7 +1646,7 @@ class BasicBot(
 
                 # test switch
                 if self.opt.short:
-                    if lang not in (['lv']):  # keep parentheses for list
+                    if lang not in (['sl']):  # keep parentheses for list
                         continue
 
                 if i.namespace() == 10:
