@@ -1913,6 +1913,8 @@ class BasicBot(
         # dirty hack for template redirect in sl.wiki
         if lang == 'sl':
             page.text = re.sub('CEE Spring 2026', 'CEE Pomlad 2026', page.text)
+            if self.opt.test2:
+                pywikibot.output('sl hack activated')
         parlist = {'country': [], 'user': None, 'woman': False, 'youth': False, 'hrights': False, 'nocountry': False}
         if self.opt.test2:
             pywikibot.output(f'page [[{page.title}]]:{page.text}')
