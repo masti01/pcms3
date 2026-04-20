@@ -478,7 +478,7 @@ countryNames = {
            'Ziua Internațională a Romilor': 'Romani', 'Ciuvașia': 'Chuvasz', 'karaiți crimeeni': 'Crimean Karaites',
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
-           'România și Republica Moldova': 'Romania and Moldova',
+           'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran',
 },
     # roa-rup countries
     'roa-rup': {
