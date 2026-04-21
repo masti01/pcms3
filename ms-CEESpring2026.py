@@ -229,7 +229,7 @@ countryNames = {
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
            'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
            'Чувашия': 'Russia', 'караитите': 'Crimean Karaites', "Иран": 'Iran', 'Мароко': 'Morocco',
-           'Северен Кавказ': 'North Caucasus',
+           'Северен Кавказ': 'North Caucasus', 'чувашите': 'Chuvasz',
            },
     # cv countries
     'cv': { 'Албани': 'Albania', 'Австри': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армени': 'Armenia',
@@ -455,7 +455,7 @@ countryNames = {
            'Кримски Караити': 'Crimean Tatars', 'Западна Ерменија': 'Western Armenian', 'Ерзјани': 'Erzia',
            'Власи': 'Aromanian', 'Татари': 'Tatars', 'Северо-западен регион на Русија': 'Russia',
            'Лужички Срби': 'Sorbia', 'Турцоја': 'Turkey', 'Чувашија': 'Chuvasz', 'Киргистан': 'Kyrgyzstan',
-           'Узбекистан': 'Uzbekistan', 'Чуваши': 'Chuvasz', 'Иран': 'Iran', },
+           'Узбекистан': 'Uzbekistan', 'Чуваши': 'Chuvasz', 'Иран': 'Iran',  'Караими': 'Crimean Karaites', },
     # ro countries
     'ro': {'Albania': 'Albania', 'Austria': 'Austria', 'Azerbaidjan': 'Azerbaijan', 'Bașkortostan': 'Bashkortostan',
            'Bașchiria': 'Bashkortostan', 'Belarus': 'Belarus', 'Bulgaria': 'Bulgaria', 'Armenia': 'Armenia',
@@ -746,7 +746,7 @@ countryNames = {
            'Srbija': 'Serbia', 'Kosovo': 'Kosovo', 'Litva': 'Lithuania', 'Mađarska': 'Hungary', 'Poljska': 'Poland',
            'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', 'Aromunski jezik': 'Aromanian',
            'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia', 'Austrija': 'Austria',
-           'Ukrajina': 'Ukraine', 'Slovačka': 'Slovakia', 'Češka': 'Czechia', },
+           'Ukrajina': 'Ukraine', 'Slovačka': 'Slovakia', 'Češka': 'Czechia', 'Gruzija': 'Georgia', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
