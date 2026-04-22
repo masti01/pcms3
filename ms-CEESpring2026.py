@@ -478,7 +478,7 @@ countryNames = {
            'Ziua Internațională a Romilor': 'Romani', 'Ciuvașia': 'Chuvasz', 'karaiți crimeeni': 'Crimean Karaites',
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
-           'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran',
+           'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran', 'Kîrgîzstan': 'Kyrgyzstan',
 },
     # roa-rup countries
     'roa-rup': {
@@ -736,7 +736,8 @@ countryNames = {
            'Repubblika Ċeka': 'Czechia', 'Russja': 'Russia', 'Belarussja': 'Belarus', 'Ċipru': 'Cyprus',
            'Tatari tal-Krimea': 'Crimean Tatars', 'Võro': 'Võro', 'Ażerbaiġan': 'Azerbaijan', 'Don-Region': 'Don',
            'Georgia': 'Georgia', 'Rom': 'Romani', 'Romani': 'Romani', 'Baxkorstostan': 'Bashkortostan',
-           'Internazzjonali': 'International', "Reġjun ta' Don": 'Don', 'Tatari': 'Tatars', 'Marokk': 'Morocco',  },
+           'Internazzjonali': 'International', "Reġjun ta' Don": 'Don', 'Tatari': 'Tatars', 'Marokk': 'Morocco',
+           'Roma': 'Romani', },
     # sh countries
     'sh': {'Austriji': 'Austria', 'Albaniji': 'Albania', 'Kosovu': 'Kosovo', 'Hrvatskoj': 'Croatia',
            'Bosni i Hercegovini': 'Bosnia and Herzegovina', 'Grčkoj': 'Greece', 'Rumunjskoj': 'Romania and Moldova',
@@ -759,7 +760,8 @@ countryNames = {
            'Republika Srpska': 'Republic of Srpska', 'Donský región': 'Don', 'Krymskí Tatári': 'Crimean Tatars',
            'Čierna Hora': 'Montenegro', 'Montenegro': 'Montenegro', 'Erzia': 'Erzia', 'Erzya': 'Erzia',
            'Tatars': 'Tatars', 'Tatársko': 'Tatars', 'Sorbia': 'Sorbia', 'Kipru': 'Cyprus',
-           'Rumunsko a Moldavsko': 'Romania and Moldova', 'International': 'International' },
+           'Rumunsko a Moldavsko': 'Romania and Moldova', 'International': 'International',
+           'Cyprus': 'Cyprus', },
     # tyv countries
     'tyv': {
             'Албания': 'Albania', 'Австрия': 'Austria', 'Азербайджан': 'Azerbaijan', 'Армения': 'Armenia',
