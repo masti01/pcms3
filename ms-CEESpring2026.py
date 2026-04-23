@@ -177,7 +177,8 @@ countryNames = {
            'Себер татарҙары': 'Tatars', 'татарҙар': 'Tatars', 'Эрзәндәр': 'Erzia',
            'Башҡортостан Республикаһы': 'Bashkortostan', 'Татарстан Республикаһы': 'Tatars',
            'Мари Республикаһы': 'Novgorodian', 'Гөрҗөстан': 'Georgia', 'Тажикстан': 'Tajikistan',
-           'Үзбәкстан': 'Uzbekistan', 'Сыуашстан': 'Chuvasz', 'Башҡорттар':'Bashkortostan',  },
+           'Үзбәкстан': 'Uzbekistan', 'Сыуашстан': 'Chuvasz', 'Башҡорттар':'Bashkortostan', 'Башкортостан':'Bashkortostan',
+           },
     # be countries
     'be': {'Албанія': 'Albania', 'Аўстрыя': 'Austria', 'Азербайджан': 'Azerbaijan', 'Башкартастан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Балгарыя': 'Bulgaria', 'Арменія': 'Armenia',
@@ -479,7 +480,7 @@ countryNames = {
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
            'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran', 'Kîrgîzstan': 'Kyrgyzstan',
-},
+           'Maroc': 'Morocco', },
     # roa-rup countries
     'roa-rup': {
             },
