@@ -229,7 +229,7 @@ countryNames = {
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
            'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
-           'Чувашия': 'Russia', 'караитите': 'Crimean Karaites', "Иран": 'Iran', 'Мароко': 'Morocco',
+           'Чувашия': 'Chuvasz', 'караитите': 'Crimean Karaites', "Иран": 'Iran', 'Мароко': 'Morocco',
            'Северен Кавказ': 'North Caucasus', 'чувашите': 'Chuvasz',
            },
     # cv countries
