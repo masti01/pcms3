@@ -151,7 +151,7 @@ countryNames = {
            'Tatars': 'Tatars', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
            'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
            'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
-           'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', },
+           'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -811,7 +811,7 @@ countryNames = {
             'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', 'OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
             'Asvtriya': 'Austria', 'xalqaro': 'International', 'ALbaniya': 'Albania', 'Bosniya': 'Bosnia and Herzegovina',
             'Marokash': 'Morocco', 'Eron': 'Iran', 'Rumiya': 'Romania and Moldova', 'Shimoliy Kavkaz': 'North Caucasus',
-            'Chuvashlar': 'Chuvasz',
+            'Chuvashlar': 'Chuvasz', 'Albaniyaina': 'Albania',
         },
 # fa countries
     'fa': {
