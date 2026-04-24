@@ -228,7 +228,7 @@ countryNames = {
            'есперанто': 'Esperanto', 'Кипър': 'Cyprus', 'циганите': 'Romani', 'Въро': 'Võro', 'въру': 'Võro',
            'арумъни': 'Aromanian', 'арумъните': 'Aromanian', 'западноарменски език': 'Western Armenian',
            'въруски език': 'Russia', 'кримчаките': 'Crimean Tatars', 'Якутия': 'Sakha', 'международна': 'International',
-           'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimean Tatars',
+           'международни': 'International', 'западноарменците': 'Western Armenian', 'Крим': 'Crimea',
            'Чувашия': 'Chuvasz', 'караитите': 'Crimean Karaites', "Иран": 'Iran', 'Мароко': 'Morocco',
            'Северен Кавказ': 'North Caucasus', 'чувашите': 'Chuvasz',
            },
