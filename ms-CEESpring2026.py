@@ -749,7 +749,7 @@ countryNames = {
            'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', 'Aromunski jezik': 'Aromanian',
            'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia', 'Austrija': 'Austria',
            'Ukrajina': 'Ukraine', 'Slovačka': 'Slovakia', 'Češka': 'Czechia', 'Gruzija': 'Georgia',
-           'Tatari': 'Tatars', 'Albaniyaina': 'Albania', },
+           'Tatari': 'Tatars', 'Albaniyaina': 'Albania', 'Latvija': 'Latvia' },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
@@ -811,7 +811,7 @@ countryNames = {
             'Qozog': 'Kazakhstan', 'Serblar': 'Serbia', 'OZarbayjon': 'Azerbaijan', 'Kosova': 'Kosovo', 'Erzya': 'Erzia',
             'Asvtriya': 'Austria', 'xalqaro': 'International', 'ALbaniya': 'Albania', 'Bosniya': 'Bosnia and Herzegovina',
             'Marokash': 'Morocco', 'Eron': 'Iran', 'Rumiya': 'Romania and Moldova', 'Shimoliy Kavkaz': 'North Caucasus',
-            'Chuvashlar': 'Chuvasz', 'Albaniyaina': 'Albania',
+            'Chuvashlar': 'Chuvasz', 'Albaniyaina': 'Albania', 'Chuvash': 'Chuvasz',
         },
 # fa countries
     'fa': {
