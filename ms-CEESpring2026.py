@@ -151,7 +151,8 @@ countryNames = {
            'Tatars': 'Tatars', 'Krım Tatar': 'Crimean Tatars', 'Bosniya-Herseqovina': 'Bosnia and Herzegovina',
            'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
            'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
-           'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo', },
+           'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo',
+           'Şimali Kipr Türk Respublikası': 'Cyprus', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -381,7 +382,7 @@ countryNames = {
            'Մարոկկո': 'Morocco', 'Իրան': 'Iran', 'Տաջիկստան': 'Tajikistan', 'Առումիններ': 'Aromanian',
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
            'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan', 'Թաթարներ': 'Tatars', 'միջազգային': 'International',
-           'Նովգորդյան երկիր': 'Novgorodian', 'Չուվաշիա': 'Chuvasz', 
+           'Նովգորդյան երկիր': 'Novgorodian', 'Չուվաշիա': 'Chuvasz', 'Հյուսիսային Կովկաս': 'North Caucasus',
            },
     # hyw countries
     'hyw': {
