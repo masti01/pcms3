@@ -480,7 +480,7 @@ countryNames = {
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
            'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran', 'Kîrgîzstan': 'Kyrgyzstan',
-           'Maroc': 'Morocco', },
+           'Maroc': 'Morocco', 'Tadjikistan': 'Tajikistan', 'Uzbekistan': 'Uzbekistan', 'võro': 'Võro', },
     # roa-rup countries
     'roa-rup': {
             },
