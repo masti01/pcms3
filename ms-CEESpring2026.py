@@ -152,7 +152,7 @@ countryNames = {
            'Krım tatar': 'Crimean Tatars', 'Arumın': 'Aromanian', 'Qırımçak': 'Crimean Tatars', 'Saxa': 'Sakha',
            'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
            'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo',
-           'Şimali Kipr Türk Respublikası': 'Cyprus', },
+           'Şimali Kipr Türk Respublikası': 'Cyprus', 'Qırğızıstan': 'Kyrgyzstan', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -383,6 +383,7 @@ countryNames = {
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
            'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan', 'Թաթարներ': 'Tatars', 'միջազգային': 'International',
            'Նովգորդյան երկիր': 'Novgorodian', 'Չուվաշիա': 'Chuvasz', 'Հյուսիսային Կովկաս': 'North Caucasus',
+           'Սախա-Յակուտիայի Հանրապետություն': 'Sakha',
            },
     # hyw countries
     'hyw': {
@@ -750,7 +751,7 @@ countryNames = {
            'Crnoj Gori': 'Montenegro', 'Albanija': 'Albania', 'Armenija': 'Armenia', 'Aromunski jezik': 'Aromanian',
            'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia', 'Austrija': 'Austria',
            'Ukrajina': 'Ukraine', 'Slovačka': 'Slovakia', 'Češka': 'Czechia', 'Gruzija': 'Georgia',
-           'Tatari': 'Tatars', 'Albaniyaina': 'Albania', 'Latvija': 'Latvia' },
+           'Tatari': 'Tatars', 'Albaniyaina': 'Albania', 'Latvija': 'Latvia', 'Azerbejdžan': 'Azerbaijan', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
