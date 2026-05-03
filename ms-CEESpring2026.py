@@ -384,7 +384,7 @@ countryNames = {
            'Ուզբեկստան': 'Uzbekistan', 'Արևմտահայերեն': 'Western Armenian', 'Խովաթիա': 'Croatia', 'Ուկրաինիա': 'Ukraine',
            'Ուկրաինաա': 'Ukraine', 'Ղրղզստան': 'Kyrgyzstan', 'Թաթարներ': 'Tatars', 'միջազգային': 'International',
            'Նովգորդյան երկիր': 'Novgorodian', 'Չուվաշիա': 'Chuvasz', 'Հյուսիսային Կովկաս': 'North Caucasus',
-           'Սախա-Յակուտիայի Հանրապետություն': 'Sakha',
+           'Սախա-Յակուտիայի Հանրապետություն': 'Sakha', 'Մոնտենեգրո': 'Montenegro',
            },
     # hyw countries
     'hyw': {
@@ -423,7 +423,7 @@ countryNames = {
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
            'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus', 'tatarstāna': 'Tatars',
-           'Rietumarmēņu valoda': 'Western Armenian',
+           'Rietumarmēņu valoda': 'Western Armenian', 'Kososva': 'Kosovo',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
