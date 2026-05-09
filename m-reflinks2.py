@@ -669,7 +669,8 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         raw_text = textlib.removeDisabledParts(new_text)
         # for each link to change
         for match in linksInRef.finditer(raw_text):
-
+            if self.opt.progress:
+                pywikibot.output(f'Match: {match}')
             link = match['url']
             if 'jstor.org' in link:
                 # TODO: Clean URL blacklist
