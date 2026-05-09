@@ -424,7 +424,7 @@ countryNames = {
            'Tadžikistāna': 'Tajikistan', 'Irāna': 'Iran', 'karaīmi': 'Crimean Karaites', 'krimčaki': 'Krymchaks',
            'rietumarmēņu valoda': 'Western Armenian', 'Saha': 'Sakha', 'Krievijas ziemeļrietumu reģions': 'Novgorodian',
            'Čečenija': 'North Caucasus', 'Ziemeļkaukāzs': 'North Caucasus', 'tatarstāna': 'Tatars',
-           'Rietumarmēņu valoda': 'Western Armenian', 'Kososva': 'Kosovo',
+           'Rietumarmēņu valoda': 'Western Armenian', 'Kososva': 'Kosovo', 'Krima': 'Crimea',
            },
     # lt countries
     'lt': {'Albanija': 'Albania', 'Austrija': 'Austria', 'Azerbaidžanas': 'Azerbaijan', 'Baškirija': 'Bashkortostan',
