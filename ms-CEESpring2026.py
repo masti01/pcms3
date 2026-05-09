@@ -997,6 +997,7 @@ class BasicBot(
         'testcrownauthors': False,  # tesprint for users with articles about all countries
         'testallcountries': False,  # tesprint for users with articles about all countries
         'node': False,  # skip generation of de tables
+        'nowd': False,  # disable Wikidata lookups
 
     }
 
@@ -1641,8 +1642,9 @@ class BasicBot(
         for p in self.generator:
             # p = t.toggleTalkPage()
             pywikibot.output(f'Treating: {p.title()}')
-            d = p.data_item()
-            pywikibot.output(f'WD: {d.title()}')
+            if not self.opt.nowd:
+                d = p.data_item()
+                pywikibot.output(f'WD: {d.title()}')
             # dataItem = d.get()
             count = 0
             for i in self.genInterwiki(p):
@@ -1775,7 +1777,10 @@ class BasicBot(
             lang = art.site.code
             fam = art.site.family.name
 
-            woman = self.checkWomen(art)
+            if self.opt.nowd:
+                woman = False
+            else:
+                woman = self.checkWomen(art)
             # woman = False
             hrights = False
             youth = False
