@@ -660,7 +660,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
     #     max_tries=5
     # )
     # def treat(self, page) -> None:
-    def treat(self, page) -> None:
+    def treat_page(self, page) -> None:
         """Process one page."""
         # Load the page's text from the wiki
         if self.opt.progress:
