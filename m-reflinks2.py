@@ -660,12 +660,12 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
     #     max_tries=5
     # )
     # def treat(self, page) -> None:
-    def treat_page(self) -> None:
+    def treat(self, page) -> None:
         """Process one page."""
         # Load the page's text from the wiki
         if self.opt.progress:
-            pywikibot.output(f'Treating: {self.current_page.title()}')
-        new_text = self.current_page.text
+            pywikibot.output(f'Treating: {self.page.title()}')
+        new_text = self.page.text
         raw_text = textlib.removeDisabledParts(new_text)
         # for each link to change
         for match in linksInRef.finditer(raw_text):
@@ -727,7 +727,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                         continue
 
                 if r.status_code != HTTPStatus.OK:
-                    pywikibot.stdout(f'HTTP error ({r.status_code}) for {ref.url} on {self.current_page.title(as_link=True)}')
+                    pywikibot.stdout(f'HTTP error ({r.status_code}) for {ref.url} on {self.page.title(as_link=True)}')
                     # 410 Gone, indicates that the resource has been
                     # purposely removed
                     if r.status_code == HTTPStatus.GONE \
@@ -742,7 +742,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
                 # http://www.adminet.com/jo/20010615¦/ECOC0100037D.html
                 # in [[fr:Cyanure]]
                 pywikibot.info(
-                    f'<<lightred>>Bad link<<default>> : {ref.url} in {self.current_page}')
+                    f'<<lightred>>Bad link<<default>> : {ref.url} in {self.page}')
                 continue
 
             except (ValueError,  # urllib3.LocationParseError derives from it
@@ -765,7 +765,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
             if meta_content:
                 tag = None
                 encodings = [encoding] if encoding else []
-                encodings += list(self.current_page.site.encodings())
+                encodings += list(self.page.site.encodings())
                 try:
                     for enc in encodings:
                         with suppress(UnicodeDecodeError):
@@ -839,12 +839,12 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         #     new_text = self.norefbot.addReferences(new_text)
 
         # new_text = self.deduplicator.process(new_text)
-        old_text = self.current_page.text
+        old_text = self.page.text
 
         if old_text == new_text:
             return
 
-        self.userPut(self.current_page, old_text, new_text, summary=self.msg,
+        self.userPut(self.page, old_text, new_text, summary=self.msg,
                      ignore_save_related_errors=True,
                      ignore_server_errors=True)
 
