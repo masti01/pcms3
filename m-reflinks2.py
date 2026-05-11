@@ -665,7 +665,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
         # Load the page's text from the wiki
         if self.opt.progress:
             pywikibot.output(f'Treating: {self.page.title()}')
-        new_text = self.page.text
+        new_text = self.current_page.text
         raw_text = textlib.removeDisabledParts(new_text)
         # for each link to change
         for match in linksInRef.finditer(raw_text):
