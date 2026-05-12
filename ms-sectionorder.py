@@ -101,20 +101,20 @@ class BasicBot(
 
     def run(self):
         """TEST"""
-        pywikibot.output(u'THIS IS A RUN METHOD')
+        pywikibot.output('THIS IS A RUN METHOD')
         outputpage = self.opt.outpage
-        pywikibot.output(u'OUTPUTPAGE:%s' % outputpage)
+        pywikibot.output(f'OUTPUTPAGE:{outputpage}')
 
         if not self.opt.append:
-            header = u'Strona zawiera listę pierwszych %s stron z błędną kolejnością sekcji końcowych.\n\n' % self.opt.maxlines
-            header += u'<small>Prawidłowa kolejność sekcji (za [[Pomoc:Jak napisać doskonały artykuł#Kolejność i wymagalność sekcji końcowych]]):\n'
-            header += u'*Zobacz też\n'
-            header += u'*Uwagi\n'
-            header += u'*Przypisy\n'
-            header += u'*Bibliografia\n'
-            header += u'*Linki zewnętrzne</small>\n\n'
-            header += u"Ostatnia aktualizacja przez bota: '''~~~~~'''.\n\n"
-            header += u"Wszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]].\n\n"
+            header = f'Strona zawiera listę pierwszych {self.opt.maxlines} stron z błędną kolejnością sekcji końcowych.\n\n'
+            header += '<small>Prawidłowa kolejność sekcji (za [[Pomoc:Jak napisać doskonały artykuł#Kolejność i wymagalność sekcji końcowych]]):\n'
+            header += '* Zobacz też\n'
+            header += '* Uwagi\n'
+            header += '* Przypisy\n'
+            header += '* Bibliografia\n'
+            header += '* Linki zewnętrzne</small>\n\n'
+            header += "Ostatnia aktualizacja przez bota: '''~~~~~'''.\n\n"
+            header += "Wszelkie uwagi proszę zgłaszać w [[User talk:masti|dyskusji operatora]].\n\n"
         else:
             header = ''
 
@@ -125,7 +125,7 @@ class BasicBot(
         for page in self.generator:
             counter += 1
             # if self.opt.test:
-            pywikibot.output(u'Treating #%i (marked:%i): %s' % (counter, marked, page.title()))
+            pywikibot.output(f'Treating #{counter} (marked:{marked}): {page.title()}')
             t = self.treat(page)
             if t:
                 marked += 1
@@ -138,7 +138,7 @@ class BasicBot(
                 if self.opt.test:
                     pywikibot.output('OK')
 
-        footer = u'\n\nPrzetworzono ' + str(counter) + u' stron.'
+        footer = f'\n\nPrzetworzono {str(counter)} stron.'
 
         # print reflinks
         self.generateresultspage(reflinks, self.opt.outpage, header, footer)
@@ -157,7 +157,7 @@ class BasicBot(
         #    pywikibot.output(etext)
         for s in sectionR.finditer(etext):
             if self.opt.test:
-                pywikibot.output(u'>>>%s<<<' % s.group('section').strip())
+                pywikibot.output(f'>>>{s.group('section').strip()}<<<')
             sections.append(s.group('section').strip())
 
         return (sections)
@@ -170,7 +170,7 @@ class BasicBot(
 
         for l in slist:
             if self.opt.test:
-                pywikibot.output(u'Section: %s' % l)
+                pywikibot.output(f'Section: {l}')
             if wrongOrder:
                 order.append(l)
                 continue
@@ -182,7 +182,7 @@ class BasicBot(
                     index = required.index(l.lower())
 
             if self.opt.test:
-                pywikibot.output('i:%i -->%s' % (index, order))
+                pywikibot.output(f'i:{index} -->{order}')
 
         if wrongOrder:
             return (order)
@@ -205,9 +205,9 @@ class BasicBot(
             finalpage = header
         for i in sorted(redirlist.keys()):
             sections = redirlist[i]
-            finalpage += u'\n# [[%s]] ==> ' % i
+            finalpage += f'\n# [[{i}]] ==> '
             for s in sections:
-                finalpage += s + u', '
+                finalpage += s + ', '
 
         finalpage += footer
 
