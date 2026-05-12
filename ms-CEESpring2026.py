@@ -485,7 +485,8 @@ countryNames = {
            'Republica Bașchiria': 'Bashkortostan', 'Regiuni transfrontaliere': 'International',
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
            'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran', 'Kîrgîzstan': 'Kyrgyzstan',
-           'Maroc': 'Morocco', 'Tadjikistan': 'Tajikistan', 'Uzbekistan': 'Uzbekistan', 'võro': 'Võro', },
+           'Maroc': 'Morocco', 'Tadjikistan': 'Tajikistan', 'Uzbekistan': 'Uzbekistan', 'võro': 'Võro',
+           'mișcarea esperantistă': 'Esperanto', },
     # roa-rup countries
     'roa-rup': {
             },
