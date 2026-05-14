@@ -1830,7 +1830,7 @@ class BasicBot(
         try:
             d = art.data_item()
             if self.opt.test4:
-                pywikibot.output('WD: %s (checkWomen)' % d.title())
+                pywikibot.output(f'WD: {d.title()} (checkWomen)')
             dataItem = d.get()
             # pywikibot.output('DataItem:%s' % dataItem.keys()  )
             claims = dataItem['claims']
@@ -1846,6 +1846,8 @@ class BasicBot(
                 genderclaim = cjson['mainsnak']['datavalue']['value']['numeric-id']
             except KeyError:
                 continue
+            if self.opt.test4:
+                pywikibot.output(f'WD genderclaim: {str(genderclaim)} (checkWomen)')
             if '6581072' == str(genderclaim):
                 if self.opt.test4:
                     pywikibot.output('%s:Woman' % art.title())
