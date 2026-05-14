@@ -65,7 +65,7 @@ from textwrap import shorten
 import datetime
 
 import pywikibot
-from pywikibot import comms, config, i18n, pagegenerators, textlib
+from pywikibot import comms, config, i18n, pagegenerators, textlib, CurrentPageBot
 # from pywikibot.backports import removeprefix
 from pywikibot.bot import ConfigParserBot, ExistingPageBot, SingleSiteBot
 from pywikibot.comms.http import get_charset_from_content_type
@@ -514,7 +514,7 @@ class DuplicateReferences:
         return text
 
 
-class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot):
+class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot, CurrentPageBot):
 
     """References bot.
 
