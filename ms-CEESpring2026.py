@@ -560,7 +560,7 @@ countryNames = {
            'Češka': 'Czechia', 'Хрватсаа': 'Croatia', 'Хратска': 'Croatia', 'Руција': 'Russia',
            'Република Србија': 'Serbia', 'Федерација Босне и Херцеговине': 'Bosnia and Herzegovina',
            'Русијја': 'Russia', 'Србијја':' Serbia', 'Мађарскаа': 'Hungary', 'СФРЈ Македонија': 'North Macedonia',
-           'Узбекистан': 'Uzbekistan', 'Austrija': 'Austria', },
+           'Узбекистан': 'Uzbekistan', 'Austrija': 'Austria', 'Иран': 'Iran', },
     # tt countries
     'tt': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайҗан': 'Azerbaijan', 'Азәрбайҗан': 'Azerbaijan',
            'Башкортстан': 'Bashkortostan', 'Белорусия': 'Belarus', 'Беларусия': 'Belarus', 'Болгария': 'Bulgaria',
