@@ -1999,7 +1999,7 @@ class BasicBot(
                     if lang in self.topicp.keys() and name.lower().startswith(self.topicp[lang].lower()):
                         if self.opt.test2:
                             pywikibot.output('topic:%s:%s' % (name, value))
-                        if lang in self.womenp.keys() and value.lower().startswith(self.womenp[lang].lower()):
+                        if (lang in self.womenp.keys() and value.lower().startswith(self.womenp[lang].lower())) or value.lower().startswith('women'):
                             # self.women[lang] += 1
                             parlist['woman'] = True
                         if value.lower().startswith('human rights'):
