@@ -664,7 +664,7 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot, CurrentPa
         """Process one page."""
         # Load the page's text from the wiki
         if self.opt.progress:
-            pywikibot.output(f'Treating: {self.page.title()}')
+            pywikibot.output(f'Treating: {self.current_page.title()}')
         new_text = self.current_page.text
         raw_text = textlib.removeDisabledParts(new_text)
         # for each link to change
@@ -839,14 +839,17 @@ class ReferencesRobot(SingleSiteBot, ConfigParserBot, ExistingPageBot, CurrentPa
         #     new_text = self.norefbot.addReferences(new_text)
 
         # new_text = self.deduplicator.process(new_text)
-        old_text = self.page.text
+        # old_text = self.page.text
 
-        if old_text == new_text:
-            return
+        # if old_text == new_text:
+        #     return
 
-        self.userPut(self.page, old_text, new_text, summary=self.msg,
-                     ignore_save_related_errors=True,
-                     ignore_server_errors=True)
+        # self.userPut(self.page, old_text, new_text, summary=self.msg,
+        #              ignore_save_related_errors=True,
+        #              ignore_server_errors=True)
+        self.put_current(new_text,
+                         ignore_save_related_errors=True,
+                         ignore_server_errors=True)
 
         if not self.counter['write']:
             return
