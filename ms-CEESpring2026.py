@@ -247,8 +247,8 @@ countryNames = {
             'Эсперанто': 'Esperanto', 'Эстони': 'Estonia', 'тутарсем': 'Tatars', 'Раççей Федерацийĕ': 'Russia',
             'Чӑвашсем': 'Chuvasz', 'чӑвашсем': 'Chuvasz', 'Венгрия': 'Hungary', 'Раççей': 'Russia',
             'Крым тутарĕсем': 'Crimean Tatars', 'чикансем': 'Romani', 'Чăвашсем': 'Chuvasz', 'Тутарсем': 'Tatars',
-            'Пушкăрт Республики': 'Bashkortostan', 'Иран': 'Iran', 'Раҫҫей' 'Russia',
-    },
+            'Пушкăрт Республики': 'Bashkortostan', 'Иран': 'Iran', 'Раҫҫей': 'Russia',
+            },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
            'Baschkortostan': 'Bashkortostan', 'Weißrussland': 'Belarus', 'Bulgarien': 'Bulgaria', 'Armenien': 'Armenia',
