@@ -756,7 +756,7 @@ countryNames = {
            'Rumunija': 'Romania and Moldova', 'Rusija': 'Russia', 'Slovenija':'Slovenia', 'Austrija': 'Austria',
            'Ukrajina': 'Ukraine', 'Slovačka': 'Slovakia', 'Češka': 'Czechia', 'Gruzija': 'Georgia',
            'Tatari': 'Tatars', 'Albaniyaina': 'Albania', 'Latvija': 'Latvia', 'Azerbejdžan': 'Azerbaijan',
-           'Crna Gora': 'Montenegro', },
+           'Crna Gora': 'Montenegro', 'Bugarska': 'Bulgaria', },
     # sk countries
     'sk': {'Slovinsko': 'Slovenia', 'Maďarsko': 'Hungary', 'Rakúsko': 'Austria', 'Rumunsko': 'Romania and Moldova',
            'Bosna a Hercegovina': 'Bosnia and Herzegovina', 'Gruzínsko': 'Georgia', 'Chorvátsko': 'Croatia',
