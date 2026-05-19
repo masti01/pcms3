@@ -3066,6 +3066,7 @@ ignorelist = [
     re.compile(r'.*[\./@]f1wm\.pl/news'),  # bot rejected on site (Szoltys, masti)
     re.compile(r'.*[\./@]finance\.yahoo\.com/news'),  # bot rejected on site (Revsson, masti)
     re.compile(r'.*[\./@]worldbirdnames\.org'),  # HTTP465 on site (Pikador, masti)
+    re.compile(r'.*[\./@]wspolne-dziedzictwo\.muzeum\.szczecin\.pl/images/interreg/wydawnictwa/Katalogi/Misterium-Swiatla_katalog/MISTERIUM-SWIATLA-katalog-internet-z-okladka-1\.pdf'),  # HTTP465 on site (NiktWażny, masti)
 ]
 
 
