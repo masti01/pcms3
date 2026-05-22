@@ -638,7 +638,7 @@ countryNames = {
            'Ukrajna': 'Ukraine', 'Görögország': 'Greece', 'Kazahsztán': 'Kazakhstan', 'Málta': 'Malta',
            'Szorbok': 'Sorbia', 'Belarusz': 'Belarus', 'Ciprusi Köztársaság': 'Cyprus', 'Ciprus': 'Cyprus',
            'cigány': 'Romani', 'Cigányok': 'Romani', 'Võro': 'Võro', 'Arománok': 'Aromanian', 'Erza nyelv': 'Erzya',
-           'Jakutföld': 'Sakha', 'Krím': 'Crimea', },
+           'Jakutföld': 'Sakha', 'Krím': 'Crimea', 'Észak-Ciprus': 'Cyprus',  },
     # kk countries
     'kk': {'Албания': 'Albania', 'Аустрия': 'Austria', 'Әзірбайжан': 'Azerbaijan', 'Башқұртстан': 'Bashkortostan',
            'Беларусь': 'Belarus', 'Болгария': 'Bulgaria', 'Армения': 'Armenia',
