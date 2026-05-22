@@ -154,7 +154,7 @@ countryNames = {
            'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
            'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo',
            'Şimali Kipr Türk Respublikası': 'Cyprus', 'Qırğızıstan': 'Kyrgyzstan', 'Tacikistan': 'Tajikistan',
-           'İran': 'Iran', },
+           'İran': 'Iran', 'Beynəlxalq': 'International', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
