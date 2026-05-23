@@ -486,7 +486,7 @@ countryNames = {
            'Regiunea de Nord-Vest a Rusiei': 'Novgorodian', 'Tatar': 'Tatars', 'Caucazul de Nord': 'North Caucasus',
            'România și Republica Moldova': 'Romania and Moldova', 'Iran': 'Iran', 'Kîrgîzstan': 'Kyrgyzstan',
            'Maroc': 'Morocco', 'Tadjikistan': 'Tajikistan', 'Uzbekistan': 'Uzbekistan', 'võro': 'Võro',
-           'mișcarea esperantistă': 'Esperanto', },
+           'mișcarea esperantistă': 'Esperanto', 'Republica Srpska': 'Republic of Srpska', },
     # roa-rup countries
     'roa-rup': {
             },
