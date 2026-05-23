@@ -884,26 +884,26 @@ class BasicBot(
     crownAuthors = {}  # authors with articles about all countries
     otherCountriesList = {
         'ary': [], 'az': [], 'ba': [], 'be': [], 'be-tarask': [], 'bg': [], 'bs': [], 'crh': [], 'cv': [], 'de': [],
-        'el': [], 'en': [], 'eo': [], 'et': [], 'fa': [], 'fiu-vro': [], 'hr': [], 'hu': [], 'hy': [], 'hyv': [],
+        'el': [], 'en': [], 'eo': [], 'es': [], 'et': [], 'fa': [], 'fiu-vro': [], 'hr': [], 'hu': [], 'hy': [], 'hyv': [],
         'ka': [], 'kk': [], 'lt': [], 'lv': [], 'mk': [], 'mt': [], 'myv': [], 'pl': [], 'ro': [], 'roa-rup': [],
         'ru': [], 'sah': [], 'sh': [], 'sk': [], 'sl': [], 'sq': [], 'sr': [], 'tr': [], 'tt': [], 'tyv': [], 'uk': [],
         'uz': [], 'zgh': [],
     }
     women = {
         'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
-        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'en': 0, 'eo': 0, 'es':0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
         'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
         'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
     }
     hrights = {
         'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
-        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'en': 0, 'eo': 0, 'es':0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
         'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
         'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
     }
     youth = {
         'ary': 0, 'az': 0, 'ba': 0, 'be': 0, 'be-tarask': 0, 'bg': 0, 'bs': 0, 'crh': 0, 'cv': 0, 'de': 0, 'el': 0,
-        'en': 0, 'eo': 0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
+        'en': 0, 'eo': 0, 'es':0, 'et': 0, 'fa': 0, 'fiu-vro': 0, 'hr': 0, 'hu': 0, 'hy': 0, 'hyv': 0, 'ka': 0, 'kk': 0,
         'lt': 0, 'lv': 0, 'mk': 0, 'mt': 0, 'myv': 0, 'pl': 0, 'ro': 0, 'roa-rup': 0, 'ru': 0, 'sah': 0, 'sh': 0,
         'sk': 0, 'sl': 0, 'sq': 0, 'sr': 0, 'tr': 0, 'tt': 0, 'tyv': 0, 'uk': 0, 'uz': 0, 'zgh': 0,
     }
@@ -915,6 +915,7 @@ class BasicBot(
         'lv': 'valsts', 'mk': 'земја', 'mt': 'pajjiż', 'myv': 'мастор', 'pl': 'kraj', 'roa-rup': 'земја', 'ro': 'țară',
         'ru': 'страна', 'sah': 'дойду', 'sh': 'država', 'sk': 'Krajina', 'sl': 'država', 'sq': 'country',
         'sr': 'држава', 'tr': 'ülke', 'tt': 'ил', 'tyv': 'чурт', 'uk': 'країна', 'uz': 'mamlakat', 'zgh': 'ⵜⴰⵎⵓⵔⵜ',
+        'es': 'País',
     }
     # local name for topic parameter
     topicp = {
@@ -923,7 +924,7 @@ class BasicBot(
         'hr': 'tema', 'hu': 'téma', 'hy': 'թեմա', 'ka': 'თემა', 'kk': 'тақырып', 'lt': 'tema', 'lv': 'tēma',
         'mk': 'тема', 'myv': 'тема', 'pl': 'parametr', 'roa-rup': 'тема', 'ro': 'secțiune', 'ru': 'тема',
         'sah': 'тиэмэ', 'sh': 'tema', 'sk': 'Parameter', 'sl': 'tema', 'sq': 'topic', 'sr': 'тема', 'tr': 'konu',
-        'tt': 'тема', 'tyv': 'тема', 'uk': 'тема', 'uz': 'mavzu', 'zgh': 'ⵉⵎⵔⵙⵉ',
+        'tt': 'тема', 'tyv': 'тема', 'uk': 'тема', 'uz': 'mavzu', 'zgh': 'ⵉⵎⵔⵙⵉ', 'es': 'Tema',
     }
     # local name for parameter value for: women
     womenp = {
@@ -958,7 +959,7 @@ class BasicBot(
         'mk': 'корисник', 'mt': 'utent', 'myv': 'сёрмадыця', 'pl': 'autor', 'roa-rup': 'корисник', 'ro': 'utilizator',
         'ru': 'участник', 'sah': 'кыттааччы', 'sh': 'user', 'sk': 'Redaktor', 'sl': 'uporabnik', 'sq': 'user',
         'sr': 'корисник', 'tr': 'kullanıcı', 'tt': 'кулланучы', 'tyv': 'ажыглакчы', 'uk': 'користувач',
-        'uz': 'foydalanuvchi', 'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ',
+        'uz': 'foydalanuvchi', 'zgh': 'ⴰⵏⵙⵙⵎⵔⵙ', 'es': 'Usuario',
     }
 
     update_options = {
