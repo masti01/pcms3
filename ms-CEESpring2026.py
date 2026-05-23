@@ -726,7 +726,7 @@ countryNames = {
            'Čečenija in Dagestan': 'North Caucasus', },
     # es countries
     'es': {'Bulgaria': 'Bulgaria', 'Poland': 'Poland', 'Estonia': 'Estonia',
-            }
+            },
     # mt countries
     'mt': {'Awstrija': 'Austria', 'Slovakja': 'Slovakia', 'Ċekja': 'Czechia',
            'Bożnija u Ħerżegovina': 'Bosnia and Herzegovina', 'Greċja': 'Greece', 'Polonja': 'Poland',
