@@ -515,6 +515,7 @@ countryNames = {
            'Румыния и Молдова': 'Romania and Moldova', 'чуваши': 'Chuvasz', 'Таджикистан': 'Tajikistan',
            'крымские татары': 'Crimean Tatars', 'выру': 'Võro', 'Северный Кавказ': 'North Caucasus',
            'Молдова': 'Romania and Moldova', 'татары': 'Tatars', 'Bulgaria': 'Bulgaria', 'Чувашия': 'Chuvasz',
+           'казахстан': 'Kazakhstan',
            },
     # sah countries
     'sah': {
