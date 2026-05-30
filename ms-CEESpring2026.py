@@ -154,7 +154,7 @@ countryNames = {
            'Bosniya və Hersoqovina': 'Bosnia and Herzegovina', 'beynəlxalq mövzu': 'International', 'Vıru': 'Võro',
            'Aromun': 'Aromanian', 'Özbəkistan': 'Uzbekistan', 'Kosova': 'Kosovo',
            'Şimali Kipr Türk Respublikası': 'Cyprus', 'Qırğızıstan': 'Kyrgyzstan', 'Tacikistan': 'Tajikistan',
-           'İran': 'Iran', 'Beynəlxalq': 'International', },
+           'İran': 'Iran', 'Beynəlxalq': 'International', 'Qaraçılar': 'Romani', },
     # ba countries
     'ba': {'Албания': 'Albania', 'Австрия': 'Austria', 'Әзербайжан': 'Azerbaijan', 'Башҡортостан': 'Bashkortostan',
            'Белоруслаштырыу': 'Belarus', 'Белоруссия': 'Belarus', 'Беларусь': 'Belarus', 'Белорусь': 'Belarus',
@@ -247,7 +247,7 @@ countryNames = {
             'Эсперанто': 'Esperanto', 'Эстони': 'Estonia', 'тутарсем': 'Tatars', 'Раççей Федерацийĕ': 'Russia',
             'Чӑвашсем': 'Chuvasz', 'чӑвашсем': 'Chuvasz', 'Венгрия': 'Hungary', 'Раççей': 'Russia',
             'Крым тутарĕсем': 'Crimean Tatars', 'чикансем': 'Romani', 'Чăвашсем': 'Chuvasz', 'Тутарсем': 'Tatars',
-            'Пушкăрт Республики': 'Bashkortostan', 'Иран': 'Iran', 'Раҫҫей': 'Russia',
+            'Пушкăрт Республики': 'Bashkortostan', 'Иран': 'Iran', 'Раҫҫей': 'Russia', 'Чӑваш Ен': 'Chuvasz',
             },
     # de countries
     'de': {'Albanien': 'Albania', 'Österreich': 'Austria', 'Aserbaidschan': 'Azerbaijan',
