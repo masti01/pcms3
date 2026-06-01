@@ -134,7 +134,7 @@ countryNames = {
            'Ruś Nowogrodzka': 'Novgorodian', 'Cypr Północny':'Cyprus', 'Maroko': 'Morocco', 'Iran': 'Iran',
            'Uzbekistan': 'Uzbekistan', 'Tadżykistan': 'Tajikistan', 'Krymczacy': 'Krymchaks',
            'Karaimi': 'Crimean Karaites', 'Kirgistan': 'Kyrgyzstan', 'J. zachodnioormiański': 'Western Armenian',
-           'Kaukaz Północny': 'North Caucasus', },
+           'Kaukaz Północny': 'North Caucasus', 'Północny Kaukaz': 'North Caucasus',  },
     # az countries
     'az': {'Albaniya': 'Albania', 'Avstriya': 'Austria', 'Azərbaycan': 'Azerbaijan', 'Başqırdıstan': 'Bashkortostan',
            'Belarus': 'Belarus', 'Bolqarıstan': 'Bulgaria', 'Ermənistan': 'Armenia',
