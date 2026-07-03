@@ -799,7 +799,7 @@ countryNames = {
            'Romania and Moldova': 'Romania and Moldova', 'Bulgaria': 'Bulgaria',
            'Bosnia and Herzegovina': 'Bosnia and Herzegovina', 'Romania': 'Romania and Moldova', 'Estonia': 'Estonia',
            'Crimean Tatars': 'Crimean Tatars', 'Bashkortostan': 'Bashkortostan', 'Cyprus': 'Cyprus', 'Kosovo': 'Kosovo',
-           'Kazakhstan': 'Kazakhstan', 'Crimea': 'Crimea', 'Võro': 'Võro',
+           'Kazakhstan': 'Kazakhstan', 'Crimea': 'Crimea', 'Võro': 'Võro', 
            },
     # uz countries
     'uz': { 'Xorvatiya': 'Croatia', 'Turkiya': 'Turkey', 'Ukraina': 'Ukraine', 'Armaniston': 'Armenia',
