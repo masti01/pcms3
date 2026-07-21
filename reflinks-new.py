@@ -102,7 +102,7 @@ class BasicBot(
 
     def treat_page(self) -> None:
         if self.opt.test:
-            pywikibot.output(f'treating {self.current_page.title()}')
+            pywikibot.output(f'Treating page: [[{self.current_page.title()}]]')
 
 
 def main(*args: str) -> None:
