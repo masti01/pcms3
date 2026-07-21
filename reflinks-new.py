@@ -117,7 +117,7 @@ class ReferencesBot(
         refs = []
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
-            if tag.has(name):
+            if tag.has("name"):
                 pywikibot.output(F"Name: {tag.name}")
             else:
                 pywikibot.output(F"Name: Tag has no name!")
