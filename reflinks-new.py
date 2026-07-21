@@ -105,9 +105,9 @@ class ReferencesBot(
             pywikibot.output(f'Treating page: [[{self.current_page.title()}]]')
 
 
-        session = requests.Session()
-        http.session = session
-        session.cookies = http.cookie_jar
+        # session = requests.Session()
+        # http.session = session
+        # session.cookies = http.cookie_jar
 
         if self.opt.test:
             pywikibot.output(f"User Agent:{http.fake_user_agent()}")
