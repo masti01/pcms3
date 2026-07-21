@@ -112,9 +112,14 @@ class ReferencesBot(
 
         mwparse = mwparserfromhell.parse(clean)
 
+        refs = []
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
             pywikibot.output(F"Dict: {tag.tag.lower()} ")
+            if tag.tag.lower() == "ref":
+                refs.append(tag)
+
+        pywikibot.output(f"All refs: {refs}")
 
 
 def main(*args: str) -> None:
