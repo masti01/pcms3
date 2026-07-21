@@ -104,36 +104,6 @@ class BasicBot(
         if self.opt.test:
             pywikibot.output(f'treating {self.current_page.title()}')
 
-        """Load the given page, do some changes, and save it."""
-        text = self.current_page.text
-
-        ################################################################
-        # NOTE: Here you can modify the text in whatever way you want. #
-        ################################################################
-
-        # If you find out that you do not want to edit this page, just return.
-        # Example: This puts Text on a page.
-
-        # Retrieve your private option
-        # Use your own text or use the default 'Test'
-        text_to_add = self.opt.text
-
-        if self.opt.replace:
-            # replace the page text
-            text = text_to_add
-
-        elif self.opt.top:
-            # put text on top
-            text = text_to_add + text
-
-        else:
-            # put text on bottom
-            text += text_to_add
-
-        # if summary option is None, it takes the default i18n summary from
-        # i18n subdirectory with summary_key as summary key.
-        self.put_current(text, summary=self.opt.summary)
-
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
