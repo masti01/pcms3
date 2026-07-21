@@ -46,6 +46,8 @@ cannot be set by settings file:
 """
 from __future__ import annotations
 
+from os.path import exists
+
 import pywikibot
 from pywikibot import pagegenerators
 from pywikibot import textlib
@@ -115,8 +117,11 @@ class ReferencesBot(
         refs = []
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
-            pywikibot.output(F"Name: {tag.name}")
-            pywikibot.output(F"Calue: {tag.value}")
+            if exists(tag.name):
+                pywikibot.output(F"Name: {tag.name}")
+            else:
+                pywikibot.output(F"Name: Tag has no name!")
+            pywikibot.output(F"Calue: {tag.contents}")
             if tag.tag.lower() == "ref":
                 refs.append(tag)
 
