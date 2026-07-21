@@ -117,7 +117,7 @@ class ReferencesBot(
         refs = []
         for tag in mwparse.ifilter_tags():
 
-            if tag.tag.lower() == "ref":
+            if tag.tag.lower() == "ref" and not tag.self_closing:
                 refs.append(tag)
                 pywikibot.output(F"TAG: {tag}")
                 pywikibot.output(F"tag.attributes: {tag.attributes}")
