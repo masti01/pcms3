@@ -103,8 +103,14 @@ class ReferencesBot(
     def treat_page(self) -> None:
         if self.opt.test:
             pywikibot.output(f'Treating page: [[{self.current_page.title()}]]')
-            pywikibot.output(f'Fke agent: {comms.http.fake_user_agent()}')
 
+
+        session = requests.Session()
+        http.session = session
+        session.cookies = http.cookie_jar
+
+        if self.opt.test:
+            pywikibot.output(f"User Agent:{http.fake_user_agent()}")
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
