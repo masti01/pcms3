@@ -128,7 +128,8 @@ class ReferencesBot(
                 else:
                     pywikibot.output(F"Name: Tag has no name!")
                 # pywikibot.output(F"Contents ({type(tag.contents)}): {tag.contents}")
-                pywikibot.output(F"Contents nodes: {type(tag.contents.nodes)}")
+                for n in tag.contents.nodes:
+                    pywikibot.output(F"Contents nodes: {type(n)}")
 
                 refs.append(tag)
 
