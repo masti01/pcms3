@@ -69,7 +69,6 @@ import mwparserfromhell
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
-
 class ReferencesBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
@@ -128,7 +127,8 @@ class ReferencesBot(
                     tag.get("name").value = f"{tag.get("name").value}_alt"
                 else:
                     pywikibot.output(F"Name: Tag has no name!")
-                pywikibot.output(F"Contents ({type(tag.contents)}): {tag.contents}")
+                # pywikibot.output(F"Contents ({type(tag.contents)}): {tag.contents}")
+                pywikibot.output(F"Contents nodes: {tag.contents.nodes}")
 
                 refs.append(tag)
 
