@@ -114,7 +114,7 @@ class ReferencesBot(
 
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
-            pywikibot.output(F"Dict: {tag.attributes}")
+            pywikibot.output(F"Dict: {tag.tag.lower()} ")
 
 
 def main(*args: str) -> None:
