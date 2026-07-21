@@ -115,7 +115,7 @@ class ReferencesBot(
         refs = []
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
-            pywikibot.output(F"Dict: {tag.tag.lower()} ")
+            pywikibot.output(F"Dict: {dict(tag)}")
             if tag.tag.lower() == "ref":
                 refs.append(tag)
 
