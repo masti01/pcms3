@@ -112,8 +112,8 @@ class ReferencesBot(
 
         mwparse = mwparserfromhell.parse(clean)
 
-        if self.opt.test:
-            pywikibot.output(f"Parsed tree: {str(mwparse.get_tree())}")
+        for tag in mwparse.ifilter_tags():
+            pywikibot.output(F"TAG: {tag}")
 
 
 def main(*args: str) -> None:
