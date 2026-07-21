@@ -118,16 +118,19 @@ class ReferencesBot(
         for tag in mwparse.ifilter_tags():
 
             if tag.tag.lower() == "ref" and not tag.self_closing:
-                refs.append(tag)
+
                 pywikibot.output(F"TAG: {tag}")
                 pywikibot.output(F"tag.attributes: {tag.attributes}")
                 pywikibot.output(F"tag.self_closing: {tag.self_closing}")
                 if tag.has("name"):
                     pywikibot.output(F"Name: {tag.get("name").name}")
                     pywikibot.output(F"Value: {tag.get("name").value}")
+                    tag.get("name").value = f"{tag.get("name").value}_alt"
                 else:
                     pywikibot.output(F"Name: Tag has no name!")
                 pywikibot.output(F"Contents: {tag.contents}")
+
+                refs.append(tag)
 
         pywikibot.output(f"All refs ({len(refs)}: {refs}")
 
