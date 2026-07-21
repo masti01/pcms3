@@ -57,6 +57,8 @@ from pywikibot.bot import (
 
 from pywikibot.comms import http
 
+import requests
+
 import mwparserfromhell
 
 
@@ -111,6 +113,9 @@ class ReferencesBot(
 
         if self.opt.test:
             pywikibot.output(f"User Agent:{http.fake_user_agent()}")
+
+        response = http.fetch('https://phet-dev.colorado.edu/html/build-an-atom/0.0.0-3/simple-text-only-test-page.html')
+        pywikibot.output(f"Text:{response.text}")
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
