@@ -118,7 +118,8 @@ class ReferencesBot(
         # pywikibot.output(f"Text:{response.text}")
         # pywikibot.output(f"Headers:{response.headers}")
         # pywikibot.output(f"Title:{response.title}")
-        pywikibot.output(f"Methods:{dir(response)}")
+        # pywikibot.output(f"Methods:{dir(response)}")
+        pywikibot.output(f"JSON:{response.json}")
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
