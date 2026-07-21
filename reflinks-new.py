@@ -48,6 +48,7 @@ from __future__ import annotations
 
 import pywikibot
 from pywikibot import pagegenerators
+from pywikibot import textlib
 from pywikibot.bot import (
     AutomaticTWSummaryBot,
     ConfigParserBot,
@@ -106,20 +107,14 @@ class ReferencesBot(
         if self.opt.test:
             pywikibot.output(f'Treating page: [[{self.current_page.title()}]]')
 
+        text = self.current_page.text
+        clean = textlib.removeDisabledParts(text)
 
-        # session = requests.Session()
-        # http.session = session
-        # session.cookies = http.cookie_jar
+        mwparse = mwparserfromhell.parse(clean)
 
         if self.opt.test:
-            pywikibot.output(f"User Agent:{http.fake_user_agent()}")
+            pywikibot.output(f"Parsed tree: {mwparse.get_tree()}")
 
-        response = http.fetch('https://phet-dev.colorado.edu/html/build-an-atom/0.0.0-3/simple-text-only-test-page.html')
-        # pywikibot.output(f"Text:{response.text}")
-        # pywikibot.output(f"Headers:{response.headers}")
-        # pywikibot.output(f"Title:{response.title}")
-        # pywikibot.output(f"Methods:{dir(response)}")
-        pywikibot.output(f"JSON:{response.json}")
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
