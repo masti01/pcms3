@@ -120,7 +120,7 @@ class ReferencesBot(
 
                 pywikibot.output(F"TAG: {tag}")
                 pywikibot.output(F"tag.attributes: {tag.attributes}")
-                pywikibot.output(F"tag.self_closing: {tag.self_closing}")
+                # pywikibot.output(F"tag.self_closing: {tag.self_closing}")
                 if tag.has("name"):
                     pywikibot.output(F"Name: {tag.get("name").name}")
                     pywikibot.output(F"Value: {tag.get("name").value}")
@@ -129,7 +129,7 @@ class ReferencesBot(
                     pywikibot.output(F"Name: Tag has no name!")
                 # pywikibot.output(F"Contents ({type(tag.contents)}): {tag.contents}")
                 for n in tag.contents.nodes:
-                    pywikibot.output(F"Contents nodes: {type(n)}")
+                    pywikibot.output(F"Contents nodes: {type(n)} {n}")
 
                 refs.append(tag)
 
