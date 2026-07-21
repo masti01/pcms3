@@ -122,8 +122,8 @@ class ReferencesBot(
                 pywikibot.output(F"TAG: {tag}")
                 pywikibot.output(F"tag.attributes: {tag.attributes}")
                 pywikibot.output(F"tag.self_closing: {tag.self_closing}")
-                if tag.has("name"):
-                    pywikibot.output(F"Name: {tag.get("name")}")
+                if tag.has("n ame"):
+                    pywikibot.output(F"Name: {tag.get(" name")}")
                 else:
                     pywikibot.output(F"Name: Tag has no name!")
                 pywikibot.output(F"Contents: {tag.contents}")
