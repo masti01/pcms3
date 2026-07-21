@@ -128,7 +128,7 @@ class ReferencesBot(
                 #     pywikibot.output(F"Name: Tag has no name!")
                 pywikibot.output(F"Contents: {tag.contents}")
 
-        pywikibot.output(f"All refs: {refs}")
+        pywikibot.output(f"All refs ({len(refs)}: {refs}")
 
 
 def main(*args: str) -> None:
