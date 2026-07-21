@@ -113,7 +113,7 @@ class ReferencesBot(
         mwparse = mwparserfromhell.parse(clean)
 
         if self.opt.test:
-            pywikibot.output(f"Parsed tree: {mwparse.get_tree()}")
+            pywikibot.output(f"Parsed tree: {str(mwparse.get_tree())}")
 
 
 def main(*args: str) -> None:
