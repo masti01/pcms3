@@ -65,7 +65,7 @@ import mwparserfromhell
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
 
 
-class BasicBot(
+class ReferencesBot(
     # Refer pywikobot.bot for generic bot classes
     SingleSiteBot,  # A bot only working on one site
     ConfigParserBot,  # A bot which reads options from scripts.ini setting file
@@ -103,6 +103,7 @@ class BasicBot(
     def treat_page(self) -> None:
         if self.opt.test:
             pywikibot.output(f'Treating page: [[{self.current_page.title()}]]')
+            pywikibot.output(f'Fke agent: {comms.http.fake_user_agent()}')
 
 
 def main(*args: str) -> None:
@@ -144,7 +145,7 @@ def main(*args: str) -> None:
     # check if further help is needed
     if not pywikibot.bot.suggest_help(missing_generator=not gen):
         # pass generator and private options to the bot
-        bot = BasicBot(generator=gen, **options)
+        bot = ReferencesBot(generator=gen, **options)
         bot.run()  # guess what it does
 
 
