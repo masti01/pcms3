@@ -115,9 +115,10 @@ class ReferencesBot(
             pywikibot.output(f"User Agent:{http.fake_user_agent()}")
 
         response = http.fetch('https://phet-dev.colorado.edu/html/build-an-atom/0.0.0-3/simple-text-only-test-page.html')
-        pywikibot.output(f"Text:{response.text}")
-        pywikibot.output(f"Headers:{response.headers}")
+        # pywikibot.output(f"Text:{response.text}")
+        # pywikibot.output(f"Headers:{response.headers}")
         # pywikibot.output(f"Title:{response.title}")
+        pywikibot.output(f"Methods:{dir(response)}")
 
 def main(*args: str) -> None:
     """Process command line arguments and invoke bot.
