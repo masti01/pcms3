@@ -114,6 +114,7 @@ class ReferencesBot(
 
         for tag in mwparse.ifilter_tags():
             pywikibot.output(F"TAG: {tag}")
+            pywikibot.output(F"Dict: {dict(tag)}")
 
 
 def main(*args: str) -> None:
