@@ -3068,6 +3068,8 @@ ignorelist = [
     re.compile(r'.*[\./@]worldbirdnames\.org'),  # HTTP465 on site (Pikador, masti)
     re.compile(r'.*[\./@]wspolne-dziedzictwo\.muzeum\.szczecin\.pl/images/interreg/wydawnictwa/Katalogi/Misterium-Swiatla_katalog/MISTERIUM-SWIATLA-katalog-internet-z-okladka-1\.pdf'),  # HTTP465 on site (NiktWażny, masti)
     re.compile(r'.*[\./@]ulc\.gov\.pl/_download/lotniska/ladowiska-wpis-do-ewidencji-05-05-2016\.pdf'),  # bot rejected on site (masti)
+    re.compile(r'.*[\./@]entertainment\.howstuffworks\.com/pro-wrestling\.htm'),  # bot rejected on site (NiktWażny, masti)
+    re.compile(r'.*[\./@]mark-weeks\.com/chess'),  # bot rejected with illegal code on site (NiktWażny, masti)
 ]
 
 
