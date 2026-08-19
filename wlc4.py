@@ -3070,6 +3070,8 @@ ignorelist = [
     re.compile(r'.*[\./@]ulc\.gov\.pl/_download/lotniska/ladowiska-wpis-do-ewidencji-05-05-2016\.pdf'),  # bot rejected on site (masti)
     re.compile(r'.*[\./@]entertainment\.howstuffworks\.com/pro-wrestling\.htm'),  # bot rejected on site (NiktWażny, masti)
     re.compile(r'.*[\./@]mark-weeks\.com/chess'),  # bot rejected with illegal code on site (NiktWażny, masti)
+    re.compile(r'.*[\./@]dataverse\.harvard\.edu/dataset\.xhtml'),  # bot rejected on site (NiktWażny, masti)
+    re.compile(r'.*[\./@]ew\.com/article/1991/03/29/bob-dylans-discography/'),  # bot rejected on site (NiktWażny, masti)
 ]
 
 
