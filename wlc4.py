@@ -3072,6 +3072,8 @@ ignorelist = [
     re.compile(r'.*[\./@]mark-weeks\.com/chess'),  # bot rejected with illegal code on site (NiktWażny, masti)
     re.compile(r'.*[\./@]dataverse\.harvard\.edu/dataset\.xhtml'),  # bot rejected on site (NiktWażny, masti)
     re.compile(r'.*[\./@]ew\.com/article/1991/03/29/bob-dylans-discography/'),  # bot rejected on site (NiktWażny, masti)
+    re.compile(r'.*[\./@]dib\.ie/biography/'),  # unsopported redirect on site (Elfhelm, masti)
+    re.compile(r'.*[\./svobodnaevropa\.bg/a/31194607\.html'),  # (Elfhelm, masti)
 ]
 
 
