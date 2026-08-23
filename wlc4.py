@@ -3074,6 +3074,7 @@ ignorelist = [
     re.compile(r'.*[\./@]ew\.com/article/1991/03/29/bob-dylans-discography/'),  # bot rejected on site (NiktWażny, masti)
     re.compile(r'.*[\./@]dib\.ie/biography/'),  # unsopported redirect on site (Elfhelm, masti)
     re.compile(r'.*[\./@]svobodnaevropa\.bg/a/31194607\.html'),  # (Elfhelm, masti)
+    re.compile(r'.*[\./@]cbs.aw/wp/index.php/2021/11/30/census-2020-housing-tables'),  # unsopported redirect on site (NiktWażny, masti)
 ]
 
 
