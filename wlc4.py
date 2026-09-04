@@ -3625,7 +3625,7 @@ def main(*args: str) -> None:
     if not gen:
         gen = gen_factory.getCombinedGenerator()
     if gen:
-        if not genFactory.nopreload:
+        if not gen_factory.nopreload:
             # fetch at least 240 pages simultaneously from the wiki, but more
             # if a high thread number is set.
             pageNumber = max(20, config.max_external_links * 2)
