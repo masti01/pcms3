@@ -3591,7 +3591,7 @@ def main(*args: str) -> None:
 
     # Process global args and prepare generator args parser
     local_args = pywikibot.handle_args(args)
-    genFactory = pagegenerators.GeneratorFactory()
+    gen_factory = pagegenerators.GeneratorFactory()
 
     for arg in local_args:
         if arg == '-talk':
