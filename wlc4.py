@@ -3575,7 +3575,7 @@ def countLinkCheckThreads() -> int:
     return i
 
 
-def main(*args):
+def main(*args: str) -> None:
     """
     Process command line arguments and invoke bot.
 
@@ -3585,8 +3585,9 @@ def main(*args):
     @type args: str
     """
     gen = None
-    xmlFilename = None
-    HTTPignore = []
+    xml_filename = None
+    xml_start = None
+    http_ignores = []
 
     # Process global args and prepare generator args parser
     local_args = pywikibot.handle_args(args)
@@ -3600,33 +3601,29 @@ def main(*args):
         elif arg == '-repeat':
             gen = RepeatPageGenerator()
         elif arg.startswith('-ignore:'):
-            HTTPignore.append(int(arg[8:]))
+            http_ignores.append(int(arg[8:]))
         elif arg.startswith('-day:'):
             config.weblink_dead_days = int(arg[5:])
         elif arg.startswith('-xmlstart'):
             if len(arg) == 9:
-                xmlStart = pywikibot.input(
+                xml_start = pywikibot.input(
                     'Please enter the dumped article to start with:')
             else:
-                xmlStart = arg[10:]
+                xml_start = arg[10:]
         elif arg.startswith('-xml'):
             if len(arg) == 4:
-                xmlFilename = i18n.input('pywikibot-enter-xml-filename')
+                xml_filename = i18n.input('pywikibot-enter-xml-filename')
             else:
-                xmlFilename = arg[5:]
+                xml_filename = arg[5:]
         else:
-            genFactory.handle_arg(arg)
+            gen_factory.handle_arg(arg)
 
-    if xmlFilename:
-        try:
-            xmlStart
-        except NameError:
-            xmlStart = None
-        gen = XmlDumpPageGenerator(xmlFilename, xmlStart,
-                                   genFactory.namespaces)
+    if xml_filename:
+        gen = XmlDumpPageGenerator(xml_filename, xml_start,
+                                   gen_factory.namespaces)
 
     if not gen:
-        gen = genFactory.getCombinedGenerator()
+        gen = gen_factory.getCombinedGenerator()
     if gen:
         if not genFactory.nopreload:
             # fetch at least 240 pages simultaneously from the wiki, but more
