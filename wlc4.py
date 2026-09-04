@@ -3217,7 +3217,7 @@ class LinkCheckThread(threading.Thread):
     After checking the page, it will die.
     """
 
-    def __init__(self, page, url, history, HTTPignore, day):
+    def __init__(self, page, url, history, http_ignores, day):
         """Initializer."""
         super().__init__()
         self.page = page
@@ -3236,7 +3236,7 @@ class LinkCheckThread(threading.Thread):
         # self.setName(('{0} - {1}'.format(page.title(),
         #                                  url.encode('utf-8', 'replace'))))
         self.name = f"{page.title()} - {url.encode('utf-8', 'replace')}"
-        self.HTTPignore = HTTPignore
+        self.http_ignores = http_ignores
         self._use_fake_user_agent = config.fake_user_agent_default.get(
             'weblinkchecker', False)
         self.day = day
@@ -3271,12 +3271,12 @@ class LinkCheckThread(threading.Thread):
                                      self.page.title()))
             raise
         if not exception:
-            if (r.status_code != requests.codes.ok) or (r.status_code in self.HTTPignore):
+            if (r.status_code != requests.codes.ok) or (r.status_code in self.http_ignores):
                 ok = True
             else:
                 message = str(r.status_code)
 
-        if (r.status_code != requests.codes.ok) and (r.status_code not in self.HTTPignore):
+        if (r.status_code != requests.codes.ok) and (r.status_code not in self.http_ignores):
             message = str(r.status_code)
             pywikibot.output('*[{}]:{} links to {} - {}.'
                              .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -3498,7 +3498,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
     It uses several LinkCheckThreads at once to process pages from generator.
     """
 
-    def __init__(self, generator, HTTPignore=None, day=7, site=True):
+    def __init__(self, generator, http_ignores=None, day=7, site=True):
         """Initializer."""
         super().__init__(generator=generator, site=site)
 
@@ -3512,7 +3512,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
         else:
             reportThread = None
         self.history = History(reportThread, site=self.site)
-        self.HTTPignore = HTTPignore or []
+        self.http_ignores = http_ignores or []
 
         self.day = day
 
@@ -3542,7 +3542,7 @@ class WeblinkCheckerRobot(SingleSiteBot, ExistingPageBot):
                 pywikibot.output(f'Link [{url}]: processing')
                 # Each thread will check one page, then die.
                 thread = LinkCheckThread(page, url, self.history,
-                                         self.HTTPignore, self.day)
+                                         self.http_ignores, self.day)
                 # thread dies when program terminates
                 # thread.setDaemon(True)
                 thread.daemon = True
@@ -3632,7 +3632,7 @@ def main(*args: str) -> None:
             pywikibot.output("Fetch %i pages." % pageNumber)
             gen = pagegenerators.PreloadingGenerator(gen, groupsize=pageNumber)
         gen = pagegenerators.RedirectFilterPageGenerator(gen)
-        bot = WeblinkCheckerRobot(gen, HTTPignore, config.weblink_dead_days)
+        bot = WeblinkCheckerRobot(gen, http_ignores, config.weblink_dead_days)
         try:
             bot.run()
         except ImportError:
