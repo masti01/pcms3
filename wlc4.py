@@ -3619,8 +3619,8 @@ def main(*args: str) -> None:
             gen_factory.handle_arg(arg)
 
     if xml_filename:
-        gen = XmlDumpPageGenerator(xml_filename, xml_start,
-                                   gen_factory.namespaces)
+        gen = XmlDumpPageGenerator(xml_filename, start=xml_start,
+                                   namespaces=gen_factory.namespaces)
 
     if not gen:
         gen = gen_factory.getCombinedGenerator()
