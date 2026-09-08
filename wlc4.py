@@ -3076,6 +3076,7 @@ ignorelist = [
     re.compile(r'.*[\./@]svobodnaevropa\.bg/a/31194607\.html'),  # (Elfhelm, masti)
     re.compile(r'.*[\./@]cbs.aw/wp/index.php/2021/11/30/census-2020-housing-tables'),  # unsopported redirect on site (NiktWażny, masti)
     re.compile(r'.*[\./@]people\.com/tv/kim-cattrall-opens-up-about-sex-and-the-city-amid-reboot-rumors/'),  # paywall on site (NiktWażny, masti)
+    re.compile(r'.*[\./@]trilobites\.info/genera\.htm'),  # (NiktWażny, masti)
 ]
 
 
