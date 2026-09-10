@@ -96,7 +96,7 @@ class BasicBot(
         'testcheck': False,  # switch on test functionality - check links on page
         'testremove': False,  # switch on test functionality - show removed templates
         'testlinks': False,  # switch on test functionality - show parsed link
-        'liklink': False,   # switch on test functionality - show linklink params
+        'testlinklink': False,   # switch on test functionality - show linklink params
         'remove': False,  # only remove templates with given link
         'removelink': 'Test',  # specify link to be removed together with template
     }
@@ -160,7 +160,7 @@ class BasicBot(
                     pywikibot.output(f"Matched:{tmpl['link'].value} type:{type(tmpl['link'].value)}")
 
                 linklink = tmpl['link'].value.filter_external_links()[0].strip()
-                if self.opt.linklink:
+                if self.opt.testlinklink:
                     pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
                     pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
                     pywikibot.output(f"articlelinks:{articlelinks}")
