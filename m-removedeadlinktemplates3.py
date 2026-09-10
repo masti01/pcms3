@@ -175,11 +175,13 @@ class BasicBot(
                     # if link is in article but is archived:
                     if not articlelinks[tmpllink]:
                         # skip removal
+                        pywikibot.output(f"Skipping removal as link not archived: {articlelinks[tmpllink]} at [[{articlepage.title(as_link=True)}]]")")
                         continue
 
                 if self.opt.remove:
                     if not tmpllink.startswith(self.opt.removelink):
                         # skip removal
+                        pywikibot.output(f"Skipping removal as link not forced: {articlelinks[tmpllink]} at [[{articlepage.title(as_link=True)}]]")")
                         continue
 
                 # remove template
