@@ -209,7 +209,7 @@ class BasicBot(
         for l in parsedarticle.filter_external_links():
             # print tested link
             if self.opt.testlinks:
-                pywikibot.output(f'LINK:{dict(l)}')
+                pywikibot.output(f'LINK:{l.url}')
             '''
             ul = unquote(str(l.url))  # unquoted link
             if str(ul) not in result.keys():
