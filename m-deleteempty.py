@@ -52,7 +52,6 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-import backoff
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -84,34 +83,19 @@ class BasicBot(
     summary_key = 'basic-changing'
 
     update_options = {
-        'replace': False,  # delete old text and write the new text
         'summary': "Bot usuwa pustą stronę dyskusji",  # your own bot summary
-        'text': 'Test',  # add this text from option. 'Test' is default
-        'top': False,  # append text on top of the page
         'test': False,  # print test messages
     }
 
-    def backoff_hdlr(details):
-        print("Backing off {wait:0.1f} seconds after {tries} tries "
-              "calling function {target} with args {args} and kwargs "
-              "{kwargs}".format(**details))
-    @backoff.on_exception(
-        backoff.expo,
-        pywikibot.exceptions.ServerError,
-        on_backoff=backoff_hdlr,
-        max_tries=5
-    )
     def treat_page(self) -> None:
         """Load the given page, do some changes, and save it."""
 
-        # if len(self.current_page.text) < 4 :
-        #    if self.site.user() is None:
-        #       self.site.login()
         talktext = textlib.removeDisabledParts(self.current_page.text)
         talktext = talktext.replace(' ', '')  # remove spaces
         talktext = talktext.replace('\n', '')  # remove newlines
         szoltysEK = '{{Wikipedysta:Szoltys-bot/EK}}' in talktext
         martwyEK = '{{ek|nieaktualna' in talktext
+
         if len(talktext) < 4 or szoltysEK or martwyEK:
             try:
                 if self.opt.test:
@@ -131,7 +115,6 @@ class BasicBot(
             except pywikibot.exceptions.Error:
                 if self.opt.test:
                     pywikibot.output('Page %s does not exist.' % self.current_page.title)
-
 
 def main(*args: str) -> None:
     """
