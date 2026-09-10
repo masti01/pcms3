@@ -174,15 +174,15 @@ class BasicBot(
                 if tmpllink in articlelinks.keys():  # link is in article
                     # if link is in article but is archived:
                     if not articlelinks[tmpllink]:
-                        break  # keep template, skip to next template
+                        # skip removal
+                        continue
 
-                # if self.opt.removelink:
-                #     if not tmpllink.startswith(self.opt.removelink):
-                #         break  # keep template, skip to next template
+                if not tmpllink.startswith(self.opt.removelink):
+                    # skip removal
+                    continue
 
                 # remove template
                 parsedtalk.remove(tmpl)
-
                 changed = True
                 tmplremoved += 1
                 if self.opt.testremove:
