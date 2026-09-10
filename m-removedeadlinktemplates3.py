@@ -171,31 +171,29 @@ class BasicBot(
                 except KeyError:
                     pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
 
-                '''
-                if not self.opt.remove:
-                    # find linklink in article unquoted content
-                    if linklink in articlelinks.keys():  # link is in article
-                        if not articlelinks[linklink]:  # link is not archived
-                            break  # keep template, skip to next template
-                else:
-                    # remove link passed as param remove
-                    if not linklink.startswith(self.opt.removelink):  # link to be removed
+                if tmpllink in articlelinks.keys():  # link is in article
+                    # test printout
+                    if self.opt.testlinklink:
+                        pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
+
+                    # if link is in article but is archived or removal forced:
+                    if not articlelinks[tmpllink] or not tmpllink.startswith(self.opt.removelink):
                         break  # keep template, skip to next template
-                '''
 
                 # remove template
                 parsedtalk.remove(tmpl)
+
                 changed = True
                 tmplremoved += 1
                 if self.opt.testremove:
                     pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
 
-
         if self.opt.test:
             pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
 
         if changed:
-            page.text = re.sub('\n+{{Martwy link', '\n{{Martwy link', str(parsedtalk))
+            # page.text = re.sub('\n+{{Martwy link', '\n{{Martwy link', str(parsedtalk))
+            page.text = str(parsedtalk)
             if self.opt.test:
                 # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
                 pywikibot.output(f'DIFF:\n{str(difflib.ndiff(talktext, page.text))}')
