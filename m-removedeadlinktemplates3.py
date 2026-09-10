@@ -212,17 +212,11 @@ class BasicBot(
                 pywikibot.output(f'LINK.url:{l.url}')
             # check if link is archived
             result[str(l.url)] = self.islinkwitharchive(parsedarticle, l.url)
-            '''
-            ul = unquote(str(l.url))  # unquoted link
-            if str(ul) not in result.keys():
-                result[str(ul)] = False
-            if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, l.url):
-                result[str(ul)] = True
-            '''
 
         if self.opt.testcheck:
-            pywikibot.output(f'RESULT:{result}')
+            pywikibot.output(f'RESULT (checklinksinpage):{result}')
             pywikibot.output(f'Links found:{len(result)}')
+
         return result
 
     def isarchivedlink(self, link):
@@ -232,6 +226,7 @@ class BasicBot(
         :return: Bool
         """
         archiveservices = [
+            'archive.org',
             'archive.today',
             'archive.fo',
             'archive.is',
@@ -259,7 +254,7 @@ class BasicBot(
         :return:
         """
         if self.opt.testtmpllink:
-            pywikibot.output(f'LINK TYPE:{type(link)}')
+            pywikibot.output(f'LINK TYPE (islinkwitharchive):{type(link)}')
 
         try:
             parent2 = wcode.get_ancestors(link)[-2]
