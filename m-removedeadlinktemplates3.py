@@ -209,7 +209,9 @@ class BasicBot(
         for l in parsedarticle.filter_external_links():
             # print tested link
             if self.opt.testlinks:
-                pywikibot.output(f'LINK:{l.url}')
+                pywikibot.output(f'LINK.url:{l.url}')
+            # check if link is archived
+            result[l.url] = self.islinkwitharchive(parsedarticle, l.url)
             '''
             ul = unquote(str(l.url))  # unquoted link
             if str(ul) not in result.keys():
