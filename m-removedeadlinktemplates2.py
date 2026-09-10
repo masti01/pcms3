@@ -177,12 +177,17 @@ class BasicBot(
                         # skip removal
                         pywikibot.output(f"Skipping removal as link not archived: {tmpllink} at {articlepage.title(as_link=True)}")
                         continue
+                    else:
+                        pywikibot.output(f"Removing as link archived: {tmpllink} at {articlepage.title(as_link=True)}")
 
                 if self.opt.remove:
                     if not tmpllink.startswith(self.opt.removelink):
                         # skip removal
                         pywikibot.output(f"Skipping removal as link not forced: {tmpllink} at {articlepage.title(as_link=True)}")
                         continue
+                    else:
+                        pywikibot.output(f"Removing as link forced: {tmpllink} at {articlepage.title(as_link=True)}")
+
 
                 # remove template
                 parsedtalk.remove(tmpl)
