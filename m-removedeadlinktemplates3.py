@@ -173,7 +173,7 @@ class BasicBot(
 
                 if tmpllink in articlelinks.keys():  # link is in article
                     # if link is in article but is archived:
-                    if articlelinks[tmpllink]:
+                    if not articlelinks[tmpllink]:
                         break  # keep template, skip to next template
 
                 # if self.opt.removelink:
@@ -191,17 +191,9 @@ class BasicBot(
         if self.opt.test:
             pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
 
-        if changed:
-            # page.text = re.sub('\n+{{Martwy link', '\n{{Martwy link', str(parsedtalk))
-            page.text = str(parsedtalk)
-            if self.opt.test:
-                # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
-                pywikibot.output(f'DIFF:\n{str(difflib.ndiff(talktext, page.text))}')
-
-            page.save(summary=self.opt.summary)
-            return True
-
-        return False
+        page.text = str(parsedtalk)
+        page.save(summary=self.opt.summary)
+        return changed
 
     def checklinksinpage(self, parsedarticle):
         """
