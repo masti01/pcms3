@@ -211,7 +211,7 @@ class BasicBot(
             if self.opt.testlinks:
                 pywikibot.output(f'LINK.url:{l.url}')
             # check if link is archived
-            result[l.url] = self.islinkwitharchive(parsedarticle, l.url)
+            result[str(l.url)] = self.islinkwitharchive(parsedarticle, l.url)
             '''
             ul = unquote(str(l.url))  # unquoted link
             if str(ul) not in result.keys():
