@@ -3194,7 +3194,7 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     """
     Yield web links from text.
 
-    TODO: move to mwparserfromhell
+    TODO: check if link is in www field in infobox: example [[Anita Baker]]
     """
     text = textlib.removeDisabledParts(text)
     parsed = mwparserfromhell.parse(text)
