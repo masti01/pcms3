@@ -169,6 +169,7 @@ class BasicBot(
                 except KeyError:
                     pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
 
+                '''
                 if not self.opt.remove:
                     # find linklink in article unquoted content
                     if linklink in articlelinks.keys():  # link is in article
@@ -178,6 +179,7 @@ class BasicBot(
                     # remove link passed as param remove
                     if not linklink.startswith(self.opt.removelink):  # link to be removed
                         break  # keep template, skip to next template
+                '''
 
                 # remove template
                 parsedtalk.remove(tmpl)
