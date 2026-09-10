@@ -177,9 +177,10 @@ class BasicBot(
                         # skip removal
                         continue
 
-                if not tmpllink.startswith(self.opt.removelink):
-                    # skip removal
-                    continue
+                if self.opt.remove:
+                    if not tmpllink.startswith(self.opt.removelink):
+                        # skip removal
+                        continue
 
                 # remove template
                 parsedtalk.remove(tmpl)
