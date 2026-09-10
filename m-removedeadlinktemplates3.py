@@ -150,9 +150,10 @@ class BasicBot(
         for tmpl in templates:
             tmplcount += 1
             if self.opt.testtmplname:
-                pywikibot.output(f'Title:{tmpl.name}')
+                pywikibot.output(f'Title (tmpl):{tmpl.name}')
             if tmpl.name.matches("Martwy link dyskusja") and tmpl.has("link"):
-                # pywikibot.output(f"Matched:{tmpl['link']}")
+                if self.opt.testtmpllink:
+                    pywikibot.output(f"Matched:{tmpl['link']}")
                 try:
                     linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
                     pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
