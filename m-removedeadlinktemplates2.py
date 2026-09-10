@@ -12,14 +12,6 @@ will be done.
 
 The following parameters are supported:
 
--always           The bot won't ask for confirmation when putting a page
-
--text:            Use this text to be added; otherwise 'Test' is used
-
--replace:         Don't add text but replace it
-
--top              Place additional text on top of the page
-
 -summary:         Set the action summary message for the edit.
 
 This sample script is a
@@ -103,7 +95,8 @@ class BasicBot(
         'testtmpllink': False,  # switch on test functionality - check link with archive
         'testcheck': False,  # switch on test functionality - check links on page
         'testremove': False,  # switch on test functionality - show removed templates
-        'nodelete': False,  # do not delete empty pages
+        'testlinks': False,  # switch on test functionality - show parsed link
+        'testlinklink': False,   # switch on test functionality - show linklink params
         'remove': False,  # only remove templates with given link
         'removelink': 'Test',  # specify link to be removed together with template
     }
@@ -120,33 +113,33 @@ class BasicBot(
 
     def treat(self, page):
         """
-        Loads the given discussion page, verifies if the links in {{Martwy link dyskusja}}
+        Loads the given talk page, verifies if the links in {{Martwy link dyskusja}}
         were removed from article or are a part of {{Cytuj}} template with properly filled archiwum= parameter
-        Then removes the template(s) or marks page for deletion
+        Then removes the template(s) from talk page
         """
 
+        # get talk page content and parse
         talktext = page.text
         if not talktext:
             return False
+        # parse talk page
+        parsedtalk = mwparserfromhell.parse(talktext)
 
+        # get article content and parse
         articlepage = page.toggleTalkPage()
         articletext = articlepage.text
         if not articletext:
             return False
+        # parse article text
+        parsedarticle = mwparserfromhell.parse(articletext)
+
+        # get all weblinks from article and check if they are archived links
+        articlelinks = self.checklinksinpage(parsedarticle)
 
         # test printout
         if self.opt.test:
             pywikibot.output(u'Page: %s' % articlepage.title(as_link=True))
             pywikibot.output(u'Talk: %s' % page.title(as_link=True))
-
-        # parse talk page
-        parsedtalk = mwparserfromhell.parse(talktext)
-
-        # parse article text
-        parsedarticle = mwparserfromhell.parse(articletext)
-        # get all weblinks from article
-        articlelinks = self.checklinksinpage(parsedarticle)
-
 
         # get templates from talk
         templates = parsedtalk.filter_templates(recursive=False)
@@ -155,54 +148,54 @@ class BasicBot(
         changed = False
         tmplcount = 0
         tmplremoved = 0
+
         for tmpl in templates:
             tmplcount += 1
+            # test printout
             if self.opt.testtmplname:
-                pywikibot.output(f'Title:{tmpl.name}')
+                pywikibot.output(f'Title (tmpl):{tmpl.name}')
+            # look for "Martwy link dyskusja" templates
             if tmpl.name.matches("Martwy link dyskusja") and tmpl.has("link"):
-                # pywikibot.output(f"Matched:{tmpl['link']}")
-                try:
-                    linklink = unquote(tmpl['link'].value.filter_external_links()[0].strip())
-                    pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
-                    # pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
+                if self.opt.testtmpllink:
+                    pywikibot.output(f"Matched:{tmpl['link'].value} type:{type(tmpl['link'].value)}")
+
+                tmpllink = tmpl['link'].value.filter_external_links()[0].strip()
+                # test printout
+                if self.opt.testlinklink:
+                    pywikibot.output(f"linktype:{type(tmpllink)}, link:{tmpllink}")
+                    pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
                     pywikibot.output(f"articlelinks:{articlelinks}")
-                    try:
-                        pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
-                    except KeyError:
-                        pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
 
-                    if not self.opt.remove:
-                        # find linklink in article unquoted content
-                        if linklink in articlelinks.keys():  # link is in article
-                            if not articlelinks[linklink]:  # link is not archived
-                                break  # keep template, skip to next template
-                    else:
-                        # remove link passed as param remove
-                        if not linklink.startswith(self.opt.removelink):  # link to be removed
-                            break  # keep template, skip to next template
+                try:
+                    pywikibot.output(f"articlelinks[tmpllink]: {articlelinks[tmpllink]}")
+                except KeyError:
+                    pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
 
-                    # remove template
-                    parsedtalk.remove(tmpl)
-                    changed = True
-                    tmplremoved += 1
-                    if self.opt.testremove:
-                        pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
+                if tmpllink in articlelinks.keys():  # link is in article
+                    # if link is in article but is archived:
+                    if not articlelinks[tmpllink]:
+                        # skip removal
+                        pywikibot.output(f"Skipping removal as link not archived: {tmpllink} at {articlepage.title(as_link=True)}")
+                        continue
 
-                except IndexError:
-                    pywikibot.output(f"Link ERROR:{tmpl['link'].value.filter_external_links()}")
+                if self.opt.remove:
+                    if not tmpllink.startswith(self.opt.removelink):
+                        # skip removal
+                        pywikibot.output(f"Skipping removal as link not forced: {tmpllink} at {articlepage.title(as_link=True)}")
+                        continue
 
-        if self.opt.test:
-            pywikibot.output(f'TMPL proc:{tmplcount}, tmplrem:{tmplremoved}')
+                # remove template
+                parsedtalk.remove(tmpl)
+                changed = True
+                tmplremoved += 1
+                if self.opt.testremove:
+                    pywikibot.output(f'Template #{tmplremoved} removed:{tmpl["link"]}')
 
-        if changed:
-            page.text = re.sub('\n+{{Martwy link', '\n{{Martwy link', str(parsedtalk))
-            if self.opt.test:
-                # pywikibot.output(f'NEWTALK:{str(parsedtalk)}')
-                pywikibot.output(f'DIFF:\n{str(difflib.ndiff(talktext, page.text))}')
+        pywikibot.output(f'{page.title(as_link=True)} - TMPL proc:{tmplcount}, removed:{tmplremoved}')
 
-            page.save(summary=self.opt.summary)
-            return True
-        return False
+        page.text = str(parsedtalk)
+        page.save(summary=self.opt.summary)
+        return changed
 
     def checklinksinpage(self, parsedarticle):
         """
@@ -215,15 +208,16 @@ class BasicBot(
 
         result = {}
         for l in parsedarticle.filter_external_links():
-            ul = unquote(str(l.url))  # unquoted link
-            if str(ul) not in result.keys():
-                result[str(ul)] = False
-            if self.isarchivedlink(ul) or self.islinkwitharchive(parsedarticle, l.url):
-                result[str(ul)] = True
+            # print tested link
+            if self.opt.testlinks:
+                pywikibot.output(f'LINK.url:{l.url}')
+            # check if link is archived
+            result[str(l.url)] = self.islinkwitharchive(parsedarticle, l.url)
 
         if self.opt.testcheck:
-            pywikibot.output(f'RESULT:{result}')
+            pywikibot.output(f'RESULT (checklinksinpage):{result}')
             pywikibot.output(f'Links found:{len(result)}')
+
         return result
 
     def isarchivedlink(self, link):
@@ -233,6 +227,7 @@ class BasicBot(
         :return: Bool
         """
         archiveservices = [
+            'archive.org',
             'archive.today',
             'archive.fo',
             'archive.is',
@@ -248,7 +243,7 @@ class BasicBot(
             pywikibot.output(f"isarchivedlink looking for link {link.lower()}")
             pywikibot.output(f"isarchivedlink looking for netloc {netloc.lower()}")
         for arch in archiveservices:
-            return arch in netloc.lower()
+            return arch in str(netloc).lower()
 
         return False
 
@@ -260,7 +255,7 @@ class BasicBot(
         :return:
         """
         if self.opt.testtmpllink:
-            pywikibot.output(f'LINK TYPE:{type(link)}')
+            pywikibot.output(f'LINK TYPE (islinkwitharchive):{type(link)}')
 
         try:
             parent2 = wcode.get_ancestors(link)[-2]
