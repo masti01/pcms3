@@ -159,15 +159,17 @@ class BasicBot(
                 if self.opt.testtmpllink:
                     pywikibot.output(f"Matched:{tmpl['link'].value} type:{type(tmpl['link'].value)}")
 
-                linklink = tmpl['link'].value.filter_external_links()[0].strip()
+                tmpllink = tmpl['link'].value.filter_external_links()[0].strip()
+                # test printout
                 if self.opt.testlinklink:
-                    pywikibot.output(f"linktype:{type(linklink)}, link:{linklink}")
+                    pywikibot.output(f"linktype:{type(tmpllink)}, link:{tmpllink}")
                     pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
                     pywikibot.output(f"articlelinks:{articlelinks}")
+
                 try:
-                    pywikibot.output(f"articlelinks[linklink]: {articlelinks[linklink]}")
+                    pywikibot.output(f"articlelinks[tmpllink]: {articlelinks[tmpllink]}")
                 except KeyError:
-                    pywikibot.output(f"articlelinks[{linklink}]: DO NOT EXISTS")
+                    pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
 
                 '''
                 if not self.opt.remove:
