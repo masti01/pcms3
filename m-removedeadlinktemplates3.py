@@ -172,12 +172,12 @@ class BasicBot(
                     pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
 
                 if tmpllink in articlelinks.keys():  # link is in article
-                    # test printout
-                    if self.opt.testlinklink:
-                        pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
-
                     # if link is in article but is archived or removal forced:
-                    if not articlelinks[tmpllink] or not tmpllink.startswith(self.opt.removelink):
+                    if not articlelinks[tmpllink]:
+                        break  # keep template, skip to next template
+
+                if self.opt.removelink:
+                    if not tmpllink.startswith(self.opt.removelink):
                         break  # keep template, skip to next template
 
                 # remove template
