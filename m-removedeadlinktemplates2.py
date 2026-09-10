@@ -193,8 +193,9 @@ class BasicBot(
 
         pywikibot.output(f'{page.title(as_link=True)} - TMPL proc:{tmplcount}, removed:{tmplremoved}')
 
-        page.text = str(parsedtalk)
-        page.save(summary=self.opt.summary)
+        if changed:
+            page.text = str(parsedtalk)
+            page.save(summary=self.opt.summary)
         return changed
 
     def checklinksinpage(self, parsedarticle):
