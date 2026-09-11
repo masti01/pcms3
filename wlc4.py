@@ -3192,8 +3192,9 @@ def infoboxWeblink(link, wcode):
         # check if link is in template
         if not isinstance(parent, mwparserfromhell.nodes.template.Template):
             return False
-        if parent.name.lower().endswith("infobox"):
-            return parent.has("www", ignore_empty=True)
+        if parent.name.strip().lower().endswith("infobox"):
+            if parent.has("www", ignore_empty=True):
+                return link in parent.get('www')
     except IndexError:
         return False
 
