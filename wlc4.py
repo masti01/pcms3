@@ -167,7 +167,7 @@ ignorelist = [
     # bot can't handle their redirects:
 
     # bot rejected on the site, already archived
-    re.compile(r'.*[\./@]web\.archive\.org'),
+    re.compile(r'.*[\./@]archive\.org'),
     re.compile(r'.*[\./@]archive\.is'),
     re.compile(r'.*[\./@]archive\.vn'),
     re.compile(r'.*[\./@]archive\.li'),
@@ -3142,6 +3142,7 @@ def isarchivedlink(link):
     :return: Bool
     """
     archiveservices = [
+        'archive.org',
         'archive.today',
         'archive.fo',
         'archive.is',
@@ -3152,7 +3153,6 @@ def isarchivedlink(link):
         'webcitation.org'
     ]
 
-    # pywikibot.output(f"isarchivedlink looking for {link.lower()}")
     netloc = urlparse(str(link)).netloc
     for arch in archiveservices:
         return arch in netloc.lower()
@@ -3170,25 +3170,35 @@ def citeArchivedLink(link, wcode):
         parent = wcode.get_ancestors(link)[-1]
         # parent2 = wcode.get_ancestors(link)[-2]
 
-        # pywikibot.output(f"Parent tye:{type(parent)}")
-        # pywikibot.output(f"Parent2 tye:{type(parent2)}")
-
-        # if not isinstance(parent2, mwparserfromhell.nodes.template.Template):
-        #     pywikibot.output(f"citeArchivedLink grandparent is not template:{str(parent2)}")
-        #     return False
+        # check if link is in template to be able to have archived version
         if not isinstance(parent, mwparserfromhell.nodes.template.Template):
-            # pywikibot.output(f"citeArchivedLink parent is not template:{str(parent)}")
             return False
-        # pywikibot.output(f"citeArchivedLink parent is template:{str(parent)}")
         if parent.name.lower().startswith("cytuj"):
-            # if parent.has("archiwum", ignore_empty=True):
-            #     pywikibot.output(f"citeArchivedLink grandparent has archiwum={str(parent["archiwum"])}")
             return parent.has("archiwum", ignore_empty=True)
 
     except IndexError:
         return False
 
     return False
+
+
+def infoboxWeblink(link, wcode):
+    # look if link is in infobox as www param
+    # return True in this cases
+
+    try:
+        parent = wcode.get_ancestors(link)[-1]
+
+        # check if link is in template
+        if not isinstance(parent, mwparserfromhell.nodes.template.Template):
+            return False
+        if parent.name.lower().endswith("infobox"):
+            return parent.has("www", ignore_empty=True)
+    except IndexError:
+        return False
+
+    return False
+
 
 def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     """
@@ -3199,7 +3209,8 @@ def weblinksIn(text, withoutBracketed=False, onlyBracketed=False):
     text = textlib.removeDisabledParts(text)
     parsed = mwparserfromhell.parse(text)
     for link in parsed.ifilter_external_links():
-        if not isarchivedlink(link.url) and not citeArchivedLink(link, parsed):  # check if link is archived
+        # check if the link should be skipped
+        if not isarchivedlink(link.url) and not citeArchivedLink(link, parsed) and not infoboxWeblink(link, parsed):  # check if link is archived
             pywikibot.output(f"weblinksIn yielded:{str(link.url)}")
             yield str(link.url)
 
