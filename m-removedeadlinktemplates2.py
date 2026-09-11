@@ -51,11 +51,8 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
-from urllib.parse import unquote, urlparse
+from urllib.parse import urlparse
 import mwparserfromhell
-import difflib
-import re
-
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -159,35 +156,37 @@ class BasicBot(
                 if self.opt.testtmpllink:
                     pywikibot.output(f"Matched:{tmpl['link'].value} type:{type(tmpl['link'].value)}")
 
-                tmpllink = tmpl['link'].value.filter_external_links()[0].strip()
-                # test printout
-                if self.opt.testlinklink:
-                    pywikibot.output(f"linktype:{type(tmpllink)}, link:{tmpllink}")
-                    pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
-                    pywikibot.output(f"articlelinks:{articlelinks}")
-
                 try:
-                    pywikibot.output(f"articlelinks[tmpllink]: {articlelinks[tmpllink]}")
-                except KeyError:
-                    pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
+                    tmpllink = tmpl['link'].value.filter_external_links()[0].strip()
+                    # test printout
+                    if self.opt.testlinklink:
+                        pywikibot.output(f"linktype:{type(tmpllink)}, link:{tmpllink}")
+                        pywikibot.output(f"articlelinks.keys:{articlelinks.keys()}")
+                        pywikibot.output(f"articlelinks:{articlelinks}")
 
-                if tmpllink in articlelinks.keys():  # link is in article
-                    # if link is in article but is archived:
-                    if not articlelinks[tmpllink]:
-                        # skip removal
-                        pywikibot.output(f"Skipping removal as link not archived: {tmpllink} at {articlepage.title(as_link=True)}")
-                        continue
-                    else:
-                        pywikibot.output(f"Removing as link archived: {tmpllink} at {articlepage.title(as_link=True)}")
+                    try:
+                        pywikibot.output(f"articlelinks[tmpllink]: {articlelinks[tmpllink]}")
+                    except KeyError:
+                        pywikibot.output(f"articlelinks[{tmpllink}]: DO NOT EXISTS")
 
-                if self.opt.remove:
-                    if not tmpllink.startswith(self.opt.removelink):
-                        # skip removal
-                        pywikibot.output(f"Skipping removal as link not forced: {tmpllink} at {articlepage.title(as_link=True)}")
-                        continue
-                    else:
-                        pywikibot.output(f"Removing as link forced: {tmpllink} at {articlepage.title(as_link=True)}")
+                    if tmpllink in articlelinks.keys():  # link is in article
+                        # if link is in article but is archived:
+                        if not articlelinks[tmpllink]:
+                            # skip removal
+                            pywikibot.output(f"Skipping removal as link not archived: {tmpllink} at {articlepage.title(as_link=True)}")
+                            continue
+                        else:
+                            pywikibot.output(f"Removing as link archived: {tmpllink} at {articlepage.title(as_link=True)}")
 
+                    if self.opt.remove:
+                        if not tmpllink.startswith(self.opt.removelink):
+                            # skip removal
+                            pywikibot.output(f"Skipping removal as link not forced: {tmpllink} at {articlepage.title(as_link=True)}")
+                            continue
+                        else:
+                            pywikibot.output(f"Removing as link forced: {tmpllink} at {articlepage.title(as_link=True)}")
+                except IndexError:
+                    pywikibot.output(f"ERROR: Malformed template: {tmpl} at {articlepage.title(as_link=True)}")
 
                 # remove template
                 parsedtalk.remove(tmpl)
