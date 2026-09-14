@@ -273,6 +273,13 @@ class BasicBot(
         data = r.submit()
         return data['spamblacklist']['result'] == 'blacklisted'
 
+    def shortenlink(self,link):
+        # if link longer than 150 chars
+        if len(link) > 150:
+            return f'[{link} {link[:50]} ←...→ {link[-50:]}]'
+        else:
+            return link
+
     def generateresultspage(self, redirlist, redirlistuse, pagename, header, footer):
         """
         Generates results page from redirlist
@@ -292,7 +299,7 @@ class BasicBot(
         res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
         itemcount = 0
         pywikibot.output('res length:%i' % len(res))
-        for i in res:
+        for i in res[:int(self.opt.maxlines)]:
             # use only links with -includes if specified
             if self.opt.includes:
                 if not (self.opt.includes in i):
@@ -312,17 +319,16 @@ class BasicBot(
             if self.opt.test:
                 pywikibot.output('(%d, %d) #%s (%s %s)' % (itemcount, len(finalpage), i, str(count), suffix))
             if spam:
-                finalpage += '\n|-\n| ' + str(
-                    itemcount) + ' || <nowiki>' + i + '</nowiki><sup>SPAM</sup> || style="width: 20%;" align="center" | [{{fullurl:Specjalna:Wyszukiwarka linków/|target=' + i + '}} ' + str(
-                    count) + ' ' + suffix + ']'
+                finalpage += f'\n|-\n| {str(itemcount)} || <nowiki>{self.shortenlink(i)}</nowiki><sup>SPAM</sup> || style="width: 20%; align="center" | [{{{{fullurl:Specjalna:Wyszukiwarka linków/|target={i}}}}} {str(count)} {suffix}]'
             else:
-                finalpage += '\n|-\n| ' + str(
-                    itemcount) + ' || ' + i + ' || style="width: 20%;" align="center" | [{{fullurl:Specjalna:Wyszukiwarka linków/|target=' + i + '}} ' + str(
-                    count) + ' ' + suffix + ']'
-            finalpage += ' || %i %s' % (redirlistuse[i], linksuffix)
-            if itemcount > maxlines - 1:
-                pywikibot.output('*** Breaking output loop ***')
-                break
+                # finalpage += '\n|-\n| ' + str(
+                #     itemcount) + ' || ' + i + ' || style="width: 20%;" align="center" | [{{fullurl:Specjalna:Wyszukiwarka linków/|target=' + i + '}} ' + str(
+                #     count) + ' ' + suffix + ']'
+                finalpage += f'\n|-\n| {str(itemcount)} || {self.shortenlink(i)} || style="width: 20%; align="center" | [{{{{fullurl:Specjalna:Wyszukiwarka linków/|target={i}}}}} {str(count)} {suffix}]'
+            finalpage += f' || {redirlistuse[i]} {linksuffix}'
+            # if itemcount >= maxlines:
+            #     pywikibot.output('*** Breaking output loop ***')
+            #     break
 
         finalpage += '\n|}\n'
         finalpage += footer
