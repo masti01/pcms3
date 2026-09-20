@@ -117,7 +117,7 @@ class BasicBot(
 
     def treat_page(self):
         """Load the given page, do some changes, and save it."""
-        refR = re.compile(r'(?P<all><ref.*?</ref>)')
+        refR = re.compile(r'(?P<all><ref[^>]*?>)')
         # clenaupR = re.compile(r'(?i){{dopracować.*?}}')
         text = self.current_page.text
         links = {'links': 0,
