@@ -45,6 +45,7 @@ cannot be set by settings file:
 
 &params;
 """
+
 #
 # (C) Pywikibot team, 2006-2021
 #
@@ -61,6 +62,8 @@ from pywikibot.bot import (
 from datetime import datetime
 import re
 from pywikibot import textlib
+from mwparserfromhell import wikicode, parse
+from mwparserfromhell.nodes import Wikilink
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -115,19 +118,34 @@ class BasicBot(
         'test': False,  # switch on test functionality
     }
 
+    @staticmethod
+    def ek(parsed: wikicode.Wikicode):
+        """
+        check if page contains Ek template
+        :param parsed:
+        :return:
+        """
+        # templaete ek and synonims
+        ekname = ("ek", "ekspresowe kasowanko", "usuń", "speedy", "delete")
+        for t in parsed.filter_templates():
+            if t.name.matches(ekname):
+                return True
+
+        return False
+
+    @staticmethod
+    def category(wikilink: Wikilink) -> bool:
+        return wikilink.title.lower.startswith(("kategoria", "Category"))
+
     def treat_page(self):
-        """Load the given page, do some changes, and save it."""
+        """ parse page for checks"""
+        parsed = parse(self.current_page.text)
+
         refR = re.compile(r'(?P<all><ref[^>]*?>)')
         # clenaupR = re.compile(r'(?i){{dopracować.*?}}')
-        text = self.current_page.text
-        links = {'links': 0,
-                 'cat': 0,
-                 'template': 0,
-                 'infobox': 0,
-                 'refs': 0,
-                 'dopracować': False
-                 }
-        # cleanupTmpl = False
+        # text = self.current_page.text
+        tests = dict(links=0, cat=0, template=0, infobox=0, refs=0, clenaup=False)
+        cleanupTmpl = None
         summary = []
 
         if self.current_page.isRedirectPage():
@@ -136,49 +154,41 @@ class BasicBot(
         elif self.current_page.isDisambig():
             pywikibot.output(u'Page %s is DISAMBIG!' % self.current_page.title())
             return
-        elif "{{ek" in self.current_page.text.lower():
+        elif self.ek(parsed):  # page contains speedy delete template
             pywikibot.output(u'Page %s is to be DELETED!' % self.current_page.title())
             return
         else:
             if self.opt.test:
                 pywikibot.output(u'Title:%s' % self.current_page.title())
                 pywikibot.output(u'Depth:%s' % self.current_page.depth)
-            for l in self.current_page.linkedPages(namespaces=0):
-                if self.opt.test:
-                    pywikibot.output(u'Links to:[[%s]]' % l.title())
-                links['links'] += 1
-                # pywikibot.output(u'Links:%s' % len(list(self.current_page.linkedPages(namespaces=0))))
-            for t, p in textlib.extract_templates_and_params(text, remove_disabled_parts=True):
+
+            # Wikilinks
+            wikilinks = parsed.filter_wikilinks()
+            tests['links'] = len(wikilinks)
+            if self.opt.test:
+                pywikibot.output(f'Links to: {wikilinks}')
+
+            # Templates
+            for t in parsed.filter_templates():
                 if self.opt.test:
                     pywikibot.output('Template:[[%s]]' % t)
-                links['template'] += 1
-                if 'infobox' in t:
-                    links['infobox'] += 1
-                if 'dopracować' in t.lower():
-                    links['dopracować'] = True
-                if t.lower() in tmplcat: #  check for category adding templates
-                    links['cat'] += 1
-                    if self.opt.test:
-                        pywikibot.output('Current cat#%i' % links['cat'])
-                    # cleanupTmpl = (t, p)
-                # if 'rok w' in t or 'Rok w' in t:
-                #     links['cat'] += 1
+                if 'infobox' in t.title.lower():  # check for infobox presence
+                    tests['infobox'] += 1
+                if t.lower() in tmplcat:  # check for category adding templates
+                    tests['cat'] += 1
+                if t.title.matches('dopracować'):
+                    cleanupTmpl = t
+                    tests['clenaup'] = True
 
-            for c in textlib.getCategoryLinks(text):
-                if self.opt.test:
-                    pywikibot.output('Category:%s' % c)
-                links['cat'] += 1
-                if self.opt.test:
-                    pywikibot.output('Current cat#%i' % links['cat'])
-            for r in refR.finditer(text):
-                if self.opt.test:
-                    pywikibot.output('Ref:%s' % r.group('all'))
-                links['refs'] += 1
-            if self.opt.test:
-                pywikibot.output('Links=%s' % links)
-                # pywikibot.output('Cleanup=%s' % re.sub('\n','',textlib.glue_template_and_params(cleanupTmpl)))
+            # References
+            tests['refs'] = len(parsed.filter_tags(matches=lambda tag: tag.tag.lower() == "ref"))
 
-        if links['dopracować']:
+            # Categories
+            for c in wikilinks:
+                if self.category(c):
+                    tests['cat'] += 1
+
+        if tests['clenaup']:
             if self.opt.test:
                 pywikibot.output('Cleanup Tmpl FOUND')
         else:
@@ -189,14 +199,14 @@ class BasicBot(
             datestr = today.strftime('%Y-%m')
             if self.opt.test:
                 pywikibot.output('Date:%s' % datestr)
-            if not (links['links'] and links['cat']):
-                if not links['links']:
+            if not (tests['links'] and tests['cat']):
+                if not tests['links']:
                     p['linki'] = datestr
                     summary.append('linki')
-                if not links['cat']:
+                if not tests['cat']:
                     p['kategoria'] = datestr
                     summary.append('kategorie')
-                if not links['refs']:
+                if not tests['refs']:
                    p['przypisy'] = datestr
                    summary.append('przypisy')
             cleanupTmpl = (t, p)
@@ -210,11 +220,11 @@ class BasicBot(
                 pywikibot.output('Cleanup Tmpl TO ADD')
                 pywikibot.output('summary:%s' % summary)
                 pywikibot.output('params:%s' % p)
-            text = re.sub('\n', '', textlib.glue_template_and_params(cleanupTmpl)) + '\n' + text
+            # text = re.sub('\n', '', textlib.glue_template_and_params(cleanupTmpl)) + '\n' + text
 
             # if summary option is None, it takes the default i18n summary from
             # i18n subdirectory with summary_key as summary key.
-            self.put_current(text, summary='Sprawdzanie nowych stron, w artykule należy dopracować: %s' % ','.join(summary))
+            self.put_current(str(parsed), summary=f"Sprawdzanie nowych stron, w artykule należy dopracować: {','.join(summary)}")
 
 
 def main(*args: str) -> None:
