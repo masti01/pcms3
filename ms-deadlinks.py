@@ -145,6 +145,7 @@ class BasicBot(
                     pywikibot.output('%s - %i' % (ref, deadlinksf[ref]))
 
         deadlinkss, deadlinkssuse = self.getDomainStats(deadlinksf, deadlinksfuse)
+        deadlinkspdf, deadlinkpdfsuse = self.getPDFStats(deadlinksf, deadlinksfuse)
 
         footer = 'Przetworzono: ' + str(licznik) + ' stron'
 
@@ -152,6 +153,7 @@ class BasicBot(
         # skip domains grouping if looking for specific text
         # if not self.opt.includes:
         result = self.generateresultspage(deadlinkss, deadlinkssuse, self.opt.outpage + '/ogólne', headersum, footer)
+        result = self.generateresultspage(deadlinkspdf, deadlinkspdfuse, self.opt.outpage + '/PDF', headersum, footer)
 
         return
 
@@ -174,6 +176,27 @@ class BasicBot(
                     deadlinksfuse[dom] = dluse[l]
             except:
                 pywikibot.output('Missing domain group in %s' % l)
+
+        return deadlinksf, deadlinksfuse
+
+    def getPDFStats(self, dl, dluse):
+        deadlinksf = {}
+        deadlinksfuse = {}
+        # domainR = re.compile(r'(?P<domain>https?://[^\/]*)')
+        pdfR = re.compile(r'https?://(www\.)?(?P<domain>[^/$]*)')
+
+        for l in dl.keys():
+            if l.lower().endswith('.pdf'):
+                dom = 'https://{0}'.format(domainR.match(l).group('domain'))
+                pdf
+                if self.opt.test:
+                    pywikibot.output('Domain:link:%s' % dom)
+                if l in deadlinksf.keys():
+                    deadlinksf[l] += dl[l]
+                    deadlinksfuse[l] += dluse[l]
+                else:
+                    deadlinksf[l] = dl[l]
+                    deadlinksfuse[l] = dluse[l]
 
         return deadlinksf, deadlinksfuse
 
