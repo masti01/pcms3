@@ -153,7 +153,7 @@ class BasicBot(
         # skip domains grouping if looking for specific text
         # if not self.opt.includes:
         result = self.generateresultspage(deadlinkss, deadlinkssuse, self.opt.outpage + '/ogólne', headersum, footer)
-        result = self.generateresultspage(deadlinkspdf, deadlinkspdfuse, self.opt.outpage + '/PDF', headersum, footer)
+        result = self.generateresultspage(deadlinkspdf, deadlinkpdfsuse, self.opt.outpage + '/PDF', headersum, footer)
 
         return
 
