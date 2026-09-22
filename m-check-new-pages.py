@@ -167,7 +167,7 @@ class BasicBot(
             #     tests['clenaup'] = True
 
             # infobox
-            tests['infobox'] = len(parsed.filter_templates(matches=lambda tmpl: tmpl.title.lower().endswith("infobox")))
+            tests['infobox'] = len(parsed.filter_templates(matches=lambda tmpl: tmpl.name.lower().endswith("infobox")))
             # References
             tests['refs'] = len(parsed.filter_tags(matches=lambda tag: tag.tag.lower() == "ref"))
 
