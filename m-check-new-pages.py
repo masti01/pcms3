@@ -121,7 +121,7 @@ class BasicBot(
 
     @staticmethod
     def category(wikilink: Wikilink) -> bool:
-        return wikilink.name.lower().startswith(("kategoria:", "category:"))
+        return wikilink.title.lower().startswith(("kategoria:", "category:"))
 
     def treat_page(self):
         """ parse page for checks"""
