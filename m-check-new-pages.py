@@ -162,9 +162,9 @@ class BasicBot(
             #     tests['infobox'] += 1
             # if t.lower() in tmplcat:  # check for category adding templates
             #     tests['cat'] += 1
-            if t.title.matches('dopracować'):
-                cleanup_tmpl = t
-                tests['clenaup'] = True
+            # if t.title.matches('dopracować'):
+            #     cleanup_tmpl = t
+            #     tests['clenaup'] = True
 
             # infobox
             tests['infobox'] = len(parsed.filter_templates(matches=lambda tmpl: tmpl.title.lower().endswith("infobox")))
