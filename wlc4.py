@@ -3107,15 +3107,13 @@ def _get_closest_memento_url(url, when=None, timegate_uri=None):
     mementos = memento_info.get('mementos')
     if not mementos:
         raise Exception(
-            'mementos not found for {0} via {1}'.format(url, timegate_uri))
+            f'mementos not found for {url} via {timegate_uri}')
     if 'closest' not in mementos:
         raise Exception(
-            'closest memento not found for {0} via {1}'.format(
-                url, timegate_uri))
+            f'closest memento not found for {url} via {timegate_uri}')
     if 'uri' not in mementos['closest']:
         raise Exception(
-            'closest memento uri not found for {0} via {1}'.format(
-                url, timegate_uri))
+            f'closest memento uri not found for {url} via {timegate_uri}')
     return mementos['closest']['uri'][0]
 
 
@@ -3259,9 +3257,7 @@ class LinkCheckThread(threading.Thread):
         ok = False
         exception = False
         ignore = False
-        pywikibot.output('[{}] :Processing URL {} in page [[{}]]'
-                         .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
-                                 self.page.title()))
+        pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] :Processing URL {self.url} in page [[{self.page.title()}]]')
         try:
             header = self.header
             r = comms.http.fetch(
@@ -3279,10 +3275,8 @@ class LinkCheckThread(threading.Thread):
         except (pywikibot.exceptions.FatalServerError, requests.exceptions.ConnectionError, requests.exceptions.SSLError, pywikibot.exceptions.ServerError, Exception):
             exception = True
             message = 'Exception while connecting.'
-            pywikibot.output('[{}] Exception while processing URL {} in page [[{}]]'
-                             .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
-                                     self.page.title()))
-            raise
+            pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Exception while processing URL {self.url} in page [[{self.page.title()}]]')
+            # raise
         if not exception:
             if (r.status_code != requests.codes.ok) or (r.status_code in self.http_ignores):
                 ok = True
@@ -3291,17 +3285,11 @@ class LinkCheckThread(threading.Thread):
 
         if (r.status_code != requests.codes.ok) and (r.status_code not in self.http_ignores):
             message = str(r.status_code)
-            pywikibot.output('*[{}]:{} links to {} - {}.'
-                             .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                                     self.page.title(as_link=True), self.url,
-                                     message))
+            pywikibot.output(f'*[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}]:{self.page.title(as_link=True)} links to {self.url} - {message}.')
             self.history.setLinkDead(self.url, message, self.page,
                                      config.weblink_dead_days)
         elif self.history.setLinkAlive(self.url):
-            pywikibot.output(
-                '*[{}]:Link to {} in {} is back alive.'
-                    .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.url,
-                            self.page.title(as_link=True)))
+            pywikibot.output(f'*[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}]:Link to {self.url} in {self.page.title(as_link=True)} is back alive.')
 
 
 class History:
@@ -3346,7 +3334,7 @@ class History:
         try:
             with open(self.datfilename, 'rb') as datfile:
                 self.historyDict = pickle.load(datfile)
-            pywikibot.output('DICTIONARY LOADED: %i elements' % len(self.historyDict.keys()))
+            pywikibot.output(f'DICTIONARY LOADED: {len(self.historyDict.keys())} elements')
         except (IOError, EOFError):
             # no saved history exists yet, or history dump broken
             self.historyDict = {}
@@ -3374,8 +3362,7 @@ class History:
             self.logCount += 1
             if self.logCount % 30 == 0:
                 # insert a caption
-                txtfile.write('=== {} ===\n'
-                              .format(containingPage.title()[:3]))
+                txtfile.write(f'=== {containingPage.title()[:3]} ===\n')
             txtfile.write(f'{url}\n{errorReport}')
 
         if self.reportThread and not containingPage.isTalkPage():
@@ -3401,9 +3388,7 @@ class History:
                     try:
                         archiveURL = get_archive_url(url)
                     except Exception as e:
-                        pywikibot.warning(
-                            'get_closest_memento_url({0}) failed: {1}'.format(
-                                url, e))
+                        pywikibot.warning(f'get_closest_memento_url({url}) failed: {s}')
                         archiveURL = None
                     self.log(url, error, page, archiveURL)
             else:
@@ -3427,8 +3412,7 @@ class History:
     def save(self):
         """Save the .dat file to disk."""
         # test output
-        pywikibot.output('PICKLING %s records at %s' % (
-        len(self.historyDict), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+        pywikibot.output(f'PICKLING {len(self.historyDict)} records at {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
         with open(self.datfilename, 'wb') as f:
             pickle.dump(self.historyDict, f, protocol=config.pickle_protocol)
 
@@ -3642,7 +3626,7 @@ def main(*args: str) -> None:
             # fetch at least 240 pages simultaneously from the wiki, but more
             # if a high thread number is set.
             pageNumber = max(20, config.max_external_links * 2)
-            pywikibot.output("Fetch %i pages." % pageNumber)
+            pywikibot.output(f"Fetch {pageNumber} pages.")
             gen = pagegenerators.PreloadingGenerator(gen, groupsize=pageNumber)
         gen = pagegenerators.RedirectFilterPageGenerator(gen)
         bot = WeblinkCheckerRobot(gen, http_ignores, config.weblink_dead_days)
@@ -3656,9 +3640,8 @@ def main(*args: str) -> None:
             # Don't wait longer than 30 seconds for threads to finish.
             while countLinkCheckThreads() > 0 and waitTime < 30:
                 try:
-                    pywikibot.output('Waiting for remaining {0} threads to '
-                                     'finish, please wait...'
-                                     .format(countLinkCheckThreads()))
+                    pywikibot.output(f'Waiting for remaining {countLinkCheckThreads()} threads to '
+                                     'finish, please wait...')
                     # wait 1 second
                     time.sleep(1)
                     waitTime += 1
@@ -3666,8 +3649,7 @@ def main(*args: str) -> None:
                     pywikibot.output('Interrupted.')
                     break
             if countLinkCheckThreads() > 0:
-                pywikibot.output('Remaining {0} threads will be killed.'
-                                 .format(countLinkCheckThreads()))
+                pywikibot.output(f'Remaining {countLinkCheckThreads()} threads will be killed.')
                 # Threads will die automatically because they are daemonic.
             if bot.history.reportThread:
                 bot.history.reportThread.shutdown()
