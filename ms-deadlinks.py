@@ -165,9 +165,9 @@ class BasicBot(
 
         for l in dl.keys():
             try:
-                dom = 'https://{0}'.format(domainR.match(l).group('domain'))
+                dom = f'http://{domainR.match(l).group('domain')}'
                 if self.opt.test:
-                    pywikibot.output('Domain:link:%s' % dom)
+                    pywikibot.output(f'Domain:link:{dom}')
                 if dom in deadlinksf.keys():
                     deadlinksf[dom] += dl[l]
                     deadlinksfuse[dom] += dluse[l]
@@ -215,7 +215,7 @@ class BasicBot(
         if r:
             if r.group('name'):
                 if self.opt.test:
-                    pywikibot.output('Treat:NamedRef:%s' % r.group('name'))
+                    pywikibot.output(f'Treat:NamedRef:{r.group('name')}')
                 # template to catch note/ref with {{u}} or {{r}}
                 ruR = re.compile(
                     r'(?i)(?:{{[ur] *?(?:[^\|}]*\|)*|<ref *?name *?= *?\"?)(%s)(?:[^}\/]*}}|\"? \/>)' % re.escape(
@@ -227,16 +227,16 @@ class BasicBot(
                 match = ruR.findall(text)
                 linkscount += len(match)
                 if self.opt.test:
-                    pywikibot.output('Treat:Templates matched:%s' % match)
+                    pywikibot.output(f'Treat:Templates matched:{match}')
         if self.opt.test:
-            pywikibot.output('Treat:links count:%s' % linkscount)
+            pywikibot.output(f'Treat:links count:{linkscount}')
 
         # catch unnamed links
         match = re.findall(re.escape(weblink), text)
         linkscount += len(match)
         if self.opt.test:
-            pywikibot.output('Treat:Loose links matched:%s' % match)
-            pywikibot.output('Treat:links count:%s' % linkscount)
+            pywikibot.output(f'Treat:Loose links matched:{match}' % match)
+            pywikibot.output(f'Treat:links count:{linkscount}')
 
         return linkscount
 
@@ -278,8 +278,8 @@ class BasicBot(
             linkscount = self.getRefsNumber(weblink, arttext)
             refs.append((weblink, linkscount))
             if self.opt.test:
-                pywikibot.output('Treat Weblink:%s' % weblink)
-                pywikibot.output('Treat Usage:%i' % linkscount)
+                pywikibot.output(f'Treat Weblink:{weblink}')
+                pywikibot.output(f'Treat Usage:{linkscount}')
             # except:
             #    pywikibot.output('Error in page %s' % page.title(asLink=True))
 
@@ -315,7 +315,7 @@ class BasicBot(
 
         res = sorted(redirlist, key=redirlist.__getitem__, reverse=True)
         itemcount = 0
-        pywikibot.output('res length:%i' % len(res))
+        pywikibot.output(f'res length:{len(res)}')
         for i in res[:int(self.opt.maxlines)]:
             # use only links with -includes if specified
             if self.opt.includes:
@@ -334,7 +334,7 @@ class BasicBot(
 
             # finalpage += '#' + i + ' ([{{fullurl:Specjalna:Wyszukiwarka linków/|target=' + i + '}} ' + str(count) + ' ' + suffix + '])\n'
             if self.opt.test:
-                pywikibot.output('(%d, %d) #%s (%s %s)' % (itemcount, len(finalpage), i, str(count), suffix))
+                pywikibot.output(f'({itemcount}, {len(finalpage)}) #{i} ({str(count)} {suffix})')
             if spam:
                 finalpage += f'\n|-\n| {str(itemcount)} || <nowiki>{self.shortenlink(i)}</nowiki><sup>SPAM</sup> || style="width: 20%; align="center" | [{{{{fullurl:Specjalna:Wyszukiwarka linków/|target={i}}}}} {str(count)} {suffix}]'
             else:
