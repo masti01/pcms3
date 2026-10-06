@@ -58,7 +58,6 @@ from pywikibot.bot import (
     ConfigParserBot,
     ExistingPageBot,
     SingleSiteBot,
-    Bot,
 )
 
 
@@ -132,19 +131,16 @@ class BasicBot(
     def treat(self, page):
         # search for imagelinks in page
         # quit after first one
-        found = False
+        # found = False
         for i in page.imagelinks():
             if self.opt.test:
                 pywikibot.output(i.title())
-            if not self.excludedImage(i.title()):
-                found = True
-                break
-        if found:
-            return None
-        else:
-            return page.title
+            if not self.excluded_image(i.title()):
+                return page.title()
+        return None
 
-    def excludedImage(self, title):
+    @staticmethod
+    def excluded_image(title):
         exclusions = ('flag', 'map', 'stamp', 'pictogram', 'ensign', 'medal', 'logo')
         for e in exclusions:
             if e in title.lower():
@@ -177,7 +173,7 @@ class BasicBot(
             pywikibot.output(outpage.title())
 
         outpage.save(summary=self.opt.summary)
-        return
+        return None
 
 
 def main(*args: str) -> None:
