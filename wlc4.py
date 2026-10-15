@@ -3269,15 +3269,17 @@ class LinkCheckThread(threading.Thread):
             message = i18n.twtranslate(self.page.site,
                                        'weblinkchecker-badurl_msg',
                                        {'URL': self.url})
+            raise
         except requests.exceptions.Timeout:
             exception = True
             message = 'Timeout while connecting.'
             pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Timeout while processing URL {self.url} in page [[{self.page.title()}]]')
+            raise
         except (pywikibot.exceptions.FatalServerError, requests.exceptions.ConnectionError, requests.exceptions.SSLError, pywikibot.exceptions.ServerError, Exception):
             exception = True
             message = 'Exception while connecting.'
             pywikibot.output(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] Exception while processing URL {self.url} in page [[{self.page.title()}]]')
-            # raise
+            raise
         if not exception:
             if (r.status_code != requests.codes.ok) or (r.status_code in self.http_ignores):
                 ok = True
@@ -3389,7 +3391,7 @@ class History:
                     try:
                         archiveURL = get_archive_url(url)
                     except Exception as e:
-                        pywikibot.warning(f'get_closest_memento_url({url}) failed: {s}')
+                        pywikibot.warning(f'get_closest_memento_url({url}) failed')
                         archiveURL = None
                     self.log(url, error, page, archiveURL)
             else:
