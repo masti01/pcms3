@@ -3078,6 +3078,7 @@ ignorelist = [
     re.compile(r'.*[\./@]people\.com/tv/kim-cattrall-opens-up-about-sex-and-the-city-amid-reboot-rumors/'),  # paywall on site (NiktWażny, masti)
     re.compile(r'.*[\./@]trilobites\.info/genera\.htm'),  # (NiktWażny, masti)
     re.compile(r'.*[\./@]oireachtas\.ie'),  # (Elfhelm, masti)
+    re.compile(r'.*[\./@]fdc\.nal\.usda.gov/'),  # (InternetowyGołąb, masti)
 ]
 
 
