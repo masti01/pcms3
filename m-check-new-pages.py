@@ -145,19 +145,19 @@ class BasicBot(
             return
 
         if self.opt.test:
-            pywikibot.output(u'Title:%s' % self.current_page.title())
-            pywikibot.output(u'Depth:%s' % self.current_page.depth)
+            pywikibot.output(f'Title:{self.current_page.title()}')
+            pywikibot.output(f'Depth:{self.current_page.depth}')
 
         # Wikilinks
         wikilinks = parsed.filter_wikilinks()
         tests['links'] = len(wikilinks)
         if self.opt.test:
-            pywikibot.output(f'Links to: {wikilinks}')
+            pywikibot.output(f'Wikiinks count: {wikilinks}')
 
         # Templates
         for t in parsed.filter_templates():
             if self.opt.test:
-                pywikibot.output('Template:[[%s]]' % t)
+                pywikibot.output(f'Template:[[{t}]]')
             # if 'infobox' in t.title.lower():  # check for infobox presence
             #     tests['infobox'] += 1
             # if t.lower() in tmplcat:  # check for category adding templates
@@ -173,9 +173,6 @@ class BasicBot(
 
             # Categories
             tests['cat'] = len(parsed.filter_wikilinks(matches=lambda link: self.category(link)))
-            # for c in wikilinks:
-            #     if self.category(c):
-            #         tests['cat'] += 1
 
         if self.opt.test:
             pywikibot.output(f"Tests:{tests}")
