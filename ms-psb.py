@@ -47,7 +47,7 @@ __version__ = '$Id: c1795dd2fb2de670c0b4bddb289ea9d13b1e9b3f $'
 #
 import pywikibot
 
-from pywikibot.backports import Tuple
+# from pywikibot.backports import Tuple
 from pywikibot import pagegenerators
 
 from pywikibot.bot import (
@@ -575,13 +575,20 @@ class BasicBot(
         #   success = False
         return(success)
 
-def main(*args: Tuple[str, ...]) -> None:
-    """
-    Process command line arguments and invoke bot.
+pywikibot.output(f'treating {self.current_page.title()}')
+
+        # if summary option is None, it takes the default i18n summary from
+        # i18n subdirectory with summary_key as summary key.
+        self.put_current(text, summary=self.opt.summary)
+
+
+
+def main(*args: str) -> None:
+    """Process command line arguments and invoke bot.
 
     If args is an empty list, sys.argv is used.
 
-    @param args: command line arguments
+    :param args: command line arguments
     """
     options = {}
     # Process global arguments to determine desired site
@@ -597,27 +604,26 @@ def main(*args: Tuple[str, ...]) -> None:
 
     # Parse your own command line arguments
     for arg in local_args:
-        arg, sep, value = arg.partition(':')
+        arg, _, value = arg.partition(':')
         option = arg[1:]
         if option in ('summary', 'text', 'outpage', 'maxlines', 'listscount', 'testcount', 'skip'):
             if not value:
                 pywikibot.input('Please enter a value for ' + arg)
             options[option] = value
-        # take the remaining options as booleans.
-        # You will get a hint if they aren't pre-defined in your bot class
+            # take the remaining options as booleans.
+            # You will get a hint if they aren't pre-defined in your bot class
         else:
             options[option] = True
 
-    # The preloading option is responsible for downloading multiple
-    # pages from the wiki simultaneously.
-    gen = gen_factory.getCombinedGenerator(preload=True)
-    if gen:
-        # pass generator and private options to the bot
-        bot = BasicBot(gen, **options)
-        bot.run()  # guess what it does
-    else:
-        pywikibot.bot.suggest_help(missing_generator=True)
+            # The preloading option is responsible for downloading multiple
+            # pages from the wiki simultaneously.
+        gen = gen_factory.getCombinedGenerator(preload=True)
 
+        # check if further help is needed
+        if not pywikibot.bot.suggest_help(missing_generator=not gen):
+            # pass generator and private options to the bot
+            bot = BasicBot(generator=gen, **options)
+            bot.run()  # guess what it does
 
-if __name__ == '__main__':
-    main()
+    if __name__ == '__main__':
+        main()
