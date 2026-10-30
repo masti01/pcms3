@@ -575,7 +575,7 @@ class BasicBot(
         #   success = False
         return(success)
 
-pywikibot.output(f'treating {self.current_page.title()}')
+        pywikibot.output(f'treating {self.current_page.title()}')
 
         # if summary option is None, it takes the default i18n summary from
         # i18n subdirectory with summary_key as summary key.
