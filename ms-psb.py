@@ -243,7 +243,7 @@ class BasicBot(
     ConfigParserBot,  # A bot which reads options from scripts.ini setting file
     # CurrentPageBot,  # Sets 'current_page'. Process it in treat_page method.
     #                  # Not needed here because we have subclasses
-    ExistingPageBot,  # CurrentPageBot which only treats existing pages
+    # ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
 
