@@ -358,6 +358,8 @@ class BasicBot(
 
         reflinks = [] #initiate list
         count = 0
+        if self.opt.test:
+            pywikibot.output("Starting ...")
         for tpage in self.generator:
             count += 1
             if self.opt.test:
