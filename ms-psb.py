@@ -309,7 +309,7 @@ class BasicBot(
         # extract section of page returning it's content
         sectionR = re.compile(r'(?s)={'+str(level)+'}\\s*?'+section+'\\s*?={'+str(level)+'}(?P<text>.*?)\n={'+str(level)+'} ')
         if self.opt.test:
-            pywikibot.output(u'(?s)={'+str(level)+'}\s*?'+section+'\s*?={'+str(level)+'}(?P<text>.*?)\n={'+str(level)+'} ')
+            pywikibot.output('(?s)={'+str(level)+'}\\s*?'+section+'\\s*?={'+str(level)+'}(?P<text>.*?)\n={'+str(level)+'} ')
         return(sectionR.search(page.text).group('text'))
 
     def genpages(self,text,ns=0, rgx=r'\[\[(?P<title>[^\|\]]*?)[\|\]]'):
