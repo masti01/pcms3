@@ -624,7 +624,7 @@ def main(*args: str) -> None:
         # check if further help is needed
         if not pywikibot.bot.suggest_help(missing_generator=not gen):
             # pass generator and private options to the bot
-            bot = BasicBot(generator=gen, **options)
+            bot = BasicBot(gen, **options)
             bot.run()  # guess what it does
 
     if __name__ == '__main__':
