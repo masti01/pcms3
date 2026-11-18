@@ -55,7 +55,6 @@ from pywikibot.bot import (
     SingleSiteBot,
 )
 
-
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
 docuReplacements = {'&params;': pagegenerators.parameterHelp}  # noqa: N816
@@ -70,7 +69,6 @@ class BasicBot(
     ExistingPageBot,  # CurrentPageBot which only treats existing pages
     AutomaticTWSummaryBot,  # Automatically defines summary; needs summary_key
 ):
-
     """
     An incomplete sample bot.
 
@@ -94,6 +92,7 @@ class BasicBot(
         'testprint': False,  # print testoutput
         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
         'test': False,  # switch on test functionality
+        'progress': False,  # show progress
     }
 
     def run(self):
@@ -106,32 +105,32 @@ class BasicBot(
         header += "\n*:'''Hasło''' - Tytuł hasła"
         header += "\n*:'''Ujednoznacznienia''' - Lista stron ujednoznaczniających"
         # header += "\n</small>\n"
-        header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Ujednoznacznienia'
-    
+        header += '\n{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Ujednoznacznienia'
+
         footer = '\n|}\n\n[[Kategoria:Wikiprojekt Strony ujednoznaczniające z linkami]]'
-    
+
         results = {}
-    
+
         counter = 0
         marked = 0
         for page in self.generator:
             counter += 1
             # finalpage = finalpage + self.treat(page)
-            if self.opt.test:
-                pywikibot.output('Processing page #%i (%i marked): %s' % (counter, marked, page.title(as_link=True)))
+            if self.opt.progress:
+                pywikibot.output(f'Processing page #{counter} ({marked} marked): {page.title(as_link=True)}')
             result = self.treat(page)
             if result:
                 results[page.title(with_ns=False)] = (result, page.namespace() == 10)
                 marked += 1
                 if self.opt.test:
-                    pywikibot.output('Added line #%i: %s elements: %i' % (marked, page.title(as_link=True), len(result)))
-    
+                    pywikibot.output(
+                        'Added line #%i: %s elements: %i' % (marked, page.title(as_link=True), len(result)))
+
         if self.opt.test:
             pywikibot.output(results)
         self.generateresultspage(results, self.opt.outpage, header, footer)
         return
-    
-    
+
     def treat(self, page):
         """
         Loads the given page, looks for linked disambigs
@@ -139,34 +138,33 @@ class BasicBot(
         """
         found = False
         linkedDisambigs = []  # list of linked disambigs
-    
+
         text = page.text
         if self.opt.test:
             pywikibot.output(text)
         if not text or page.isDisambig():
             return None
-    
+
         linkedPages = page.linkedPages(namespaces=0)
         linkedPagesCount = len(list(linkedPages))
         for link in linkedPages:
             if self.opt.test:
-                pywikibot.output('Checking link %s->%s (%s remaining)' % (
-                page.title(as_link=True), link.title(as_link=True), linkedPagesCount))
+                pywikibot.output(
+                    f'Checking link {page.title(as_link=True)}->{link.title(as_link=True)} ({linkedPagesCount} remaining)')
             linkedPagesCount -= 1
             isDisamb = link.isDisambig()
             if isDisamb and not ('{{Inne znaczenia' in text):
                 found = True
                 linkedDisambigs.append(link.title())
                 if self.opt.test:
-                    pywikibot.output('adding %s' % link.title(as_link=True))
-        
+                    pywikibot.output(f'adding {link.title(as_link=True)}')
+
         # return result
         if found:
             return linkedDisambigs
         else:
             return None
-    
-    
+
     def generateresultspage(self, redirlist, pagename, header, footer):
         """
         Generates results page from redirlist
@@ -178,24 +176,25 @@ class BasicBot(
         for i in list(redirlist):
             r, t = redirlist[i]
             if t:  # marked page is Template
-                finalpage += '\n|-\n| ' + str(lineN) + ' || {{s|' + i + '}} || '
+                finalpage += f'\n|-\n| {str(lineN)} || {{s|{i}}} || '
             else:  # marked page is article
                 finalpage += '\n|-\n| ' + str(lineN) + ' || [[' + i + ']] || '
+                finalpage += f'\n|-\n| {str(lineN)} || [[{i}]] || '
             lineN += 1
             firstLine = True
             for d in r:
                 if firstLine:
                     firstLine = False
-                    finalpage += '[[' + d + ']]'
+                    finalpage += f'[[{d}]]'
                 else:
-                    finalpage += '<br />[[' + d + ']]'
-    
+                    finalpage += f'<br />[[{d}]]'
+
         finalpage += footer
-    
+
         outpage = pywikibot.Page(pywikibot.Site(), pagename)
         outpage.text = finalpage
         outpage.save(summary=self.opt.summary)
-    
+
         if self.opt.test:
             pywikibot.output(finalpage)
         return redirlist
