@@ -94,6 +94,7 @@ class BasicBot(
         'testprint': False,  # print testoutput
         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
         'test': False,  # switch on test functionality
+        'progress': False,  # show progress
     }
 
     def run(self):
@@ -117,7 +118,7 @@ class BasicBot(
         for page in self.generator:
             counter += 1
             # finalpage = finalpage + self.treat(page)
-            if self.opt.test:
+            if self.opt.progress:
                 pywikibot.output(f'Processing page #{counter} ({marked} marked): {page.title(as_link=True)}')
             result = self.treat(page)
             if result:
