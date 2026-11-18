@@ -106,7 +106,7 @@ class BasicBot(
         header += "\n*:'''Hasło''' - Tytuł hasła"
         header += "\n*:'''Ujednoznacznienia''' - Lista stron ujednoznaczniających"
         # header += "\n</small>\n"
-        header += '{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Ujednoznacznienia'
+        header += '\n{| class="wikitable" style="font-size:85%;"\n|-\n!Lp.\n!Hasło\n!Ujednoznacznienia'
     
         footer = '\n|}\n\n[[Kategoria:Wikiprojekt Strony ujednoznaczniające z linkami]]'
     
@@ -118,7 +118,7 @@ class BasicBot(
             counter += 1
             # finalpage = finalpage + self.treat(page)
             if self.opt.test:
-                pywikibot.output('Processing page #%i (%i marked): %s' % (counter, marked, page.title(as_link=True)))
+                pywikibot.output(f'Processing page #{counter} ({marked} marked): {page.title(as_link=True)}')
             result = self.treat(page)
             if result:
                 results[page.title(with_ns=False)] = (result, page.namespace() == 10)
@@ -150,15 +150,14 @@ class BasicBot(
         linkedPagesCount = len(list(linkedPages))
         for link in linkedPages:
             if self.opt.test:
-                pywikibot.output('Checking link %s->%s (%s remaining)' % (
-                page.title(as_link=True), link.title(as_link=True), linkedPagesCount))
+                pywikibot.output(f'Checking link {page.title(as_link=True)}->{link.title(as_link=True)} ({linkedPagesCount} remaining)')
             linkedPagesCount -= 1
             isDisamb = link.isDisambig()
             if isDisamb and not ('{{Inne znaczenia' in text):
                 found = True
                 linkedDisambigs.append(link.title())
                 if self.opt.test:
-                    pywikibot.output('adding %s' % link.title(as_link=True))
+                    pywikibot.output(f'adding {link.title(as_link=True)}')
         
         # return result
         if found:
@@ -178,17 +177,18 @@ class BasicBot(
         for i in list(redirlist):
             r, t = redirlist[i]
             if t:  # marked page is Template
-                finalpage += '\n|-\n| ' + str(lineN) + ' || {{s|' + i + '}} || '
+                finalpage += f'\n|-\n| {str(lineN)} || {{s|{i}}} || '
             else:  # marked page is article
                 finalpage += '\n|-\n| ' + str(lineN) + ' || [[' + i + ']] || '
+                finalpage += f'\n|-\n| {str(lineN)} || [[{i}]] || '
             lineN += 1
             firstLine = True
             for d in r:
                 if firstLine:
                     firstLine = False
-                    finalpage += '[[' + d + ']]'
+                    finalpage += f'[[{d}]]'
                 else:
-                    finalpage += '<br />[[' + d + ']]'
+                    finalpage += f'<br />[[{d}]]'
     
         finalpage += footer
     
