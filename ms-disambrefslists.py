@@ -51,8 +51,6 @@ from pywikibot.bot import (
     ExistingPageBot,
     SingleSiteBot,
 )
-import backoff
-
 
 # This is required for the text that is shown when you run this script
 # with the parameter -help.
@@ -92,6 +90,7 @@ class BasicBot(
         'testprint': False,  # print testoutput
         'negative': False,  # if True negate behavior i.e. mark pages that DO NOT contain search string
         'test': False,  # test printouts
+        'progress': False,  # show progress
     }
 
     def run(self):
@@ -111,8 +110,8 @@ class BasicBot(
         refscounter = 0
 
         for page in self.generator:
-            if self.opt.test:
-                pywikibot.output('# %i (%i) Treating:%s' % (counter, refscounter, page.title(as_link=True)))
+            if self.opt.progress:
+                pywikibot.output(f'# {counter} ({refscounter}) Treating:{page.title(as_link=True)}')
             refs = self.treat(page)
 
             counter += 1
@@ -160,11 +159,6 @@ class BasicBot(
             pywikibot.output(redirlist)
         return res
 
-    @backoff.on_exception(
-        backoff.expo,
-        pywikibot.exceptions.ServerError,
-        max_tries=5
-    )
     def treat(self, page):
         # check for real disambig - exclude {{Inne znaczenia
         if '{{Inne znaczenia' in page.text:
